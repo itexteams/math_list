@@ -134,7 +134,7 @@ def bt_dang1_p1_b1_c1_ds10(self):
 
     # Nội dung câu hỏi
     noidungcauhoi = (
-        r"Kí hiệu nào sau đây dùng để chỉ $%s$ không phải là một số hữu tỉ? aaaaaaaaaaaaaaa"
+        r"Kí hiệu nào sau đây dùng để chỉ $%s$ không phải là một số hữu zzzzzzzzzzzzzzzzzzzzzzztỉ?"
         % (latex(a))
     )
 
