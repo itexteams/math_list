@@ -1,0 +1,256 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang5_p3_b4_c2_hh12(self):
+            # Khai báo biến
+            lisdang=['1']
+            dang=random.choice(lisdang)
+            if dang=='1':
+                # Khai báo biến
+                x=symbols('x')
+                y=symbols('y')
+                z=symbols('z')
+                a=randint(-9,9)
+                b=randint(-9,9)
+                c=randint(-9,9)
+                r=randint(5,15)
+                a1=randint(-9,9)
+                b1=randint(-9,9)
+                c1=randint(-9,9)
+                d1=randint(-9,9)
+                while a**2+b**2+c**2==0 or r**2-c**2-3<=0:
+                    a=randint(-9,9)
+                    b=randint(-9,9)
+                    c=randint(-9,9)
+                    r=randint(5,15)
+                    a1=randint(-9,9)
+                    b1=randint(-9,9)
+                    c1=randint(-9,9)
+                    d1=randint(-9,9)
+
+                mc=(x-a)**2+(y-b)**2+(z-c)**2
+                bk=sqrt(r**2-c**2)
+                bk1=sqrt(r**2-c**2+1)
+                bk2=sqrt(r**2-c**2-1)
+                bk3=sqrt(r**2-c**2+2)
+                bk4=sqrt(r**2-c**2-2)
+                bk5=sqrt(r**2-c**2+3)
+                bk6=sqrt(r**2-c**2-3)
+
+
+
+
+                # Câu hỏi
+                noidungcauhoi = ('Trong mặt phẳng $(Oxy)$, cho mặt cầu $(S): %s=%s$. Mặt cầu $(S)$ cắt mặt phẳng $(Oxy)$ theo giao tuyến là đường tròn có bán kính $r$. Khi đó $r^2$ bằng bao nhiêu?'
+                                %(latex(mc),latex(r**2)))
+
+                # Nội dung lời giải
+                loigiai=('Mặt cầu $S$ có tâm $I(%s;%s;%s)$ bán kính $R=%s$.\\\\ \n'
+                        'Gọi $H$ là tâm đường tròn giao tuyến nên $H$ là hình chiếu của $I$ trên mặt phẳng $(Oxy)$, vậy $H(%s;%s;0)$.\\\\ \n'
+                        'Khi đó $\\vec{IH}=(0;0;%s)\\Rightarrow IH^2=%s$.\\\\ \n'
+                        'Vậy bán kính đường tròn giao tuyến là $r$ có $r^2=R^2-IH^2=%s^2-%s=%s$.'
+                        %(latex(a),latex(b),latex(c),latex(r),
+                        latex(a),latex(b),
+                        latex(c),latex(c**2),
+                        latex(r),latex(c**2),latex(bk**2),
+                        )
+                        )
+
+
+                #Đáp án
+                dapan=' \\shortans[0]{$%s$} '%(latex(bk**2))
+
+
+            if dang=='2':
+                # Khai báo biến
+                x=symbols('x')
+                y=symbols('y')
+                z=symbols('z')
+                a1=randint(-9,9)
+                a2=randint(-9,9)
+                a3=randint(-9,9)
+                b1=randint(-9,9)
+                b2=randint(-9,9)
+                b3=randint(-9,9)
+                while ((a1+b1)**2+(a2+b2)**2+(a3+b3)**2)/4-(a1*b1+a2*b2+a3*b3)<=0 or a1**2+a2**2+a3**2==0 or b1**2+b2**2+b3**2==0:
+                    a1=randint(-9,9)
+                    a2=randint(-9,9)
+                    a3=randint(-9,9)
+                    b1=randint(-9,9)
+                    b2=randint(-9,9)
+                    b3=randint(-9,9)
+                pt=x**2+y**2+z**2
+                pt1=-(a1+b1)*x-(a2+b2)*y-(a3+b3)*z+a1*b1+a2*b2+a3*b3
+                x0=Rational((a1+b1),2)
+                y0=Rational((a2+b2),2)
+                z0=Rational((a3+b3),2)
+                r1=Rational(((a1+b1)**2+(a2+b2)**2+(a3+b3)**2)-4*(a1*b1+a2*b2+a3*b3),4)
+                r=sqrt(r1)
+
+                # Tạo phân số từ số thực
+                frac = Fraction(r1).limit_denominator()
+
+                # Lấy tử số và mẫu số
+                numerator = frac.numerator
+                denominator = frac.denominator
+
+                kq=numerator+denominator
+
+                # Câu hỏi
+                noidungcauhoi = ('Trong không gian $Oxyz$, cho hai điểm $A(%s;%s;%s)$ và $B(%s;%s;%s)$. Điểm $M(x;y;z)$ thỏa mãn $\\vec{MA}\\cdot\\vec{MB}=0$ thì $M$ thuộc một mặt cầu $(S)$ có bán kính $R$ và $R^2=\\dfrac{m}{n}$ với $m\\in \\mathbb{Z};n\\in{N^*};\\dfrac{m}{n}$ là phân số tối giản khi đó $m+n$ bằng bao nhiêu?'
+                                %(latex(a1),latex(a2),latex(a3),latex(b1),latex(b2),latex(b3),))
+
+                # Nội dung lời giải
+                loigiai = ('Ta có $\\vec{MA}=(%s-x;%s-y;%s-z)$ và $\\vec{MB}=(%s-x;%s-y;%s-z)$.\\\\ \n'
+                        '$\\vec{MA}\\cdot\\vec{MB}=0\\Leftrightarrow (%s-x)\\cdot(%s-x)+(%s-y)\\cdot(%s-y)+(%s-z)\\cdot(%s-z)=0$\\\\ \n'
+                        '\\hspace*{2.55cm} $\\Leftrightarrow %s+%s=0$.\\\\ \n'
+                        'Khi đó theo dạng của phương trình mặt cầu ta có: $a=%s; b=%s; c=%s$ và $d=%s$.\\\\ \n'
+                        'Xét $a^2+b^2+c^2-d=%s>0$.\\\\ \n'
+                        'Tập hợp điểm $M$ là mặt cầu $(S)$ có bán kính $R=\\sqrt{%s}=%s\\Rightarrow R^2=%s$.\\\\ \n'
+                        'Vậy $m=%s; n=%s \\Rightarrow m+n=%s$.'
+                        %(latex(a1),latex(a2),latex(a3),latex(b1),latex(b2),latex(b3),
+                        latex(a1),latex(b1),latex(a2),latex(b2),latex(a3),latex(b3),latex(pt),latex(pt1),
+                        latex(x0),latex(y0),latex(z0),latex(a1*b1+a2*b2+a3*b3),
+                        latex(r1),
+                        latex(r1),latex(r),latex(r1),
+                        latex(numerator),latex(denominator),latex(kq))
+                        )
+
+
+                #Đáp án
+                dapan=' \\shortans[0]{$%s$} '%(latex(kq))
+
+            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                '\\begin{ex}\n'+ str(noidungcauhoi)+str(dapan)+
+                '\\loigiai{ \n'
+                +str(loigiai)+'}\n'
+                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('--', '+').replace('.0', '')
+            return content
+

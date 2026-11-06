@@ -1,0 +1,194 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang6_p3_b2_c2_hh10(self):
+            lisdang=['2']
+            dang=random.choice(lisdang)
+
+            if dang=='2':
+                # Khai báo biến
+
+                c = randint(1,15)
+                b = randint(1,15)
+                a = Rational(c,2)
+
+                x0 = sqrt(b**2+a**2)
+
+                number = Decimal(float(x0))  # Số cần làm tròn
+                kq = number.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
+                # Nội dung câu hỏi
+                noidungcauhoi = ('Cho tam giác vuông   có các cạnh góc vuông là $AB=%s, AC=%s$$zz$\n'
+                                'Điểm $N$ thỏa mãn $\\overrightarrow{CN}=\\overrightarrow{CA}+\\overrightarrow{CB}+\\overrightarrow{CI}$ với $I$ là trung điểm $AB$$zz$ Độ dài vectơ $\\overrightarrow{CN}$ bằng bao nhiêu? (kết quả làm tròn đến hàng phần chục)$zz$\n'
+                                %(latex(c),latex(b),)
+                                )
+
+                # Nội dung lời giải
+                loigiai = ('\\begin{center}\\scalebox{0$zz$6}{\\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1$zz$0cm,y=1$zz$0cm] \n'
+            '\\clip(0$zz$11607925356248133,-4$zz$137128559134741) rectangle (17,4$zz$5);\n'
+            '\\draw (11$zz$,-2$zz$)-- (11$zz$,1$zz$);\n'
+            '\\draw (11$zz$,1$zz$)-- (16$zz$,1$zz$);\n'
+            '\\draw (16$zz$,1$zz$)-- (11$zz$,-2$zz$);\n'
+            '\\draw (11$zz$,1$zz$)-- (16$zz$,4$zz$);\n'
+            '\\draw (16$zz$,4$zz$)-- (16$zz$,1$zz$);\n'
+            '\\draw (16$zz$,1$zz$)-- (6$zz$,-2$zz$);\n'
+            '\\draw (6$zz$,-2$zz$)-- (11$zz$,-2$zz$);\n'
+            '\\draw (1$zz$,-3$zz$5)-- (6$zz$,-2$zz$);\n'
+            '\\draw (10$zz$714345075127692,1$zz$6866709764778256) node[anchor=north west] {$A$};\n'
+            '\\draw (10$zz$661878412644697,-1$zz$916039847354573) node[anchor=north west] {$B$};\n'
+            '\\draw (16$zz$13590019837062,1$zz$1969821266365286) node[anchor=north west] {$C$};\n'
+            '\\draw (15$zz$995989098415965,4$zz$589826300536942) node[anchor=north west] {$M$};\n'
+            '\\draw (10$zz$294611775263723,0$zz$20011553945960284) node[anchor=north west] {$I$};\n'
+            '\\draw (5$zz$695034364254399,-1$zz$2339732350756238) node[anchor=north west] {$D$};\n'
+            '\\draw (0$zz$46585700344912195,-2$zz$8254619970598385) node[anchor=north west] {$N$};\n'
+            '\\begin{scriptsize}\n'
+            '\\draw [fill=black] (1$zz$,-3$zz$5) circle (1$zz$5pt);\n'
+            '\\end{scriptsize}\n'
+            '\\end{tikzpicture}} '
+            '\\end{center}\n'
+                    'Vẽ hình bình hành $ACBD$, ta có\\\\ \n $\\overrightarrow{CA}+\\overrightarrow{CB}=\\overrightarrow{CD}$$zz$\\\\ \n'
+                    'Khi đó $\\overrightarrow{CN}=\\overrightarrow{CA}+\\overrightarrow{CB}+\\overrightarrow{CI} \\Leftrightarrow \\overrightarrow{CN}=\\overrightarrow{CD}+\\overrightarrow{CI}$$zz$ \\\\ \n'
+                    'Lấy điểm $N$ đối xứng với $I$ qua $D$, ta có $\\overrightarrow{CI}=\\overrightarrow{DN}$$zz$\\\\ \n'
+                    'Do đó: $\\overrightarrow{CN}=\\overrightarrow{CD}+\\overrightarrow{CI} \\Leftrightarrow \\overrightarrow{CN}=\\overrightarrow{CD}+\\overrightarrow{DN} \\Leftrightarrow \\overrightarrow{CN}=\\overrightarrow{CN}$ (thỏa mãn)$zz$ \\\\ \n'
+                    'Ta có $\\left|\\overrightarrow{CN}\\right|=CN=3CI$ với $C I=\\sqrt{AC^2+AI^2}=\\sqrt{%s^2+\\left(\\dfrac{%s}{2}\\right)^2}=%s$$zz$\\\\ \n'
+                    'Vậy $\\left|\\overrightarrow{CN}\\right|=%s \\approx %s$$zz$\n'
+                        %(latex(b),latex(c),latex(x0),latex(x0),
+                            latex(kq),
+                            ))
+                #Đáp án
+                dapan=' \\shortans[0]{$%s$} '%(latex(kq))
+
+
+            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                '\\begin{ex}\n'+ str(noidungcauhoi)+str(dapan)+
+                '\\loigiai{\n'
+                +str(loigiai)+'}\n'
+                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('.', ',').replace('$zz$', '.')
+            return content     
+

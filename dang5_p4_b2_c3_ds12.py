@@ -1,0 +1,190 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang5_p4_b2_c3_ds12(self):
+            # Khai báo biến
+            lisdang=['1']
+            dang=random.choice(lisdang)
+            if dang=='1':
+                a1=randint(0,1)
+                k=randint(1,3)
+                b1=a1+k
+                a2=randint(1,4)
+                a=2*a2
+                b=randint(-5,5)
+                c=randint(1,5)
+                d=randint(1,5)
+                m=a2*(b1**2-a1**2)+b*(b1-a1)
+                while b==0 or m==0 or m+b==0:
+                    a1=randint(0,1)
+                    k=randint(1,3)
+                    b1=a1+k
+                    a2=randint(1,4)
+                    a=2*a2
+                    b=randint(-5,5)
+                    c=randint(1,5)
+                    d=randint(1,5)
+                    m=a2*(b1**2-a1**2)+b*(b1-a1)
+                n=b1+d
+                p=a1+d
+                kq=m+n+p
+
+                # Nội dung câu hỏi
+                noidungcauhoi = ('Biết $\\displaystyle\\int\\limits_{%s}^{%s} \\dfrac{%sx^2+%sx+%s}{x+%s}\\text{d}x=a+%s\\ln b+%s\\ln c$ với $a,b,c \\in \\mathbb{Z}$. Tính giá trị của biểu thức $P=a+b+c$.'
+                                %(latex(a1),latex(b1),latex(a),latex(b+a*d),latex(b*d+c),latex(d),latex(c),latex(-c)))
+
+                # Nội dung lời giải
+                loigiai = ('Ta có\\\\ \n'
+                        '\\begin{eqnarray*}\n'
+                        '\\displaystyle\\int\\limits_{%s}^{%s} \\dfrac{%sx^2+%sx+%s}{x+%s}\\text{d}x&=&\\displaystyle\\int\\limits_{%s}^{%s} \\left(%sx+%s+\\dfrac{%s}{x+%s}\\right)\\text{d}x\\\\ \n'
+                        '&=&\\left(%sx^2+%sx+%s\\ln\\abs{x+%s}\\right)\\bigg|_{%s}^{%s}\\\\ \n'
+                        '&=&\\left(%s\\cdot %s^2+%s\\cdot %s+%s\\ln\\abs{%s+%s}\\right)-\\left(%s\\cdot %s^2+%s\\cdot %s+%s\\ln\\abs{%s+%s}\\right)\\\\ \n'
+                        '&=&%s+%s\\ln%s+%s\\ln%s.\n'
+                        '\\end{eqnarray*}\n'
+                        'Suy ra $a=%s,b=%s,c=%s$.\\\\ \n'
+                        'Vậy $P=a+b+c=%s+%s+%s=%s$.'
+                        %(latex(a1),latex(b1),latex(a),latex(b+a*d),latex(b*d+c),latex(d),latex(a1),latex(b1),latex(a),latex(b),latex(c),latex(d),
+                            latex(a2),latex(b),latex(c),latex(d),latex(a1),latex(b1),
+                            latex(a2),latex(b1),latex(b),latex(b1),latex(c),latex(b1),latex(d),latex(a2),latex(a1),latex(b),latex(a1),latex(c),latex(a1),latex(d),
+                            latex(m),latex(c),latex(n),latex(-c),latex(p),
+                            latex(m),latex(n),latex(p),
+                            latex(m),latex(n),latex(p),latex(kq))
+                        )
+
+                #Đáp án
+
+
+            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                '\\begin{ex}\n'+ str(noidungcauhoi)+
+                '\\loigiai{ \n'
+                +str(loigiai)+'}\n'
+                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('--', '+').replace('-+', '-').replace('+1\\ln', '+\\ln').replace('-1\\ln', '-\\ln').replace('+1x', '+x').replace('-1x', '-x').replace('+1x', '+x').replace('(1x^2', '(x^2')
+            return content 
+

@@ -1,0 +1,222 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang26_p1_b6_c2_hh11(self):
+            # Khai báo biến
+            # Khởi tạo các biến ký hiệu
+            a = symbols('a')
+
+            # B3-Suy nghĩ tìm cách random bài toán: 
+            # Chúng ta sẽ random độ dài cạnh của khối chóp là k*a (với k là số nguyên từ 1 đến 5)
+            # Trong bài toán gốc, k = 1.
+            lis_k = [1, 2, 3, 4, 5]
+            k = random.choice(lis_k)
+
+            # Cạnh của khối chóp
+            canh = k * a
+
+            # Tính toán các thông số theo k*a
+            # 1. Đường chéo đáy AC = canh * sqrt(2)
+            ac_val = canh * sqrt(2)
+            # 2. Chiều cao SH. Vì các cạnh bằng nhau nên tam giác SAC vuông tại S
+            # SH = AC / 2
+            sh_val = ac_val / 2
+            # 3. Diện tích đáy S = canh^2
+            s_day = canh**2
+            # 4. Thể tích V = 1/3 * S * SH
+            the_tich = sp.simplify(Rational(1, 3) * s_day * sh_val)
+
+            # B4-Điều chỉnh các phương án sai
+            # Đáp án đúng
+            da_dung = '$' + latex(the_tich) + '$'
+
+            # Tạo danh sách các phương án sai bằng cách thay đổi mẫu số hoặc hệ số căn
+            sai1 = '$' + latex(sp.simplify(Rational(1, 3) * s_day * ac_val)) + '$' # V = 1/3 * S * AC
+            sai2 = '$' + latex(sp.simplify(s_day * sh_val)) + '$'               # V = S * SH
+            sai3 = '$' + latex(sp.simplify(Rational(1, 2) * s_day * sh_val)) + '$' # V = 1/2 * S * SH
+
+            list_options = ['\\True ' + da_dung, sai1, sai2, sai3]
+            random.shuffle(list_options)
+
+            # Nội dung câu hỏi
+            noidungcauhoi = ('Thể tích của khối chóp tứ giác đều có tất cả các cạnh bằng $%s$ là' 
+                             % (latex(canh)))
+
+            # Vẽ hình TikZ giống 100% trong ảnh
+            hinh_ve = (
+                '\\begin{center}\n'
+                '\\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, line width=1pt]\n'
+                '\\coordinate (D) at (0,0);\n'
+                '\\coordinate (C) at (4,0);\n'
+                '\\coordinate (A) at (1.5,1.5);\n'
+                '\\coordinate (B) at (5.5,1.5);\n'
+                '\\coordinate (H) at (2.75,0.75);\n'
+                '\\coordinate (S) at (2.75,4.5);\n'
+                '\\draw[dashed, line width=1pt] (S)--(A) (A)--(B) (A)--(D) (A)--(C) (B)--(D) (S)--(H);\n'
+                '\\draw[line width=1pt] (S)--(D)--(C)--(B)--(S)--(C);\n'
+                '\\node[left] at (A) {$A$};\n'
+                '\\node[right] at (B) {$B$};\n'
+                '\\node[right] at (C) {$C$};\n'
+                '\\node[left] at (D) {$D$};\n'
+                '\\node[above] at (S) {$S$};\n'
+                '\\node[below] at (H) {$H$};\n'
+                '\\end{tikzpicture}\n'
+                '\\end{center}'
+            )
+
+            # Nội dung lời giải chi tiết
+            loigiai = (
+                'Giả sử khối chóp tứ giác đều đã cho là $S.ABCD$. Khi đó $ABCD$ là hình vuông cạnh $%s$ và $SA = SB = SC = SD = %s$.\\\\\n'
+                'Gọi $H$ là tâm của hình vuông $ABCD$ thì $SH \\perp (ABCD)$ nên $SH$ là chiều cao của khối chóp $S.ABCD$. Tính $SH$:\\\\\n'
+                'Xét tam giác $ABC$ vuông tại $B$ ta có: $AC = \\sqrt{AB^2 + BC^2} = \\sqrt{\\left(%s\\right)^2 + \\left(%s\\right)^2} = %s$.\\\\\n'
+                'Nhận thấy $AC^2 = SA^2 + SC^2$ nên tam giác $SAC$ vuông tại $S$. Suy ra $SH = \\frac{AC}{2} = \\frac{%s}{2} = %s$.\\\\\n'
+                'Diện tích đáy của khối chóp $S.ABCD$ là $S_{ABCD} = \\left(%s\\right)^2 = %s$.\\\\\n'
+                'Vậy thể tích khối chóp $S.ABCD$ là: $V = \\frac{1}{3} \\cdot S_{ABCD} \\cdot SH = \\frac{1}{3} \\cdot %s \\cdot %s = %s.$'
+                % (latex(canh), latex(canh), 
+                   latex(canh), latex(canh), latex(ac_val),
+                   latex(ac_val), latex(sh_val),
+                   latex(canh), latex(s_day),
+                   latex(s_day), latex(sh_val), latex(the_tich))
+            )
+
+            # Xuất câu trắc nghiệm theo đúng cấu trúc mẫu
+            content = (
+                '\\begin{minipage}{\\textwidth}\n'
+                '\\begin{ex}\n'
+                + str(noidungcauhoi) + '\n'
+                '\\choice\n'
+                '{' + str(list_options[0]) + '}\n'
+                '{' + str(list_options[1]) + '}\n'
+                '{' + str(list_options[2]) + '}\n'
+                '{' + str(list_options[3]) + '}\n'
+                '\\loigiai{' + str(hinh_ve)+ str(loigiai) + '}\n'
+                '\\end{ex}\n'
+                '\\end{minipage}\n\n')
+            return content
+

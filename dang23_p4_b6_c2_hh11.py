@@ -1,0 +1,211 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang23_p4_b6_c2_hh11(self):
+            # Khai báo biến
+            # Khai báo biến
+            lisdang = ['1']
+            dang = random.choice(lisdang)
+
+            if dang == '1':
+                # Bước 3: Suy nghĩ tìm cách random bài toán
+                # Chọn các giá trị dưới dấu căn sao cho tích của chúng có thể rút gọn đẹp
+                # Ví dụ: căn(3) * căn(6) = căn(18) = 3*căn(2)
+                pairs = [
+                    (3, 6), (2, 6), (2, 10), (3, 15), (5, 10), (2, 8), (3, 12)
+                ]
+                n1, n2 = random.choice(pairs)
+
+                # Định nghĩa ký hiệu a
+                a = symbols('a')
+
+                # Diện tích đáy B và chiều cao h
+                B_expr = a**2 * sqrt(n1)
+                h_expr = a * sqrt(n2)
+
+                # Tính thể tích V = B * h
+                V_rect = B_expr * h_expr
+                V_final = simplify(V_rect)
+
+                # Đáp án đúng
+                da = '$V = %s$' % latex(V_final)
+
+                # Bước 4: Điều chỉnh các phương án sai (không trùng đáp án đúng)
+                s = []
+                # Phương án sai 1: Nhầm sang công thức khối chóp (chia 3)
+                s1 = '$V = \\frac{%s}{3}$' % latex(V_final)
+                if s1 != da: s.append(s1)
+
+                # Phương án sai 2: Nhầm hệ số hoặc căn số
+                s2 = '$V = %s$' % latex(simplify(V_final * sqrt(2)))
+                if s2 != da: s.append(s2)
+
+                # Phương án sai 3: Quên rút gọn căn hoặc sai bản chất
+                s3 = '$V = %s$' % latex(simplify(a**3 * sqrt(n1 + n2)))
+                if s3 != da: s.append(s3)
+
+                # Phương án sai 4: Đảo lộn số mũ
+                s4 = '$V = %s$' % latex(simplify(V_final / a))
+                if s4 != da: s.append(s4)
+
+                # Đảm bảo lấy đủ 3 đáp án sai khác nhau và khác đáp án đúng
+                s = list(set(s)) # Loại bỏ trùng lặp nếu có
+                if da in s: s.remove(da)
+                random.shuffle(s)
+
+                das1 = s[0]
+                das2 = s[1]
+                das3 = s[2]
+
+                # Câu hỏi
+                noidungcauhoi = ('''Cho khối lăng trụ có diện tích đáy bằng $%s$, khoảng cách giữa hai đáy của lăng trụ bằng $%s$. Tính thể tích khối lăng trụ.'''
+                                 % (latex(B_expr), latex(h_expr)))
+
+                # Các đáp án
+                da_d = ('\\True ' + str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2)
+                da_s3 = str(das3)
+
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d, da_s1, da_s2, da_s3]
+                random.shuffle(list_1)
+
+                # Nội dung lời giải
+                loigiai = ('''Thể tích khối lăng trụ được tính theo công thức: $V = S \\cdot h$. \\\\
+                             Thay số ta có: $V = %s \\cdot %s = %s$.'''
+                           % (latex(B_expr), latex(h_expr), latex(V_final)))
+
+            # Xuất câu trắc nghiệm
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                       '\\begin{ex}\n' + str(noidungcauhoi) +
+                       '\\loigiai{' + str(loigiai) + '}\n'
+                       '\\end{ex}\n \\end{minipage} \n\n')
+            return content
+

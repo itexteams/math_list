@@ -1,0 +1,495 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang25_p1_b2_c3_ds11(self):
+            # Khai báo biến
+            lisdang=['1','2','3','4','5']
+            dang=random.choice(lisdang)
+            a1=random.choice([5,10,15,20,25,30])
+            k=randint(3,6)
+            a2=a1+k
+            a3=a2+k
+            a4=a3+k
+            a5=a4+k
+            a6=a5+k
+
+            m1=randint(2,9)
+            m2=randint(2,9)
+            m3=randint(2,9)
+            m4=randint(2,9)
+            m5=randint(2,9)
+
+            n=m1+m2+m3+m4+m5
+            x1=Rational(a1+a2,2)
+            x2=Rational(a2+a3,2)
+            x3=Rational(a3+a4,2)
+            x4=Rational(a4+a5,2)
+            x5=Rational(a5+a6,2)
+
+            if dang=='1':
+                #Khai báo biến
+
+                #Các đáp án trắc nghiệm
+                du = ['$%s$'%(latex(x1)),
+                      ]
+                da= random.choice(du)
+                s = ['$%s$'%(latex(x1+1)),
+                     '$%s$'%(latex(x1+2)),
+                     '$%s$'%(latex(x1+3)),
+                     '$%s$'%(latex(x1-1)),
+                     '$%s$'%(latex(x1-2)),
+                     '$%s$'%(latex(x1-3)),
+                    ]
+
+                das1 = random.choice(s)
+                s.remove(das1)
+                das2 = random.choice(s)
+                s.remove(das2)
+                das3 = random.choice(s)
+                # Câu hỏi
+                noidungcauhoi = ('''\\immini{Cho mẫu số liệu ghép nhóm được minh họa bằng biểu đồ như hình vẽ bên. Giá trị đại diện của nhóm một là}{
+            \\begin{tikzpicture}[thick,line join=round, line cap=round,ybar,>=stealth,x=1mm,y=1mm]
+            \\color{black}
+            \\def\\rong{10mm}
+            \\def\\kcach{10}
+            \\def\\cdai{70}
+            \\def\\ccao{55}
+            \\def\\bdau{10}
+            \\foreach \\x/\\xtext in {10/[%s;%s),20/[%s;%s),30/[%s;%s),40/[%s;%s),50/[%s;%s)}{
+            	\\draw[thin,shift={(\\x,0)}] (0pt,2pt) -- (0pt,-2pt);
+            	\\draw(\\x,0) node[below] {\\tiny\\color{black} \\xtext};
+            }
+            \\foreach \\y/\\ytext in {%s/%s,%s/%s,%s/%s,%s/%s,%s/%s}{
+            	\\draw[thin,shift={(0,\\y)}] (2pt,0pt) -- (-2pt,0pt);
+            	\\draw(0,\\y) node[left] {\\tiny\\color{black} \\ytext};
+            }
+            \\draw[dashed,thin] (0,%s)--(10,%s) (0,%s)--(20,%s) (0,%s)--(30,%s) (0,%s)--(40,%s) (0,%s)--(50,%s);
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(10,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(20,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(30,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(40,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(50,%s)};
+            \\draw[->](-5,0)--(\\cdai,0)node[below]{\\tiny\\color{black} Nhóm};
+            \\draw[->](0,-4)--(0,\\ccao)node[above]{\\color{black}\\tiny\\color{black} Tần số};
+            \\node[below left](0,0){\\tiny\\color{black} $O$};
+            \\end{tikzpicture}}'''
+                                 %(latex(a1),latex(a2),latex(a2),latex(a3),latex(a3),latex(a4),latex(a4),latex(a5),latex(a5),latex(a6),
+                                   latex(5*m1),latex(m1),latex(5*m2),latex(m2),latex(5*m3),latex(m3),latex(5*m4),latex(m4),latex(5*m5),latex(m5),
+                                   latex(5*m1),latex(5*m1),latex(5*m2),latex(5*m2),latex(5*m3),latex(5*m3),latex(5*m4),latex(5*m4),latex(5*m5),latex(5*m5),
+                                   latex(5*m1),latex(5*m2),latex(5*m3),latex(5*m4),latex(5*m5)
+                                 ))
+                # Các đáp án
+                da_d = ('\\True ' +str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2) 
+                da_s3 = str(das3) 
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d,da_s1,da_s2,da_s3]
+                random.shuffle(list_1)
+                # Nội dung lời giải
+                loigiai=('''Từ biểu đồ ta có giá trị đại diện của nhóm một là \\\\
+                         $x_1=\\frac{%s+%s}{2}=%s$. ''' 
+                         %(latex(a1),latex(a2),latex(x1)
+                         ))
+            if dang=='2':
+                #Khai báo biến
+
+                #Các đáp án trắc nghiệm
+                du = ['$%s$'%(latex(x2)),
+                      ]
+                da= random.choice(du)
+                s = ['$%s$'%(latex(x2+1)),
+                     '$%s$'%(latex(x2+2)),
+                     '$%s$'%(latex(x2+3)),
+                     '$%s$'%(latex(x2-1)),
+                     '$%s$'%(latex(x2-2)),
+                     '$%s$'%(latex(x2-3)),
+                    ]
+
+                das1 = random.choice(s)
+                s.remove(das1)
+                das2 = random.choice(s)
+                s.remove(das2)
+                das3 = random.choice(s)
+                # Câu hỏi
+                noidungcauhoi = ('''\\immini{Cho mẫu số liệu ghép nhóm được minh họa bằng biểu đồ như hình vẽ bên. Giá trị đại diện của nhóm hai là}{
+            \\begin{tikzpicture}[thick,line join=round, line cap=round,ybar,>=stealth,x=1mm,y=1mm]
+            \\color{black}
+            \\def\\rong{10mm}
+            \\def\\kcach{10}
+            \\def\\cdai{70}
+            \\def\\ccao{55}
+            \\def\\bdau{10}
+            \\foreach \\x/\\xtext in {10/[%s;%s),20/[%s;%s),30/[%s;%s),40/[%s;%s),50/[%s;%s)}{
+            	\\draw[thin,shift={(\\x,0)}] (0pt,2pt) -- (0pt,-2pt);
+            	\\draw(\\x,0) node[below] {\\tiny\\color{black} \\xtext};
+            }
+            \\foreach \\y/\\ytext in {%s/%s,%s/%s,%s/%s,%s/%s,%s/%s}{
+            	\\draw[thin,shift={(0,\\y)}] (2pt,0pt) -- (-2pt,0pt);
+            	\\draw(0,\\y) node[left] {\\tiny\\color{black} \\ytext};
+            }
+            \\draw[dashed,thin] (0,%s)--(10,%s) (0,%s)--(20,%s) (0,%s)--(30,%s) (0,%s)--(40,%s) (0,%s)--(50,%s);
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(10,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(20,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(30,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(40,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(50,%s)};
+            \\draw[->](-5,0)--(\\cdai,0)node[below]{\\tiny\\color{black} Nhóm};
+            \\draw[->](0,-4)--(0,\\ccao)node[above]{\\color{black}\\tiny\\color{black} Tần số};
+            \\node[below left](0,0){\\tiny\\color{black} $O$};
+            \\end{tikzpicture}}'''
+                                 %(latex(a1),latex(a2),latex(a2),latex(a3),latex(a3),latex(a4),latex(a4),latex(a5),latex(a5),latex(a6),
+                                   latex(5*m1),latex(m1),latex(5*m2),latex(m2),latex(5*m3),latex(m3),latex(5*m4),latex(m4),latex(5*m5),latex(m5),
+                                   latex(5*m1),latex(5*m1),latex(5*m2),latex(5*m2),latex(5*m3),latex(5*m3),latex(5*m4),latex(5*m4),latex(5*m5),latex(5*m5),
+                                   latex(5*m1),latex(5*m2),latex(5*m3),latex(5*m4),latex(5*m5)
+                                 ))
+                # Các đáp án
+                da_d = ('\\True ' +str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2) 
+                da_s3 = str(das3) 
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d,da_s1,da_s2,da_s3]
+                random.shuffle(list_1)
+                # Nội dung lời giải
+                loigiai=('''Từ biểu đồ ta có giá trị đại diện của nhóm hai là \\\\
+                         $x_2=\\frac{%s+%s}{2}=%s$. ''' 
+                         %(latex(a2),latex(a3),latex(x2)
+                         ))                
+
+            if dang=='3':
+                #Khai báo biến
+
+                #Các đáp án trắc nghiệm
+                du = ['$%s$'%(latex(x3)),
+                      ]
+                da= random.choice(du)
+                s = ['$%s$'%(latex(x3+1)),
+                     '$%s$'%(latex(x3+2)),
+                     '$%s$'%(latex(x3+3)),
+                     '$%s$'%(latex(x3-1)),
+                     '$%s$'%(latex(x3-2)),
+                     '$%s$'%(latex(x3-3)),
+                    ]
+
+                das1 = random.choice(s)
+                s.remove(das1)
+                das2 = random.choice(s)
+                s.remove(das2)
+                das3 = random.choice(s)
+                # Câu hỏi
+                noidungcauhoi = ('''\\immini{Cho mẫu số liệu ghép nhóm được minh họa bằng biểu đồ như hình vẽ bên. Giá trị đại diện của nhóm ba là}{
+            \\begin{tikzpicture}[thick,line join=round, line cap=round,ybar,>=stealth,x=1mm,y=1mm]
+            \\color{black}
+            \\def\\rong{10mm}
+            \\def\\kcach{10}
+            \\def\\cdai{70}
+            \\def\\ccao{55}
+            \\def\\bdau{10}
+            \\foreach \\x/\\xtext in {10/[%s;%s),20/[%s;%s),30/[%s;%s),40/[%s;%s),50/[%s;%s)}{
+            	\\draw[thin,shift={(\\x,0)}] (0pt,2pt) -- (0pt,-2pt);
+            	\\draw(\\x,0) node[below] {\\tiny\\color{black} \\xtext};
+            }
+            \\foreach \\y/\\ytext in {%s/%s,%s/%s,%s/%s,%s/%s,%s/%s}{
+            	\\draw[thin,shift={(0,\\y)}] (2pt,0pt) -- (-2pt,0pt);
+            	\\draw(0,\\y) node[left] {\\tiny\\color{black} \\ytext};
+            }
+            \\draw[dashed,thin] (0,%s)--(10,%s) (0,%s)--(20,%s) (0,%s)--(30,%s) (0,%s)--(40,%s) (0,%s)--(50,%s);
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(10,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(20,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(30,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(40,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(50,%s)};
+            \\draw[->](-5,0)--(\\cdai,0)node[below]{\\tiny\\color{black} Nhóm};
+            \\draw[->](0,-4)--(0,\\ccao)node[above]{\\color{black}\\tiny\\color{black} Tần số};
+            \\node[below left](0,0){\\tiny\\color{black} $O$};
+            \\end{tikzpicture}}'''
+                                 %(latex(a1),latex(a2),latex(a2),latex(a3),latex(a3),latex(a4),latex(a4),latex(a5),latex(a5),latex(a6),
+                                   latex(5*m1),latex(m1),latex(5*m2),latex(m2),latex(5*m3),latex(m3),latex(5*m4),latex(m4),latex(5*m5),latex(m5),
+                                   latex(5*m1),latex(5*m1),latex(5*m2),latex(5*m2),latex(5*m3),latex(5*m3),latex(5*m4),latex(5*m4),latex(5*m5),latex(5*m5),
+                                   latex(5*m1),latex(5*m2),latex(5*m3),latex(5*m4),latex(5*m5)
+                                 ))
+                # Các đáp án
+                da_d = ('\\True ' +str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2) 
+                da_s3 = str(das3) 
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d,da_s1,da_s2,da_s3]
+                random.shuffle(list_1)
+                # Nội dung lời giải
+                loigiai=('''Từ biểu đồ ta có giá trị đại diện của nhóm ba là \\\\
+                         $x_3=\\frac{%s+%s}{2}=%s$. ''' 
+                         %(latex(a3),latex(a4),latex(x3)
+                         ))
+
+            if dang=='4':
+                #Khai báo biến
+
+                #Các đáp án trắc nghiệm
+                du = ['$%s$'%(latex(x4)),
+                      ]
+                da= random.choice(du)
+                s = ['$%s$'%(latex(x4+1)),
+                     '$%s$'%(latex(x4+2)),
+                     '$%s$'%(latex(x4+3)),
+                     '$%s$'%(latex(x4-1)),
+                     '$%s$'%(latex(x4-2)),
+                     '$%s$'%(latex(x4-3)),
+                    ]
+
+                das1 = random.choice(s)
+                s.remove(das1)
+                das2 = random.choice(s)
+                s.remove(das2)
+                das3 = random.choice(s)
+                # Câu hỏi
+                noidungcauhoi = ('''\\immini{Cho mẫu số liệu ghép nhóm được minh họa bằng biểu đồ như hình vẽ bên. Giá trị đại diện của nhóm bốn là}{
+            \\begin{tikzpicture}[thick,line join=round, line cap=round,ybar,>=stealth,x=1mm,y=1mm]
+            \\color{black}
+            \\def\\rong{10mm}
+            \\def\\kcach{10}
+            \\def\\cdai{70}
+            \\def\\ccao{55}
+            \\def\\bdau{10}
+            \\foreach \\x/\\xtext in {10/[%s;%s),20/[%s;%s),30/[%s;%s),40/[%s;%s),50/[%s;%s)}{
+            	\\draw[thin,shift={(\\x,0)}] (0pt,2pt) -- (0pt,-2pt);
+            	\\draw(\\x,0) node[below] {\\tiny\\color{black} \\xtext};
+            }
+            \\foreach \\y/\\ytext in {%s/%s,%s/%s,%s/%s,%s/%s,%s/%s}{
+            	\\draw[thin,shift={(0,\\y)}] (2pt,0pt) -- (-2pt,0pt);
+            	\\draw(0,\\y) node[left] {\\tiny\\color{black} \\ytext};
+            }
+            \\draw[dashed,thin] (0,%s)--(10,%s) (0,%s)--(20,%s) (0,%s)--(30,%s) (0,%s)--(40,%s) (0,%s)--(50,%s);
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(10,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(20,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(30,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(40,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(50,%s)};
+            \\draw[->](-5,0)--(\\cdai,0)node[below]{\\tiny\\color{black} Nhóm};
+            \\draw[->](0,-4)--(0,\\ccao)node[above]{\\color{black}\\tiny\\color{black} Tần số};
+            \\node[below left](0,0){\\tiny\\color{black} $O$};
+            \\end{tikzpicture}}'''
+                                 %(latex(a1),latex(a2),latex(a2),latex(a3),latex(a3),latex(a4),latex(a4),latex(a5),latex(a5),latex(a6),
+                                   latex(5*m1),latex(m1),latex(5*m2),latex(m2),latex(5*m3),latex(m3),latex(5*m4),latex(m4),latex(5*m5),latex(m5),
+                                   latex(5*m1),latex(5*m1),latex(5*m2),latex(5*m2),latex(5*m3),latex(5*m3),latex(5*m4),latex(5*m4),latex(5*m5),latex(5*m5),
+                                   latex(5*m1),latex(5*m2),latex(5*m3),latex(5*m4),latex(5*m5)
+                                 ))
+                # Các đáp án
+                da_d = ('\\True ' +str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2) 
+                da_s3 = str(das3) 
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d,da_s1,da_s2,da_s3]
+                random.shuffle(list_1)
+                # Nội dung lời giải
+                loigiai=('''Từ biểu đồ ta có giá trị đại diện của nhóm bốn là \\\\
+                         $x_4=\\frac{%s+%s}{2}=%s$. ''' 
+                         %(latex(a4),latex(a5),latex(x4)
+                         ))
+
+            if dang=='5':
+                #Khai báo biến
+
+                #Các đáp án trắc nghiệm
+                du = ['$%s$'%(latex(x5)),
+                      ]
+                da= random.choice(du)
+                s = ['$%s$'%(latex(x5+1)),
+                     '$%s$'%(latex(x5+2)),
+                     '$%s$'%(latex(x5+3)),
+                     '$%s$'%(latex(x5-1)),
+                     '$%s$'%(latex(x5-2)),
+                     '$%s$'%(latex(x5-3)),
+                    ]
+
+                das1 = random.choice(s)
+                s.remove(das1)
+                das2 = random.choice(s)
+                s.remove(das2)
+                das3 = random.choice(s)
+                # Câu hỏi
+                noidungcauhoi = ('''\\immini{Cho mẫu số liệu ghép nhóm được minh họa bằng biểu đồ như hình vẽ bên. Giá trị đại diện của nhóm năm là}{
+            \\begin{tikzpicture}[thick,line join=round, line cap=round,ybar,>=stealth,x=1mm,y=1mm]
+            \\color{black}
+            \\def\\rong{10mm}
+            \\def\\kcach{10}
+            \\def\\cdai{70}
+            \\def\\ccao{55}
+            \\def\\bdau{10}
+            \\foreach \\x/\\xtext in {10/[%s;%s),20/[%s;%s),30/[%s;%s),40/[%s;%s),50/[%s;%s)}{
+            	\\draw[thin,shift={(\\x,0)}] (0pt,2pt) -- (0pt,-2pt);
+            	\\draw(\\x,0) node[below] {\\tiny\\color{black} \\xtext};
+            }
+            \\foreach \\y/\\ytext in {%s/%s,%s/%s,%s/%s,%s/%s,%s/%s}{
+            	\\draw[thin,shift={(0,\\y)}] (2pt,0pt) -- (-2pt,0pt);
+            	\\draw(0,\\y) node[left] {\\tiny\\color{black} \\ytext};
+            }
+            \\draw[dashed,thin] (0,%s)--(10,%s) (0,%s)--(20,%s) (0,%s)--(30,%s) (0,%s)--(40,%s) (0,%s)--(50,%s);
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(10,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(20,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(30,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(40,%s)};
+            \\draw[pattern=north east lines,bar width=\\rong]plot coordinates{(50,%s)};
+            \\draw[->](-5,0)--(\\cdai,0)node[below]{\\tiny\\color{black} Nhóm};
+            \\draw[->](0,-4)--(0,\\ccao)node[above]{\\color{black}\\tiny\\color{black} Tần số};
+            \\node[below left](0,0){\\tiny\\color{black} $O$};
+            \\end{tikzpicture}}'''
+                                 %(latex(a1),latex(a2),latex(a2),latex(a3),latex(a3),latex(a4),latex(a4),latex(a5),latex(a5),latex(a6),
+                                   latex(5*m1),latex(m1),latex(5*m2),latex(m2),latex(5*m3),latex(m3),latex(5*m4),latex(m4),latex(5*m5),latex(m5),
+                                   latex(5*m1),latex(5*m1),latex(5*m2),latex(5*m2),latex(5*m3),latex(5*m3),latex(5*m4),latex(5*m4),latex(5*m5),latex(5*m5),
+                                   latex(5*m1),latex(5*m2),latex(5*m3),latex(5*m4),latex(5*m5)
+                                 ))
+                # Các đáp án
+                da_d = ('\\True ' +str(da))
+                da_s1 = str(das1)
+                da_s2 = str(das2) 
+                da_s3 = str(das3) 
+                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                list_1 = [da_d,da_s1,da_s2,da_s3]
+                random.shuffle(list_1)
+                # Nội dung lời giải
+                loigiai=('''Từ biểu đồ ta có giá trị đại diện của nhóm năm là \\\\
+                         $x_5=\\frac{%s+%s}{2}=%s$. ''' 
+                         %(latex(a5),latex(a6),latex(x5)
+                         ))
+
+            # Xuất câu trắc nghiệm
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                '\\begin{ex}\n'+ str(noidungcauhoi)+ 
+                '\\choice \n'
+                '{'+str(list_1[1])+'}\n'
+                '{'+str(list_1[2])+'}\n'
+                '{'+str(list_1[3])+'}\n'
+                '{'+str(list_1[0])+'}\n'
+                '\\loigiai{'+str(loigiai)+'}\n'
+                '\\end{ex}\n \\end{minipage} \n\n').replace('+-','-')
+            return content
+

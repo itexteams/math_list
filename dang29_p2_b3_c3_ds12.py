@@ -1,0 +1,242 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang29_p2_b3_c3_ds12(self):
+            # Khai báo biến
+            # Khai báo biến
+            x = symbols('x')
+
+            # --- BƯỚC 1: TẠO THAM SỐ NGẪU NHIÊN ---
+            # Chọn R và k sao cho R^2 - k^2 là số chính phương (bộ số Pytago)
+            # Các cặp (R, k, m) thường gặp: (5, 3, 4), (5, 4, 3)
+            list_params = [(5, 3, 4), (5, 4, 3), (10, 6, 8), (10, 8, 6), (13, 5, 12)]
+            R, k, m = random.choice(list_params)
+            R_sq = R**2
+
+            # Hàm số f(x)
+            f = sqrt(R_sq - x**2)
+            f_prime = -x / sqrt(R_sq - x**2)
+
+            # Nội dung câu hỏi
+            noidungcauhoi = (r'''Cho hình phẳng $(S)$ giới hạn bởi đồ thị hàm số $y=f(x)=\sqrt{%s-x^2}$, trục hoành và hai đường thẳng $x=-%s, x=%s$.''' 
+                             % (R_sq, R, R))
+
+            ########################################################################
+            # Nhận biết: Tập xác định và Đạo hàm cơ bản
+            ########################################################################
+            nb_da_1_d = r'''\True Đạo hàm của hàm số trên khoảng $(-%s; %s)$ là $f'(x) = \frac{-x}{\sqrt{%s-x^2}}$''' % (R, R, R_sq)
+            nb_da_1_s = r'''Đạo hàm của hàm số trên khoảng $(-%s; %s)$ là $f'(x) = \frac{x}{\sqrt{%s-x^2}}$''' % (R, R, R_sq)
+            list_nb_da_1 = [nb_da_1_d, nb_da_1_s]
+            nb_da_1 = random.choice(list_nb_da_1)
+
+            loigiai_nb_1 = r'''Ta có $f'(x) = \left(\sqrt{%s-x^2}\right)' = \frac{(%s-x^2)'}{2\sqrt{%s-x^2}} = \frac{-2x}{2\sqrt{%s-x^2}} = \frac{-x}{\sqrt{%s-x^2}}$.''' % (R_sq, R_sq, R_sq, R_sq, R_sq)
+
+            list_nb_1, list_nb_2 = [nb_da_1], [loigiai_nb_1]
+            combined_nb = list(zip(list_nb_1, list_nb_2))
+            shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
+
+            ########################################################################
+            # Thông hiểu: Diện tích hình phẳng (S)
+            ########################################################################
+            # Diện tích nửa hình tròn: (pi * R^2) / 2
+            area_S = Rational(R_sq, 2)
+            th_da_1_d = r'\True Diện tích hình phẳng $(S)$ là $S = \frac{%s\pi}{2}$' % (R_sq)
+            th_da_1_s = r'Diện tích hình phẳng $(S)$ là $S = %s\pi$' % (R_sq)
+            list_th_da_1 = [th_da_1_d, th_da_1_s]
+            th_da_1 = random.choice(list_th_da_1)
+
+            loigiai_th_1 = r'''Diện tích hình phẳng $(S)$ là $S = \int\limits_{-%s}^{%s} \sqrt{%s-x^2} \text{d}x$. \\ Vì đây là nửa hình tròn bán kính $R=%s$ nên $S = \frac{1}{2}\pi R^2 = \frac{%s\pi}{2}$.''' % (R, R, R_sq, R, R_sq)
+
+            list_th_1, list_th_2 = [th_da_1], [loigiai_th_1]
+            combined_th = list(zip(list_th_1, list_th_2))
+            shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
+
+            ########################################################################
+            # Vận dụng: Thể tích khối tròn xoay
+            ########################################################################
+            # Thể tích khối cầu: 4/3 * pi * R^3
+            volume_V = Rational(4, 3) * R**3
+            vd_da_1_d = r'\True Thể tích khối tròn xoay tạo bởi $(S)$ quay quanh trục hoành là $V = \frac{%s}{3}\pi$' % (4 * R**3)
+            vd_da_1_s = r'Thể tích khối tròn xoay tạo bởi $(S)$ quay quanh trục hoành là $V = \frac{%s}{3}\pi$' % (2 * R**3)
+            list_vd_da_1 = [vd_da_1_d, vd_da_1_s]
+            vd_da_1 = random.choice(list_vd_da_1)
+
+            loigiai_vd_1 = r'''Thể tích khối tròn xoay là:\\ $V = \pi \int\limits_{-%s}^{%s} \left(\sqrt{%s-x^2}\right)^2 \text{d}x = \pi \left( %sx - \frac{1}{3}x^3 \right) \bigg|_{-%s}^{%s} = \frac{%s}{3}\pi$.''' % (R, R, R_sq, R_sq, R, R, 4 * R**3)
+
+            list_vd_1, list_vd_2 = [vd_da_1], [loigiai_vd_1]
+            combined_vd = list(zip(list_vd_1, list_vd_2))
+            shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
+
+            ########################################################################
+            # Vận dụng cao: Diện tích giới hạn bởi f(x) và y=k
+            ########################################################################
+            # Giao điểm f(x) = k => x = +/- m
+            vdc_da_1_d = r'\True Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, đường thẳng $y=%s$ và hai đường thẳng $x=-%s, x=%s$ là $S = 2\int\limits_{0}^{%s} \sqrt{%s-x^2} \text{d}x - %s$' % (k, m, m, m, R_sq, 2*m*k)
+            vdc_da_1_s = r'Diện tích hình phẳng giới hạn bởi đồ thị hàm số $y=f(x)$, đường thẳng $y=%s$ và hai đường thẳng $x=-%s, x=%s$ là $S = \int\limits_{-%s}^{%s} \sqrt{%s-x^2} \text{d}x$' % (k, m, m, m, m, R_sq)
+            list_vdc_da_1 = [vdc_da_1_d, vdc_da_1_s]
+            vdc_da_1 = random.choice(list_vdc_da_1)
+
+            loigiai_vdc_1 = r'''Hoành độ giao điểm của $y=f(x)$ và $y=%s$ là nghiệm phương trình \\ $\sqrt{%s-x^2} = %s \Leftrightarrow x^2 = %s \Leftrightarrow x = \pm %s$. \\
+            Suy ra diện tích cần tìm là \\ $S = \int\limits_{-%s}^{%s} \left| \sqrt{%s-x^2} - %s \right| \text{d}x = 2\int\limits_{0}^{%s} \left( \sqrt{%s-x^2} - %s \right) \text{d}x = 2\int\limits_{0}^{%s} \sqrt{%s-x^2} \text{d}x - %s$.''' % (k, R_sq, k, m**2, m, m, m, R_sq, k, m, R_sq, k, m, R_sq, 2*m*k)
+
+            list_vdc_1, list_vdc_2 = [vdc_da_1], [loigiai_vdc_1]
+            combined_vdc = list(zip(list_vdc_1, list_vdc_2))
+            shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
+
+            # --- KIỂM TRA SỐ CÂU ĐÚNG (1-3) ---
+            def count_true_answers(answers):
+                return sum('\\True' in ans for ans in answers)
+
+            while True:
+                ans_nb = random.choice(list_nb_da_1)
+                ans_th = random.choice(list_th_da_1)
+                ans_vd = random.choice(list_vd_da_1)
+                ans_vdc = random.choice(list_vdc_da_1)
+
+                if 1 <= count_true_answers([ans_nb, ans_th, ans_vd, ans_vdc]) <= 3:
+                    break
+
+            # Xuất nội dung theo mẫu LaTeX
+            content = ('\\begin{minipage}{\\textwidth} \n'
+                '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+                '\\choiceTFn \n'
+                '{' + str(ans_nb) + '}\n'
+                '{' + str(ans_th) + '}\n'
+                '{' + str(ans_vd) + '}\n'
+                '{' + str(ans_vdc) + '}\n'
+                '\\loigiai{ \n'
+                '\\begin{enumEX}[a)]{1} \n'
+                '\\item ' + str(shuffled_solutions_nb[0]) + '\n'
+                '\\item ' + str(shuffled_solutions_th[0]) + '\n'
+                '\\item ' + str(shuffled_solutions_vd[0]) + '\n'
+                '\\item ' + str(shuffled_solutions_vdc[0]) + '\n'
+                '\\end{enumEX}} \n'
+                '\\end{ex}\n \\end{minipage} \n\n')
+            return content
+
