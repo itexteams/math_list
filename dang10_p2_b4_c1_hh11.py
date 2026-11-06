@@ -128,34 +128,35 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang10_p2_b4_c1_hh11(self):
-    tikz_fig = ('''\\begin{center}
-\\begin{tikzpicture}[scale=0.8, font=\\footnotesize, line join=round, line cap=round, >=stealth]
-\\coordinate (A) at (0,0);
-\\coordinate (B) at (2.2,-1.2);
-\\coordinate (C) at (7,0.2);
-\\coordinate (h) at (0,3.2);
-\\coordinate (A1) at ($(A)+(h)$);
-\\coordinate (B1) at ($(B)+(h)$);
-\\coordinate (C1) at ($(C)+(h)$);
-\\coordinate (I) at ($(B)!0.5!(C)$);
-\\coordinate (I1) at ($(B1)!0.5!(C1)$);
-\\coordinate (E) at (intersection of A--I1 and A1--I);
-\\coordinate (F) at (intersection of A--B1 and A1--B);
-\\draw[line width=1pt] (A)--(B)--(C) (A1)--(B1)--(C1)--(A1) (A)--(A1) (B)--(B1) (C)--(C1) (I)--(I1) (A1)--(B) (A1)--(I) (B)--(C1) (A1)--(I1);
-\\draw[line width=1pt, dashed] (A)--(C) (A)--(B1) (A)--(I1) (A)--(I) (A1)--(C1) (E)--(F);
-\\fill (A) circle (1pt) node[left] {$A$};
-\\fill (B) circle (1pt) node[below] {$B$};
-\\fill (C) circle (1pt) node[right] {$C$};
-\\fill (A1) circle (1pt) node[above left] {$A'$};
-\\fill (B1) circle (1pt) node[above right] {$B'$};
-\\fill (C1) circle (1pt) node[above right] {$C'$};
-\\fill (I) circle (1pt) node[below] {$I$};
-\\fill (I1) circle (1pt) node[above] {$I'$};
-\\fill (E) circle (1pt) node[above right] {$E$};
-\\fill (F) circle (1pt) node[left] {$F$};
-\\end{tikzpicture}
-\\end{center}''')
-    
+    # ==================== HÌNH VẼ TIKZ ====================
+    tikz_fig = r'''\begin{center}
+\begin{tikzpicture}[scale=0.8, font=\footnotesize, line join=round, line cap=round, >=stealth]
+\coordinate (A) at (0,0);
+\coordinate (B) at (2.2,-1.2);
+\coordinate (C) at (7,0.2);
+\coordinate (h) at (0,3.2);
+\coordinate (A1) at ($(A)+(h)$);
+\coordinate (B1) at ($(B)+(h)$);
+\coordinate (C1) at ($(C)+(h)$);
+\coordinate (I) at ($(B)!0.5!(C)$);
+\coordinate (I1) at ($(B1)!0.5!(C1)$);
+\coordinate (E) at (intersection of A--I1 and A1--I);
+\coordinate (F) at (intersection of A--B1 and A1--B);
+\draw[line width=1pt] (A)--(B)--(C) (A1)--(B1)--(C1)--(A1) (A)--(A1) (B)--(B1) (C)--(C1) (I)--(I1) (A1)--(B) (A1)--(I) (B)--(C1) (A1)--(I1);
+\draw[line width=1pt, dashed] (A)--(C) (A)--(B1) (A)--(I1) (A)--(I) (A1)--(C1) (E)--(F);
+\fill (A) circle (1pt) node[left] {$A$};
+\fill (B) circle (1pt) node[below] {$B$};
+\fill (C) circle (1pt) node[right] {$C$};
+\fill (A1) circle (1pt) node[above left] {$A'$};
+\fill (B1) circle (1pt) node[above right] {$B'$};
+\fill (C1) circle (1pt) node[above right] {$C'$};
+\fill (I) circle (1pt) node[below] {$I$};
+\fill (I1) circle (1pt) node[above] {$I'$};
+\fill (E) circle (1pt) node[above right] {$E$};
+\fill (F) circle (1pt) node[left] {$F$};
+\end{tikzpicture}
+\end{center}'''
+
     # Danh sách phương án gây nhiễu cho các mệnh đề
     list_sai_b = ["$AA'I'I$ là hình thang", "$AA'I'I$ là hình chữ nhật"]
     list_sai_d = [
@@ -163,180 +164,133 @@ def bt_dang10_p2_b4_c1_hh11(self):
         "giao điểm của hai đường thẳng $AB'$ và $BC'$",
         "trọng tâm tam giác $A'BC'$"
     ]
-    
+
     # Khai báo phương án sai ngẫu nhiên
     phuong_an_sai_b = random.choice(list_sai_b)
     phuong_an_sai_d = random.choice(list_sai_d)
-    
+
     # Nội dung câu hỏi
-    noidungcauhoi = ('''Cho lăng trụ tam giác $ABC.A'B'C'$. Gọi $I$ và $I'$ lần lượt là trung điểm của $BC$ và $B'C'$.''')
-    
+    noidungcauhoi = r"Cho lăng trụ tam giác $ABC.A'B'C'$. Gọi $I$ và $I'$ lần lượt là trung điểm của $BC$ và $B'C'$."
+
     ########################################################################
     # Nhận biết 
     ########################################################################
-    
-    # Các đáp án
-    nb_da_1_d = '\\True $II\' // BB\'$'
-    nb_da_1_s = '$II\'$ cắt $BB\'$'
+    nb_da_1_d = r'\True $II\' // BB\'$'
+    nb_da_1_s = r'$II\'$ cắt $BB\'$'
     list_nb_da_1 = [nb_da_1_d, nb_da_1_s]
     nb_da_1 = random.choice(list_nb_da_1)
-    
-    # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
     list_nb_1 = [nb_da_1]
-    
-    # Nội dung lời giải
-    loigiai_nb_1 = ('''Ta có $I', I$ lần lượt là trung điểm của $B'C'$ và $BC$. \\\\ Suy ra $II'$ là đường trung bình của hình bình hành $BB'C'C$, suy ra $II' // BB'$ và $II' = BB'$.''')
-    
-    # Đưa các lời giải vào danh sách lời giải
+
+    loigiai_nb_1 = r"Ta có $I', I$ lần lượt là trung điểm của $B'C'$ và $BC$. \\ Suy ra $II'$ là đường trung bình của hình bình hành $BB'C'C$, suy ra $II' // BB'$ và $II' = BB'$."
     list_nb_2 = [loigiai_nb_1]
-    
-    # Kết hợp các đáp án và lời giải vào cùng một danh sách
+
     combined_nb = list(zip(list_nb_1, list_nb_2))
-    
-    # Xáo trộn danh sách kết hợp
     random.shuffle(combined_nb)
-    
-    # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
     shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
-    
+
     ########################################################################
     # Thông hiểu 
     ########################################################################
-    
-    # Các đáp án
-    th_da_1_d = '\\True $AA\'I\'I$ là hình bình hành'
+    th_da_1_d = r'\True $AA\'I\'I$ là hình bình hành'
     th_da_1_s = '%s' % (phuong_an_sai_b)
     list_th_da_1 = [th_da_1_d, th_da_1_s]
     th_da_1 = random.choice(list_th_da_1)
-    
-    # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
     list_th_1 = [th_da_1]
-    
-    # Nội dung lời giải
-    loigiai_th_1 = ('''Ta có $\\begin{cases} II' // AA' (// BB') \\\\ II' = AA' (= BB') \\end{cases} \\Rightarrow AA'I'I$ là hình bình hành, suy ra $AI // A'I'$.''')
-    
-    # Đưa các lời giải vào danh sách lời giải
+
+    loigiai_th_1 = r"Ta có $\begin{cases} II' // AA' (// BB') \\ II' = AA' (= BB') \end{cases} \Rightarrow AA'I'I$ là hình bình hành, suy ra $AI // A'I'$."
     list_th_2 = [loigiai_th_1]
-    
-    # Kết hợp các đáp án và lời giải vào cùng một danh sách
+
     combined_th = list(zip(list_th_1, list_th_2))
-    
-    # Xáo trộn danh sách kết hợp
     random.shuffle(combined_th)
-    
-    # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
     shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
-    
+
     ########################################################################
     # Vận dụng 
     ########################################################################
-    
-    # Các đáp án
-    vd_da_1_d = '$IA\'$ cắt $(AB\'C\')$'
-    vd_da_1_s = '\\True $IA\'$ song song $(AB\'C\')$'
+    vd_da_1_d = r'$IA\'$ cắt $(AB\'C\')$'
+    vd_da_1_s = r'\True $IA\'$ song song $(AB\'C\')$'
     list_vd_da_1 = [vd_da_1_d, vd_da_1_s]
     vd_da_1 = random.choice(list_vd_da_1)
-    
-    # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
     list_vd_1 = [vd_da_1]
-    
-    # Nội dung lời giải
-    loigiai_vd_1 = ('''Trong $(IAA'I')$, gọi $E = AI' \\cap A'I$. \\\\ Ta có $\\begin{cases} E \\in AI', AI' \\subset (AB'C') \\\\ E \\in A'I \\end{cases} \\Rightarrow E = A'I \\cap (AB'C')$. \\\\ Vậy $IA'$ cắt $(AB'C')$ tại điểm $E$. Do đó mệnh đề \"$IA\'$ song song $(AB\'C\')$\" là sai.''')
-    
-    # Đưa các lời giải vào danh sách lời giải
+
+    loigiai_vd_1 = r'''Trong $(IAA'I')$, gọi $E = AI' \cap A'I$. \\ Ta có $\begin{cases} E \in AI', AI' \subset (AB'C') \\ E \in A'I \end{cases} \Rightarrow E = A'I \cap (AB'C')$. \\ Vậy $IA'$ cắt $(AB'C')$ tại điểm $E$. Do đó mệnh đề "$IA'$ song song $(AB'C')$" là sai.'''
     list_vd_2 = [loigiai_vd_1]
-    
-    # Kết hợp các đáp án và lời giải vào cùng một danh sách
+
     combined_vd = list(zip(list_vd_1, list_vd_2))
-    
-    # Xáo trộn danh sách kết hợp
     random.shuffle(combined_vd)
-    
-    # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
     shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
-    
+
     ########################################################################
     # Vận dụng cao 
     ########################################################################
-    
-    # Các đáp án
-    vdc_da_1_d = '\\True Giao tuyến của $(AB\'C\')$ và $(A\'BC\')$ là đường thẳng đi qua giao điểm của hai đường thẳng $AI\', A\'I$'
+    vdc_da_1_d = r'\True Giao tuyến của $(AB\'C\')$ và $(A\'BC\')$ là đường thẳng đi qua giao điểm của hai đường thẳng $AI\', A\'I$'
     vdc_da_1_s = 'Giao tuyến của $(AB\'C\')$ và $(A\'BC\')$ là đường thẳng đi qua %s' % (phuong_an_sai_d)
     list_vdc_da_1 = [vdc_da_1_d, vdc_da_1_s]
     vdc_da_1 = random.choice(list_vdc_da_1)
-    
-    # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
     list_vdc_1 = [vdc_da_1]
-    
-    # Nội dung lời giải
-    loigiai_vdc_1 = ('''Tìm giao tuyến của $(AB'C')$ và $(A'BC')$: \\\\ Trong $(AA'B'B)$, gọi $F = AB' \\cap A'B$. \\\\ Ta có $\\begin{cases} F \\in AB', AB' \\subset (AB'C') \\\\ F \\in A'B, A'B \\subset (A'BC') \\end{cases} \\Rightarrow F \\in (AB'C') \\cap (A'BC')$. (1) \\\\ Lại có $E = AI' \\cap A'I$. \\\\ Ta có $\\begin{cases} E \\in AI', AI' \\subset (AB'C') \\\\ E \\in A'I, A'I \\subset (A'BC') \\end{cases} \\Rightarrow E \\in (AB'C') \\cap (A'BC')$. (2) \\\\ Từ (1) và (2) suy ra $EF = (AB'C') \\cap (A'BC')$. \\\\ Vậy giao tuyến của hai mặt phẳng đi qua điểm $E$, tức là giao điểm của hai đường thẳng $AI'$ và $A'I$.''')
-    
-    # Đưa các lời giải vào danh sách lời giải
+
+    loigiai_vdc_1 = r'''Tìm giao tuyến của $(AB'C')$ và $(A'BC')$: \\ Trong $(AA'B'B)$, gọi $F = AB' \cap A'B$. \\ Ta có $\begin{cases} F \in AB', AB' \subset (AB'C') \\ F \in A'B, A'B \subset (A'BC') \end{cases} \Rightarrow F \in (AB'C') \cap (A'BC')$. (1) \\ Lại có $E = AI' \cap A'I$. \\ Ta có $\begin{cases} E \in AI', AI' \subset (AB'C') \\ E \in A'I, A'I \subset (A'BC') \end{cases} \Rightarrow E \in (AB'C') \cap (A'BC')$. (2) \\ Từ (1) và (2) suy ra $EF = (AB'C') \cap (A'BC')$. \\ Vậy giao tuyến của hai mặt phẳng đi qua điểm $E$, tức là giao điểm của hai đường thẳng $AI'$ và $A'I$.'''
     list_vdc_2 = [loigiai_vdc_1]
-    
-    # Kết hợp các đáp án và lời giải vào cùng một danh sách
+
     combined_vdc = list(zip(list_vdc_1, list_vdc_2))
-    
-    # Xáo trộn danh sách kết hợp
     random.shuffle(combined_vdc)
-    
-    # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
     shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
-    
+
     def count_true_answers(answers):
-        return sum('\\True' in ans for ans in answers)
-    
+        return sum(r'\True' in ans for ans in answers)
+
     # Lặp đến khi đáp án có từ 1 đến 3 đúng
     while True:
         nb_da_1 = random.choice(list_nb_da_1)
         th_da_1 = random.choice(list_th_da_1)
         vd_da_1 = random.choice(list_vd_da_1)
         vdc_da_1 = random.choice(list_vdc_da_1)
-        
+
         answers = [nb_da_1, th_da_1, vd_da_1, vdc_da_1]
         true_count = count_true_answers(answers)
-        
+
         if 1 <= true_count <= 3:
             break
-    
-    # Gán lại vào list
+
     list_nb_1 = [nb_da_1]
     list_th_1 = [th_da_1]
     list_vd_1 = [vd_da_1]
     list_vdc_1 = [vdc_da_1]
-    
+
     combined_nb = list(zip(list_nb_1, list_nb_2))
     combined_th = list(zip(list_th_1, list_th_2))
     combined_vd = list(zip(list_vd_1, list_vd_2))
     combined_vdc = list(zip(list_vdc_1, list_vdc_2))
-    
+
     random.shuffle(combined_nb)
     random.shuffle(combined_th)
     random.shuffle(combined_vd)
     random.shuffle(combined_vdc)
-    
+
     shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
     shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
     shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
     shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    content = ('\\begin{minipage}{\\textwidth} \n'
-    '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-    '\\choiceTFn \n'
-    '{'+str(shuffled_answers_nb[0])+'}\n'
-    '{'+str(shuffled_answers_th[0])+'}\n'
-    '{'+str(shuffled_answers_vd[0])+'}\n'
-    '{'+str(shuffled_answers_vdc[0])+'}\n'
-    '\\loigiai{ \n'
-    + str(tikz_fig) + '\n'
-    '\\begin{enumEX}[a)]{1} \n'
-    '\\item '+str(shuffled_solutions_nb[0])+'\n'
-    '\\item '+str(shuffled_solutions_th[0])+'\n'
-    '\\item '+str(shuffled_solutions_vd[0])+'\n'
-    '\\item '+str(shuffled_solutions_vdc[0])+'\n'
-    '\\end{enumEX}} \n'
-    '\\end{ex}\n'
-    '\\end{minipage}\n\n')
-    
+
+    # Xuất câu hỏi
+    content = (
+        '\\begin{minipage}{\\textwidth} \n'
+        '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+        '\\choiceTFn \n'
+        '{' + str(shuffled_answers_nb[0]) + '}\n'
+        '{' + str(shuffled_answers_th[0]) + '}\n'
+        '{' + str(shuffled_answers_vd[0]) + '}\n'
+        '{' + str(shuffled_answers_vdc[0]) + '}\n'
+        '\\loigiai{ \n'
+        + str(tikz_fig) + '\n'
+        '\\begin{enumEX}[a)]{1} \n'
+        '\\item ' + str(shuffled_solutions_nb[0]) + '\n'
+        '\\item ' + str(shuffled_solutions_th[0]) + '\n'
+        '\\item ' + str(shuffled_solutions_vd[0]) + '\n'
+        '\\item ' + str(shuffled_solutions_vdc[0]) + '\n'
+        '\\end{enumEX}} \n'
+        '\\end{ex}\n'
+        '\\end{minipage}\n\n'
+    )
+
     return content
