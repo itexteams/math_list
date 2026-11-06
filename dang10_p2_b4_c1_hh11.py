@@ -128,8 +128,6 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang10_p2_b4_c1_hh11(self):
-    # ==================== HÌNH VẼ TIKZ ====================
-    # Hình vẽ TikZ chuẩn 100% theo mẫu ảnh
     tikz_fig = ('''\\begin{center}
 \\begin{tikzpicture}[scale=0.8, font=\\footnotesize, line join=round, line cap=round, >=stealth]
 \\coordinate (A) at (0,0);
