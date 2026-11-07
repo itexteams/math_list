@@ -298,5 +298,4 @@ def bt_dang26_p2_b3_c2_ds11(self):
     '\\end{enumEX}} \n'
     '\\end{ex}\n \\end{minipage}\n\n')
     return content
-    print(content)
     
