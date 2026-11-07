@@ -61,7 +61,7 @@ from PyQt5.QtCore import Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
-
+import random
 
 def bt_dang31_p1_b1_c1_ds10(self):
         # Khai báo biến
