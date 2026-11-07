@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,70 +64,90 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang17_p4_b1_c1_ds11(self):
-    # Khai báo biến
-    lisdang = ['1']
-    dang = random.choice(lisdang)
+        # Khai báo biến
+        lisdang = ['1']
+        dang = random.choice(lisdang)
+        
+        if dang == '1':
+            # Random cot(alpha) = m/n
+            n = randint(1, 4)
+            m = randint(1, 5)
+            cot_val = Rational(m, n)
+            
+            # Random các hệ số của biểu thức A = (a*sin + b*cos) / (c*sin - d*cos)
+            while True:
+                a = randint(2, 6)
+                b = randint(2, 6)
+                c = randint(2, 6)
+                d = randint(2, 6)
+                
+                # Đảm bảo mẫu số sau khi rút gọn khác 0: c*n - d*m != 0
+                if c * n - d * m != 0:
+                    break
+                    
+            # Tính giá trị biểu thức A = (a + b*cot) / (c - d*cot)
+            A_val = (a + b * cot_val) / (c - d * cot_val)
+            
+            # Lấy tử số và mẫu số tối giản của A (đảm bảo b > 0)
+            tu_so = A_val.p
+            mau_so = A_val.q
+            
+            # Đáp án đúng là tổng a + b (lưu ý: tu_so có thể âm)
+            kq_dung = tu_so + mau_so
+            
+            # Định dạng đáp án đúng bằng LaTeX
+            du = ['$%s$' % (latex(kq_dung))]
+            da = random.choice(du)
+            
+            # Tạo các phương án nhiễu (không trùng với đáp án đúng)
+            s = set()
+            while len(s) < 3:
+                # Nới rộng khoảng random và bỏ điều kiện sai > 0 để tránh treo máy
+                sai = kq_dung + randint(-10, 10) 
+                if sai != kq_dung:
+                    s.add('$%s$' % (latex(sai)))
+                        
+            s = list(s)
+            das1 = s[0]
+            das2 = s[1]
+            das3 = s[2]
+            
+            # Hiển thị số dưới dạng phân số lượng giác đẹp mắt
+            cot_str = '\\frac{%s}{%s}' % (latex(m), latex(n)) if n > 1 else latex(m)
+            
+            # Câu hỏi yêu cầu tính tổng a + b
+            noidungcauhoi = ('''Cho $\\cot \\alpha = %s$. Biết giá trị của biểu thức $A = \\frac{%s\\sin \\alpha + %s\\cos \\alpha}{%s\\sin \\alpha - %s\\cos \\alpha} = \\frac{a}{b}$ (với $\\frac{a}{b}$ là phân số tối giản và $b > 0$). Tính tổng $a + b$.'''
+                             % (cot_str, latex(a), latex(b), latex(c), latex(d)))
+                             
+            # Các đáp án
+            da_d = ('\\True ' + str(da))
+            da_s1 = str(das1)
+            da_s2 = str(das2) 
+            da_s3 = str(das3) 
+            
+            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+            list_1 = [da_d, da_s1, da_s2, da_s3]
+            random.shuffle(list_1)
+            
+            # Nội dung lời giải chi tiết từng bước (đã fix lỗi rớt dòng ở phần dấu trừ)
+            loigiai = ('''Vì $\\cot \\alpha = %s$ nên $\\sin \\alpha \\neq 0$. \\\\
+Chia cả tử số và mẫu số của biểu thức $A$ cho $\\sin \\alpha$, ta được: \\\\
+- $A = \\frac{%s + %s\\cot \\alpha}{%s - %s\\cot \\alpha}$. \\\\
+Thay $\\cot \\alpha = %s$ vào biểu thức trên, ta được: \\\\
+- $A = \\frac{%s + %s \\cdot %s}{%s - %s \\cdot %s} = \\frac{%s}{%s} = \\frac{%s}{%s}$. \\\\
+Vì $\\frac{%s}{%s}$ là phân số tối giản và có mẫu số dương nên ta chọn $a = %s$ và $b = %s$. \\\\
+Vậy tổng $a + b = %s + %s = %s$.'''
+                       % (cot_str, latex(a), latex(b), latex(c), latex(d), cot_str,
+                          latex(a), latex(b), cot_str, latex(c), latex(d), cot_str,
+                          latex(a + b * cot_val), latex(c - d * cot_val), latex(tu_so), latex(mau_so),
+                          latex(tu_so), latex(mau_so), latex(tu_so), latex(mau_so),
+                          latex(tu_so), latex(mau_so), latex(kq_dung)))
 
-    if dang == '1':
-        # Random cot(alpha) = m/n
-        n = randint(1, 4)
-        m = randint(1, 5)
-        cot_val = Rational(m, n)
-
-        # Random các hệ số của biểu thức A = (a*sin + b*cos) / (c*sin - d*cos)
-        while True:
-            a = randint(2, 6)
-            b = randint(2, 6)
-            c = randint(2, 6)
-            d = randint(2, 6)
-
-            # Đảm bảo mẫu số sau khi rút gọn khác 0: c*n - d*m != 0
-            if c * n - d * m != 0:
-                break
-
-        # Tính giá trị biểu thức A = (a + b*cot) / (c - d*cot)
-        A_val = (a + b * cot_val) / (c - d * cot_val)
-
-        # Lấy tử số và mẫu số tối giản của A (đảm bảo b > 0)
-        tu_so = A_val.p
-        mau_so = A_val.q
-
-        # Đáp án đúng là tổng a + b (lưu ý: tu_so có thể âm)
-        kq_dung = tu_so + mau_so
-
-        # Định dạng đáp án đúng bằng LaTeX
-        du = ['$%s$' % (latex(kq_dung))]
-        da = random.choice(du)
-
-        # Tạo các phương án nhiễu (không trùng với đáp án đúng)
-        s = set()
-        while len(s) < 3:
-            # Nới rộng khoảng random và bỏ điều kiện sai > 0 để tránh treo máy
-            sai = kq_dung + randint(-10, 10) 
-            if sai != kq_dung:
-                s.add('$%s$' % (latex(sai)))
-
-        s = list(s)
-        das1 = s[0]
-        das2 = s[1]
-        das3 = s[2]
-
-        # Hiển thị số dưới dạng phân số lượng giác đẹp mắt
-        cot_str = '\\frac{%s}{%s}' % (latex(m), latex(n)) if n > 1 else latex(m)
-
-        # Câu hỏi yêu cầu tính tổng a + b
-        noidungcauhoi = ('''Cho $\\cot \\alpha = %s$. Biết giá trị của biểu thức $A = \\frac{%s\\sin \\alpha + %s\\cos \\alpha}{%s\\sin \\alpha - %s\\cos \\alpha} = \\frac{a}{b}$ (với $\\frac{a}{b}$ là phân số tối giản và $b > 0$). Tính tổng $a + b$.'''
-                         % (cot_str, latex(a), latex(b), latex(c), latex(d)))
-
-        # Các đáp án
-        da_d = ('\\True ' + str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d, da_s1, da_s2, da_s3]
-        random.shuffle(list_1)
-
-        # Nội dung lời giải chi tiết từng bước (đã fix lỗi rớt dòng ở phần dấu trừ)
-        loigiai = ('''Vì $\\cot \\alpha = %s$ nên $\\sin \\alpha \\neq 0$. \\\\
+        # Xuất câu trắc nghiệm
+        content = ('\\begin{minipage}{\\textwidth} \n'
+                   '\\begin{ex}\n' + str(noidungcauhoi) + '\n' +
+                   '\\loigiai{' + str(loigiai) + '}\n'
+                   '\\end{ex}\n'
+                   '\\end{minipage} \n\n')
+        
+        return content

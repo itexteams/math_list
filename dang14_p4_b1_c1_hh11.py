@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,14 +64,66 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang14_p4_b1_c1_hh11(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-
-                # Câu hỏi
-                noidungcauhoi = ('''Trong không gian, cho hình chóp $S.ABC$, gọi $M, N, P$ thuộc các cạnh $SA, SB, SC$ sao cho $MN, NP$ và $PM$ cắt mặt phẳng $(ABC)$ tương ứng tại các điểm $D, E, F$. Chứng mình $D, E, F$ thẳng hàng.'''
-                )
-
-                # Nội dung lời giải
-                loigiai = ('''\\begin{center}
+                # Khai báo biến
+                lisdang=['1']
+                dang=random.choice(lisdang)
+                if dang=='1':
+                                    
+                    # Câu hỏi
+                    noidungcauhoi = ('''Trong không gian, cho hình chóp $S.ABC$, gọi $M, N, P$ thuộc các cạnh $SA, SB, SC$ sao cho $MN, NP$ và $PM$ cắt mặt phẳng $(ABC)$ tương ứng tại các điểm $D, E, F$. Chứng mình $D, E, F$ thẳng hàng.'''
+                    )
+                
+                    # Nội dung lời giải
+                    loigiai = ('''\\begin{center}
+	\\begin{tikzpicture}
+		\\coordinate (S) at (0, 3.5);
+		\\coordinate (B) at (0, -3);
+		\\coordinate (N) at (0, 1);       
+		\\coordinate (D) at (-4, 0);    
+		\\coordinate (A) at ($(D)!0.5!(B)$); 
+		\\coordinate (M) at (intersection of S--A and D--N);
+		\\coordinate (base_left) at (-5, -1.5); 
+		\\coordinate (F) at (7, -1.5);          
+		\\coordinate (C) at (3, -1.5);         
+		\\coordinate (P) at (intersection of S--C and M--F);
+		\\coordinate (E) at (intersection of B--C and D--F);
+		\\draw[line width=1pt, dashed] (A)--(C);      
+		\\draw[line width=1pt, dashed] (M)--(P);      
+		\\draw[line width=1pt, dashed] (D)--(F);       
+		\\draw[line width=1pt] (S)--(A);   
+		\\draw[line width=1pt, dashed] (P)--(E);  
+		\\draw[line width=1pt, dashed] (C)--(E);     
+		\\draw[line width=1pt] (S)--(B);              
+		\\draw[line width=1pt] (S)--(C);               
+		\\draw[line width=1pt] (S)--(D);           
+		\\draw[line width=1pt] (D)--(A);             
+		\\draw[line width=1pt] (A)--(B);             
+		\\draw[line width=1pt] (B)--(C);            
+		\\draw[line width=1pt] (C)--(F);              
+		\\draw[line width=1pt] (P)--(F);              
+		\\draw[line width=1pt] (D)--(M)--(N)--(P);    
+		\\draw[line width=1pt] (S)--(M);              
+		\\draw[line width=1pt] (N)--(B);           
+		\\node[above] at (S) {$S$};
+		\\node[above left] at (M) {$M$};
+		\\node[above right] at (N) {$N$};
+		\\node[above right] at (P) {$P$};
+		\\node[left] at (D) {$D$};
+		\\node[below left] at (A) {$A$};
+		\\node[below] at (B) {$B$};
+		\\node[below] at (C) {$C$};
+		\\node[below] at (E) {$E$};
+		\\node[right] at (F) {$F$};
+	\\end{tikzpicture}
+\\end{center}
+Ba mặt phẳng $(ABC), (SAC)$ và $(DNE)$ đồng quy. \\\\
+                               Ta có $\\heva{&(ABC) \\cap (SAC)=AC\\\\&(SAC) \\cap (DNE)=MP\\\\&(DNE) \\cap (ABC)=DE}$ nên các đường thẳng $AC, MP, DE$ đồng quy. \\\\
+                                   Mà $AC \\cap MP=F$ nên $F \\in DE$. Vậy ba điểm $D, E, F$ thẳng hàng.''')
+                
+                # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+                content = ('\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n'+ str(noidungcauhoi)+
+                    '\\loigiai{ \n'
+                    +str(loigiai)+'}\n'
+                    '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+                return content 

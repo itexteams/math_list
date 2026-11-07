@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,46 +64,87 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang34_p3_b6_c2_hh11(self):
-            # Khai báo biến
-            # B3: Random thông số bài toán
-            side = random.randint(2, 10) # Cạnh đáy
+                # Khai báo biến
+                # B3: Random thông số bài toán
+                side = random.randint(2, 10) # Cạnh đáy
+                
+                # Tính toán logic
+                # Diện tích đáy ABC (tam giác đều): S = (side^2 * sqrt(3)) / 4
+                s_abc_val = (side**2 * math.sqrt(3)) / 4
+                # AM là đường cao tam giác đều: AM = (side * sqrt(3)) / 2
+                am_val = (side * math.sqrt(3)) / 2
+                # SA = AM (do tam giác SAM vuông cân tại A)
+                sa_val = am_val
+                # Thể tích V = 1/3 * SA * S_ABC
+                v_val = (1/3) * sa_val * s_abc_val
+                
+                # Định dạng số (thay dấu chấm bằng dấu phẩy cho chuẩn VN)
+                def format_vn(num):
+                    return f"{round(num, 1)}".replace('.', ',')
 
-            # Tính toán logic
-            # Diện tích đáy ABC (tam giác đều): S = (side^2 * sqrt(3)) / 4
-            s_abc_val = (side**2 * math.sqrt(3)) / 4
-            # AM là đường cao tam giác đều: AM = (side * sqrt(3)) / 2
-            am_val = (side * math.sqrt(3)) / 2
-            # SA = AM (do tam giác SAM vuông cân tại A)
-            sa_val = am_val
-            # Thể tích V = 1/3 * SA * S_ABC
-            v_val = (1/3) * sa_val * s_abc_val
+                da_dung_val = round(v_val, 1)
+                da_dung_str = format_vn(da_dung_val)
+                
+                # B4: Tạo các phương án sai (không trùng đáp án đúng)
+                s_sai = set()
+                while len(s_sai) < 3:
+                    # Tạo các biến thể sai dựa trên các lỗi hay gặp
+                    sai_1 = round(v_val * random.uniform(0.5, 1.5), 1)
+                    sai_2 = round((side**3 * math.sqrt(3)) / 12, 1) # Thiếu 1/3 hoặc nhầm SA
+                    sai_3 = round((side**3) / 4, 1)
+                    
+                    candidates = [sai_1, sai_2, sai_3, round(da_dung_val + random.randint(1, 5), 1)]
+                    for c in candidates:
+                        if c != da_dung_val and len(s_sai) < 3:
+                            s_sai.add(format_vn(c))
 
-            # Định dạng số (thay dấu chấm bằng dấu phẩy cho chuẩn VN)
-            def format_vn(num):
-                return f"{round(num, 1)}".replace('.', ',')
+                list_sai = list(s_sai)
+                
+                # Trộn đáp án
+                da_d = '\\True $' + da_dung_str + '$'
+                list_1 = [da_d, '$' + list_sai[0] + '$', '$' + list_sai[1] + '$', '$' + list_sai[2] + '$']
+                random.shuffle(list_1)
 
-            da_dung_val = round(v_val, 1)
-            da_dung_str = format_vn(da_dung_val)
+                # Nội dung hình vẽ TikZ
+                tikz_code = r"""\begin{center}
+    \begin{tikzpicture}[line cap=round,line join=round, line width=1pt, scale=0.8]
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (-1.5,-1.5);
+        \coordinate (C) at (3,-1);
+        \coordinate (S) at (0,3.5);
+        \coordinate (M) at ($(B)!0.5!(C)$);
+        \coordinate (H) at ($(S)!0.6!(M)$);
+        \draw [dash pattern=on 3pt off 3pt] (S)--(A) (A)--(B) (A)--(C) (A)--(M) (A)--(H);
+        \draw (S)--(B)--(C)--(S) (S)--(M);
+        \draw (0,0.3)--(-0.3,0.3)--(-0.3,0); 
+        \draw (S) node[above] {$S$};
+        \draw (A) node[left] {$A$};
+        \draw (B) node[below left] {$B$};
+        \draw (C) node[right] {$C$};
+        \draw (M) node[below right] {$M$};
+        \draw (H) node[above right] {$H$};
+        \fill (S) circle (1.2pt) (A) circle (1.2pt);
+    \end{tikzpicture}
+    \end{center}"""
 
-            # B4: Tạo các phương án sai (không trùng đáp án đúng)
-            s_sai = set()
-            while len(s_sai) < 3:
-                # Tạo các biến thể sai dựa trên các lỗi hay gặp
-                sai_1 = round(v_val * random.uniform(0.5, 1.5), 1)
-                sai_2 = round((side**3 * math.sqrt(3)) / 12, 1) # Thiếu 1/3 hoặc nhầm SA
-                sai_3 = round((side**3) / 4, 1)
+                # B2: Viết lại nội dung câu hỏi
+                noidungcauhoi = (f"Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh bằng ${side}$, cạnh bên $SA$ vuông góc với mặt phẳng đáy, "
+                                f"góc giữa $SA$ và mặt phẳng $(SBC)$ bằng $45^\\circ$. "
+                                f"Thể tích khối chóp $S.ABC$ bằng bao nhiêu (làm tròn kết quả đến hàng phần chục)?")
 
-                candidates = [sai_1, sai_2, sai_3, round(da_dung_val + random.randint(1, 5), 1)]
-                for c in candidates:
-                    if c != da_dung_val and len(s_sai) < 3:
-                        s_sai.add(format_vn(c))
-
-            list_sai = list(s_sai)
-
-            # Trộn đáp án
-            da_d = '\\True $' + da_dung_str + '$'
-            list_1 = [da_d, '$' + list_sai[0] + '$', '$' + list_sai[1] + '$', '$' + list_sai[2] + '$']
-            random.shuffle(list_1)
-
-            # Nội dung hình vẽ TikZ
-            tikz_code = r"""\begin{center}
+                # Nội dung lời giải
+                loigiai = (f"{tikz_code}\n"
+                        f"Gọi $M$ là trung điểm $BC$ thì $AM \\perp BC$ và $SA \\perp BC$ nên $BC \\perp (SAM)$.\n"
+                        f"Kẻ $AH \\perp SM$ tại $H$ thì $AH \\perp (SBC)$. Suy ra góc giữa $SA$ và mặt phẳng $(SBC)$ bằng "
+                        f"$\\widehat{{ASH}} = \\widehat{{ASM}} = 45^\\circ$. Do đó, $\\Delta SAM$ vuông cân ở $A$ và $SA = AM = \\frac{{{side} \\sqrt{{3}}}}{{2}} \\approx {format_vn(am_val)}$.\\\\\n"
+                        f"Diện tích tam giác đều $ABC$ là $S_{{ABC}} = \\frac{{{side}^2 \\sqrt{{3}}}}{{4}} \\approx {format_vn(s_abc_val)}$.\\\\\n"
+                        f"Suy ra $V_{{S.ABC}} = \\frac{{1}}{{3}} \\cdot SA \\cdot S_{{ABC}} \\approx \\frac{{1}}{{3}} \\cdot {format_vn(sa_val)} \\cdot {format_vn(s_abc_val)} \\approx {da_dung_str}$.")
+                dapan = '\\shortans[0]{$%s$}\n' % (da_dung_str)
+                # B1 & B2: Xuất câu trắc nghiệm đúng mẫu
+                content = (
+                    '\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n' + noidungcauhoi + str(dapan)+
+                    '\\loigiai{' + loigiai + '}\n'
+                    '\\end{ex}\n'
+                    '\\end{minipage} \n\n' )
+                return content

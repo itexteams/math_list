@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,52 +64,68 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang31_p1_b1_c1_ds10(self):
-    # Khai báo biến
-    lisdang = ['1']
-    dang = random.choice(lisdang)
+        # Khai báo biến
+        lisdang = ['1']
+        dang = random.choice(lisdang)
 
-    if dang == '1':
-        # Khởi tạo các giá trị ngẫu nhiên cho bài toán bậc hai phủ định
-        a = randint(1, 5)  # Hệ số của x
-        b = randint(2, 9)  # Hệ số tự do
+        if dang == '1':
+            # Khởi tạo các giá trị ngẫu nhiên cho bài toán bậc hai phủ định
+            a = randint(1, 5)  # Hệ số của x
+            b = randint(2, 9)  # Hệ số tự do
 
-        # Định dạng chuỗi hiển thị biểu thức bậc hai vế phải
-        if a == 1:
-            ve_phai_str = "x + %s" % (latex(b))
-        else:
-            ve_phai_str = "%sx + %s" % (latex(a), latex(b))
+            # Định dạng chuỗi hiển thị biểu thức bậc hai vế phải
+            if a == 1:
+                ve_phai_str = "x + %s" % (latex(b))
+            else:
+                ve_phai_str = "%sx + %s" % (latex(a), latex(b))
 
-        # Tạo đáp án đúng
-        da = "{\\exists x \\in \\mathbb{R}: x^2 \\le %s}" % (ve_phai_str)
+            # Tạo đáp án đúng
+            da = "{\\exists x \\in \\mathbb{R}: x^2 \\le %s}" % (ve_phai_str)
 
-        # Tạo các phương án sai ngẫu nhiên khác nhau
-        s = [
-            "{\\forall x \\in \\mathbb{R}: x^2 \\le %s}" % (ve_phai_str),
-            "{\\exists x \\in \\mathbb{R}: x^2 < %s}" % (ve_phai_str),
-            "{\\exists x \\in \\mathbb{R}: x^2 > %s}" % (ve_phai_str),
-            "{\\forall x \\in \\mathbb{R}: x^2 < %s}" % (ve_phai_str),
-            "{\\forall x \\in \\mathbb{R}: x^2 \\ge %s}" % (ve_phai_str),
-            "{\\exists x \\in \\mathbb{R}: x^2 \\ge %s}" % (ve_phai_str)
-        ]
+            # Tạo các phương án sai ngẫu nhiên khác nhau
+            s = [
+                "{\\forall x \\in \\mathbb{R}: x^2 \\le %s}" % (ve_phai_str),
+                "{\\exists x \\in \\mathbb{R}: x^2 < %s}" % (ve_phai_str),
+                "{\\exists x \\in \\mathbb{R}: x^2 > %s}" % (ve_phai_str),
+                "{\\forall x \\in \\mathbb{R}: x^2 < %s}" % (ve_phai_str),
+                "{\\forall x \\in \\mathbb{R}: x^2 \\ge %s}" % (ve_phai_str),
+                "{\\exists x \\in \\mathbb{R}: x^2 \\ge %s}" % (ve_phai_str)
+            ]
 
-        random.shuffle(s)
-        das1 = s[0]
-        das2 = s[1]
-        das3 = s[2]
+            random.shuffle(s)
+            das1 = s[0]
+            das2 = s[1]
+            das3 = s[2]
 
-        # Câu hỏi
-        noidungcauhoi = ('''Mệnh đề phủ định của mệnh đề "$\\forall x \\in \\mathbb{R}: x^2 > %s$" là'''
-                            % (ve_phai_str))
+            # Câu hỏi
+            noidungcauhoi = ('''Mệnh đề phủ định của mệnh đề "$\\forall x \\in \\mathbb{R}: x^2 > %s$" là'''
+                                % (ve_phai_str))
 
-        # Các đáp án
-        da_d = ('\\True $' + str(da) + '$')
-        da_s1 = '$' + str(das1) + '$'
-        da_s2 = '$' + str(das2) + '$'
-        da_s3 = '$' + str(das3) + '$'
+            # Các đáp án
+            da_d = ('\\True $' + str(da) + '$')
+            da_s1 = '$' + str(das1) + '$'
+            da_s2 = '$' + str(das2) + '$'
+            da_s3 = '$' + str(das3) + '$'
 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d, da_s1, da_s2, da_s3]
-        random.shuffle(list_1)
+            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+            list_1 = [da_d, da_s1, da_s2, da_s3]
+            random.shuffle(list_1)
 
-        # Nội dung lời giải
-        loigiai = ('''Mệnh đề ban đầu có dạng: "$P: \\forall x \\in \\mathbb{R}, A(x)$" với $A(x)$ là bất đẳng thức "$x^2 > %s$".\\\\
+            # Nội dung lời giải
+            loigiai = ('''Mệnh đề ban đầu có dạng: "$P: \\forall x \\in \\mathbb{R}, A(x)$" với $A(x)$ là bất đẳng thức "$x^2 > %s$".\\\\
+Theo lý thuyết logic mệnh đề, phủ định của mệnh đề chứa lượng từ "$\\forall$" (với mọi) là lượng từ "$\\exists$" (tồn tại), và phủ định của tỉnh chất $A(x)$ là mệnh đề $\\overline{A}(x)$.\\\\
+Phủ định của dấu lớn hơn ($>$) là dấu nhỏ hơn hoặc bằng ($\\le$).\\\\
+Do đó, mệnh đề phủ định của mệnh đề đã cho là: "$\\exists x \\in \\mathbb{R}: x^2 \\le %s$".'''
+                        % (ve_phai_str, ve_phai_str))
+
+        # Xuất câu trắc nghiệm
+        content = ('\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n' + str(noidungcauhoi) +
+                    '\\choice \n'
+                    '{' + str(list_1[1]) + '}\n'
+                    '{' + str(list_1[2]) + '}\n'
+                    '{' + str(list_1[3]) + '}\n'
+                    '{' + str(list_1[0]) + '}\n'
+                    '\\loigiai{' + str(loigiai) + '}\n'
+                    '\\end{ex}\n \\end{minipage} \n\n')
+        return content

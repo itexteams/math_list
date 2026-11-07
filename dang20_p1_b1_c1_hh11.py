@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,41 +64,88 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang20_p1_b1_c1_hh11(self):
-            # Khai báo biến
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-
-            if dang=='1':
-                #Khai báo biến
-                n=randint(3,9)
-                kq=math.comb(n, 2)
-                #Các đáp án trắc nghiệm
-                du = ['Tạo thành một hình tứ diện',
-                      ]
-                da= random.choice(du)
-                s = ['Tạo thành một hình tứ giác',
-                     'Thẳng hàng',
-                     'Chỉ có $3$ trong $4$ điểm thẳng hàng',
-                     'cùng thuộc một đường tròn',
-                    ]
-
-                das1 = random.choice(s)
-                s.remove(das1)
-                das2 = random.choice(s)
-                s.remove(das2)
-                das3 = random.choice(s)
-                # Câu hỏi
-                noidungcauhoi = ('''Trong không gian, cho hai hình bình hành $ABCD$ và $ACNM$. Khi đó có thể kết luận gì về bốn điểm $B, M, D, N$'''
-                                 %(
-                                 ))
-                # Các đáp án
-                da_d = ('\\True ' +str(da))
-                da_s1 = str(das1)
-                da_s2 = str(das2) 
-                da_s3 = str(das3) 
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('''\\begin{center}
+                # Khai báo biến
+                # Khai báo biến
+                lisdang=['1']
+                dang=random.choice(lisdang)
+                
+                if dang=='1':
+                    #Khai báo biến
+                    n=randint(3,9)
+                    kq=math.comb(n, 2)
+                    #Các đáp án trắc nghiệm
+                    du = ['Tạo thành một hình tứ diện',
+                          ]
+                    da= random.choice(du)
+                    s = ['Tạo thành một hình tứ giác',
+                         'Thẳng hàng',
+                         'Chỉ có $3$ trong $4$ điểm thẳng hàng',
+                         'cùng thuộc một đường tròn',
+                        ]
+                
+                    das1 = random.choice(s)
+                    s.remove(das1)
+                    das2 = random.choice(s)
+                    s.remove(das2)
+                    das3 = random.choice(s)
+                    # Câu hỏi
+                    noidungcauhoi = ('''Trong không gian, cho hai hình bình hành $ABCD$ và $ACNM$. Khi đó có thể kết luận gì về bốn điểm $B, M, D, N$'''
+                                     %(
+                                     ))
+                    # Các đáp án
+                    da_d = ('\\True ' +str(da))
+                    da_s1 = str(das1)
+                    da_s2 = str(das2) 
+                    da_s3 = str(das3) 
+                    # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
+                    list_1 = [da_d,da_s1,da_s2,da_s3]
+                    random.shuffle(list_1)
+                    # Nội dung lời giải
+                    loigiai=('''\\begin{center}
+	\\begin{tikzpicture}
+		\\coordinate (A) at (0,0);
+		\\coordinate (B) at (-3,-1.5);
+		\\coordinate (C) at (3,-1.5);
+		\\coordinate (D) at (6,0);
+		\\coordinate (M) at (-1.5,3.5);
+		\\coordinate (N) at (1.5,1.5);
+		\\coordinate (X) at (1.51,-0.75);
+		\\coordinate (Y) at (2.5,-0.58);
+		\\coordinate (Z) at (2.25,0);
+		\\draw[line width=1pt,dashed] (A)--(D);
+		\\draw[line width=1pt,dashed] (B)--(D);
+		\\draw[line width=1pt] (A)--(B);
+		\\draw[line width=1pt] (B)--(C);
+		\\draw[line width=1pt] (C)--(D);
+		\\draw[line width=1pt] (A)--(C);
+		\\draw[line width=1pt] (M)--(A);
+		\\draw[line width=1pt] (M)--(N);
+		\\draw[line width=1pt] (N)--(C);
+		\\draw[line width=1pt] (B)--(X);
+		\\draw[line width=1pt] (D)--(Y);
+		\\draw[line width=1pt] (D)--(Z);
+		\\node[left] at (A) {$A$};
+		\\node[left] at (B) {$B$};
+		\\node[below right] at (C) {$C$};
+		\\node[right] at (D) {$D$};
+		\\node[above] at (M) {$M$};
+		\\node[above right] at (N) {$N$};
+	\\end{tikzpicture}
+\\end{center}
+Vì $ABCD$ và $ACNM$ là hai hình bình hành chỉ có chung đường chéo $AC$ nên $B, D, N, M$ không đồng phẳng. \\\\
+                             Mà $MN//AC$ còn $AC$ cắt $BD$ nên $BD$ và $MN$ chéo nhau. Vậy bốn điểm $B, M, D, N$ tạo thành một hình tứ diện.''' 
+                             %(
+                             ))
+                
+                
+                # Xuất câu trắc nghiệm
+                content = ('\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n'+ str(noidungcauhoi)+ 
+                    '\\choice \n'
+                    '{'+str(list_1[1])+'}\n'
+                    '{'+str(list_1[2])+'}\n'
+                    '{'+str(list_1[3])+'}\n'
+                    '{'+str(list_1[0])+'}\n'
+                    '\\loigiai{'+str(loigiai)+'}\n'
+                    '\\end{ex}\n \\end{minipage} \n\n').replace('+-','-')
+                return content

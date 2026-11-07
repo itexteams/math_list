@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,27 +64,88 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang3_p3_b3_c3_ds12(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-                a=randint(1,11)
+                # Khai báo biến
+                lisdang=['1']
+                dang=random.choice(lisdang)
+                if dang=='1':
+                    a=randint(1,11)
+                    
+                    x = symbols('x')
+                    f1 = pi*(sqrt(a**2-x**2))**2
+                    
+                    f2 = pi*(-sqrt(a**2-x**2)+2*a)**2
+                    
+                    v1=integrate(f1, (x, 0, a))
+                    v2=integrate(f2, (x, -a, 0))
+                    
+                    h1=v1+v2  
+                    number = Decimal(float(h1))  # Số cần làm tròn
+                    kq = number.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
+                    
+                    # Nội dung câu hỏi
+                    noidungcauhoi = ('\\immini{'
+                                    'Một vật trang trí có dạng một khối tròn xoay được tạo thành khi quay miền $(R)$ quanh trục $AB$. Miền $(R)$ được giới hạn bởi các cạnh $AB$, $AD$ của hình vuông $ABCD$ và các cung phần tư của các đường '
+                                    'tròn bán kính bằng $%s$ cm với tâm lần lượt là trung điểm của các cạnh $AB$, $CD$. Thể tích của vật trang trí đó bằng bao nhiêu? (làm tròn kết quả đến hàng đơn vị). \n'
+                                    '}{'
+                                    '''\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (135,111.55) -- (280.46,111.55) -- (280.46,257) -- (135,257) -- cycle ;
+	\\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (280.46,111.54) .. controls (280.46,111.7) and (280.46,111.87) .. (280.46,112.04) .. controls (280.46,152.08) and (247.9,184.54) .. (207.73,184.54) .. controls (167.56,184.54) and (135,152.08) .. (135,112.04) .. controls (135,111.88) and (135,111.71) .. (135,111.55) -- cycle ;
+	\\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (207.73,117.17) -- (280.19,117.17) -- (280.19,256.6) -- (207.73,256.6) -- cycle ;
+	\\draw  [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (135,257) .. controls (135,256.89) and (135,256.77) .. (135,256.66) .. controls (134.7,216.62) and (167.17,183.92) .. (207.51,183.63) .. controls (247.85,183.33) and (280.79,215.55) .. (281.08,255.59) .. controls (281.08,255.9) and (281.08,256.22) .. (281.08,256.53) -- cycle ;
+	\\draw  [draw opacity=0] (200.03,184.09) .. controls (202.82,183.77) and (205.66,183.6) .. (208.54,183.6) .. controls (248.6,183.6) and (281.08,215.84) .. (281.08,255.6) .. controls (281.08,255.92) and (281.08,256.23) .. (281.08,256.55) -- (208.54,255.6) -- cycle ; \\draw   (200.03,184.09) .. controls (202.82,183.77) and (205.66,183.6) .. (208.54,183.6) .. controls (248.6,183.6) and (281.08,215.84) .. (281.08,255.6) .. controls (281.08,255.92) and (281.08,256.23) .. (281.08,256.55) ;  
+	\\draw (116,250.91) node [anchor=north west][inner sep=0.75pt]    {$A$};
+	\\draw (284,249.58) node [anchor=north west][inner sep=0.75pt]    {$B$};
+	\\draw (284,99.58) node [anchor=north west][inner sep=0.75pt]    {$C$};
+	\\draw (115.33,94.58) node [anchor=north west][inner sep=0.75pt]    {$D$};
+\\end{tikzpicture} }'''
+                                    %(latex(a)
+                                    ))
+                    
+                    # Nội dung lời giải
+                    loigiai = ('''\\begin{center}
+	\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+		\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (135,111.55) -- (280.46,111.55) -- (280.46,257) -- (135,257) -- cycle ;
+		\\draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (280.46,111.54) .. controls (280.46,111.7) and (280.46,111.87) .. (280.46,112.04) .. controls (280.46,152.08) and (247.9,184.54) .. (207.73,184.54) .. controls (167.56,184.54) and (135,152.08) .. (135,112.04) .. controls (135,111.88) and (135,111.71) .. (135,111.55) -- cycle ;
+		\\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (207.73,117.17) -- (280.19,117.17) -- (280.19,256.6) -- (207.73,256.6) -- cycle ;
+		\\draw  [draw opacity=0][fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (135,257) .. controls (135,256.89) and (135,256.77) .. (135,256.66) .. controls (134.7,216.62) and (167.17,183.92) .. (207.51,183.63) .. controls (247.85,183.33) and (280.79,215.55) .. (281.08,255.59) .. controls (281.08,255.9) and (281.08,256.22) .. (281.08,256.53) -- cycle ;
+		\\draw  [draw opacity=0] (200.03,184.09) .. controls (202.82,183.77) and (205.66,183.6) .. (208.54,183.6) .. controls (248.6,183.6) and (281.08,215.84) .. (281.08,255.6) .. controls (281.08,255.92) and (281.08,256.23) .. (281.08,256.55) -- (208.54,255.6) -- cycle ; \\draw   (200.03,184.09) .. controls (202.82,183.77) and (205.66,183.6) .. (208.54,183.6) .. controls (248.6,183.6) and (281.08,215.84) .. (281.08,255.6) .. controls (281.08,255.92) and (281.08,256.23) .. (281.08,256.55) ;  
+		\\draw    (105.79,257.65) -- (313.81,256.86) ;
+		\\draw [shift={(315.81,256.85)}, rotate = 179.78] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\\draw    (206.01,279.65) -- (206.01,78.45) ;
+		\\draw [shift={(206.01,76.45)}, rotate = 90] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+		\\draw (113.2,258.11) node [anchor=north west][inner sep=0.75pt]    {$A$};
+		\\draw (272,258.58) node [anchor=north west][inner sep=0.75pt]    {$B$};
+		\\draw (284,99.58) node [anchor=north west][inner sep=0.75pt]    {$C$};
+		\\draw (115.33,94.58) node [anchor=north west][inner sep=0.75pt]    {$D$};
+		\\draw (185.91,258.91) node [anchor=north west][inner sep=0.75pt]    {$O$};
+		\\draw (297.91,229.91) node [anchor=north west][inner sep=0.75pt]    {$x$};
+		\\draw (188.58,72.24) node [anchor=north west][inner sep=0.75pt]    {$y$};
+		\\draw (188.58,113.24) node [anchor=north west][inner sep=0.75pt]    {$F$};
+		\\draw (188.58,160.91) node [anchor=north west][inner sep=0.75pt]    {$E$};
+	\\end{tikzpicture}	
+\\end{center}''' 'Gắn hệ trục tọa độ $(Oxy)$ sao cho $O(0;0)$ là trung điểm đoạn thẳng $AB$. \\\\ \n'
+                            'Với hai điểm $E\\left(0; %s \\right)$ và $F(0; %s)$. \\\\ \n'            
+                            'Khi đó \\\\ \n'
+                            '\\hspace*{1cm} Đường tròn tâm $O$ chứa cung tròn $BE$ có phương trình $x^2 + y^2 = %s$. \\\\ \n'
+                            '\\hspace*{1cm} Đường tròn tâm $F$ chứa cung tròn $DE$ có phương trình $x^2 + (y-%s)^2 = %s$. \\\\ \n'           
+                            'Suy ra \\\\ \n'
+                            '\\hspace*{1cm} Phương trình cung trên của đường tròn tâm $O$ là $y = \\sqrt{%s-x^2}$. \\\\ \n'
+                            '\\hspace*{1cm} Phương trình cung dưới của đường tròn tâm $F$ là $y = -\\sqrt{%s-x^2} + %s$. \\\\ \n'            
+                            'Khi đó, thể tích vật thể trang trí là \\\\ \n'            
+                            '\\hspace*{1cm} $V = \\pi \\int\\limits_0^%s \\left(\\sqrt{%s-x^2}\\right)^2 \\text{d}x + \\pi \\int\\limits_{-%s}^0 \\left(-\\sqrt{%s-x^2} + %s\\right)^2 \\text{d}x \\approx %s$ cm$^3$.'
+                            %(latex(a),latex(2*a),latex(a**2),latex(2*a),latex(a**2),
+                                latex(a**2),latex(a**2),latex(2*a),
+                                latex(a),latex(a**2),latex(a),latex(a**2),latex(2*a),latex(kq)
+                                
+                            ))
+                    
+                    #Đáp án
+                    dapan=' \\shortans[0]{$%s$} '%(latex(kq))
 
-                x = symbols('x')
-                f1 = pi*(sqrt(a**2-x**2))**2
-
-                f2 = pi*(-sqrt(a**2-x**2)+2*a)**2
-
-                v1=integrate(f1, (x, 0, a))
-                v2=integrate(f2, (x, -a, 0))
-
-                h1=v1+v2  
-                number = Decimal(float(h1))  # Số cần làm tròn
-                kq = number.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
-
-                # Nội dung câu hỏi
-                noidungcauhoi = ('\\immini{'
-                                'Một vật trang trí có dạng một khối tròn xoay được tạo thành khi quay miền $(R)$ quanh trục $AB$. Miền $(R)$ được giới hạn bởi các cạnh $AB$, $AD$ của hình vuông $ABCD$ và các cung phần tư của các đường '
-                                'tròn bán kính bằng $%s$ cm với tâm lần lượt là trung điểm của các cạnh $AB$, $CD$. Thể tích của vật trang trí đó bằng bao nhiêu? (làm tròn kết quả đến hàng đơn vị). \n'
-                                '}{'
-                                '''\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+                # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+                content = ('\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n'+ str(noidungcauhoi)+str(dapan)+
+                    '\\loigiai{ \n'
+                    +str(loigiai)+'}\n'
+                    '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+                return content     
