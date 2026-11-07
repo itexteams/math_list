@@ -128,54 +128,63 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang1_p4_b2_c1_ds10(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-                a=randint(50,80)
-                b=randint(50,80)
-                k=randint(1,5)
-                ca2=randint(30,40)
-                an=a+ca2
-                binh=b+ca2
-                tong=an+binh+k
+    # Khai báo biến
+    lisdang = ['1']
+    dang = random.choice(lisdang)
+    if dang == '1':
+        a = randint(50, 80)      # Số khán giả chỉ bình chọn cho An
+        b = randint(50, 80)      # Số khán giả chỉ bình chọn cho Bình
+        k = randint(1, 15)       # Số khán giả không bình chọn
+        ca2 = randint(30, 40)    # Số khán giả bình chọn cho cả hai
+        
+        an = a + ca2
+        binh = b + ca2
+        
+        # Số khán giả đã tham gia bình chọn: n(A U B) = n(A) + n(B) - n(A ∩ B)
+        h1 = an + binh - ca2
+        
+        # Tổng số khán giả tại trường quay (phải lớn hơn hoặc bằng số khán giả đã bình chọn)
+        tong = h1 + k
 
-                h1=a+b-ca2 
-                number = Decimal(float(h1))  # Số cần làm tròn
-                kq = number.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
+        number = Decimal(float(h1))
+        kq = number.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
 
-                # Nội dung câu hỏi
-                noidungcauhoi = ('Tại vòng chung kết của một trò chơi trên truyền hình, có $%s$ khán giả tại trường quay có quyền bình chọn cho hai thí sinh An và Bình. Biết rằng có $%s$ khán giả bình chọn cho thí sinh An, $%s$ khán giả bình chọn cho thí sinh Bình và $%s$ khán giả bình chọn cho cả hai thí sinh. Tìm số khán giả đã tham gia bình chọn. \n'
-                                %(latex(tong),latex(an),latex(binh),latex(ca2))
-                                )
+        # Nội dung câu hỏi
+        noidungcauhoi = (
+            'Tại vòng chung kết của một trò chơi trên truyền hình, có $%s$ khán giả tại trường quay có quyền bình chọn cho hai thí sinh An và Bình. '
+            'Biết rằng có $%s$ khán giả bình chọn cho thí sinh An, $%s$ khán giả bình chọn cho thí sinh Bình và $%s$ khán giả bình chọn cho cả hai thí sinh. '
+            'Tìm số khán giả đã tham gia bình chọn. \n'
+            % (latex(tong), latex(an), latex(binh), latex(ca2))
+        )
 
-                # Nội dung lời giải
-                loigiai = ('\\begin{center} \n'
-                            '\\begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick]  \n'
-                            '	\\clip(-2.3762557077136455,-2.3841498660776703) rectangle (4.796062890633386,2.3874343125448725); \n'
-                            '	\\draw(0.,0.) circle (2.3cm); \n'
-                            '	\\draw(2.5,0.) circle (1.5cm); \n'
-                            '	\\draw (-0.6728300406062258,0.48477757326114446) node[anchor=north west] {$A$}; \n'
-                            '	\\draw (2.61448265030283,0.3253927155200992) node[anchor=north west] {$B$}; \n'
-                            '	\\draw (0.9509031976306715,0.3951235907818065) node[anchor=north west] {$A \\cap B$}; \n'
-                            '\\end{tikzpicture} \n'
-                            '\\end{center} \n'
-                            'Ký hiệu $A$ và $B$ lần lượt là tập hợp khán giả bình chọn cho hai thí sinh An và Bình. \\\\ \n'
-                        '\\hspace*{1cm} Theo giả thiết $n(A)=%s, n(B)=%s, n(A \\cap B)=%s$. \\\\ \n'
-                        'Gọi $n(A \\cup B)$ là số khán giả đã tham gia bình chọn và \\\\ \n'
-                        '\\hspace*{1cm} $n(A \\cup B)=n(A)+n(B)-n(A \\cap B)=%s+%s-%s=%s$. \\\\ \n'
-                        'Vậy số khán giả tham gia bình chọn cho hai thí sinh là $%s$.'
-                            %(latex(an),latex(binh),latex(ca2),
-                            latex(an),latex(binh),latex(ca2),latex(kq),
-                            latex(kq)
-                                ))
+        # Nội dung lời giải
+        loigiai = (
+            '\\begin{center} \n'
+            '\\begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick] \n'
+            '	\\clip(-2.3762557077136455,-2.3841498660776703) rectangle (4.796062890633386,2.3874343125448725); \n'
+            '	\\draw(0.,0.) circle (2.3cm); \n'
+            '	\\draw(2.5,0.) circle (1.5cm); \n'
+            '	\\draw (-0.6728300406062258,0.48477757326114446) node[anchor=north west] {$A$}; \n'
+            '	\\draw (2.61448265030283,0.3253927155200992) node[anchor=north west] {$B$}; \n'
+            '	\\draw (0.9509031976306715,0.3951235907818065) node[anchor=north west] {$A \\cap B$}; \n'
+            '\\end{tikzpicture} \n'
+            '\\end{center} \n'
+            'Ký hiệu $A$ và $B$ lần lượt là tập hợp khán giả bình chọn cho hai thí sinh An và Bình. \\\\ \n'
+            '\\hspace*{1cm} Theo giả thiết $n(A)=%s, n(B)=%s, n(A \\cap B)=%s$. \\\\ \n'
+            'Gọi $n(A \\cup B)$ là số khán giả đã tham gia bình chọn, ta có: \\\\ \n'
+            '\\hspace*{1cm} $n(A \\cup B)=n(A)+n(B)-n(A \\cap B)=%s+%s-%s=%s$. \\\\ \n'
+            'Vậy số khán giả tham gia bình chọn cho hai thí sinh là $%s$.'
+            % (
+                latex(an), latex(binh), latex(ca2),
+                latex(an), latex(binh), latex(ca2), latex(kq),
+                latex(kq)
+            )
+        )
 
-
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+
-                '\\loigiai{ \n'
-                +str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
-            return content
-
+        # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+        content = (
+            '\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n' + str(noidungcauhoi) +
+            '\\loigiai{ \n' + str(loigiai) + '}\n'
+            '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+        return content
