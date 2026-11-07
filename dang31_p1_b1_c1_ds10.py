@@ -66,13 +66,16 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 def bt_dang31_p1_b1_c1_ds10(self):
         # Khai báo biến
         import random
+        from sympy import latex # Thêm import latex để tránh lỗi NameError tiếp theo
+
         lisdang = ['1']
         dang = random.choice(lisdang)
 
         if dang == '1':
             # Khởi tạo các giá trị ngẫu nhiên cho bài toán bậc hai phủ định
-            a = randint(1, 5)  # Hệ số của x
-            b = randint(2, 9)  # Hệ số tự do
+            # Sửa randint thành random.randint
+            a = random.randint(1, 5)  # Hệ số của x
+            b = random.randint(2, 9)  # Hệ số tự do
 
             # Định dạng chuỗi hiển thị biểu thức bậc hai vế phải
             if a == 1:
