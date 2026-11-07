@@ -1,67 +1,3 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
-from sympy import *
-from sympy.abc import x
-import sympy as sp
-from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
-import random
-import math
-from sympy import Rational
-from fractions import Fraction as frac
-from random import randint
-from PyQt5.QtGui import QTextCursor
-from PyQt5.QtGui import QFont
-import hashlib
-import uuid
-import os
-from sympy import symbols, Eq, solve
-import numpy as np
-from PyQt5.QtGui import QIcon
-from math import factorial
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextDocument
-from subprocess import run, CalledProcessError
-import shutil
-from PyQt5.QtWidgets import QProgressBar
-from docx import Document
-from PyQt5 import QtGui
-import re
-import pandas as pd
-from PyQt5.QtGui import QPixmap
-import subprocess
-import platform
-import json
-from decimal import Decimal, ROUND_HALF_UP
-from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
-from random import randint, choice, shuffle
-from sympy import latex
-from fractions import Fraction
-from collections import Counter
-from random import sample
-import shutil
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
-from PyQt5.QtCore import Qt
-import qrcode
-import json
-import glob
-import os
-import platform
-import subprocess
-import hashlib
-import base64
-from datetime import datetime, timedelta
-from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
-from sympy import symbols, solve, Lt
-#from PyQt5.QtWebEngineWidgets import QWebEngineView
-#from PyQt5.QtCore import QUrl
-#from sympy import latex
-import re
-import pyperclip
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
-
 import google.generativeai as genai
 from sympy.abc import x, y, z, t
 import sys
@@ -128,23 +64,78 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang13_p4_b3_c3_ds12(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-                a=randint(10,50)
-                while a%4!=0 or a==28:
+                # Khai báo biến
+                lisdang=['1']
+                dang=random.choice(lisdang)
+                if dang=='1':
                     a=randint(10,50)
-                h=a+10
-                hs=nsimplify(-h/(a*a/4))
-                s1=nsimplify(a*a*6*sqrt(3)/4)
-                s2=nsimplify(2*a*h/3)
-                s=nsimplify(s1+6*s2)      
-                number = Decimal(float(s))  # Số cần làm tròn
-                kq = number.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-
-                # Nội dung câu hỏi
-                noidungcauhoi = ('\\immini{'
-                                'Để trang trí cho một phòng, người ta vẽ lên tường một hình như sau: trên mỗi cạnh của hình lục giác đều có cạnh bằng $%s$ cm có một cánh hoa '
-                                'hình parabol, đỉnh của parabol cách cạnh $%s$ cm và nằm phía ngoài lục giác, đường parabol đó đi qua đầu mút của mỗi cạnh (như hình vẽ). Tính diện tích của hình vẽ trên tường (kết quả làm tròn đến hàng phần trăm của đơn vị cm$^2$).'
-                            '}{'
+                    while a%4!=0 or a==28:
+                        a=randint(10,50)
+                    h=a+10
+                    hs=nsimplify(-h/(a*a/4))
+                    s1=nsimplify(a*a*6*sqrt(3)/4)
+                    s2=nsimplify(2*a*h/3)
+                    s=nsimplify(s1+6*s2)      
+                    number = Decimal(float(s))  # Số cần làm tròn
+                    kq = number.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+                    
+                    # Nội dung câu hỏi
+                    noidungcauhoi = ('\\immini{'
+                                    'Để trang trí cho một phòng, người ta vẽ lên tường một hình như sau: trên mỗi cạnh của hình lục giác đều có cạnh bằng $%s$ cm có một cánh hoa '
+                                    'hình parabol, đỉnh của parabol cách cạnh $%s$ cm và nằm phía ngoài lục giác, đường parabol đó đi qua đầu mút của mỗi cạnh (như hình vẽ). Tính diện tích của hình vẽ trên tường (kết quả làm tròn đến hàng phần trăm của đơn vị cm$^2$).'
+                                '}{'
+'''\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (204.8,95) -- (185,129.29) -- (145.4,129.29) -- (125.6,95) -- (145.4,60.71) -- (185,60.71) -- cycle ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (185.2,60.51) .. controls (171.98,7.01) and (158.78,7.01) .. (145.6,60.53) ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (145.4,129.54) .. controls (158.92,182.96) and (172.12,182.88) .. (185,129.29) ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (205.1,94.82) .. controls (244.5,56.28) and (237.8,44.91) .. (185,60.71) ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (145.4,60.33) .. controls (92.67,44.31) and (85.92,55.65) .. (125.15,94.36) ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (125.63,95.23) .. controls (85.86,133.37) and (92.45,144.81) .. (145.4,129.54) ;
+	\\draw  [fill={rgb, 255:red, 248; green, 231; blue, 28 }  ,fill opacity=1 ] (185.62,129.29) .. controls (238.69,144.13) and (245.19,132.64) .. (205.1,94.82) ;
+\\end{tikzpicture} }'''
+                            
+                            %(latex(a),latex(h)))
+                    
+                    # Nội dung lời giải
+                    loigiai = ('Diện tích của hình lục giác đều là\\\\ \n'
+                            '\\hspace*{1cm} $S_1=6\\cdot%s^2\\cdot\\dfrac{\\sqrt{3}}{4}=%s$ cm$^2$.\\\\ \n'
+                            'Tính Diện tích của một hình parabol\\\\ \n'
+                            'Chọn hệ trục tọa độ như nhình vẽ\\\\ \n'
+                            '\\begin{center}\n'
+                            '\\begin{tikzpicture}[scale=1,>=stealth, font=\\footnotesize, line join=round, line cap=round]\n'
+                    '\\def\\a{-1} \\def\\b{0} \\def\\c{3}\n'
+                    '\\def\\xmin{-3} \\def\\xmax{3}\n'
+                    '\\def\\ymin{-0.1} \\def\\ymax{4}\n'
+                    '\\draw[->] (\\xmin,0)--(\\xmax,0) node [below]{$x$};\n'
+                    '\\draw[->] (0,\\ymin)--(0,\\ymax) node [left]{$y$};\n'
+                    '\\node at (0,0) [below left]{$O$};\n'
+                    '\\node at (2,0) [below]{$%s$};\n'
+                    '\\node at (-2,0) [below]{$%s$};\n'
+                    '\\node at (0,3) [above right]{$%s$};\n'
+                    '\\clip (\\xmin+0.1,\\ymin+0.1) rectangle (\\xmax-0.5,\\ymax-0.1);\n'
+                    '\\draw[smooth,samples=300] plot(\\x,{\\a*(\\x)^2+\\b*(\\x)+\\c});\n'
+                    '\\end{tikzpicture}\n'
+                    '\\end{center}\n'
+                    'Vì parabol cần tìm nhận trục $Oy$ làm trục đối xứng và cắt $Oy$ tại điểm có tung độ bằng $%s$ nên có dạng $y=ax^2+%s$.\\\\ \n'
+                    'Mặt khác parabol cắt $Ox$ tại điểm có tọa độ $\\left(%s;0\\right)$ nên ta có\\\\ \n'
+                    '\\hspace*{1cm} $a\\cdot\\left(%s\\right)^2+%s=0\\Rightarrow a=%s$.\\\\ \n'
+                    'Suy ra phương trình của parabol là $y=%sx^2+%s$.\\\\ \n'
+                    'Diện tích hình phẳng giới hạn bởi đường parabol $y=%sx^2+%s$, trục $Ox$ và hai đường thẳng $x=%s,x=%s$ là\\\\ \n'
+                    '\\hspace*{1cm} $S_2=\\displaystyle\\int\\limits_{%s}^{%s}\\left(%sx^2+%s\\right)\\text{d}x=%s$ cm$^2$.\\\\ \n'
+                    'Vậy diện tích của hình vẽ trên tường là\\\\ \n'
+                    '\\hspace*{1cm} $S=S_1+6\\cdot S_2=%s+6\\cdot%s\\approx %s$ cm$^2$.'
+                            
+                            %(latex(a),latex(s1),latex(nsimplify(a/2)),latex(nsimplify(-a/2)),latex(h),
+                                latex(h),latex(h),latex(nsimplify(a/2)),latex(nsimplify(a/2)),latex(h),latex(hs),latex(hs),latex(h),
+                                latex(hs),latex(h),latex(nsimplify(-a/2)),latex(nsimplify(a/2)),
+                                latex(nsimplify(-a/2)),latex(nsimplify(a/2)),latex(hs),latex(h),latex(s2),
+                                latex(s1),latex(s2),latex(kq)
+                                )
+                                )
+                # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+                content = ('\\begin{minipage}{\\textwidth} \n'
+                    '\\begin{ex}\n'+ str(noidungcauhoi)+
+                    '\\loigiai{ \n'
+                    +str(loigiai)+'}\n'
+                    '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+                return content 
