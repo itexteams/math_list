@@ -297,5 +297,6 @@ def bt_dang26_p2_b3_c2_ds11(self):
     '\\item ' + str(shuffled_solutions_vdc[0]) + '\n'
     '\\end{enumEX}} \n'
     '\\end{ex}\n \\end{minipage}\n\n')
-    
+    return content
     print(content)
+    
