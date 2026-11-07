@@ -1478,17 +1478,6 @@ dang_p4_b4_c4_ds10 = [
     (4, "[0D44DV04] Ứng dụng: Tính diện tích tứ giác ABCD"),
     (5, "[0D44DV05] Ứng dụng: Bài toán đường xoắn ốc"),
 ]
-
-
-# --- CÁC LIST ĐƯỢC TÁCH TỰ ĐỘNG TỪ MAIN.PY ---
-dang_sets = [
-            (getattr(self, f"dang_p{p}_b{b}_c{c}_{suffix}"), f"_p{p}_b{b}_c{c}_{suffix}")
-            for suffix, c_keys in config.items()
-            for c, max_b in c_keys.items()
-            for b in range(1, max_b + 1)
-            for p in range(1, 5) # p luôn từ 1 đến 4
-        ]
-
 dang_p1_b1_c5_ds10 = [
             (1, "[0D51AN01] QTC: Chọn một quyển sách từ hai loại sách"),
             (8, "[0D51AN08] QTC: Chọn một đồ uống trong 3 loại"),
