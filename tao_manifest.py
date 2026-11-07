@@ -7,11 +7,10 @@ import time
 FOLDER_DANG = "."
 
 
-def tinh_md5(file_path):
-    hasher = hashlib.md5()
-    with open(file_path, "rb") as f:
-        hasher.update(f.read())
-    return hasher.hexdigest()
+def tinh_md5(noi_dung_text):
+    # Chuẩn hóa toàn bộ dấu xuống dòng về chuẩn '\n' để tránh lệch hash giữa Windows và Linux/Web
+    noi_dung_chuan = noi_dung_text.replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.md5(noi_dung_chuan.encode("utf-8")).hexdigest()
 
 
 def tao_manifest():
