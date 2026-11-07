@@ -9636,6 +9636,7 @@ dang_p4_b2_c2_hh12 = [
 dang_p1_b3_c2_hh12 = [
     (1, "[2H23AT01] Góc: Góc giữa đường thẳng và mặt phẳng"),
     (2, "[2H23AT02] Góc: Góc giữa hai mặt phẳng"),
+    (6, "[2H23AT06] Góc: Góc giữa mặt phẳng tọa độ với mặt phẳng (P)"),
     (3, "[2H23AT03] Góc: Góc giữa hai đường thẳng"),
     (4, "[2H23AV04] Góc: Góc giữa đường thẳng và mặt phẳng đi qua ba điểm thuộc các trục tọa độ"),
     (5, "[2H23AV05] Góc: Cho 4 điểm A, B, C, D. Tính góc giữa AB và CD"),
