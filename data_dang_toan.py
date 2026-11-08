@@ -9281,6 +9281,7 @@ dang_p1_b2_c1_hh12 = [
     (27, "[2H12AT27] Điểm: Tìm đáp án sai khoảng cách từ một điểm đến mặt phẳng tọa độ)"),
     (29, "[2H12AT29] Điểm: Trong các điểm. Tìm điểm là hình chiếu vuông góc của điểm A"),  
     (32, "[2H12AT32] Điểm: Cho hai điểm A, B, trung điểm M. Tìm biểu diễn vec(OM)"), 
+    (33, "[2H12AT33] Điểm: Cho hai điểm A, B, trung điểm M. Tìm tọa độ điểm B"), 
     (17, "[2H12AN17] Góc: Tìm góc giữa OA và mặt phẳng tọa độ"),            
 ]
 
