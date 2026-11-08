@@ -9263,11 +9263,13 @@ dang_p1_b2_c1_hh12 = [
     (24, "[2H12AT24] Điểm: Biến đổi tìm tọa độ của điểm"),
     (25, "[2H12AT25] Điểm: Cho tọa độ điểm P trong hình, xác định tọa độ điểm P"),
     (27, "[2H12AT27] Điểm: Tìm đáp án sai khoảng cách từ một điểm đến mặt phẳng tọa độ)"),
+    (29, "[2H12AT29] Điểm: Trong các điểm. Tìm điểm là hình chiếu vuông góc của điểm A"),
     (6, "[2H12AT06] Vectơ: Tìm x, y, z để vecto(a)=vecto(b)"),
     (26, "[2H12AT26] Vectơ: Cho vecto OA, OB tìm tọa độ vecto AB"),
     (9, "[2H12AT09] Vectơ: Cho vecto(a), vecto(b), vecto(c) và vecto(d). Tìm tổng của x, y, z"),
     (15, "[2H12AT15] Vectơ: Cho hình hộp chữ nhật. Tìm tọa độ vectơ AC' "),
     (28, "[2H12AT28] Vectơ: Tìm tọa độ của 3 vecto khi biết biểu diễn"),  
+    (30, "[2H12AT30] Vectơ: Cho các vectơ. Tìm đẳng thức thỏa mãn"),  
     (1, "[2H12AN01] Điểm: Xác định tọa độ điểm thông qua biểu diễn của các vectơ i, j, k"),
     (2, "[2H12AN02] Điểm: Xác định hình chiếu, điểm đối xứng của một điểm qua mặt phẳng, trục tọa độ"),
     (7, "[2H12AN07] Điểm: Xác định tọa độ các điểm nằm trên trục số"),  
@@ -9277,10 +9279,7 @@ dang_p1_b2_c1_hh12 = [
     (10, "[2H12AT10] Điểm: Tọa độ điểm nằm trên tia đối của các trục số"),
     (11, "[2H12AT11] Điểm: Tọa độ điểm nằm trên mặt phẳng tọa độ"),
     (12, "[2H12AT12] Điểm: Tìm điểm M thuộc mặt phẳng (Oxy) sao cho ba điểm M, A, B thẳng hàng"),    
-    (17, "[2H12AN17] Góc: Tìm góc giữa OA và mặt phẳng tọa độ"),
-
-
-            
+    (17, "[2H12AN17] Góc: Tìm góc giữa OA và mặt phẳng tọa độ"),            
 ]
 
 dang_p2_b2_c1_hh12 = [
