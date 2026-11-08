@@ -9289,9 +9289,17 @@ dang_p2_b2_c1_hh12 = [
     (1, "[2H12BT01] Tổng hợp: Hình chiếu, điểm đối xứng của điểm qua mặt phẳng tọa độ, trục tọa độ"),
     (5, "[2H12BT05] Tổng hợp: Cho điểm A xác định điểm thuộc trung có độ dài ngắn nhất"),
     (2, "[2H12BV02] Tổng hợp: Cho ba điểm A, B, C. Xác định tọa độ điểm và vectơ"),
+    (6, "[2H12BV06] Tổng hợp: Cho hai vecto và 1 điểm xác định vecto bằng nhau"),
+    (7, "[2H12BV07] Tổng hợp: Cho 3 điểm A, B, C với trung điểm P, Q, R"),
+    (8, "[2H12BV08] Tổng hợp: Cho 3 điểm A, B, C. Tìm tọa độ vectơ, đẳng thức vectơ, chân đường phân giác"),
+    (9, "[2H12BV09] Tổng hợp: Cho 3 điểm A, B, C. Tìm trung điểm, giá trị biểu thức"),
+    (10, "[2H12BV10] Tổng hợp: Cho hình hộp ABCD.A'B'C'D'. Tìm vectơ cùng hướng, ngược hướng, cùng phương, trọng tâm"),
+    (11, "[2H12BV11] Tổng hợp: Cho ba điểm A, B, C. Tìm hình chiếu, điểm đối xứng, chân đường cao"),
+    (12, "[2H12BV12] Tổng hợp: Cho ba điểm A, B, C. Tìm tọa độ vectơ, trọng tâm, ba điểm thẳng hàng"),
+    (13, "[2H12BV13] Tổng hợp: Cho ba điểm A, B, C. Tìm tọa độ trọng tâm, tích vô hướng, hình chiếu, hình bình hành"),
     (3, "[2H12BV03] Ứng dụng: Khoảng cách ngắn nhất từ máy bay đến hòn đảo"),
     (4, "[2H12BV04] Ứng dụng: Tọa độ của máy bay"),
-    (6, "[2H12BV06] Ứng dụng: Cho hai vecto và 1 điểm xác định vecto bằng nhau"),
+    
 ]
 
 dang_p3_b2_c1_hh12 = [
