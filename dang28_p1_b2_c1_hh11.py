@@ -157,7 +157,7 @@ def bt_dang28_p1_b2_c1_hh11(self):
             '$%s$ và $%s$ chéo nhau' % (MN, day_lon),
             '$%s // %s$' % (MN, SD),
             '$%s // %s$' % (MN, SC),
-            '$%s$ và $%s$ cắt nhau' % (MN, SA)
+            '$%s$ và $%s$ chéo nhau' % (MN, SA)
         ]
 
         random.shuffle(s_pool)
