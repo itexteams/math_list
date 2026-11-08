@@ -9328,7 +9328,8 @@ dang_p1_b3_c1_hh12 = [
     (27, "[2H13AT27] Độ dài: Tìm tọa độ và tính độ dài vectơ khi biết biểu diễn qua vectơ đơn vị"),     
     (36, "[2H13AV36] Độ dài: Đoạn thẳng AB cắt mặt phẳng tọa độ tại M, tìm tỷ số MA và MB"),  
     (40, "[2H13AV40] Độ dài: Tìm điểm M thuộc ox cách đều hai điểm cho trước"),
-    (41, "[2H13AV41] Độ dài: Tìm điểm thuộc đoạn thẳng và tính độ dài đoạn thẳng"),                                   
+    (41, "[2H13AV41] Độ dài: Tìm điểm thuộc đoạn thẳng và tính độ dài đoạn thẳng"),   
+    (50, "[2H13AV50] Độ dài: M là hình chiếu của A. Tính độ dài OM"),                                  
     (2, "[2H13AT02] Điểm: Tìm tọa độ trung điểm của đoạn thẳng"),
     (3, "[2H13AT03] Điểm: Tìm tọa độ trọng tâm của tam giác"),
     (11, "[2H13AT11] Điểm: Tìm điểm H là hình chiếu vuông góc của điểm A trên đường thẳng BC"),     
@@ -9337,6 +9338,9 @@ dang_p1_b3_c1_hh12 = [
     (14, "[2H13AT14] Tích vô hướng: Cho vec(a)=(x1;y1;z1), vec(b)=(x2;y2;z2). Tính tích vô hướng vec(a).vec(b)"),
     (15, "[2H13AT15] Tích vô hướng: Tìm điểm M thuộc Ox sao cho MA vuông góc với BC"),
     (22, "[2H13AT22] Tích vô hướng: Cho tọa độ 3 điểm tính tích vô hướng của hai vectơ"),      
+    (52, "[2H13AT52] Tích vô hướng: Cho biểu diễn. Tính tích vô hướng"),  
+    (53, "[2H13AT53] Tích vô hướng: Cho ba vectơ. Tìm khẳng định đúng"), 
+    (54, "[2H13AT54] Tích vô hướng: Cho ba điểm A, B, C. Tìm khẳng định đúng"),     
     (35, "[2H13AV35] Tích vô hướng: Cho vectơ u tìm vectơ v biêt u,v cùng phương và tích vô hướng uv"),                  
     (5, "[2H13AT05] Góc: Tính cosin của góc giữa hai vectơ"),
     (9, "[2H13AT09] Góc: Tìm m để hai vectơ vuông góc"),
@@ -9369,6 +9373,7 @@ dang_p1_b3_c1_hh12 = [
     (46, "[2H13AV46] Ứng dụng: Tìm tọa độ điểm D thỏa mãn diện tích hình thang ABCD=k lần diện tích tam giác ABC"),
     (48, "[2H13AV48] Ứng dụng: Tính chu vi của tam giác"),
     (49, "[2H13AV49] Ứng dụng: Tính chu vi tam giác DBC với D tạo với tam giác ABC một hình bình hành"),
+    (51, "[2H13AV48] Ứng dụng: Cho ba điểm A, B, C. Tính chu vi của tam giác"),
 ]
 
 dang_p2_b3_c1_hh12 = [
