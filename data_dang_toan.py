@@ -9306,6 +9306,8 @@ dang_p2_b2_c1_hh12 = [
     (20, "[2H12BV20] Tổng hợp: Cho ba điểm A, B, C. Tính tọa độ vectơ, trọng tâm, thẳng hàng"),
     (21, "[2H12BV21] Tổng hợp: Cho lăng trụ tam giác ABC.A'B'C'. Tính tọa độ vectơ, hình bình hành"),
     (22, "[2H12BV22] Tổng hợp: Cho ba điểm A, B, C. Tìm trọng tâm, hình bình hành, cùng phương, cosin"),
+    (23, "[2H12BV23] Tổng hợp: Cho hình hộp ABCD.A'B'C'D' với tọa độ các đỉnh. Tìm tọa độ điểm, vectơ"),
+    (24, "[2H12BV24] Tổng hợp: Cho hình hộp ABCD.A'B'C'D' với tọa độ các đỉnh. Tìm tọa độ vectơ"),
     (3, "[2H12BV03] Ứng dụng: Khoảng cách ngắn nhất từ máy bay đến hòn đảo"),
     (4, "[2H12BV04] Ứng dụng: Tọa độ của máy bay"),
     
