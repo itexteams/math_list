@@ -1,6 +1,6 @@
 {
-  "version": 1794101539,
-  "updated_at": "2026-11-08 08:32:19",
+  "version": 1794102914,
+  "updated_at": "2026-11-08 08:55:14",
   "files": {
     "dang10_p1_b1_c1_ds10": "d62ab67a43dc51cc43826e57cbd21a30",
     "dang10_p1_b1_c1_ds11": "26082d0d79cf48ead33cc59e76ffcf6e",
@@ -4381,6 +4381,7 @@
     "dang31_p1_b2_c1_ds11": "e6b1a7a94ebffffc61c9aadbd69b0c0f",
     "dang31_p1_b2_c1_ds12": "aaed27290809a00907fa8d5c6648ef7c",
     "dang31_p1_b2_c1_hh10": "d0c4e580bf1555722aef58ac950e73eb",
+    "dang31_p1_b2_c1_hh12": "27bde83e5c53b3f185bceda27e744fb9",
     "dang31_p1_b2_c2_ds11": "5e103eb8596aeea9076189fd962cb494",
     "dang31_p1_b2_c2_hh11": "ed15c094b136aa7464d78dbb5162414e",
     "dang31_p1_b2_c3_ds10": "bca1aba69846caf75210743a23ff19cf",
@@ -4499,6 +4500,7 @@
     "dang32_p1_b2_c1_ds11": "260abd3336d0bd8e603bf64ccfea6533",
     "dang32_p1_b2_c1_ds12": "d2d31dd834a2b6f939f3c628dc48f12d",
     "dang32_p1_b2_c1_hh10": "c07b056091c9c36fc0871a94f11c97a2",
+    "dang32_p1_b2_c1_hh12": "8db514ba970c9ef2a283ea672f0dddc8",
     "dang32_p1_b2_c2_ds11": "3f8b365de9c496b1bce53feb4939da57",
     "dang32_p1_b2_c2_hh11": "cf434b992fa5893a957adb5acba576f1",
     "dang32_p1_b2_c3_ds10": "bbd597f70181f9513cd105f429f1ec4b",
@@ -4615,6 +4617,7 @@
     "dang33_p1_b2_c1_ds11": "2096178cdac0868a69f647deec5e27ef",
     "dang33_p1_b2_c1_ds12": "492be32ae37277ca7e76ed4b22c98ddc",
     "dang33_p1_b2_c1_hh10": "d36b879298b2dea8eeb0abb7d2ec9236",
+    "dang33_p1_b2_c1_hh12": "f247c53b3ff2bd348caca4fe881b70c5",
     "dang33_p1_b2_c2_ds11": "0bc6d8105d6e9a1618af9ad7f4483346",
     "dang33_p1_b2_c2_hh11": "e5f6266895bf91ca6f94af5f44c2117b",
     "dang33_p1_b2_c3_ds10": "c9715fc5a1348baab3cb5456720a5bad",
