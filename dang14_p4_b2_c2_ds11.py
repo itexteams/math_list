@@ -128,53 +128,62 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang14_p4_b2_c2_ds11(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-                n=symbols('n')
-                lis=[2,3,4,5,6,7,8,9,-2,-3,-4,-5,-6,-7,-8,-9]
-                u1=random.choice(lis)
-                d=random.choice(lis)
-                k=randint(3,10)
-                uk=u1+(k-1)*d
-                h=randint(3,10)
-                while h==k:
-                    h=randint(3,10)
-                uh=u1+(h-1)*d
-                m=randint(2,10)
-                while m==k or m==h:
-                    m=randint(2,10)
-                um=u1+(m-1)*d
-                sm=m*u1+Rational(m*(m-1),2)
+    # Khai báo biến
+    lisdang = ['1']
+    dang = random.choice(lisdang)
+    if dang == '1':
+        lis = [2, 3, 4, 5, 6, 7, 8, 9, -2, -3, -4, -5, -6, -7, -8, -9]
+        u1 = random.choice(lis)
+        d = random.choice(lis)
+        
+        k = randint(3, 10)
+        uk = u1 + (k - 1) * d
+        
+        h = randint(3, 10)
+        while h == k:
+            h = randint(3, 10)
+        uh = u1 + (h - 1) * d
+        
+        m = randint(2, 10)
+        while m == k or m == h:
+            m = randint(2, 10)
+        um = u1 + (m - 1) * d
+        
+        # Sửa lỗi: Cần nhân thêm với công sai d
+        sm = m * u1 + Rational(m * (m - 1), 2) * d
 
-                # Nội dung câu hỏi
-                noidungcauhoi = ('Cho cấp số cộng $(u_n)$ với $u_{%s}=%s$ và $u_{%s}=%s$. Tính tổng $%s$ số hạng đầu của cấp số cộng. '
-                                 % (latex(k), latex(uk), latex(h), latex(uh), latex(m)
-                                    )
-                                 )
+        # Hàm phụ trợ đóng ngoặc khi số âm
+        def fmt_num(val):
+            return f"({latex(val)})" if val < 0 else latex(val)
 
-                # Nội dung lời giải
-                loigiai = ('Theo bài toán ta có hệ phương trình \\\\ \n'
-                        '\\hspace*{1cm} $\\heva{& u_{%s}=%s \\\\& u_{%s}=%s} \\Leftrightarrow \\heva{& u_1+%s d=%s \\\\& u_1+%s d=%s}$ \\\\ \n'
-                        'Giải hệ phương trình ta được $u_1=%s$ và $d=%s$. \\\\ \n'
+        # Nội dung câu hỏi
+        noidungcauhoi = (
+            'Cho cấp số cộng $(u_n)$ với $u_{%s}=%s$ và $u_{%s}=%s$. '
+            'Tính tổng $%s$ số hạng đầu của cấp số cộng.'
+            % (latex(k), latex(uk), latex(h), latex(uh), latex(m))
+        )
 
-                        'Vậy \\\\ \n'
-                        '\\hspace*{1cm} $S_{%s}=%s u_1+\\dfrac{%s(%s-1)}{2} d = %s \\cdot (%s)+\\dfrac{%s(%s-1)}{2} \\cdot (%s)=%s$.'
+        # Nội dung lời giải
+        loigiai = (
+            'Theo bài toán ta có hệ phương trình \\\\ \n'
+            '\\hspace*{1cm} $\\heva{& u_{%s}=%s \\\\& u_{%s}=%s} \\Leftrightarrow \\heva{& u_1+%s d=%s \\\\& u_1+%s d=%s}$ \\\\ \n'
+            'Giải hệ phương trình ta được $u_1=%s$ và $d=%s$. \\\\ \n'
+            'Vậy \\\\ \n'
+            '\\hspace*{1cm} $S_{%s}=%s u_1+\\dfrac{%s(%s-1)}{2} d = %s \\cdot %s+\\dfrac{%s(%s-1)}{2} \\cdot %s=%s$.'
+            % (
+                latex(k), latex(uk), latex(h), latex(uh), latex(k - 1), latex(uk), latex(h - 1), latex(uh),
+                latex(u1), latex(d),
+                latex(m), latex(m), latex(m), latex(m),
+                latex(m), fmt_num(u1), latex(m), latex(m), fmt_num(d), latex(sm)
+            )
+        )
 
-                        %(latex(k),latex(uk),latex(h),latex(uh),latex(k-1),latex(uk),latex(h-1),latex(uh),
-                        latex(u1),latex(d),
-                        latex(m),latex(m),latex(m),latex(m),
-                        latex(m),latex(u1),latex(m),latex(m),latex(d),latex(sm)
-                        ))
-
-
-
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+
-                '\\loigiai{ \n'
-                +str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('.0', '')
-            return content 
+        # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+        content = (
+            '\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+            '\\loigiai{ \n' + str(loigiai) + '}\n'
+            '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('.0', '')
+        
+        return content
 
