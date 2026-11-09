@@ -1,6 +1,6 @@
 {
-  "version": 1794153169,
-  "updated_at": "2026-11-08 22:52:49",
+  "version": 1794193398,
+  "updated_at": "2026-11-09 10:03:18",
   "files": {
     "dang10_p1_b1_c1_ds10": "d62ab67a43dc51cc43826e57cbd21a30",
     "dang10_p1_b1_c1_ds11": "26082d0d79cf48ead33cc59e76ffcf6e",
@@ -3337,6 +3337,7 @@
     "dang25_p2_b2_c1_ds10": "bcc26c4f415dac67204a92fae450d261",
     "dang25_p2_b2_c1_ds12": "f876fd4154377926137a4920a2190a67",
     "dang25_p2_b2_c1_hh10": "46ddb82d253b74502d4cf20aed961f29",
+    "dang25_p2_b2_c1_hh12": "2d30604244eda1f4df0e6eda93db8d8d",
     "dang25_p2_b2_c2_ds10": "dfd0875ddf52b6db731e25a4354f9979",
     "dang25_p2_b2_c3_ds12": "7401a16ac1ebbd7fb71fe1745d806bec",
     "dang25_p2_b2_c4_ds12": "02e4561d9a48cb73d1fa07354b150ad5",
