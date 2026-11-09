@@ -128,118 +128,117 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang15_p1_b2_c1_ds11(self):
+        # Khai báo biến
+        lisdang = ['1']
+        dang = random.choice(lisdang)
 
-            # Khai báo biến
-            # Khai báo biến
-            lisdang = ['1']
-            dang = random.choice(lisdang)
+        if dang == '1':
+            # B1 + B3: Nghiên cứu đề bài và thiết lập tham số random bài toán
+            bo_ba = random.choice([(3, 4, 5), (5, 12, 13)])
+            doi = bo_ba[0]
+            ke = bo_ba[1]
+            huyen = bo_ba[2]
 
-            if dang == '1':
-                # B1 + B3: Nghiên cứu đề bài và thiết lập tham số random bài toán
-                # Sử dụng bộ số Pythagore phổ biến: (3, 4, 5) hoặc (5, 12, 13)
-                bo_ba = random.choice([(3, 4, 5), (5, 12, 13)])
-                doi = bo_ba[0]
-                ke = bo_ba[1]
-                huyen = bo_ba[2]
+            # Chọn ngẫu nhiên khoảng của góc alpha:
+            khoang_alpha = random.choice(['II', 'III'])
 
-                # Chọn ngẫu nhiên khoảng của góc alpha:
-                # Cung phần tư II: (\pi/2; \pi) -> sin dương, cos âm
-                # Cung phần tư III: (\pi; 3\pi/2) -> sin âm, cos âm
-                khoang_alpha = random.choice(['II', 'III'])
+            if khoang_alpha == 'II':
+                sin_alpha = Rational(doi, huyen)
+                cos_alpha = -Rational(ke, huyen)
+                str_khoang = r'\left(\frac{\pi}{2}; \pi\right)'
+                str_cos_giai_thich = r'Do $\alpha \in \left(\frac{\pi}{2}; \pi\right) \Rightarrow \cos \alpha < 0$ nên $\cos \alpha = %s$' % latex(cos_alpha)
+            else:
+                sin_alpha = -Rational(doi, huyen)
+                cos_alpha = -Rational(ke, huyen)
+                str_khoang = r'\left(\pi; \frac{3\pi}{2}\right)'
+                str_cos_giai_thich = r'Do $\alpha \in \left(\pi; \frac{3\pi}{2}\right) \Rightarrow \cos \alpha < 0$ nên $\cos \alpha = %s$' % latex(cos_alpha)
 
-                if khoang_alpha == 'II':
-                    sin_alpha = Rational(doi, huyen)
-                    cos_alpha = -Rational(ke, huyen)
-                    str_khoang = '\\left(\\frac{\\pi}{2}; \\pi\\right)'
-                    str_cos_giai_thich = 'Do $\\alpha \\in \\left(\\frac{\\pi}{2}; \\pi\\right) \\Rightarrow \\cos \\alpha < 0$ nên $\\cos \\alpha = %s$' % latex(cos_alpha)
-                else:
-                    sin_alpha = -Rational(doi, huyen)
-                    cos_alpha = -Rational(ke, huyen)
-                    str_khoang = '\\left(\\pi; \\frac{3\\pi}{2}\\right)'
-                    str_cos_giai_thich = 'Do $\\alpha \\in \\left(\\pi; \\frac{3\\pi}{2}\\right) \\Rightarrow \\cos \\alpha < 0$ nên $\\cos \\alpha = %s$' % latex(cos_alpha)
+            # Chọn góc dạng k*pi/4 với k lẻ
+            k_le = random.choice([17, 19, 21, 23])
+            goc_phi = Rational(k_le, 4)
 
-                # Chọn ngẫu nhiên góc lượng giác dịch chuyển trong biểu thức cos(alpha - phi)
-                # Ta chọn dạng k*pi/4 với k lẻ giống mẫu gốc (ví dụ: 21pi/4, 19pi/4, 23pi/4)
-                k_le = random.choice([17, 19, 21, 23])
-                goc_phi = Rational(k_le, 4)
+            # Tính toán cos(phi) và sin(phi)
+            cos_phi_val = cos(goc_phi * pi)
+            sin_phi_val = sin(goc_phi * pi)
 
-                # Tính toán giá trị cos(k*pi/4) và sin(k*pi/4) bằng SymPy
-                cos_phi_val = cos(goc_phi * pi)
-                sin_phi_val = sin(goc_phi * pi)
+            # Đáp án đúng: cos(alpha - phi) = cos(alpha)*cos(phi) + sin(alpha)*sin(phi)
+            kq_chinh_xac = cos_alpha * cos_phi_val + sin_alpha * sin_phi_val
 
-                # Tính giá trị biểu thức: cos(alpha - phi) = cos(alpha)*cos(phi) + sin(alpha)*sin(phi)
-                kq_chinh_xac = cos_alpha * cos_phi_val + sin_alpha * sin_phi_val
+            # Định dạng chuỗi đáp án đúng
+            da_dung_str = latex(kq_chinh_xac).replace('.', ',')
+            da = '$%s$' % da_dung_str
+            da_chon = da
 
-                # Định dạng chuỗi đáp án đúng
-                da_dung_str = latex(kq_chinh_xac).replace('.', ',')
-                da = '$%s$' % da_dung_str
-                du = [da]
-                da_chon = random.choice(du)
+            # B4: Tạo tập hợp các phương án nhiễu đảm bảo không trùng nhau và không trùng đáp án đúng
+            s_set = set()
+            
+            # Danh sách các lỗi sai điển hình:
+            # 1. Sai dấu toàn bộ
+            # 2. Sai công thức cos(a - b) thành cos a cos b - sin a sin b
+            # 3. Lấy nhầm sin(a - b) = sin a cos b - cos a sin b
+            # 4. Lấy nhầm sin(a + b) = sin a cos b + cos a sin b
+            # 5. Nhầm lẫn dấu của cos_alpha
+            candidates = [
+                -kq_chinh_xac,
+                cos_alpha * cos_phi_val - sin_alpha * sin_phi_val,
+                -(cos_alpha * cos_phi_val - sin_alpha * sin_phi_val),
+                sin_alpha * cos_phi_val - cos_alpha * sin_phi_val,
+                sin_alpha * cos_phi_val + cos_alpha * sin_phi_val,
+                (-cos_alpha) * cos_phi_val + sin_alpha * sin_phi_val,
+                cos_alpha * cos_phi_val + (-sin_alpha) * sin_phi_val
+            ]
 
-                # B4: Điều chỉnh các phương án sai (nhiễu) không trùng đáp án đúng
-                s_set = set()
-                nhiieu_list = [
-                    -kq_chinh_xac, # Sai dấu toàn bộ
-                    cos_alpha * cos_phi_val - sin_alpha * sin_phi_val, # Sai công thức cộng thành trừ
-                    -(cos_alpha * cos_phi_val - sin_alpha * sin_phi_val),
-                    Rational(ke, huyen) * cos_phi_val + sin_alpha * sin_phi_val # Lấy nhầm cos alpha dương
-                ]
+            for item in candidates:
+                p_an = '$%s$' % latex(item).replace('.', ',')
+                if p_an != da:
+                    s_set.add(p_an)
 
-                for item in nhiieu_list:
-                    p_an = '$%s$' % latex(item).replace('.', ',')
-                    if p_an != da:
-                        s_set.add(p_an)
+            # Chọn ngẫu nhiên đúng 3 phương án sai từ tập hợp hợp lệ
+            list_sai = random.sample(list(s_set), 3)
+            das1, das2, das3 = list_sai[0], list_sai[1], list_sai[2]
 
-                list_sai = list(s_set)
-                das1 = list_sai[0]
-                das2 = list_sai[1]
-                das3 = list_sai[2]
+            # Câu hỏi
+            noidungcauhoi = (r'Cho $\sin \alpha = %s, \alpha \in %s$. Giá trị $\cos \left( \alpha - \frac{%s\pi}{4} \right)$ bằng'
+                             % (latex(sin_alpha), str_khoang, latex(k_le)))
 
-                # Câu hỏi
-                noidungcauhoi = ('''Cho $\\sin \\alpha = %s, \\alpha \\in %s$. Giá trị $\\cos \\left( \\alpha - \\frac{%s\\pi}{4} \\right)$ bằng'''
-                                 % (latex(sin_alpha), str_khoang, latex(k_le)))
+            # Các đáp án
+            da_d = r'\True ' + str(da_chon)
+            da_s1 = str(das1)
+            da_s2 = str(das2) 
+            da_s3 = str(das3) 
 
-                # Các đáp án
-                da_d = ('\\True ' + str(da_chon))
-                da_s1 = str(das1)
-                da_s2 = str(das2) 
-                da_s3 = str(das3) 
+            list_1 = [da_d, da_s1, da_s2, da_s3]
+            random.shuffle(list_1)
 
-                list_1 = [da_d, da_s1, da_s2, da_s3]
-                random.shuffle(list_1)
+            # Các bước trung gian phục vụ lời giải chi tiết
+            cos_alpha_binh = r'\frac{%s}{%s}' % (latex(ke**2), latex(huyen**2))
+            cos_tuyet_doi = r'\frac{%s}{%s}' % (latex(ke), latex(huyen))
 
-                # Các bước trung gian phục vụ biểu diễn lời giải chi tiết
-                sin_alpha_binh = '\\frac{%s}{%s}' % (latex(doi**2), latex(huyen**2))
-                cos_alpha_binh = '\\frac{%s}{%s}' % (latex(ke**2), latex(huyen**2))
-                cos_tuyet_doi = '\\frac{%s}{%s}' % (latex(ke), latex(huyen))
+            def format_parentheses(val):
+                str_val = latex(val)
+                if val < 0:
+                    return r'\left(%s\right)' % str_val
+                return str_val
 
-                # Chuỗi hiển thị bước tính tổng cuối cùng
-                # Định dạng chuỗi hiển thị số âm có dấu ngoặc đơn
-                def format_parentheses(val):
-                    str_val = latex(val)
-                    if val < 0:
-                        return '\\left(%s\\right)' % str_val
-                    return str_val
+            loigiai = (r'''Ta có: $\cos^2 \alpha = 1 - \sin^2 \alpha = %s \Leftrightarrow \cos \alpha = \pm %s$. \\
+%s. \\
+Vậy: $\cos \left( \alpha - \frac{%s\pi}{4} \right) = \cos \alpha \cos \frac{%s\pi}{4} + \sin \alpha \sin \frac{%s\pi}{4}$ \\
+= $%s \cdot %s + %s \cdot %s = %s$.'''
+                       % (cos_alpha_binh, cos_tuyet_doi, str_cos_giai_thich, 
+                          latex(k_le), latex(k_le), latex(k_le),
+                          format_parentheses(cos_alpha), format_parentheses(cos_phi_val),
+                          format_parentheses(sin_alpha), format_parentheses(sin_phi_val),
+                          da_dung_str))
 
-                loigiai = ('''Ta có: $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = %s \\Leftrightarrow \\cos \\alpha = \\pm %s$. \\\\
-            %s. \\\\
-            Vậy: $\\cos \\left( \\alpha - \\frac{%s\\pi}{4} \\right) = \\cos \\alpha \\cos \\frac{%s\\pi}{4} + \\sin \\alpha \\sin \\frac{%s\\pi}{4}$ \\\\
-            = $%s \\cdot %s + %s \\cdot %s = %s$.'''
-                           % (cos_alpha_binh, cos_tuyet_doi, str_cos_giai_thich, 
-                              latex(k_le), latex(k_le), latex(k_le),
-                              format_parentheses(cos_alpha), format_parentheses(cos_phi_val),
-                              format_parentheses(sin_alpha), format_parentheses(sin_phi_val),
-                              da_dung_str))
-
-            # Xuất câu trắc nghiệm định dạng minipage TeX
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                       '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
-                       '\\choice \n'
-                       '{' + str(list_1[1]) + '}\n'
-                       '{' + str(list_1[2]) + '}\n'
-                       '{' + str(list_1[3]) + '}\n'
-                       '{' + str(list_1[0]) + '}\n'
-                       '\\loigiai{' + str(loigiai) + '}\n'
-                       '\\end{ex}\n \\end{minipage} \n\n')
-            return content
+        # Xuất câu trắc nghiệm định dạng minipage TeX
+        content = (r'\begin{minipage}{\textwidth}' + '\n'
+                   r'\begin{ex}' + '\n' + str(noidungcauhoi) + '\n'
+                   r'\choice' + '\n'
+                   '{' + str(list_1[0]) + '}\n'
+                   '{' + str(list_1[1]) + '}\n'
+                   '{' + str(list_1[2]) + '}\n'
+                   '{' + str(list_1[3]) + '}\n'
+                   r'\loigiai{' + str(loigiai) + '}\n'
+                   r'\end{ex}' + '\n' + r'\end{minipage}' + '\n\n')
+        return content
 

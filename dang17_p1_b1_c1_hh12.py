@@ -128,61 +128,64 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang17_p1_b1_c1_hh12(self):
-            # Khai báo biến
-            # Khai báo biến
-            lisdang = ['1']
-            dang = random.choice(lisdang)
+        # Khai báo biến
+        lisdang = ['1']
+        dang = random.choice(lisdang)
 
-            if dang == '1':
-                # Tạo danh sách các ký tự có thể dùng cho các đỉnh
-                chars = [chr(i) for i in range(ord('A'), ord('H') + 1)]
-                # Chọn ngẫu nhiên 4 ký tự duy nhất cho các đỉnh của tứ diện
-                dinh = random.sample(chars, 4)
-                A, B, C, D = dinh[0], dinh[1], dinh[2], dinh[3]
+        if dang == '1':
+            # Chọn ngẫu nhiên 4 chữ cái phân biệt cho các đỉnh của tứ diện
+            chars = [chr(i) for i in range(ord('A'), ord('H') + 1)]
+            # Không lấy chữ I, M, N để tránh trùng với tên trung điểm
+            chars = [c for c in chars if c not in ['I', 'M', 'N']]
+            dinh = random.sample(chars, 4)
+            A, B, C, D = dinh[0], dinh[1], dinh[2], dinh[3]
 
-                # Các đáp án trắc nghiệm
-                du = [
-                    f'$\\vec{{G{A}}} + \\vec{{G{B}}} + \\vec{{G{C}}} + \\vec{{G{D}}} = \\vec{{0}}$'
-                ]
-                da = random.choice(du)
+            # Điểm I là trung điểm của MN
+            # Đáp án đúng:
+            da = f'$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} = \\vec{{0}}$'
 
-                # Các đáp án sai, thay đổi một chút để tạo sự khác biệt
-                s = [
-                    f'$\\vec{{G{A}}} + \\vec{{G{B}}} + \\vec{{G{C}}} + \\vec{{G{D}}} \\neq \\vec{{0}}$',
-                    f'$\\vec{{G{A}}} + \\vec{{G{B}}} = \\vec{{0}}$',
-                    f'$\\vec{{G{C}}} + \\vec{{G{D}}} = \\vec{{0}}$',
-                ]
+            # Các đáp án sai (nhiễu)
+            s = [
+                f'$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} \\neq \\vec{{0}}$',
+                f'$\\vec{{I{A}}} + \\vec{{I{B}}} = \\vec{{0}}$',
+                f'$\\vec{{I{C}}} + \\vec{{I{D}}} = \\vec{{0}}$',
+                f'$\\vec{{I{A}}} + \\vec{{I{C}}} = \\vec{{0}}$',
+                f'$\\vec{{I{B}}} + \\vec{{I{D}}} = \\vec{{0}}$'
+            ]
 
-                das1 = random.choice(s)
-                s.remove(das1)
-                das2 = random.choice(s)
-                s.remove(das2)
-                das3 = random.choice(s)
-                # Câu hỏi
-                noidungcauhoi = (f'''Cho tứ diện ${A}{B}{C}{D}$. Gọi $M, N$ lần lượt là trung điểm của $ {A}{B}, {C}{D}$ và $I$ là trung điểm của $MN$. Trong các khẳng định sau, khẳng định nào đúng?''')
-                # Các đáp án
-                da_d = ('\\True ' + str(da))
-                da_s1 = str(das1)
-                da_s2 = str(das2)
-                da_s3 = str(das3)
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d, da_s1, da_s2, da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai = (f'''$M, N, I$ lần lượt là trung điểm của ${A}{B}, {C}{D}, MN$ theo quy tắc trung điểm:
-                $$\\vec{{I{A}}} + \\vec{{I{B}}} = 2\\vec{{IM}}; \\vec{{I{C}}} + \\vec{{I{D}}} = 2\\vec{{IN}}; \\vec{{IM}} + \\vec{{IN}} = \\vec{{0}}.$$
-                Ta có $\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} = 2\\vec{{IM}} + 2\\vec{{IN}} = 2(\\vec{{IM}} + \\vec{{IN}}) = 2\\vec{{0}} = \\vec{{0}}.$''')
+            # Chọn ngẫu nhiên 3 phương án sai đôi một khác nhau
+            sai_duoc_chon = random.sample(s, 3)
+            das1, das2, das3 = sai_duoc_chon[0], sai_duoc_chon[1], sai_duoc_chon[2]
 
+            # Nội dung câu hỏi
+            noidungcauhoi = (f'Cho tứ diện ${A}{B}{C}{D}$. Gọi $M, N$ lần lượt là trung điểm của ${A}{B}, {C}{D}$ và $I$ là trung điểm của $MN$. '
+                             f'Trong các khẳng định sau, khẳng định nào đúng?')
 
-            # Xuất câu trắc nghiệm
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n' + str(noidungcauhoi) +
-                '\\choice \n'
-                '{' + str(list_1[1]) + '}\n'
-                '{' + str(list_1[2]) + '}\n'
-                '{' + str(list_1[3]) + '}\n'
-                '{' + str(list_1[0]) + '}\n'
-                '\\loigiai{' + str(loigiai) + '}\n'
-                '\\end{ex}\n \\end{minipage} \n\n')
-            return content
+            # Các phương án
+            da_d = '\\True ' + str(da)
+            da_s1 = str(das1)
+            da_s2 = str(das2)
+            da_s3 = str(das3)
+
+            # Xáo trộn các phương án
+            list_1 = [da_d, da_s1, da_s2, da_s3]
+            random.shuffle(list_1)
+
+            # Lời giải chi tiết
+            loigiai = (f'$M, N, I$ lần lượt là trung điểm của ${A}{B}, {C}{D}, MN$ nên theo quy tắc trung điểm ta có:\n'
+                       f'$$\\vec{{I{A}}} + \\vec{{I{B}}} = 2\\vec{{IM}}; \\quad \\vec{{I{C}}} + \\vec{{I{D}}} = 2\\vec{{IN}}; \\quad \\vec{{IM}} + \\vec{{IN}} = \\vec{{0}}.$$\n'
+                       f'Suy ra:\n'
+                       f'$$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} = 2\\vec{{IM}} + 2\\vec{{IN}} = 2(\\vec{{IM}} + \\vec{{IN}}) = 2\\vec{{0}} = \\vec{{0}}.$$')
+
+        # Xuất câu trắc nghiệm định dạng minipage TeX
+        content = ('\\begin{minipage}{\\textwidth} \n'
+                   '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+                   '\\choice \n'
+                   '{' + str(list_1[0]) + '}\n'
+                   '{' + str(list_1[1]) + '}\n'
+                   '{' + str(list_1[2]) + '}\n'
+                   '{' + str(list_1[3]) + '}\n'
+                   '\\loigiai{' + str(loigiai) + '}\n'
+                   '\\end{ex}\n\\end{minipage}\n\n')
+        return content
 
