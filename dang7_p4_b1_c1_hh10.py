@@ -128,66 +128,73 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang7_p4_b1_c1_hh10(self):
-            # Khai báo biến
-            lis0=[2,3,4,5,6,7,8,9,-2,-3,-4,-5,-6,-7,-8,-9]
-            m=random.choice(lis0)
-            n=random.choice(lis0)
-            while m>=n:
-                m=random.choice(lis0)
-                n=random.choice(lis0)
+    # Dạng 1: sin a luôn dương trong khoảng (0; 1)
+    # Dạng 2: cos a trong khoảng (-1; 1) khác 0
+    lis = [2, 3, 4, 5, 6, 7, 8, 9, -2, -3, -4, -5, -6, -7, -8, -9]
+    lis_pos = [2, 3, 4, 5, 6, 7, 8, 9]
 
-            goc=Rational(m,n)
+    dang = random.choice(['1', '2'])
 
-            lis=[2,3,4,5,6,7,8,9,-2,-3,-4,-5,-6,-7,-8,-9]
-            a=random.choice(lis)
-            b=random.choice(lis)
-            c=random.choice(lis)
-            d=random.choice(lis)
-            while a*d-b*c==0 or c*goc+d==0 or c+d*goc==0:
-                a=random.choice(lis)
-                b=random.choice(lis)
-                c=random.choice(lis)
-                d=random.choice(lis)
+    if dang == '1':
+        # Đảm bảo 0 < m < n để 0 < sin a < 1
+        m = random.choice(lis_pos)
+        n = random.choice(lis_pos)
+        while m >= n:
+            m = random.choice(lis_pos)
+            n = random.choice(lis_pos)
+        goc = Rational(m, n)
+    else:
+        # Với cos a: -1 < cos a < 1 và khác 0
+        n = random.choice(lis_pos)
+        m = random.choice([x for x in lis if abs(x) < n and x != 0])
+        goc = Rational(m, n)
 
-            kq=Rational(a+b*(1/goc**2-1),c+d*(1/goc**2-1))    
-            kq1=Rational(a*(1/goc**2-1)+b,c*(1/goc**2-1)+d)      
-            lis=['1','2']
-            dang=random.choice(lis)
-            if dang=='1':
-                # Câu hỏi
-                noidungcauhoi=('''Cho $\\sin a = %s$. Tính giá trị biểu thức $P=\\dfrac{%s \\tan a +%s\\cot a}{%s \\tan a +%s \\cot a}$.'''
-                            %(latex(goc),latex(a),latex(b),latex(c),latex(d)
-                                ))
+    # Sinh hệ số a, b, c, d sao cho mẫu khác 0 và biểu thức không suy biến
+    a = random.choice(lis)
+    b = random.choice(lis)
+    c = random.choice(lis)
+    d = random.choice(lis)
+    while a*d - b*c == 0 or c + d*(1/goc**2 - 1) == 0 or c*(1/goc**2 - 1) + d == 0:
+        a = random.choice(lis)
+        b = random.choice(lis)
+        c = random.choice(lis)
+        d = random.choice(lis)
 
-                # Nội dung lời giải
-                loigiai=('Vì $\\sin a = %s$ nên $\\cot a \\ne 0 $, nhân cả tử và mẫu với $\\cot a$ ta có \\\\ \n'
-                        '$P=\\dfrac{%s \\tan a +%s\\cot a}{%s \\tan a +%s \\cot a} =\\dfrac{%s \\tan a \\cot a +%s \\cot a \\cot a}{%s \\tan a \\cot a +%s \\cot a \\cot a} =\\dfrac{%s +%s \\cot^{2}a }{%s +%s \\cot^{2}a}$. \\\\ \n'
-                        '$P=\\dfrac{%s +%s \\left( \\dfrac{1}{\\sin^{2}a} -1 \\right) }{%s +%s \\left( \\dfrac{1}{\\sin^{2}a} -1 \\right)} =\\dfrac{%s +%s \\left( \\dfrac{1}{\\left( %s \\right)^2} -1 \\right) }{%s +%s \\left( \\dfrac{1}{\\left( %s \\right)^2} -1 \\right)}=%s$.'
-                        %(latex(goc), latex(a),latex(b),latex(c),latex(d), latex(a),latex(b),latex(c),latex(d),latex(a),latex(b),latex(c),latex(d),
-                        latex(a),latex(b),latex(c),latex(d),
-                        latex(a),latex(b),latex(goc),latex(c),latex(d),latex(goc),latex(kq)
-                            ))
-            if dang=='2':
-                # Câu hỏi
-                noidungcauhoi=('''Cho $\\cos a = %s$. Tính giá trị biểu thức $P=\\dfrac{%s \\tan a +%s\\cot a}{%s \\tan a +%s \\cot a}$.'''
-                            %(latex(goc),latex(a),latex(b),latex(c),latex(d)
-                                ))
+    kq = Rational(a + b*(1/goc**2 - 1), c + d*(1/goc**2 - 1))    
+    kq1 = Rational(a*(1/goc**2 - 1) + b, c*(1/goc**2 - 1) + d)
 
-                # Nội dung lời giải
-                loigiai=('Vì $\\cos a = %s$ nên $\\tan a \\ne 0 $, nhân cả tử và mẫu với $\\tan a$ ta có \\\\ \n'
-                        '$P=\\dfrac{%s \\tan a +%s\\cot a}{%s \\tan a +%s \\cot a} =\\dfrac{%s \\tan a \\tan a +%s \\cot a \\tan a}{%s \\tan a \\tan a +%s \\cot a \\tan a} =\\dfrac{%s \\tan^{2}a +%s  }{%s \\tan^{2}a +%s}$. \\\\ \n'
-                        '$P=\\dfrac{%s \\left( \\dfrac{1}{\\cos^{2}a} -1 \\right) +%s  }{%s \\left( \\dfrac{1}{\\cos^{2}a} -1 \\right) +%s } =\\dfrac{%s \\left( \\dfrac{1}{\\left( %s \\right)^2} -1 \\right) +%s  }{%s \\left( \\dfrac{1}{\\left( %s \\right)^2} -1 \\right) +%s }=%s$.'
-                        %(latex(goc), latex(a),latex(b),latex(c),latex(d), latex(a),latex(b),latex(c),latex(d),latex(a),latex(b),latex(c),latex(d),
-                        latex(a),latex(b),latex(c),latex(d),
-                        latex(a),latex(goc),latex(b),latex(c),latex(goc), latex(d),latex(kq1)
-                            ))
+    if dang == '1':
+        # Câu hỏi
+        noidungcauhoi = (r'Cho $\sin a = %s$. Tính giá trị biểu thức $P=\dfrac{%s \tan a +%s \cot a}{%s \tan a +%s \cot a}$.'
+                         % (latex(goc), latex(a), latex(b), latex(c), latex(d)))
 
+        # Nội dung lời giải
+        loigiai = (r'Vì $\sin a = %s$ nên $\cot a \ne 0$, nhân cả tử và mẫu với $\cot a$ ta có \\' + '\n'
+                   r'$P=\dfrac{%s \tan a +%s \cot a}{%s \tan a +%s \cot a} =\dfrac{%s \tan a \cot a +%s \cot a \cot a}{%s \tan a \cot a +%s \cot a \cot a} =\dfrac{%s +%s \cot^{2}a}{%s +%s \cot^{2}a}$. \\' + '\n'
+                   r'$P=\dfrac{%s +%s \left( \dfrac{1}{\sin^{2}a} -1 \right)}{%s +%s \left( \dfrac{1}{\sin^{2}a} -1 \right)} =\dfrac{%s +%s \left( \dfrac{1}{\left( %s \right)^2} -1 \right)}{%s +%s \left( \dfrac{1}{\left( %s \right)^2} -1 \right)}=%s$.'
+                   % (latex(goc), latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(goc), latex(c), latex(d), latex(goc), latex(kq)))
+    else:
+        # Câu hỏi
+        noidungcauhoi = (r'Cho $\cos a = %s$. Tính giá trị biểu thức $P=\dfrac{%s \tan a +%s \cot a}{%s \tan a +%s \cot a}$.'
+                         % (latex(goc), latex(a), latex(b), latex(c), latex(d)))
 
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+
-                '\\loigiai{ \n'
-                +str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('-+', '-').replace('--', '+').replace('++', '+')
-            return content
+        # Nội dung lời giải
+        loigiai = (r'Vì $\cos a = %s$ nên $\tan a \ne 0$, nhân cả tử và mẫu với $\tan a$ ta có \\' + '\n'
+                   r'$P=\dfrac{%s \tan a +%s \cot a}{%s \tan a +%s \cot a} =\dfrac{%s \tan a \tan a +%s \cot a \tan a}{%s \tan a \tan a +%s \cot a \tan a} =\dfrac{%s \tan^{2}a +%s}{%s \tan^{2}a +%s}$. \\' + '\n'
+                   r'$P=\dfrac{%s \left( \dfrac{1}{\cos^{2}a} -1 \right) +%s}{%s \left( \dfrac{1}{\cos^{2}a} -1 \right) +%s} =\dfrac{%s \left( \dfrac{1}{\left( %s \right)^2} -1 \right) +%s}{%s \left( \dfrac{1}{\left( %s \right)^2} -1 \right) +%s}=%s$.'
+                   % (latex(goc), latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(b), latex(c), latex(d),
+                      latex(a), latex(goc), latex(b), latex(c), latex(goc), latex(d), latex(kq1)))
+
+    content = ('\\begin{minipage}{\\textwidth} \n'
+               '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+               '\\loigiai{ \n' + str(loigiai) + '}\n'
+               '\\end{ex}\n\\end{minipage}\n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('-+', '-').replace('--', '+').replace('++', '+')
+    return content
 
