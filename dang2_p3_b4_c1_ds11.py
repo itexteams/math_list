@@ -133,7 +133,7 @@ def bt_dang2_p3_b4_c1_ds11(self):
             dang=random.choice(lisdang)
             if dang=='1':
                 x=symbols('x')
-                lis=[1,2,3,4,5,6,7,8,9]
+                lis=[2,3,4,5,6,7,8,9]
                 a=random.choice(lis)
                 lis.remove(a)
                 b=random.choice(lis)

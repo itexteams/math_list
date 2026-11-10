@@ -206,7 +206,7 @@ def bt_dang8_p4_b2_c2_ds11(self):
                 # Nội dung lời giải
                 loigiai = ('Gọi $u_1, u_2, ..., u_n$ lần lượt là số gạch hàng trên cùng, hàng thứ hai,.... Các giá trị này lập thành một cấp số cộng với số hạng đầu $u_1=1$ và công sai $d=1$. \\\\ \n'
                         'Khi đó, tổng số gạch là \\\\ \n'
-                        '\\hspace*{1cm} $S=\\dfrac{%s(%s-1)}{2}=%s$.\\\\ \n'
+                        '\\hspace*{1cm} $S=\\dfrac{%s(%s+1)}{2}=%s$.\\\\ \n'
                         'Vậy số gạch cần dùng để hoàn thành bức tường là $%s$ viên.'
 
                         %(latex(un),latex(un),latex(sn),

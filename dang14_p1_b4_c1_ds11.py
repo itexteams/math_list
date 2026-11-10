@@ -135,19 +135,15 @@ def bt_dang14_p1_b4_c1_ds11(self):
             if dang=='3':
                 x=symbols('x')
 
-                m2=randint(-5,5)
-                n2=randint(-5,5)
-                while n2==0:
-                    n2=randint(-5,5)
+                m2=random.choice([2,3,4,5,-2,-3,-4,-5])
+                n2=random.choice([2,3,4,5,-2,-3,-4,-5])
 
-                m4=randint(-5,5)
-                n4=randint(-5,5)
-                while n4==0:
-                    n4=randint(-5,5)
+                m4=random.choice([2,3,4,5,-2,-3,-4,-5])
+                n4=random.choice([2,3,4,5,-2,-3,-4,-5])
 
                 a=randint(5,9)
                 b=Rational(m2,n2)
-                c=randint(1,4)
+                c=randint(2,4)
                 d=Rational(m4,n4)
 
 

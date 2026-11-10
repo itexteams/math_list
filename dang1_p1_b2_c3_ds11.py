@@ -957,7 +957,7 @@ def bt_dang1_p1_b2_c3_ds11(self):
                 # Nội dung lời giải
                 loigiai=('Áp dụng công thức $x_i=\\dfrac{a_i+a_{i+1}}{2}$ với $i=1,2,3,4,5$, ta có \\\\ \n'
                         'Giá trị đại diện của nhóm $[%s;%s)$ là $%s$.'
-                        %(latex(v+2*k),latex(v+3*k),latex(xe3)
+                        %(latex(v+2*k),latex(v+3*k),latex(x3)
                         ))
 
             if dang=='8':

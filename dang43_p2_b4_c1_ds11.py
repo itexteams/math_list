@@ -128,194 +128,130 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang43_p2_b4_c1_ds11(self):
-            # Khai báo biến
-            # Random hệ số a trong cos(ax) = 0 và hệ số khoảng m trong (0; m*pi)
-            a = random.choice([2, 3, 4])
-            m = random.choice([1, 2])
+        # Khai báo biến
+        # Random hệ số a trong cos(ax) = 0 và hệ số khoảng m trong (0; m*pi)
+        a = random.choice([2, 3, 4])
+        m = random.choice([1, 2])
 
-            # Khai báo biến sympy
-            x = symbols('x')
-            k = symbols('k', integer=True)
+        # Khai báo biến sympy
+        x = symbols('x')
+        k = symbols('k', integer=True)
 
-            # Nội dung câu hỏi
-            if a == 2:
-                noidungcauhoi = ('''Cho phương trình $\\cos 2x = 0$.''')
-            else:
-                noidungcauhoi = ('''Cho phương trình $\\cos %sx = 0$.''' %(a))
+        # Nội dung câu hỏi
+        if a == 2:
+            noidungcauhoi = (r'Cho phương trình $\cos 2x = 0$.')
+        else:
+            noidungcauhoi = (r'Cho phương trình $\cos %sx = 0$.' % (a))
 
-            ########################################################################
-            # Nhận biết ############################################
-            # Các đáp án
-            nb_da_1_d = '\\True $x = %s$ là một nghiệm của phương trình' %(latex(Rational(1, 2*a)*pi))
-            nb_da_1_s = '$x = 0$ là một nghiệm của phương trình'
-            list_nb_da_1 = [nb_da_1_d, nb_da_1_s]
-            nb_da_1 = random.choice(list_nb_da_1)
+        ########################################################################
+        # Nhận biết ############################################
+        nb_da_d = r'\True $x = %s$ là một nghiệm của phương trình' % (latex(Rational(1, 2 * a) * pi))
+        nb_lg_d = r'Thay $x = %s$ vào phương trình ta được $\cos\left(%s \cdot %s\right) = \cos\frac{\pi}{2} = 0$. Do đó $x = %s$ là một nghiệm của phương trình.' % (
+            latex(Rational(1, 2 * a) * pi), a, latex(Rational(1, 2 * a) * pi), latex(Rational(1, 2 * a) * pi)
+        )
 
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_nb_1 = [nb_da_1]
+        nb_da_s = r'$x = 0$ là một nghiệm của phương trình'
+        nb_lg_s = r'Thay $x = 0$ vào phương trình ta được $\cos 0 = 1 \neq 0$, do đó $x = 0$ không phải là nghiệm của phương trình.'
 
-            # Nội dung lời giải
-            loigiai_nb_1 = ('''Thay $x = 0$ vào phương trình ta được $\\cos 0 = 1 \\neq 0$, do đó $x = 0$ không phải là nghiệm của phương trình. Nghiệm đơn giản của phương trình là $x = %s$.''' %(latex(Rational(1, 2*a)*pi)))
+        pair_nb_d = (nb_da_d, nb_lg_d)
+        pair_nb_s = (nb_da_s, nb_lg_s)
 
-            # Đưa các lời giải vào danh sách lời giải
-            list_nb_2 = [loigiai_nb_1]
+        ########################################################################
+        # Thông hiểu ############################################
+        th_da_d = r'\True Nghiệm của phương trình là $x = \frac{\pi}{%s} + \frac{k\pi}{%s}$, với $k \in \mathbb{Z}$' % (2 * a, a)
+        th_lg_d = r'Ta có $\cos %sx = 0 \Leftrightarrow %sx = \frac{\pi}{2} + k\pi \Leftrightarrow x = \frac{\pi}{%s} + \frac{k\pi}{%s}$, với $k \in \mathbb{Z}$.' % (a, a, 2 * a, a)
 
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_nb = list(zip(list_nb_1, list_nb_2))
+        th_da_s = r'Nghiệm của phương trình là $x = \frac{\pi}{%s} + k\pi$, với $k \in \mathbb{Z}$' % (a)
+        th_lg_s = r'Ta có $\cos %sx = 0 \Leftrightarrow %sx = \frac{\pi}{2} + k\pi \Leftrightarrow x = \frac{\pi}{%s} + \frac{k\pi}{%s}$, với $k \in \mathbb{Z}$. Do đó mệnh đề trên là sai.' % (a, a, 2 * a, a)
 
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_nb)
+        pair_th_d = (th_da_d, th_lg_d)
+        pair_th_s = (th_da_s, th_lg_s)
 
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
+        ########################################################################
+        # Vận dụng ############################################
+        if a == 2:
+            vd_da_d = r'\True Phương trình có cùng tập nghiệm với phương trình $\cos^2 x = \frac{1}{2}$'
+            vd_lg_d = r'Ta có $\cos^2 x = \frac{1}{2} \Leftrightarrow \frac{1 + \cos 2x}{2} = \frac{1}{2} \Leftrightarrow \cos 2x = 0$. Do đó hai phương trình có cùng tập nghiệm.'
 
-            ########################################################################
-            # Thông hiểu ############################################
-            # Các đáp án
-            th_da_1_d = '\\True Nghiệm của phương trình là $x = \\frac{\\pi}{%s} + \\frac{k\\pi}{%s}$, với $k \\in \\mathbb{Z}$' %(2*a, a)
-            th_da_1_s = 'Nghiệm của phương trình là $x = \\frac{\\pi}{%s} + k\\pi$, với $k \\in \\mathbb{Z}$' %(a)
-            list_th_da_1 = [th_da_1_d, th_da_1_s]
-            th_da_1 = random.choice(list_th_da_1)
+            vd_da_s = r'Phương trình có cùng tập nghiệm với phương trình $\cos^2 x = 1$'
+            vd_lg_s = r'Ta có $\cos^2 x = 1 \Leftrightarrow \sin^2 x = 0 \Leftrightarrow \sin x = 0 \Leftrightarrow x = k\pi$. Trong khi phương trình $\cos 2x = 0 \Leftrightarrow x = \frac{\pi}{4} + \frac{k\pi}{2}$. Do đó hai phương trình không có cùng tập nghiệm.'
+        elif a == 3:
+            vd_da_d = r'\True Phương trình có cùng tập nghiệm với phương trình $4\cos^3 x - 3\cos x = 0$'
+            vd_lg_d = r'Ta có $4\cos^3 x - 3\cos x = 0 \Leftrightarrow \cos 3x = 0$. Do đó hai phương trình có cùng tập nghiệm.'
 
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_th_1 = [th_da_1]
+            vd_da_s = r'Phương trình có cùng tập nghiệm với phương trình $4\cos^3 x - 3\cos x = 1$'
+            vd_lg_s = r'Ta có $4\cos^3 x - 3\cos x = 1 \Leftrightarrow \cos 3x = 1 \neq 0$. Do đó hai phương trình không có cùng tập nghiệm.'
+        else: # a == 4
+            vd_da_d = r'\True Phương trình có cùng tập nghiệm với phương trình $\cos^2 2x = \frac{1}{2}$'
+            vd_lg_d = r'Ta có $\cos^2 2x = \frac{1}{2} \Leftrightarrow \frac{1 + \cos 4x}{2} = \frac{1}{2} \Leftrightarrow \cos 4x = 0$. Do đó hai phương trình có cùng tập nghiệm.'
 
-            # Nội dung lời giải
-            loigiai_th_1 = ('''Ta có $\\cos %sx = 0 \\Leftrightarrow %sx = \\frac{\\pi}{2} + k\\pi \\Leftrightarrow x = \\frac{\\pi}{%s} + \\frac{k\\pi}{%s}$, với $k \\in \\mathbb{Z}$.''' %(a, a, 2*a, a))
+            vd_da_s = r'Phương trình có cùng tập nghiệm với phương trình $\cos^2 2x = 1$'
+            vd_lg_s = r'Ta có $\cos^2 2x = 1 \Leftrightarrow \sin 2x = 0 \Leftrightarrow 2x = k\pi \Leftrightarrow x = \frac{k\pi}{2}$. Trong khi phương trình $\cos 4x = 0 \Leftrightarrow x = \frac{\pi}{8} + \frac{k\pi}{4}$. Do đó hai phương trình không có cùng tập nghiệm.'
 
-            # Đưa các lời giải vào danh sách lời giải
-            list_th_2 = [loigiai_th_1]
+        pair_vd_d = (vd_da_d, vd_lg_d)
+        pair_vd_s = (vd_da_s, vd_lg_s)
 
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_th = list(zip(list_th_1, list_th_2))
+        ########################################################################
+        # Vận dụng cao ############################################
+        N_true = a * m
+        N_false = N_true // 2 if N_true // 2 > 0 else N_true + 2
 
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_th)
+        if m == 1:
+            interval_str = r'(0; \pi)'
+        else:
+            interval_str = r'(0; %s\pi)' % (m)
 
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
+        vdc_da_d = r'\True Trên $%s$, phương trình có đúng %s nghiệm' % (interval_str, N_true)
+        vdc_lg_d = (r'Nghiệm của phương trình là $x = \frac{\pi}{%s} + \frac{k\pi}{%s}$. \\ '
+                    r'Vì $x \in %s$ nên $0 < \frac{\pi}{%s} + \frac{k\pi}{%s} < %s\pi \Leftrightarrow -\frac{1}{2} < k < %s - \frac{1}{2} \Leftrightarrow -0,5 < k < %s,5$. \\ '
+                    r'Vì $k \in \mathbb{Z}$ nên $k \in \{0; 1; \dots; %s\}$, tổng cộng có %s nghiệm.') % (
+            2 * a, a, interval_str, 2 * a, a, m, a * m, a * m - 1, a * m - 1, N_true
+        )
 
-            ########################################################################
-            # Vận dụng ############################################
-            # Các đáp án tương đương theo giá trị hệ số a
-            if a == 2:
-                vd_da_1_d = '\\True Phương trình có cùng tập nghiệm với phương trình $\\cos^2 x = \\frac{1}{2}$'
-                vd_da_1_s = 'Phương trình có cùng tập nghiệm với phương trình $\\cos^2 x = 1$'
-                loigiai_vd_1 = ('''Ta có $\\cos^2 x = \\frac{1}{2} \\Leftrightarrow \\frac{1 + \\cos 2x}{2} = \\frac{1}{2} \\Leftrightarrow \\cos 2x = 0$. Do đó hai phương trình có cùng tập nghiệm.''')
-            elif a == 3:
-                vd_da_1_d = '\\True Phương trình có cùng tập nghiệm với phương trình $4\\cos^3 x - 3\\cos x = 0$'
-                vd_da_1_s = 'Phương trình có cùng tập nghiệm với phương trình $4\\cos^3 x - 3\\cos x = 1$'
-                loigiai_vd_1 = ('''Ta có $4\\cos^3 x - 3\\cos x = 0 \\Leftrightarrow \\cos 3x = 0$. Do đó hai phương trình có cùng tập nghiệm.''')
-            else:
-                vd_da_1_d = '\\True Phương trình có cùng tập nghiệm với phương trình $\\cos^2 2x = \\frac{1}{2}$'
-                vd_da_1_s = 'Phương trình có cùng tập nghiệm với phương trình $\\cos^2 2x = 1$'
-                loigiai_vd_1 = ('''Ta có $\\cos^2 2x = \\frac{1}{2} \\Leftrightarrow \\frac{1 + \\cos 4x}{2} = \\frac{1}{2} \\Leftrightarrow \\cos 4x = 0$. Do đó hai phương trình có cùng tập nghiệm.''')
+        vdc_da_s = r'Trên $%s$, phương trình có đúng %s nghiệm' % (interval_str, N_false)
+        vdc_lg_s = (r'Nghiệm của phương trình là $x = \frac{\pi}{%s} + \frac{k\pi}{%s}$. \\ '
+                    r'Vì $x \in %s$ nên $0 < \frac{\pi}{%s} + \frac{k\pi}{%s} < %s\pi \Leftrightarrow -0,5 < k < %s,5$. \\ '
+                    r'Vì $k \in \mathbb{Z}$ nên $k \in \{0; 1; \dots; %s\}$, phương trình có đúng %s nghiệm, không phải %s nghiệm.') % (
+            2 * a, a, interval_str, 2 * a, a, m, a * m - 1, a * m - 1, N_true, N_false
+        )
 
-            list_vd_da_1 = [vd_da_1_d, vd_da_1_s]
-            vd_da_1 = random.choice(list_vd_da_1)
+        pair_vdc_d = (vdc_da_d, vdc_lg_d)
+        pair_vdc_s = (vdc_da_s, vdc_lg_s)
 
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_vd_1 = [vd_da_1]
+        # Lặp đến khi số câu đúng thoả mãn từ 1 đến 3 câu
+        while True:
+            sel_nb = random.choice([pair_nb_d, pair_nb_s])
+            sel_th = random.choice([pair_th_d, pair_th_s])
+            sel_vd = random.choice([pair_vd_d, pair_vd_s])
+            sel_vdc = random.choice([pair_vdc_d, pair_vdc_s])
 
-            # Đưa các lời giải vào danh sách lời giải
-            list_vd_2 = [loigiai_vd_1]
+            answers = [sel_nb[0], sel_th[0], sel_vd[0], sel_vdc[0]]
+            true_count = sum(r'\True' in ans for ans in answers)
 
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_vd = list(zip(list_vd_1, list_vd_2))
+            if 1 <= true_count <= 3:
+                break
 
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_vd)
+        # Tách đáp án và lời giải đã ghép cặp chính xác
+        shuffled_answers = [sel_nb[0], sel_th[0], sel_vd[0], sel_vdc[0]]
+        shuffled_solutions = [sel_nb[1], sel_th[1], sel_vd[1], sel_vdc[1]]
 
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
-
-            ########################################################################
-            # Vận dụng cao ############################################
-            # Số nghiệm thực sự là N_true = a * m
-            N_true = a * m
-            N_false = N_true // 2 if N_true // 2 > 0 else N_true + 2
-
-            if m == 1:
-                interval_str = '(0; \\pi)'
-            else:
-                interval_str = '(0; %s\\pi)' %(m)
-
-            vdc_da_1_d = '\\True Trên $%s$, phương trình có đúng %s nghiệm' %(interval_str, N_true)
-            vdc_da_1_s = 'Trên $%s$, phương trình có đúng %s nghiệm' %(interval_str, N_false)
-            list_vdc_da_1 = [vdc_da_1_d, vdc_da_1_s]
-            vdc_da_1 = random.choice(list_vdc_da_1)
-
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_vdc_1 = [vdc_da_1]
-
-            # Nội dung lời giải
-            loigiai_vdc_1 = ('''Nghiệm của phương trình là $x = \\frac{\\pi}{%s} + \\frac{k\\pi}{%s}$. \\\\ Vì $x \\in %s$ nên $0 < \\frac{\\pi}{%s} + \\frac{k\\pi}{%s} < %s\\pi \\Leftrightarrow -\\frac{1}{2} < k < %s - \\frac{1}{2} \\Leftrightarrow -0,5 < k < %s,5$. \\\\ Vì $k \\in \\mathbb{Z}$ nên $k \\in \\{0; 1; \\dots; %s\\}$, tổng cộng có %s nghiệm.''' %(2*a, a, interval_str, 2*a, a, m, a*m, a*m-1, a*m-1, N_true))
-
-            # Đưa các lời giải vào danh sách lời giải
-            list_vdc_2 = [loigiai_vdc_1]
-
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_vdc = list(zip(list_vdc_1, list_vdc_2))
-
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_vdc)
-
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
-
-            def count_true_answers(answers):
-                return sum('\\True' in ans for ans in answers)
-
-            # Lặp đến khi đáp án có từ 1 đến 3 đúng
-            while True:
-                nb_da_1 = random.choice(list_nb_da_1)
-                th_da_1 = random.choice(list_th_da_1)
-                vd_da_1 = random.choice(list_vd_da_1)
-                vdc_da_1 = random.choice(list_vdc_da_1)
-
-                answers = [nb_da_1, th_da_1, vd_da_1, vdc_da_1]
-                true_count = count_true_answers(answers)
-
-                if 1 <= true_count <= 3:
-                    break
-
-            # Gán lại vào list
-            list_nb_1 = [nb_da_1]
-            list_th_1 = [th_da_1]
-            list_vd_1 = [vd_da_1]
-            list_vdc_1 = [vdc_da_1]
-
-            combined_nb = list(zip(list_nb_1, list_nb_2))
-            combined_th = list(zip(list_th_1, list_th_2))
-            combined_vd = list(zip(list_vd_1, list_vd_2))
-            combined_vdc = list(zip(list_vdc_1, list_vdc_2))
-
-            random.shuffle(combined_nb)
-            random.shuffle(combined_th)
-            random.shuffle(combined_vd)
-            random.shuffle(combined_vdc)
-
-            shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
-            shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
-            shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
-            shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
-
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+
-            str(noidungcauhoi)+ 
-                '\\choiceTFn \n'
-                '{'+str(shuffled_answers_nb[0])+'}\n'
-                '{'+str(shuffled_answers_th[0])+'}\n'
-                '{'+str(shuffled_answers_vd[0])+'}\n'
-                '{'+str(shuffled_answers_vdc[0])+'}\n'
-                '\\loigiai{ \n'
-                '\\begin{enumEX}[a)]{1} \n'
-                '\\item '+str(shuffled_solutions_nb[0])+'\n'
-                '\\item '+str(shuffled_solutions_th[0])+'\n'
-                '\\item '+str(shuffled_solutions_vd[0])+'\n'
-                '\\item '+str(shuffled_solutions_vdc[0])+'\n'
-                '\\end{enumEX}} \n'
-                '\\end{ex}\n \\end{minipage}\n\n')
-            return content
+        # Xuất câu hỏi với đáp án và lời giải đã khớp nhau hoàn toàn
+        content = (r'\begin{minipage}{\textwidth} ' + '\n'
+                   r'\begin{ex}' + '\n' +
+                   str(noidungcauhoi) + '\n'
+                   r'\choiceTFn' + '\n'
+                   '{' + str(shuffled_answers[0]) + '}\n'
+                   '{' + str(shuffled_answers[1]) + '}\n'
+                   '{' + str(shuffled_answers[2]) + '}\n'
+                   '{' + str(shuffled_answers[3]) + '}\n'
+                   r'\loigiai{' + '\n'
+                   r'\begin{enumEX}[a)]{1}' + '\n'
+                   r'\item ' + str(shuffled_solutions[0]) + '\n'
+                   r'\item ' + str(shuffled_solutions[1]) + '\n'
+                   r'\item ' + str(shuffled_solutions[2]) + '\n'
+                   r'\item ' + str(shuffled_solutions[3]) + '\n'
+                   r'\end{enumEX}}' + '\n'
+                   r'\end{ex}' + '\n'
+                   r'\end{minipage}' + '\n\n')
+        return content
 

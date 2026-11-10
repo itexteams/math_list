@@ -128,153 +128,251 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang9_p1_b1_c1_ds11(self):
-            # Khai báo biến
-            i=randint(1,100)
-            k=2*i+1
-            lis1=[30*k,-30*k,45*k,-45*k,60*k,-60*k]
-            goc=random.choice(lis1)
-            goc_rad=goc * pi / 180
-            lis=['1','2','3','4','5','6','7','8']
-            dang=random.choice(lis)
+        # Khai báo biến
+        i = randint(1, 100)
+        k = 2 * i + 1
 
-            if dang=='5':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\sin \\left(%s\\right)$ bằng \n'''
-                            %(latex(goc_rad))
-                            )
-                # Các đáp án
-                da_d = '\\True $%s$'%(latex(sin(goc_rad)))
-                da_s1 = '$%s$'%(latex(sin(goc_rad+pi/5)))
-                da_s2 = '$%s$'%(latex(sin(goc_rad+pi/7)))
-                da_s3 = '$%s$'%(latex(sin(goc_rad-pi/9)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\sin \\left(%s\\right)=%s$.'%(latex(goc_rad), latex(sin(goc_rad)))
-                        )
-            if dang=='6':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\cos \\left(%s\\right)$ bằng \n'''
-                            %(latex(goc_rad))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(cos(goc_rad+pi/4)))
-                da_s1 = '\\True $%s$'%(latex(cos(goc_rad)))
-                da_s2 = '$%s$'%(latex(cos(goc_rad+pi/3)))
-                da_s3 = '$%s$'%(latex(cos(goc_rad-pi/6)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\cos \\left(%s\\right)=%s$.'%(latex(goc_rad), latex(cos(goc_rad)))
-                        )
-            if dang=='7':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\tan \\left(%s\\right)$ bằng \n'''
-                            %(latex(goc_rad))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(tan(goc_rad+pi/4)))
-                da_s1 = ' $%s$'%(latex(tan(goc_rad+pi/6)))
-                da_s2 = '\\True $%s$'%(latex(tan(goc_rad)))
-                da_s3 = '$%s$'%(latex(tan(goc_rad-pi/3)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\tan \\left(%s\\right)=%s$.'%(latex(goc_rad), latex(tan(goc_rad)))
-                        )
-            if dang=='8':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\cot \\left(%s\\right)$ bằng \n'''
-                            %(latex(goc_rad))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(cot(goc_rad+pi/4)))
-                da_s1 = ' $%s$'%(latex(cot(goc_rad+pi/3)))
-                da_s2 = ' $%s$'%(latex(cot(goc_rad-pi/6)))
-                da_s3 = '\\True $%s$'%(latex(cot(goc_rad)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\cot \\left(%s\\right)=%s$.'%(latex(goc_rad), latex(cot(goc_rad)))
-                        )
+        lis = ['1', '2', '3', '4', '5', '6', '7', '8']
+        dang = random.choice(lis)
 
-            if dang=='1':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\sin \\left(%s^\\circ \\right)$ bằng \n'''
-                            %(latex(goc))
-                            )
-                # Các đáp án
-                da_d = '\\True $%s$'%(latex(sin(goc_rad)))
-                da_s1 = '$%s$'%(latex(sin(goc_rad+pi/4)))
-                da_s2 = '$%s$'%(latex(sin(goc_rad+pi/3)))
-                da_s3 = '$%s$'%(latex(sin(goc_rad-pi/6)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\sin \\left(%s^\\circ \\right)=%s$.'%(latex(goc), latex(sin(goc_rad)))
-                        )
-            if dang=='2':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\cos \\left(%s^\\circ \\right)$ bằng \n'''
-                            %(latex(goc))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(cos(goc_rad+pi/4)))
-                da_s1 = '\\True $%s$'%(latex(cos(goc_rad)))
-                da_s2 = '$%s$'%(latex(cos(goc_rad+pi/3)))
-                da_s3 = '$%s$'%(latex(cos(goc_rad-pi/6)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\cos \\left(%s^\\circ \\right)=%s$.'%(latex(goc), latex(cos(goc_rad)))
-                        )
-            if dang=='3':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\tan \\left(%s^\\circ \\right)$ bằng \n'''
-                            %(latex(goc))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(tan(goc_rad+pi/4)))
-                da_s1 = ' $%s$'%(latex(tan(goc_rad+pi/6)))
-                da_s2 = '\\True $%s$'%(latex(tan(goc_rad)))
-                da_s3 = '$%s$'%(latex(tan(goc_rad-pi/3)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\tan \\left(%s^\\circ \\right)=%s$.'%(latex(goc), latex(tan(goc_rad)))
-                        )
-            if dang=='4':
-                # Câu hỏi
-                noidungcauhoi=('''Giá trị $\\cot \\left(%s^\\circ \\right)$ bằng \n'''
-                            %(latex(goc))
-                            )
-                # Các đáp án
-                da_d = ' $%s$'%(latex(cot(goc_rad+pi/4)))
-                da_s1 = ' $%s$'%(latex(cot(goc_rad+pi/3)))
-                da_s2 = ' $%s$'%(latex(cot(goc_rad-pi/6)))
-                da_s3 = '\\True $%s$'%(latex(cot(goc_rad)))
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d,da_s1,da_s2,da_s3]
-                random.shuffle(list_1)
-                # Nội dung lời giải
-                loigiai=('Sử dụng máy tính cầm tay ta tính được $\\cot \\left(%s^\\circ \\right)=%s$.'%(latex(goc), latex(cot(goc_rad)))
-                        )
-            # Xuất câu trắc nghiệm
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-                '\\choice \n'
-                '{'+str(list_1[1])+'}\n'
-                '{'+str(list_1[2])+'}\n'
-                '{'+str(list_1[3])+'}\n'
-                '{'+str(list_1[0])+'}\n'
-                '\\loigiai{'+str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac','\\dfrac').replace('=\\tilde{\\infty}','\\text{ là không xác định}').replace('\\tilde{\\infty}','\\text{Không xác định}')
-            return content
+        # Bộ giá trị trắc nghiệm chuẩn cho sin, cos
+        sin_cos_values = [
+            Rational(0, 1),
+            Rational(1, 2), Rational(-1, 2),
+            sqrt(2)/2, -sqrt(2)/2,
+            sqrt(3)/2, -sqrt(3)/2,
+            Rational(1, 1), Rational(-1, 1)
+        ]
+
+        # Bộ giá trị trắc nghiệm chuẩn cho tan, cot
+        tan_cot_values = [
+            Rational(0, 1),
+            sqrt(3)/3, -sqrt(3)/3,
+            Rational(1, 1), Rational(-1, 1),
+            sqrt(3), -sqrt(3)
+        ]
+
+        # -------------------------------------------------------------------------
+        # DẠNG 1: sin(goc_do)
+        # -------------------------------------------------------------------------
+        if dang == '1':
+            lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+            goc = random.choice(lis1)
+            goc_rad = goc * pi / 180
+
+            val_d = sin(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            # Ưu tiên các phương án nhiễu tự nhiên: đổi dấu, cos tương ứng
+            priority_wrongs = [-val_d, cos(goc_rad), -cos(goc_rad)]
+            unique_sai = []
+            for p in priority_wrongs + sin_cos_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\sin \\left({latex(goc)}^\\circ \\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\sin \\left({latex(goc)}^\\circ \\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 2: cos(goc_do)
+        # -------------------------------------------------------------------------
+        elif dang == '2':
+            lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+            goc = random.choice(lis1)
+            goc_rad = goc * pi / 180
+
+            val_d = cos(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, sin(goc_rad), -sin(goc_rad)]
+            unique_sai = []
+            for p in priority_wrongs + sin_cos_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\cos \\left({latex(goc)}^\\circ \\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\cos \\left({latex(goc)}^\\circ \\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 3: tan(goc_do)
+        # -------------------------------------------------------------------------
+        elif dang == '3':
+            # Chọn góc sao cho tan xác định (không đồng dư 90 độ mod 180)
+            while True:
+                lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+                goc = random.choice(lis1)
+                if (goc % 180) != 90 and (goc % 180) != -90:
+                    break
+            goc_rad = goc * pi / 180
+
+            val_d = tan(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, 1/val_d if simplify(val_d) != 0 else Rational(1, 1), -1/val_d if simplify(val_d) != 0 else Rational(-1, 1)]
+            unique_sai = []
+            for p in priority_wrongs + tan_cot_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\tan \\left({latex(goc)}^\\circ \\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\tan \\left({latex(goc)}^\\circ \\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 4: cot(goc_do)
+        # -------------------------------------------------------------------------
+        elif dang == '4':
+            # Chọn góc sao cho cot xác định (không đồng dư 0 độ mod 180)
+            while True:
+                lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+                goc = random.choice(lis1)
+                if (goc % 180) != 0:
+                    break
+            goc_rad = goc * pi / 180
+
+            val_d = cot(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, 1/val_d if simplify(val_d) != 0 else Rational(1, 1), -1/val_d if simplify(val_d) != 0 else Rational(-1, 1)]
+            unique_sai = []
+            for p in priority_wrongs + tan_cot_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\cot \\left({latex(goc)}^\\circ \\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\cot \\left({latex(goc)}^\\circ \\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 5: sin(goc_rad)
+        # -------------------------------------------------------------------------
+        elif dang == '5':
+            lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+            goc = random.choice(lis1)
+            goc_rad = goc * pi / 180
+
+            val_d = sin(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, cos(goc_rad), -cos(goc_rad)]
+            unique_sai = []
+            for p in priority_wrongs + sin_cos_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\sin \\left({latex(goc_rad)}\\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\sin \\left({latex(goc_rad)}\\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 6: cos(goc_rad)
+        # -------------------------------------------------------------------------
+        elif dang == '6':
+            lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+            goc = random.choice(lis1)
+            goc_rad = goc * pi / 180
+
+            val_d = cos(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, sin(goc_rad), -sin(goc_rad)]
+            unique_sai = []
+            for p in priority_wrongs + sin_cos_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\cos \\left({latex(goc_rad)}\\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\cos \\left({latex(goc_rad)}\\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 7: tan(goc_rad)
+        # -------------------------------------------------------------------------
+        elif dang == '7':
+            while True:
+                lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+                goc = random.choice(lis1)
+                if (goc % 180) != 90 and (goc % 180) != -90:
+                    break
+            goc_rad = goc * pi / 180
+
+            val_d = tan(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, 1/val_d if simplify(val_d) != 0 else Rational(1, 1), -1/val_d if simplify(val_d) != 0 else Rational(-1, 1)]
+            unique_sai = []
+            for p in priority_wrongs + tan_cot_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\tan \\left({latex(goc_rad)}\\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\tan \\left({latex(goc_rad)}\\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # DẠNG 8: cot(goc_rad)
+        # -------------------------------------------------------------------------
+        else:
+            while True:
+                lis1 = [30*k, -30*k, 45*k, -45*k, 60*k, -60*k]
+                goc = random.choice(lis1)
+                if (goc % 180) != 0:
+                    break
+            goc_rad = goc * pi / 180
+
+            val_d = cot(goc_rad)
+            da = f'${latex(val_d)}$'
+
+            priority_wrongs = [-val_d, 1/val_d if simplify(val_d) != 0 else Rational(1, 1), -1/val_d if simplify(val_d) != 0 else Rational(-1, 1)]
+            unique_sai = []
+            for p in priority_wrongs + tan_cot_values:
+                if simplify(p - val_d) != 0 and not any(simplify(p - u) == 0 for u in unique_sai):
+                    unique_sai.append(p)
+                if len(unique_sai) == 3:
+                    break
+
+            das1, das2, das3 = [f'${latex(v)}$' for v in unique_sai]
+            noidungcauhoi = f'Giá trị $\\cot \\left({latex(goc_rad)}\\right)$ bằng'
+            loigiai = f'Sử dụng máy tính cầm tay ta tính được $\\cot \\left({latex(goc_rad)}\\right) = {latex(val_d)}$.'
+
+        # -------------------------------------------------------------------------
+        # Đóng gói và xáo trộn các phương án
+        # -------------------------------------------------------------------------
+        da_d = '\\True ' + str(da)
+        da_s1 = str(das1)
+        da_s2 = str(das2)
+        da_s3 = str(das3)
+
+        list_1 = [da_d, da_s1, da_s2, da_s3]
+        random.shuffle(list_1)
+
+        # Xuất câu trắc nghiệm định dạng minipage TeX
+        content = (
+            '\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+            '\\choice \n'
+            '{' + str(list_1[0]) + '}\n'
+            '{' + str(list_1[1]) + '}\n'
+            '{' + str(list_1[2]) + '}\n'
+            '{' + str(list_1[3]) + '}\n'
+            '\\loigiai{' + str(loigiai) + '}\n'
+            '\\end{ex}\n'
+            '\\end{minipage}\n\n' ).replace('\\frac', '\\dfrac')
+        return content
 

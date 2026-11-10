@@ -128,335 +128,333 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang2_p1_b2_c1_ds11(self):
-    # Khai báo biến    
-    lisdang=['1','2','3','4','5','6']
-    dang=random.choice(lisdang)
-    if dang=='6':
-        lisgoc=[30,45,60]
-        a_do=random.choice(lisgoc)
-        a=a_do*pi/180
-        lisgoc.remove(a_do)
-        b_do=random.choice(lisgoc)
-        b=b_do*pi/180
+        # Khai báo biến
+        lisdang = ['1', '2', '3', '4', '5', '6']
+        dang = random.choice(lisdang)
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
-
-        d = ['$%s$'%(latex((tan(a)-tan(b))/(1+tan(a)*tan(b)))),
-            ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex((tan(a)+tan(b))/(i+2+1-tan(a)*tan(b)))),
-            '$%s$'%(latex((tan(a)-tan(b))/(j+1+1-tan(a)*tan(b)))),
-            '$%s$'%(latex((tan(a)+tan(b))/(k+3+1-tan(a)*tan(b)))),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\tan \\left( %s \\right)$ bằng   \n'
-                        %(latex(a-b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
-                'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\tan \\left( %s \\right) = \\tan \\left( %s-%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\dfrac{\\tan %s-\\tan %s}{1+\\tan %s \\tan %s}$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\dfrac{%s-%s}{1+%s \\cdot %s}$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
-
-                %(latex(a-b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(tan(a)),latex(tan(b)),latex(tan(a)),latex(tan(b)),
-                latex((tan(a)-tan(b))/(1+tan(a)*tan(b))),
-                ))
-    if dang=='5':
-        # FIX: Tránh trường hợp tổng 2 góc bằng 90 độ (pi/2) dẫn đến tan vô cực
-        while True:
-            lisgoc=[30,45,60]
-            a_do=random.choice(lisgoc)
-            a=a_do*pi/180
+        # -------------------------------------------------------------------------
+        # DẠNG 1: cos(a + b) = cos(a)cos(b) - sin(a)sin(b)
+        # -------------------------------------------------------------------------
+        if dang == '1':
+            lisgoc = [30, 45, 60, 90]
+            a_do = random.choice(lisgoc)
             lisgoc.remove(a_do)
-            b_do=random.choice(lisgoc)
-            b=b_do*pi/180
-            if a_do + b_do != 90:
-                break
+            b_do = random.choice(lisgoc)
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
+            a, b = a_do * pi / 180, b_do * pi / 180
 
-        d = ['$%s$'%(latex((tan(a)+tan(b))/(1-tan(a)*tan(b)))),
+            # Giá trị đúng
+            val_d = cos(a + b)
+            da = f'${latex(val_d)}$'
+
+            # Các giá trị sai điển hình do nhầm công thức:
+            # 1. Nhầm dấu công thức cos: cos(a)cos(b) + sin(a)sin(b) = cos(a-b)
+            # 2. Nhầm sang công thức sin tổng: sin(a+b)
+            # 3. Nhầm sang công thức sin hiệu: sin(a-b)
+            # 4. Đổi dấu kết quả đúng
+            # 5. Các giá trị đối xứng/lệch dấu khác
+            sai_candidates = [
+                cos(a - b),
+                sin(a + b),
+                sin(a - b),
+                -val_d,
+                -cos(a - b),
+                cos(a) * cos(b)
             ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex((tan(a)+tan(b))/(i+2+1-tan(a)*tan(b)))),
-            '$%s$'%(latex((tan(a)+tan(b))/(j+1+1-tan(a)*tan(b)))),
-            '$%s$'%(latex((tan(a)+tan(b))/(k+3+1-tan(a)*tan(b)))),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\tan \\left( %s \\right)$ bằng   \n'
-                        %(latex(a+b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
+
+            # Lọc phân biệt và khác đáp án đúng
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            # Dự phòng nếu thiếu
+            delta = Rational(1, 2)
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + Rational(1, 2)
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\cos \\left( {latex(a+b)} \\right)$ bằng'
+
+            loigiai = (
                 'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\tan \\left( %s \\right) = \\tan \\left( %s+%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\dfrac{\\tan %s+\\tan %s}{1-\\tan %s \\tan %s}$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\dfrac{%s+%s}{1-%s \\cdot %s}$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
+                f'\\hspace*{{1cm}} $\\cos \\left( {latex(a+b)} \\right) = \\cos \\left( {latex(a)}+{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\cos {latex(a)} \\cos {latex(b)} - \\sin {latex(a)} \\sin {latex(b)}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(cos(a))} \\cdot {latex(cos(b))} - {latex(sin(a))} \\cdot {latex(sin(b))}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
 
-                %(latex(a+b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(tan(a)),latex(tan(b)),latex(tan(a)),latex(tan(b)),
-                latex((tan(a)+tan(b))/(1-tan(a)*tan(b))),
-                ))
-    if dang=='4':
-        lisgoc=[30,45,60,90]
-        a_do=random.choice(lisgoc)
-        a=a_do*pi/180
-        lisgoc.remove(a_do)
-        b_do=random.choice(lisgoc)
-        b=b_do*pi/180
+        # -------------------------------------------------------------------------
+        # DẠNG 2: cos(a - b) = cos(a)cos(b) + sin(a)sin(b)
+        # -------------------------------------------------------------------------
+        elif dang == '2':
+            lisgoc = [30, 45, 60, 90]
+            a_do = random.choice(lisgoc)
+            lisgoc.remove(a_do)
+            b_do = random.choice(lisgoc)
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
+            a, b = a_do * pi / 180, b_do * pi / 180
 
-        d = ['$%s$'%(latex(sin(a)*cos(b)-cos(a)*sin(b))),
+            val_d = cos(a - b)
+            da = f'${latex(val_d)}$'
+
+            sai_candidates = [
+                cos(a + b),
+                sin(a - b),
+                sin(a + b),
+                -val_d,
+                -cos(a + b),
+                sin(a) * sin(b)
             ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex(sin(a)*cos(b)-cos(a)*sin(b)*i)),
-            '$%s$'%(latex(sin(a)*cos(b)-cos(a)*sin(b)*j)),
-            '$%s$'%(latex(sin(a)*cos(b)-cos(a)*sin(b)*k)),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\sin \\left( %s \\right)$ bằng   \n'
-                        %(latex(a-b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
+
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            delta = Rational(1, 2)
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + Rational(1, 2)
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\cos \\left( {latex(a-b)} \\right)$ bằng'
+
+            loigiai = (
                 'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\sin \\left( %s \\right) = \\sin \\left( %s-%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\sin %s \\cos %s - \\cos %s \\sin %s$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s \\cdot %s - %s \\cdot %s $\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
+                f'\\hspace*{{1cm}} $\\cos \\left( {latex(a-b)} \\right) = \\cos \\left( {latex(a)}-{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\cos {latex(a)} \\cos {latex(b)} + \\sin {latex(a)} \\sin {latex(b)}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(cos(a))} \\cdot {latex(cos(b))} + {latex(sin(a))} \\cdot {latex(sin(b))}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
 
-                %(latex(a-b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(sin(a)),latex(cos(b)),latex(cos(a)),latex(sin(b)),
-                latex(sin(a)*cos(b)-cos(a)*sin(b))
-                ))
-    if dang=='3':
-        lisgoc=[30,45,60,90]
-        a_do=random.choice(lisgoc)
-        a=a_do*pi/180
-        lisgoc.remove(a_do)
-        b_do=random.choice(lisgoc)
-        b=b_do*pi/180
+        # -------------------------------------------------------------------------
+        # DẠNG 3: sin(a + b) = sin(a)cos(b) + cos(a)sin(b)
+        # -------------------------------------------------------------------------
+        elif dang == '3':
+            lisgoc = [30, 45, 60, 90]
+            a_do = random.choice(lisgoc)
+            lisgoc.remove(a_do)
+            b_do = random.choice(lisgoc)
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
+            a, b = a_do * pi / 180, b_do * pi / 180
 
-        d = ['$%s$'%(latex(sin(a)*cos(b)+cos(a)*sin(b))),
+            val_d = sin(a + b)
+            da = f'${latex(val_d)}$'
+
+            sai_candidates = [
+                sin(a - b),
+                cos(a + b),
+                cos(a - b),
+                -val_d,
+                -sin(a - b),
+                sin(a) * cos(b)
             ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex(sin(a)*cos(b)+cos(a)*sin(b)*i)),
-            '$%s$'%(latex(sin(a)*cos(b)+cos(a)*sin(b)*j)),
-            '$%s$'%(latex(sin(a)*cos(b)+cos(a)*sin(b)*k)),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\sin \\left( %s \\right)$ bằng   \n'
-                        %(latex(a+b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
+
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            delta = Rational(1, 2)
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + Rational(1, 2)
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\sin \\left( {latex(a+b)} \\right)$ bằng'
+
+            loigiai = (
                 'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\sin \\left( %s \\right) = \\sin \\left( %s+%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\sin %s \\cos %s + \\cos %s \\sin %s$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s \\cdot %s + %s \\cdot %s $\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
+                f'\\hspace*{{1cm}} $\\sin \\left( {latex(a+b)} \\right) = \\sin \\left( {latex(a)}+{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\sin {latex(a)} \\cos {latex(b)} + \\cos {latex(a)} \\sin {latex(b)}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(sin(a))} \\cdot {latex(cos(b))} + {latex(cos(a))} \\cdot {latex(sin(b))}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
 
-                %(latex(a+b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(sin(a)),latex(cos(b)),latex(cos(a)),latex(sin(b)),
-                latex(sin(a)*cos(b)+cos(a)*sin(b))
-                ))
-    if dang=='2':
-        lisgoc=[30,45,60,90]
-        a_do=random.choice(lisgoc)
-        a=a_do*pi/180
-        lisgoc.remove(a_do)
-        b_do=random.choice(lisgoc)
-        b=b_do*pi/180
+        # -------------------------------------------------------------------------
+        # DẠNG 4: sin(a - b) = sin(a)cos(b) - cos(a)sin(b)
+        # -------------------------------------------------------------------------
+        elif dang == '4':
+            lisgoc = [30, 45, 60, 90]
+            a_do = random.choice(lisgoc)
+            lisgoc.remove(a_do)
+            b_do = random.choice(lisgoc)
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
+            a, b = a_do * pi / 180, b_do * pi / 180
 
-        d = ['$%s$'%(latex(cos(a)*cos(b)+sin(a)*sin(b))),
+            val_d = sin(a - b)
+            da = f'${latex(val_d)}$'
+
+            sai_candidates = [
+                sin(a + b),
+                cos(a - b),
+                cos(a + b),
+                -val_d,
+                -sin(a + b),
+                cos(a) * sin(b)
             ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex(cos(a)*cos(b)+sin(a)*sin(b)*i)),
-            '$%s$'%(latex(cos(a)*cos(b)+sin(a)*sin(b)*j)),
-            '$%s$'%(latex(cos(a)*cos(b)+sin(a)*sin(b)*k)),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\cos \\left( %s \\right)$ bằng   \n'
-                        %(latex(a-b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
+
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            delta = Rational(1, 2)
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + Rational(1, 2)
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\sin \\left( {latex(a-b)} \\right)$ bằng'
+
+            loigiai = (
                 'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\cos \\left( %s \\right) = \\cos \\left( %s-%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\cos %s \\cos %s + \\sin %s \\sin %s$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s \\cdot %s + %s \\cdot %s $\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
+                f'\\hspace*{{1cm}} $\\sin \\left( {latex(a-b)} \\right) = \\sin \\left( {latex(a)}-{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\sin {latex(a)} \\cos {latex(b)} - \\cos {latex(a)} \\sin {latex(b)}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(sin(a))} \\cdot {latex(cos(b))} - {latex(cos(a))} \\cdot {latex(sin(b))}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
 
-                %(latex(a-b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(cos(a)),latex(cos(b)),latex(sin(a)),latex(sin(b)),
-                latex(cos(a)*cos(b)+sin(a)*sin(b))
-                ))
-    if dang=='1':
-        lisgoc=[30,45,60,90]
-        a_do=random.choice(lisgoc)
-        a=a_do*pi/180
-        lisgoc.remove(a_do)
-        b_do=random.choice(lisgoc)
-        b=b_do*pi/180
+        # -------------------------------------------------------------------------
+        # DẠNG 5: tan(a + b) = (tan a + tan b) / (1 - tan a * tan b)
+        # -------------------------------------------------------------------------
+        elif dang == '5':
+            while True:
+                lisgoc = [30, 45, 60]
+                a_do = random.choice(lisgoc)
+                lisgoc.remove(a_do)
+                b_do = random.choice(lisgoc)
+                if a_do + b_do != 90:  # Tránh tan(90) không xác định
+                    break
 
-        lisrd=[-5,-4,-3,-2,2,3,4,5]
-        i=random.choice(lisrd)
-        lisrd.remove(i)
-        j=random.choice(lisrd)
-        lisrd.remove(j)
-        k=random.choice(lisrd)
+            a, b = a_do * pi / 180, b_do * pi / 180
 
-        d = ['$%s$'%(latex(cos(a)*cos(b)-sin(a)*sin(b))),
-            ]
-        da= random.choice(d)
-        s = ['$%s$'%(latex(cos(a)*cos(b)-sin(a)*sin(b)*i)),
-            '$%s$'%(latex(cos(a)*cos(b)-sin(a)*sin(b)*j)),
-            '$%s$'%(latex(cos(a)*cos(b)-sin(a)*sin(b)*k)),
-            ]
-        das1 = random.choice(s)
-        s.remove(das1)
-        das2 = random.choice(s)
-        s.remove(das2)
-        das3 = random.choice(s)
-        # Câu hỏi
-        noidungcauhoi = ('Giá trị $\\cos \\left( %s \\right)$ bằng   \n'
-                        %(latex(a+b)
-                        ))
-        # Các đáp án
-        da_d = ('\\True ' +str(da))
-        da_s1 = str(das1)
-        da_s2 = str(das2) 
-        da_s3 = str(das3) 
-        # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-        list_1 = [da_d,da_s1,da_s2,da_s3]
-        random.shuffle(list_1)
-        # Nội dung lời giải
-        loigiai=(
+            val_d = (tan(a) + tan(b)) / (1 - tan(a) * tan(b))
+            da = f'${latex(val_d)}$'
+
+            # Sai do nhầm dấu tử/mẫu hoặc đảo tỉ số
+            s1 = (tan(a) - tan(b)) / (1 + tan(a) * tan(b))  # tan(a - b)
+            s2 = (tan(a) + tan(b)) / (1 + tan(a) * tan(b))  # nhầm dấu mẫu
+            s3 = (tan(a) - tan(b)) / (1 - tan(a) * tan(b))  # nhầm dấu tử
+            s4 = -val_d
+            s5 = 1 / val_d
+
+            sai_candidates = [s1, s2, s3, s4, s5]
+
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            delta = 1
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + 1
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\tan \\left( {latex(a+b)} \\right)$ bằng'
+
+            loigiai = (
                 'Ta có \\\\ \n'
-                '\\hspace*{1cm} $\\cos \\left( %s \\right) = \\cos \\left( %s+%s \\right)$\\\\ \n'
-                '\\hspace*{2.35cm} $= \\cos %s \\cos %s - \\sin %s \\sin %s$\\\\ \n'
-                '\\hspace*{2.35cm} $= %s \\cdot %s - %s \\cdot %s $\\\\ \n'
-                '\\hspace*{2.35cm} $= %s$.\\\\ \n'
+                f'\\hspace*{{1cm}} $\\tan \\left( {latex(a+b)} \\right) = \\tan \\left( {latex(a)}+{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\dfrac{{\\tan {latex(a)}+\\tan {latex(b)}}}{{1-\\tan {latex(a)} \\tan {latex(b)}}}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\dfrac{{{latex(tan(a))}+{latex(tan(b))}}}{{1-{latex(tan(a))} \\cdot {latex(tan(b))}}}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
 
-                %(latex(a+b),latex(a),latex(b),
-                latex(a),latex(b),latex(a),latex(b),
-                latex(cos(a)),latex(cos(b)),latex(sin(a)),latex(sin(b)),
-                latex(cos(a)*cos(b)-sin(a)*sin(b))
-                ))
+        # -------------------------------------------------------------------------
+        # DẠNG 6: tan(a - b) = (tan a - tan b) / (1 + tan a * tan b)
+        # -------------------------------------------------------------------------
+        else:
+            lisgoc = [30, 45, 60]
+            a_do = random.choice(lisgoc)
+            lisgoc.remove(a_do)
+            b_do = random.choice(lisgoc)
 
-    # Xuất câu trắc nghiệm
-    content = ('\\begin{minipage}{\\textwidth} \n'
-        '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-        '\\choice \n'
-        '{'+str(list_1[1])+'}\n'
-        '{'+str(list_1[2])+'}\n'
-        '{'+str(list_1[3])+'}\n'
-        '{'+str(list_1[0])+'}\n'
-        '\\loigiai{'+str(loigiai)+'}\n'
-        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
-    return content
+            a, b = a_do * pi / 180, b_do * pi / 180
+
+            val_d = (tan(a) - tan(b)) / (1 + tan(a) * tan(b))
+            da = f'${latex(val_d)}$'
+
+            # Sai do nhầm dấu:
+            s1 = (tan(a) + tan(b)) / (1 - tan(a) * tan(b)) if (a_do + b_do != 90) else -val_d  # tan(a + b)
+            s2 = (tan(a) - tan(b)) / (1 - tan(a) * tan(b))  # nhầm dấu mẫu
+            s3 = (tan(a) + tan(b)) / (1 + tan(a) * tan(b))  # nhầm dấu tử
+            s4 = -val_d
+            s5 = 1 / val_d
+
+            sai_candidates = [s1, s2, s3, s4, s5]
+
+            unique_sai = []
+            for s_val in sai_candidates:
+                if simplify(s_val - val_d) != 0 and not any(simplify(s_val - u) == 0 for u in unique_sai):
+                    unique_sai.append(s_val)
+
+            delta = 1
+            while len(unique_sai) < 3:
+                cand = val_d + delta
+                if simplify(cand - val_d) != 0 and not any(simplify(cand - u) == 0 for u in unique_sai):
+                    unique_sai.append(cand)
+                delta = -delta if delta > 0 else -delta + 1
+
+            selected_sai = unique_sai[:3]
+            das1, das2, das3 = [f'${latex(v)}$' for v in selected_sai]
+
+            noidungcauhoi = f'Giá trị $\\tan \\left( {latex(a-b)} \\right)$ bằng'
+
+            loigiai = (
+                'Ta có \\\\ \n'
+                f'\\hspace*{{1cm}} $\\tan \\left( {latex(a-b)} \\right) = \\tan \\left( {latex(a)}-{latex(b)} \\right)$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\dfrac{{\\tan {latex(a)}-\\tan {latex(b)}}}{{1+\\tan {latex(a)} \\tan {latex(b)}}}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= \\dfrac{{{latex(tan(a))}-{latex(tan(b))}}}{{1+{latex(tan(a))} \\cdot {latex(tan(b))}}}$\\\\ \n'
+                f'\\hspace*{{2.35cm}} $= {latex(val_d)}$.'
+            )
+
+        # -------------------------------------------------------------------------
+        # Đóng gói và xáo trộn đáp án
+        # -------------------------------------------------------------------------
+        da_d = '\\True ' + str(da)
+        da_s1 = str(das1)
+        da_s2 = str(das2)
+        da_s3 = str(das3)
+
+        list_1 = [da_d, da_s1, da_s2, da_s3]
+        random.shuffle(list_1)
+
+        # Xuất câu trắc nghiệm
+        content = (
+            '\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+            '\\choice \n'
+            '{' + str(list_1[0]) + '}\n'
+            '{' + str(list_1[1]) + '}\n'
+            '{' + str(list_1[2]) + '}\n'
+            '{' + str(list_1[3]) + '}\n'
+            '\\loigiai{' + str(loigiai) + '}\n'
+            '\\end{ex}\n'
+            '\\end{minipage}\n\n').replace('\\frac', '\\dfrac')
+
+        return content
 

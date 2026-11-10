@@ -135,55 +135,59 @@ def bt_dang14_p4_b2_c2_ds11(self):
         lis = [2, 3, 4, 5, 6, 7, 8, 9, -2, -3, -4, -5, -6, -7, -8, -9]
         u1 = random.choice(lis)
         d = random.choice(lis)
-        
+
+        # Chọn chỉ số k và h khác nhau
         k = randint(3, 10)
         uk = u1 + (k - 1) * d
-        
+
         h = randint(3, 10)
         while h == k:
             h = randint(3, 10)
         uh = u1 + (h - 1) * d
-        
+
+        # Chọn số lượng số hạng m cần tính tổng
         m = randint(2, 10)
         while m == k or m == h:
             m = randint(2, 10)
-        um = u1 + (m - 1) * d
-        
-        # Sửa lỗi: Cần nhân thêm với công sai d
+
+        # Công thức tính tổng m số hạng đầu: S_m = m*u1 + [m*(m-1)/2]*d
         sm = m * u1 + Rational(m * (m - 1), 2) * d
 
-        # Hàm phụ trợ đóng ngoặc khi số âm
+        # Hàm phụ trợ đóng ngoặc khi giá trị âm
         def fmt_num(val):
             return f"({latex(val)})" if val < 0 else latex(val)
 
+        # Định dạng hiển thị d trong phương trình u1 + (k-1)d
+        def fmt_term(coef):
+            if coef == 1:
+                return "d"
+            elif coef == -1:
+                return "-d"
+            return f"{coef}d"
+
         # Nội dung câu hỏi
         noidungcauhoi = (
-            'Cho cấp số cộng $(u_n)$ với $u_{%s}=%s$ và $u_{%s}=%s$. '
-            'Tính tổng $%s$ số hạng đầu của cấp số cộng.'
-            % (latex(k), latex(uk), latex(h), latex(uh), latex(m))
+            f"Cho cấp số cộng $(u_n)$ với $u_{{{k}}}={uk}$ và $u_{{{h}}}={uh}$. "
+            f"Tính tổng ${m}$ số hạng đầu của cấp số cộng."
         )
 
         # Nội dung lời giải
         loigiai = (
-            'Theo bài toán ta có hệ phương trình \\\\ \n'
-            '\\hspace*{1cm} $\\heva{& u_{%s}=%s \\\\& u_{%s}=%s} \\Leftrightarrow \\heva{& u_1+%s d=%s \\\\& u_1+%s d=%s}$ \\\\ \n'
-            'Giải hệ phương trình ta được $u_1=%s$ và $d=%s$. \\\\ \n'
-            'Vậy \\\\ \n'
-            '\\hspace*{1cm} $S_{%s}=%s u_1+\\dfrac{%s(%s-1)}{2} d = %s \\cdot %s+\\dfrac{%s(%s-1)}{2} \\cdot %s=%s$.'
-            % (
-                latex(k), latex(uk), latex(h), latex(uh), latex(k - 1), latex(uk), latex(h - 1), latex(uh),
-                latex(u1), latex(d),
-                latex(m), latex(m), latex(m), latex(m),
-                latex(m), fmt_num(u1), latex(m), latex(m), fmt_num(d), latex(sm)
-            )
+            "Theo bài toán ta có hệ phương trình \\\\ \n"
+            f"\\hspace*{{1cm}} $\\heva{{& u_{{{k}}}={uk} \\\\& u_{{{h}}}={uh}}} "
+            f"\\Leftrightarrow \\heva{{& u_1+{fmt_term(k - 1)}={uk} \\\\& u_1+{fmt_term(h - 1)}={uh}}}$ \\\\ \n"
+            f"Giải hệ phương trình ta được $u_1={latex(u1)}$ và $d={latex(d)}$. \\\\ \n"
+            "Vậy \\\\ \n"
+            f"\\hspace*{{1cm}} $S_{{{m}}}={m}u_1+\\dfrac{{{m}({m}-1)}}{{2}}d "
+            f"= {m} \\cdot {fmt_num(u1)}+\\dfrac{{{m}({m}-1)}}{{2}} \\cdot {fmt_num(d)} = {latex(sm)}$."
         )
 
-        # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
+        # Xuất câu hỏi với môi trường ex và loigiai
         content = (
-            '\\begin{minipage}{\\textwidth} \n'
-            '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
-            '\\loigiai{ \n' + str(loigiai) + '}\n'
-            '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-').replace('.0', '')
-        
+            "\\begin{minipage}{\\textwidth} \n"
+            "\\begin{ex}\n" + str(noidungcauhoi) + "\n"
+            "\\loigiai{ \n" + str(loigiai) + "\n}\n"
+            "\\end{ex}\n"
+            "\\end{minipage} \n\n" )
         return content
 

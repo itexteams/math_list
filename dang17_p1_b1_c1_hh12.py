@@ -133,29 +133,17 @@ def bt_dang17_p1_b1_c1_hh12(self):
         dang = random.choice(lisdang)
 
         if dang == '1':
-            # Chọn ngẫu nhiên 4 chữ cái phân biệt cho các đỉnh của tứ diện
-            chars = [chr(i) for i in range(ord('A'), ord('H') + 1)]
-            # Không lấy chữ I, M, N để tránh trùng với tên trung điểm
-            chars = [c for c in chars if c not in ['I', 'M', 'N']]
-            dinh = random.sample(chars, 4)
-            A, B, C, D = dinh[0], dinh[1], dinh[2], dinh[3]
+            # Cố định tứ diện ABCD
+            A, B, C, D = 'A', 'B', 'C', 'D'
 
-            # Điểm I là trung điểm của MN
             # Đáp án đúng:
             da = f'$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} = \\vec{{0}}$'
 
-            # Các đáp án sai (nhiễu)
-            s = [
-                f'$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} \\neq \\vec{{0}}$',
-                f'$\\vec{{I{A}}} + \\vec{{I{B}}} = \\vec{{0}}$',
-                f'$\\vec{{I{C}}} + \\vec{{I{D}}} = \\vec{{0}}$',
-                f'$\\vec{{I{A}}} + \\vec{{I{C}}} = \\vec{{0}}$',
-                f'$\\vec{{I{B}}} + \\vec{{I{D}}} = \\vec{{0}}$'
-            ]
-
-            # Chọn ngẫu nhiên 3 phương án sai đôi một khác nhau
-            sai_duoc_chon = random.sample(s, 3)
-            das1, das2, das3 = sai_duoc_chon[0], sai_duoc_chon[1], sai_duoc_chon[2]
+            # Bộ 3 phương án sai cố định, phân biệt và bám sát dạng đề bài
+            # Phủ định mệnh đề đúng hoặc các hệ thức sai thường gặp
+            das1 = f'$\\vec{{I{A}}} + \\vec{{I{B}}} + \\vec{{I{C}}} + \\vec{{I{D}}} \\ne \\vec{{0}}$'
+            das2 = f'$\\vec{{I{A}}} + \\vec{{I{B}}} = \\vec{{0}}$'
+            das3 = f'$\\vec{{I{C}}} + \\vec{{I{D}}} = \\vec{{0}}$'
 
             # Nội dung câu hỏi
             noidungcauhoi = (f'Cho tứ diện ${A}{B}{C}{D}$. Gọi $M, N$ lần lượt là trung điểm của ${A}{B}, {C}{D}$ và $I$ là trung điểm của $MN$. '
@@ -167,7 +155,7 @@ def bt_dang17_p1_b1_c1_hh12(self):
             da_s2 = str(das2)
             da_s3 = str(das3)
 
-            # Xáo trộn các phương án
+            # Xáo trộn vị trí các phương án A, B, C, D
             list_1 = [da_d, da_s1, da_s2, da_s3]
             random.shuffle(list_1)
 

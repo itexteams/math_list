@@ -178,7 +178,7 @@ def bt_dang4_p1_b1_c1_hh12(self):
                     '$\\overrightarrow{SA}$ và $\\overrightarrow{BN}$ có giá cùng nằm trong một mặt phẳng',
                     '$\\overrightarrow{SC}$ và $\\overrightarrow{DM}$ có giá cùng nằm trong một mặt phẳng',
                     '$\\overrightarrow{SD}$ và $\\overrightarrow{AM}$ có giá cùng nằm trong một mặt phẳng',
-                    '$\\overrightarrow{SO}$ và $\\overrightarrow{MN}$ có giá cùng nằm trong một mặt phẳng',
+                    '$\\overrightarrow{SO}$ và $\\overrightarrow{MN}$ không đồng phẳng phẳng',
                     ]
                 das1 = random.choice(s)
                 s.remove(das1)
