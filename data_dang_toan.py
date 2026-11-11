@@ -6565,6 +6565,15 @@ dang_p4_b2_c1_hh11 = [
     (1, "[1H12DV01] Tỉ số: Cho hình chóp. Tìm tỉ số của hai đoạn thẳng"),
     (2, "[1H12DV02] Tỉ số: Cho hình chóp với các đoạn tỉ lệ. Tìm tỉ số của hai đoạn thẳng"),
     (3, "[1H12DV03] Tỉ số: Cho hình chóp với trung điểm P, Q. Tìm tỉ số của hai đoạn thẳng"),
+    (4, "[1H12DV04] Tổng hợp: Cho hình chóp đáy là hình bình hành tìm giao tuyến, giao điểm của đt và mp"),
+    (5, "[1H12DV05] Tổng hợp: Cho hình chóp đáy là hình bình hành và các điểm, chứng minh hai đường thẳng song song"),
+    (6, "[1H12DV06] Tổng hợp: Cho hình chóp đáy là hình bình hành, tìm giao tuyến, giao điểm, thiết diện "),
+    (7, "[1H12DV07] Tổng hợp: Cho hình chóp đáy là hình chữ nhật với các trọng tâm, chứng minh bốn điểm đồng phẳng, đồng quy"),
+    (8, "[1H12DV08] Tổng hợp: Cho hình chóp đáy là hình thang có trọng tâm, giao tuyến, chứng minh hai đường thẳng song song"),
+    (9, "[1H12DV09] Tổng hợp: Cho hình chóp đáy là hình thang với trung điểm của cạnh, chứng minh hai đường thẳng song song"),
+    (10, "[1H12DV10] Tổng hợp: Cho hình chóp đáy là hình thang, tìm giao tuyến, giao điểm, thiết diện "),
+    (11, "[1H12DV11] Tổng hợp: Cho hình chóp đáy là hình thang, tìm giao tuyến, thiết diện"),
+    (12, "[1H12DV12] Tổng hợp: Cho hình chóp đáy là tứ giác với trung điểm của cạnh, chứng minh 4 điểm đồng phẳng, đồng quy"),
 ]
 
 dang_p1_b3_c1_hh11 = [

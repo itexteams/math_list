@@ -136,15 +136,12 @@ def bt_dang3_p4_b2_c1_hh11(self):
                 h1=3 
                 number = Decimal(float(h1))  # Số cần làm tròn
                 kq = number.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
-
                 # Nội dung câu hỏi
                 noidungcauhoi = ('Cho tứ diện $ABCD$. Các điểm $P, Q$ lần lượt là trung điểm của $AB$ và $CD$; điểm $R$ nằm trên cạnh $BC$ sao cho $BR = %sRC$. Gọi $S$ là giao điểm của $(PQR)$ và cạnh $AD$. Tính tỉ số $\\dfrac{SA}{SD}$. \n'
                                 %(latex(a)
                                 ))
-
                 # Nội dung lời giải
                 loigiai = (
-
                         '\\begin{center}   \n'
                             '\\begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick]  \n' 
                             '\\clip(-4.3,-3) rectangle (13.02,4); \n'
@@ -177,7 +174,6 @@ def bt_dang3_p4_b2_c1_hh11(self):
                             '\\draw (4.,1.48) node[anchor=north west] {S}; \n'
                             '\\end{tikzpicture}  \n'
                         '\\end{center}  \n'
-
                             'Trong mặt phẳng $(BCD)$, gọi $I = RQ \\cap BD$. \\\\ \n'
                         'Trong mặt phẳng $(ABD)$, gọi $S = PI \\cap AD \\Rightarrow S = AD \\cap (PQR)$. \\\\ \n'
                         'Trong mặt phẳng $(BCD)$, dựng $DE // BC \\Rightarrow DE$ là đường trung bình của $\\triangle IBR$. \\\\ \n'
@@ -185,18 +181,15 @@ def bt_dang3_p4_b2_c1_hh11(self):
                         'Trong mặt phẳng $(ABD)$, dựng $DF // AB \\Rightarrow \\dfrac{DF}{BP} = \\dfrac{1}{2} \\Rightarrow \\dfrac{DF}{PA} = \\dfrac{1}{2} \\Rightarrow \\dfrac{SA}{SD} = 2 \\Rightarrow \\dfrac{AD}{SD} = 3$.'
                         %(
                         ))
-
             if dang=='5':
                 a=2
                 h1=3/2  
                 number = Decimal(float(h1))  # Số cần làm tròn
                 kq = number.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
-
                 # Nội dung câu hỏi
                 noidungcauhoi = ('Cho tứ diện $ABCD$. Các điểm $P, Q$ lần lượt là trung điểm của $AB$ và $CD$; điểm $R$ nằm trên cạnh $BC$ sao cho $BR = %sRC$. Gọi $S$ là giao điểm của $(PQR)$ và cạnh $AD$. Tính tỉ số $\\dfrac{SA}{SD}$. \n'
                                 %(latex(a)
                                 ))
-
                 # Nội dung lời giải
                 loigiai = (
 
@@ -462,7 +455,6 @@ def bt_dang3_p4_b2_c1_hh11(self):
                         'Trong mặt phẳng $(ABD)$, dựng $DF // AB \\Rightarrow \\dfrac{DF}{BP} = \\dfrac{1}{2} \\Rightarrow \\dfrac{DF}{PA} = \\dfrac{1}{2} \\Rightarrow \\dfrac{SA}{SD} = 2$.'
                         %(
                         ))
-
 
             # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
             content = ('\\begin{minipage}{\\textwidth} \n'
