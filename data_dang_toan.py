@@ -4550,7 +4550,8 @@ dang_p3_b2_c2_ds11 = [
 dang_p4_b2_c2_ds11 = [
     (12, "[1D22DT12] Tổng hợp: Cho CSC biết u1 và d. Tìm un và Sn"),
     (13, "[1D22DT13] Tổng hợp: Cho CSC biết hai số hạng uk và u(k+2). Tìm un và Sn"),
-    (14, "[1D22DT14] Tổng hợp: Cho CSC biết hai số hạng bất kỳ. Tìm un và Sn"),        
+    (14, "[1D22DT14] Tổng hợp: Cho CSC biết hai số hạng bất kỳ. Tìm un và Sn"), 
+    (18, "[1D22DV18] Tổng hợp: Cho hai CSC. Tìm các số hạng chung"),       
     (1, "[1D22DV01] Ứng dụng: Bài toán tiết kiệm tiền"),
     (2, "[1D22DV02] Ứng dụng: Bài toán trồng cây"),
     (3, "[1D22DV03] Ứng dụng: Bài toán xếp que diêm hình tháp"),
@@ -4693,6 +4694,7 @@ dang_p4_b3_c2_ds11 = [
     (4, "[1D23DV04] Ứng dụng: Tính giá trị còn lại của chiếc máy photocopy sau n năm"),
     (5, "[1D23DV05] Ứng dụng: Tính số vi khuẩn xâm nhập vào cơ thể sau thời gian t"),
     (6, "[1D23DV06] Ứng dụng: Tìm số hạng tổng quát mô tả chu kỳ bán rã của một chất phóng xạ"),
+    (7, "[1D23DV07] Ứng dụng: Tính tổng số viên gạch dùng để lát nền các tầng tòa tháp"),
 ]
 
 dang_p1_b1_c3_ds11 = [
@@ -6504,7 +6506,7 @@ dang_p1_b2_c1_hh11 = [
     (2, "[1H12AN02] Vị trí tương đối: Cho hình chóp có đáy là hình bình hành. Tìm các đường thẳng không song song"),
     (3, "[1H12AN03] Vị trí tương đối: Cho tứ diện có trọng tâm. Xét vị trí tương đối giữa các đường thẳng"),
     (13, "[1H12AN13] Vị trí tương đối: Cho tứ diện, M là trung điểm CD. Xét vị trí tương đối giữa các đường thẳng AD, GM"),
-    (29, "[1H12AN29] Vị trí tương đối: Cho hình chóp S.ABCD. Tìm đường thẳng song song với IJ "),
+    (29, "[1H12AN29] Vị trí tương đối: Cho hình chóp S.ABCD. Tìm đường thẳng song song với IJ"),
     (4, "[1H12AT04] Vị trí tương đối: Cho chóp tứ giác có các trung điểm. Tìm các cặp đường thẳng song song"),
     (6, "[1H12AT06] Vị trí tương đối: Cho tứ diện, biết các trung điểm. Tìm đường thẳng đi qua một điểm và song song với đường thẳng kia"),
     (11, "[1H12AT11] Vị trí tương đối: Cho tứ diện, biết các trọng tâm. Xét tính song song của hai đường"),

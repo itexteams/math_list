@@ -133,30 +133,6 @@ def bt_dang29_p1_b2_c1_hh11(self):
     dang = random.choice(lisdang)
 
     if dang == '1':
-        # Hình vẽ TikZ đúng 100% theo mẫu ảnh
-        hinhve = ('''\\begin{center}
-    \\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]
-        \\coordinate (A) at (0,0);
-        \\coordinate (D) at (-1.8,-0.6);
-        \\coordinate (C) at (1.3,-0.6);
-        \\coordinate (B) at ($(A)+(C)-(D)$);
-        \\coordinate (S) at (0,3);
-        \\coordinate (M) at ($(S)!0.5!(B)$);
-        \\coordinate (I) at ($(A)!2/3!(M)$);
-        \\coordinate (J) at ($(C)!2/3!(M)$);
-        \\draw[line width=1pt] (S)--(D)--(C)--(B)--(S) (S)--(C) (C)--(M);
-        \\draw[line width=1pt, dashed] (S)--(A) (A)--(D) (A)--(B) (A)--(C) (A)--(M) (I)--(J);
-        \\fill (S) circle (1pt) node[above] {$S$};
-        \\fill (A) circle (1pt) node[below] {$A$};
-        \\fill (B) circle (1pt) node[right] {$B$};
-        \\fill (C) circle (1pt) node[below] {$C$};
-        \\fill (D) circle (1pt) node[below left] {$D$};
-        \\fill (M) circle (1pt) node[above right] {$M$};
-        \\fill (I) circle (1pt) node[above left] {$I$};
-        \\fill (J) circle (1pt) node[right] {$J$};
-    \\end{tikzpicture}
-    \\end{center}''')
-
         # Dữ liệu các cặp tam giác và đường thẳng song song tương ứng
         ds_cap = [
             {
@@ -167,23 +143,53 @@ def bt_dang29_p1_b2_c1_hh11(self):
                 'da_sai': ['$BD$', '$AB$', '$BC$', '$CD$', '$AD$']
             }
         ]
-
-        # Chọn cấu hình bài toán
         ch = random.choice(ds_cap)
         tg1 = ch['tg1']
         tg2 = ch['tg2']
         canh_chung = ch['canh_chung']
-        da = ch['da_dung']
 
+        # Đỉnh còn lại trong 2 tam giác để xét đường trung tuyến
+        dinh1 = tg1.replace('S', '').replace(canh_chung.replace('S', ''), '')
+        dinh2 = tg2.replace('S', '').replace(canh_chung.replace('S', ''), '')
+
+        # Hình vẽ TikZ
+        hinhve = ('''\\begin{center}
+        \\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]
+            \\coordinate (A) at (0,0);
+            \\coordinate (D) at (-1.8,-0.6);
+            \\coordinate (C) at (1.3,-0.6);
+            \\coordinate (B) at ($(A)+(C)-(D)$);
+            \\coordinate (S) at (0,3);
+            \\coordinate (M) at ($(S)!0.5!(B)$);
+            \\coordinate (I) at ($(A)!2/3!(M)$);
+            \\coordinate (J) at ($(C)!2/3!(M)$);
+            \\draw[line width=1pt] (S)--(D)--(C)--(B)--(S) (S)--(C) (C)--(M);
+            \\draw[line width=1pt, dashed] (S)--(A) (A)--(D) (A)--(B) (A)--(C) (A)--(M) (I)--(J);
+            \\fill (S) circle (1pt) node[above] {$S$};
+            \\fill (A) circle (1pt) node[below] {$A$};
+            \\fill (B) circle (1pt) node[right] {$B$};
+            \\fill (C) circle (1pt) node[below] {$C$};
+            \\fill (D) circle (1pt) node[below left] {$D$};
+            \\fill (M) circle (1pt) node[above right] {$M$};
+            \\fill (I) circle (1pt) node[above left] {$I$};
+            \\fill (J) circle (1pt) node[right] {$J$};
+        \\end{tikzpicture}
+        \\end{center}''')
+
+        # Các đáp án trắc nghiệm
+        du = [ch['da_dung']]
+        da = random.choice(du)
         s = ch['da_sai'].copy()
-        random.shuffle(s)
-        das1 = s[0]
-        das2 = s[1]
-        das3 = s[2]
+
+        das1 = random.choice(s)
+        s.remove(das1)
+        das2 = random.choice(s)
+        s.remove(das2)
+        das3 = random.choice(s)
 
         # Câu hỏi
         noidungcauhoi = ('''Cho hình chóp $S.ABCD$, có đáy $ABCD$ là hình bình hành. Gọi $I, J$ là trọng tâm các tam giác $%s, %s$. Khi đó đường thẳng $IJ$ song song với đường thẳng nào sau đây?%s'''
-                         % (tg1, tg2, hinhve))
+                        % (tg1, tg2, hinhve))
 
         # Các đáp án
         da_d = ('\\True ' + str(da))
@@ -195,29 +201,25 @@ def bt_dang29_p1_b2_c1_hh11(self):
         list_1 = [da_d, da_s1, da_s2, da_s3]
         random.shuffle(list_1)
 
-        # Đỉnh còn lại trong 2 tam giác để xét đường trung tuyến
-        dinh1 = tg1.replace('S', '').replace(canh_chung.replace('S', ''), '')
-        dinh2 = tg2.replace('S', '').replace(canh_chung.replace('S', ''), '')
-
         # Nội dung lời giải
         loigiai = ('''Gọi $M$ là trung điểm của $%s$.\\\\
-    Vì $I, J$ lần lượt là trọng tâm tam giác $%s$ và $%s$ nên $I \\in M%s$ và $J \\in M%s$.\\\\
-    Theo tính chất trọng tâm tam giác, ta có:
-    $$\\frac{MI}{M%s} = \\frac{MJ}{M%s} = \\frac{1}{3}.$$
-    Xét tam giác $M%s%s$, theo định lí Ta-lét đảo ta suy ra:
-    $$IJ // %s%s.$$
-    Vậy đường thẳng $IJ$ song song với đường thẳng %s.'''
-                   % (canh_chung, tg1, tg2, dinh1, dinh2, dinh1, dinh2, dinh1, dinh2, dinh1, dinh2, da))
+        Vì $I, J$ lần lượt là trọng tâm tam giác $%s$ và $%s$ nên $I \\in M%s$ và $J \\in M%s$.\\\\
+        Theo tính chất trọng tâm tam giác, ta có:
+        $$\\frac{MI}{M%s} = \\frac{MJ}{M%s} = \\frac{1}{3}.$$
+        Xét tam giác $M%s%s$, theo định lí Ta-lét đảo ta suy ra:
+        $$IJ // %s%s.$$
+        Vậy đường thẳng $IJ$ song song với đường thẳng %s.'''
+                % (canh_chung, tg1, tg2, dinh1, dinh2, dinh1, dinh2, dinh1, dinh2, dinh1, dinh2, da))
 
     # Xuất câu trắc nghiệm
-    content = ('\\begin{minipage}{\\textwidth} \n' +
-               '\\begin{ex}\n' +
-               str(noidungcauhoi) + '\\choice \n' +
-               '{' + str(list_1[0]) + '}\n' +
-               '{' + str(list_1[1]) + '}\n' +
-               '{' + str(list_1[2]) + '}\n' +
-               '{' + str(list_1[3]) + '}\n' +
-               '\\loigiai{' + str(loigiai) + '}\n' +
-               '\\end{ex}\n \\end{minipage} \n\n')
+    content = ('\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n' +
+            str(noidungcauhoi) + '\\choice \n'
+            '{' + str(list_1[1]) + '}\n'
+            '{' + str(list_1[2]) + '}\n'
+            '{' + str(list_1[3]) + '}\n'
+            '{' + str(list_1[0]) + '}\n'
+            '\\loigiai{' + str(loigiai) + '}\n'
+            '\\end{ex}\n \\end{minipage} \n\n')
     return content
 
