@@ -128,121 +128,97 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang18_p4_b2_c2_ds11(self):
-            # Khai báo biến
-            # Khai báo biến
-            lisdang = ['1']
-            dang = random.choice(lisdang)
+    # Khai báo biến
+    lisdang = ['1']
+    dang = random.choice(lisdang)
 
-            if dang == '1':
-                # Random số hạng đầu b1 của CSC thứ hai, suy ra a1 sao cho a1 - b1 = 2
-                b1 = random.randint(2, 8)
-                a1 = b1 + 2
-                N = random.choice([80, 90, 100, 110, 120, 150])
+    if dang == '1':
+        # Random số hạng đầu b1 của CSC thứ hai, suy ra a1 sao cho a1 - b1 = 2
+        b1 = random.randint(2, 8)
+        a1 = b1 + 2
+        N = random.choice([80, 90, 100, 110, 120, 150])
 
-                # 3 số hạng đầu tiên của mỗi cấp số cộng
-                ap1_t1 = a1
-                ap1_t2 = a1 + 3
-                ap1_t3 = a1 + 6
+        # 3 số hạng đầu tiên của mỗi cấp số cộng
+        ap1_t1 = a1
+        ap1_t2 = a1 + 3
+        ap1_t3 = a1 + 6
 
-                ap2_t1 = b1
-                ap2_t2 = b1 + 4
-                ap2_t3 = b1 + 8
+        ap2_t1 = b1
+        ap2_t2 = b1 + 4
+        ap2_t3 = b1 + 8
 
-                # Biến đổi u_n và v_m
-                c1 = a1 - 3
-                c2 = b1 - 4
+        # Biến đổi u_n và v_m
+        c1 = a1 - 3
+        c2 = b1 - 4
 
-                if c1 > 0:
-                    str_un = '%s + 3n' % latex(c1)
-                elif c1 < 0:
-                    str_un = '-%s + 3n' % latex(abs(c1))
-                else:
-                    str_un = '3n'
+        if c1 > 0:
+            str_un = '%s + 3n' % latex(c1)
+        elif c1 < 0:
+            str_un = '-%s + 3n' % latex(abs(c1))
+        else:
+            str_un = '3n'
 
-                if c2 > 0:
-                    str_vm = '%s + 4m' % latex(c2)
-                elif c2 < 0:
-                    str_vm = '-%s + 4m' % latex(abs(c2))
-                else:
-                    str_vm = '4m'
+        if c2 > 0:
+            str_vm = '%s + 4m' % latex(c2)
+        elif c2 < 0:
+            str_vm = '-%s + 4m' % latex(abs(c2))
+        else:
+            str_vm = '4m'
 
-                # Tính các giới hạn cho t
-                t1 = N // 3
-                t2 = (N + 1) // 4
-                t_max = min(t1, t2)
+        # Tính các giới hạn cho t
+        t1 = N // 3
+        t2 = (N + 1) // 4
+        t_max = min(t1, t2)
 
-                # Các đáp án trắc nghiệm
-                du = ['$%s$' % latex(t_max)]
-                da = random.choice(du)
+        # Nội dung câu hỏi
+        noidungcauhoi = (
+            '''Cho hai cấp số cộng có dãy số hạng lần lượt là: $%s; %s; %s; \\dots$ và $%s; %s; %s; \\dots$. Trong $%s$ số hạng đầu tiên của mỗi cấp số, tìm số các số hạng chung.'''
+            % (
+                latex(ap1_t1),
+                latex(ap1_t2),
+                latex(ap1_t3),
+                latex(ap2_t1),
+                latex(ap2_t2),
+                latex(ap2_t3),
+                latex(N),
+            )
+        )
 
-                # Sinh các phương án sai không trùng nhau và không trùng đáp án đúng
-                s_set = set()
-                for delta in [1, 2, 3, -1, -2, -3, 4, -4, 5]:
-                    w = t_max + delta
-                    if w > 0 and w != t_max:
-                        s_set.add('$%s$' % latex(w))
-                if t1 != t_max:
-                    s_set.add('$%s$' % latex(t1))
+        # Nội dung lời giải
+        loigiai = (
+            '''Giả sử $u_n, v_m$ theo thứ tự là số hạng thứ $n$ và $m$ của mỗi cấp số cộng, ta có:\\\\
+            $u_n = %s + 3(n-1)$ và $v_m = %s + 4(m-1)$.\\\\
+            Theo giả thiết, số hạng chung thỏa mãn:\\\\
+            $u_n = v_m \\Leftrightarrow %s + 3(n-1) = %s + 4(m-1) \\Leftrightarrow %s = %s \\Leftrightarrow n = \\frac{4m-1}{3} = m + \\frac{m-1}{3}$.\\\\
+            Vì $n, m \\in \\mathbb{N}^*$ nên $(m - 1) \\vdots 3 \\Rightarrow m = 3t - 2$ (với $t \\in \\mathbb{N}^*$), suy ra $n = 4t - 3$.\\\\
+            Trong $%s$ số hạng đầu tiên của mỗi cấp số, ta có hệ điều kiện:\\\\
+            $\\begin{cases} 1 \\le m = 3t - 2 \\le %s \\\\ 1 \\le n = 4t - 3 \\le %s \\end{cases} \\Leftrightarrow \\begin{cases} 1 \\le t \\le \\frac{%s}{3} \\\\ 1 \\le t \\le \\frac{%s}{4} \\end{cases} \\Rightarrow 1 \\le t \\le %s$ (do $t \\in \\mathbb{N}^*$).\\\\
+            Suy ra $t \\in \\{1; 2; 3; \\dots; %s\\}$. Với mỗi giá trị của $t$, ta có một số hạng chung thuộc về hai dãy $(u_n)$ và $(v_m)$.\\\\
+            Vậy có tất cả $%s$ số hạng chung của hai dãy số đã cho trong $%s$ số hạng đầu tiên.'''
+            % (
+                latex(a1),
+                latex(b1),
+                latex(a1),
+                latex(b1),
+                str_un,
+                str_vm,
+                latex(N),
+                latex(N),
+                latex(N),
+                latex(N + 2),
+                latex(N + 3),
+                latex(t_max),
+                latex(t_max),
+                latex(t_max),
+                latex(N),
+            )
+        )
 
-                s = list(s_set)
-                das1 = random.choice(s)
-                s.remove(das1)
-                das2 = random.choice(s)
-                s.remove(das2)
-                das3 = random.choice(s)
-
-                # Nội dung câu hỏi
-                noidungcauhoi = (
-                    '''Cho hai cấp số cộng có dãy số hạng lần lượt là: $%s; %s; %s; \\dots$ và $%s; %s; %s; \\dots$. Ttrong $%s$ số hạng đầu tiên của mỗi cấp số, Tìm số các số hạng chung.'''
-                    % (
-                        latex(ap1_t1),
-                        latex(ap1_t2),
-                        latex(ap1_t3),
-                        latex(ap2_t1),
-                        latex(ap2_t2),
-                        latex(ap2_t3),
-                        latex(N),
-                    )
-                )
-
-                # Các đáp án
-                da_d = '\\True ' + str(da)
-                da_s1 = str(das1)
-                da_s2 = str(das2)
-                da_s3 = str(das3)
-
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d, da_s1, da_s2, da_s3]
-                random.shuffle(list_1)
-
-                # Nội dung lời giải
-                loigiai = (
-                    '''Giả sử $u_n, v_m$ theo thứ tự là số hạng thứ $n$ và $m$ của mỗi cấp số cộng, ta có:\\\\
-            $u_n = %s + 3(n-1); v_m = %s + 4(m-1)$. Ta có:\\\\
-            $u_n = v_m \\Leftrightarrow %s + 3(n-1) = %s + 4(m-1) \\Leftrightarrow %s = %s \\Leftrightarrow n = \\frac{4m}{3} - 1$.\\\\
-            Đặt $t = \\frac{m}{3}$, vì $n \\in \\mathbb{N}^* \\Rightarrow t \\in \\mathbb{N}^*$. Ta có: $\\begin{cases} m = 3t \\le %s \\\\ n = 4t - 1 \\le %s \\end{cases} \\Rightarrow \\begin{cases} t \\le %s \\\\ t \\le %s \\end{cases}$.\\\\
-            Suy ra $t \\in \\{1; 2; 3; \\dots; %s\\}$. Với mỗi giá trị của $t$, ta có một số hạng chung thuộc về hai dãy $(u_n), (v_m)$. Vậy có tất cả %s số hạng chung của hai dãy số đã cho trong %s số hạng đầu tiên.'''
-                    % (
-                        latex(a1),
-                        latex(b1),
-                        latex(a1),
-                        latex(b1),
-                        str_un,
-                        str_vm,
-                        latex(N),
-                        latex(N),
-                        latex(t1),
-                        latex(t2),
-                        latex(t_max),
-                        latex(t_max),
-                        latex(N),
-                    )
-                )
-            # Xuất câu trắc nghiệm
-            content = (
-                '\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n' + str(noidungcauhoi)
-                '\\loigiai{' + str(loigiai) + '}\n'
-                '\\end{ex}\n \\end{minipage} \n\n')
-            return content 
+    # Xuất câu hỏi và lời giải
+    content = (
+        '\\begin{minipage}{\\textwidth} \n'
+        '\\begin{ex}\n' + str(noidungcauhoi) + '\n'
+        '\\loigiai{ \n' + str(loigiai) + '}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content 
 
