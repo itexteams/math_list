@@ -190,7 +190,7 @@ def bt_dang30_p1_b1_c2_hh10(self):
 
                 # Câu hỏi
                 str_a = "1" if a == 1 else str(a)
-                noidungcauhoi = ('''Cho hình thoi tâm $O$, cạnh bằng $%s$ và $\\widehat{A} = %s^\\circ$. Độ dài của vectơ $\\overrightarrow{AO}$ bằng bao nhiêu? \\textit{Kết quả làm tròn đến hàng phần chục.}''' % (str_a, alpha))
+                noidungcauhoi = ('''Cho hình thoi $ABCD$ tâm $O$, cạnh bằng $%s$ và $\\widehat{A} = %s^\\circ$. Độ dài của vectơ $\\overrightarrow{AO}$ bằng bao nhiêu? \\textit{Kết quả làm tròn đến hàng phần chục.}''' % (str_a, alpha))
 
                 # Các đáp án
                 da_d = ('\\True ' + str(da))

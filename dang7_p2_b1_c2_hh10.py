@@ -153,7 +153,7 @@ def bt_dang7_p2_b1_c2_hh10(self):
             left = cfg['left_edge']
 
             # Nội dung câu hỏi
-            noidungcauhoi = f'''Cho $\\Delta ABC$ đều cạnh $a$, trực tâm $H$. Khi đó:'''
+            noidungcauhoi = f'''Cho $\\Delta ABC$ đều cạnh $a$, trực tâm $H$, gọi $M$ là trung điểm của $AB$. Khi đó:'''
 
             # Code vẽ hình TikZ
             hinh_ve = f'''\\begin{{center}}

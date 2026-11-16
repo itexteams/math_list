@@ -9519,6 +9519,8 @@ dang_p1_b3_c1_hh12 = [
     (23, "[2H13AT23] Phép toán: Hệ thức liên quan đến trọng tâm G tìm ẩn a,b,c"),
     (26, "[2H13AT26] Phép toán: Tìm khẳng định đúng về tích 1 số với một vectơ"),
     (28, "[2H13AT28] Phép toán: Tìm x,y để 3 diểm thẳng hàng"),
+    (55, "[2H13AT55] Phép toán: Cho vecto(a), vecto(b), vecto(c) và vecto(d). Tìm tổng của x, y, z"),  
+    (56, "[2H13AT56] Phép toán: Cho các vectơ. Tìm đẳng thức thỏa mãn"),
     (31, "[2H13AV31] Phép toán: Cho 3 điểm A,B,C tìm tọa độ điểm M thỏa mãn đẳng thức phép toán vectơ"),
     (32, "[2H13AV32] Phép toán: Cho 3 điểm tìm điểm D sao cho 4 điểm tạo thành hình chữ nhật"),
     (33, "[2H13AV33] Phép toán: Cho hình chữ nhật biết 2 điểm tìm 2 điểm còn lại và tính giá trị biểu thức"),
