@@ -6790,7 +6790,7 @@ dang_p1_b5_c1_hh11 = [
     (5, "[1H15AN05] Hình chiếu: Cho hình chóp S.ABCD có đáy là hình bình hành. Tìm hình chiếu song song của điểm M"),
     (8, "[1H15AT08] Hình chiếu: Cho hình vẽ minh họa hình chiếu các điểm. Tìm tỉ lệ"),
     (15, "[1H15AT15] Hình chiếu: Phép chiếu hình thang thành hình thang. Tìm x"),
-    (18, "[1H15AT15] Hình chiếu: Phép chiếu đường tròn với hai đường kính vuông góc với nhau"),
+    (18, "[1H15AT18] Hình chiếu: Phép chiếu đường tròn với hai đường kính vuông góc với nhau"),
 ]
 
 dang_p2_b5_c1_hh11 = [

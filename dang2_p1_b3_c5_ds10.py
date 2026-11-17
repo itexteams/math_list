@@ -139,11 +139,11 @@ def bt_dang2_p1_b3_c5_ds10(self):
             n=randint(4,5)
             bt=(a*x+b)**n
             kq=expand((a*x +b)**n)
-            kq1=expand((a*x +2*b)**n)
-            kq2=expand((a*x -b)**n)
-            kq3=expand((a*x -2*b)**n)
+            kq1=expand((a*x +b+1)**n)
+            kq2=expand((a*x -b-1)**n)
+            kq3=expand((a*x -2*b-2)**n)
             # Câu hỏi
-            noidungcauhoi='''Khai triển nhị thức $%s$ bằng  \n''' %(latex(bt))
+            noidungcauhoi='''Khai triển nhị thức $%s$ bằng''' %(latex(bt))
             # Các đáp án
             da_d = '\\True $%s$' %(latex(kq))
             da_s1 = '$%s$' %(latex(kq1))
