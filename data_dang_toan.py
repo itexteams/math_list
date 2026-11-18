@@ -2750,6 +2750,11 @@ dang_p2_b1_c2_hh10 = [
     (7, "[0H21BV07] Độ dài vectơ: Cho tam giác ABC đều cạnh a với trực tâm H"),
     (11, "[0H21BV11] Độ dài vectơ: Cho tam giác vuông ABC với M là trung điểm BC đường cao AH tính độ dài các vectơ"),
     (4, "[0H21BV04] Độ dài vectơ: Cho tam giác đều. Tính độ dài vectơ, xét các vectơ cùng hướng"),
+    (13, "[0H21BV13] Độ dài vectơ: Cho các điểm A, B, C, D, M. Tính độ dài vectơ"),
+    (15, "[0H21BV15] Độ dài vectơ: Cho các điểm A, B, C, D, M. Tứ giác là hình bình hành"),
+    (12, "[0H21BV12] Ứng dụng: Lực tác dụng lên vật thể"),
+    (14, "[0H21BV14] Ứng dụng: Cano chạy trên một khúc sông"),
+    (16, "[0H21BV16] Ứng dụng: Hai Cano chạy ngược chiều trên một khúc sông"),
 ]
 
 dang_p3_b1_c2_hh10 = [
