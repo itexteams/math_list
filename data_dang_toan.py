@@ -6787,6 +6787,7 @@ dang_p1_b5_c1_hh11 = [
     (13, "[1H15AN13] Lý thuyết: Phép chiếu ba điểm thẳng hàng"),
     (16, "[1H15AN16] Lý thuyết: Phép chiếu hình tròn"),
     (17, "[1H15AN17] Lý thuyết: Tìm hình không thể dùng làm hình chiếu"),
+    (20, "[1H15AN03] Lý thuyết: Lý thuyết xác định hình chiếu của một hình"),
     (14, "[1H15AN14] Hình chiếu: Phép chiếu hình bình hành"),
     (7, "[1H15AN07] Hình chiếu: Cho hình vẽ. Tìm khẳng định đúng"),
     (2, "[1H15AN02] Hình chiếu: Hình chóp có đáy là hình bình hành. Tìm hình chiếu song song"),
@@ -6796,6 +6797,14 @@ dang_p1_b5_c1_hh11 = [
     (8, "[1H15AT08] Hình chiếu: Cho hình vẽ minh họa hình chiếu các điểm. Tìm tỉ lệ"),
     (15, "[1H15AT15] Hình chiếu: Phép chiếu hình thang thành hình thang. Tìm x"),
     (18, "[1H15AT18] Hình chiếu: Phép chiếu đường tròn với hai đường kính vuông góc với nhau"),
+    (19, "[1H15AN03] Tổng hợp: Hình biểu diễn không là hình chóp tam giá"),
+    (21, "[1H15AT03] Tổng hợp: Hình chiếu của điểm trong lăng trụ tam giác"),
+    (22, "[1H15AT03] Tổng hợp: Hình chiếu trọng tâm của một mặt tứ diện"),
+    (23, "[1H15AV03] Tổng hợp: Cho hình chóp đáy là hình bình hành, tìm tỷ số hình chiếu"),
+    (24, "[1H15AV03] Tổng hợp: Cho hình hộp, tìm hình chiếu hình hộp lên mặt phẳng"),
+    (25, "[1H15AV03] Tổng hợp: Cho hình hộp, tìm hình chiếu tam giác lên mặt đáy"),
+    (26, "[1H15AV03] Tổng hợp: Hình chiếu trọng tâm của hình lăng trụ tam giác"),
+    (27, "[1H15AV03] Tổng hợp: Tìm hình biểu diễn hình hộp khi chiếu theo phương cho trước"),
 ]
 
 dang_p2_b5_c1_hh11 = [
@@ -6806,6 +6815,10 @@ dang_p2_b5_c1_hh11 = [
     (4, "[1H15BT04] Hình chiếu: Phép chiếu đoạn thẳng"),
     (5, "[1H15BT05] Hình chiếu: Phép chiếu các đoạn thẳng tỉ lệ"),
     (7, "[1H15BV07] Ứng dụng: Biển quảng cáo qua phép chiếu song song"),
+    (8, "[1H15BT08] Tổng hợp: Cho hình hộp chữ nhật tìm ảnh của điểm qua phép chiếu song song"),
+    (9, "[1H15BT09] Tổng hợp: Lý thuyết phép chiếu song song"),
+    (10, "[1H15BV10] Tổng hợp: Cho hình hộp chữ nhật tìm ảnh của điểm, trọng tâm, trung điểm qua phép chiếu song song"),
+    (11, "[1H15BV11] Tổng hợp: Cho hình lăng trụ tam giác, trung điểm tìm hình chiếu điểm, tam giác"),
 ]
 
 dang_p3_b5_c1_hh11 = [
@@ -6825,6 +6838,15 @@ dang_p4_b5_c1_hh11 = [
     (2, "[1H15DV02] Diện tích: Hình chóp có đáy là hình vuông. Tính diện tích hình chiếu song song"),
     (3, "[1H15DV03] Diện tích: Lăng trụ tam giác. Tính tỉ số diện tích của hình qua phép chiếu song song"),
     (4, "[1H15DT04] Hình chiếu: Cho hình chóp. Tìm giao tuyến hai mặt phẳng và ảnh của điểm qua phép chiếu song song"),
+    (5, "[1H15DT05] Tổng hợp: Cho hình chóp tam giác, trung điểm, tìm hình chiếu tam giác lên mặt"),
+    (6, "[1H15DT06] Tổng hợp: Cho hình chóp tam giác, trung điểm, tìm hình chiếu tam giác"),
+    (7, "[1H15DT07] Tổng hợp: Cho tứ diện, tính tý số đoạn thẳng sau khi tìm hình chiếu 1 điểm"),
+    (8, "[1H15DT08] Tổng hợp: Cho hình chóp đáy hình vuông, với tỷ số tính diện tích hình chiếu là tam giác"),
+    (9, "[1H15DT09] Tổng hợp: Cho hình hộp, các điểm tỷ lệ tính tỷ số"),
+    (10, "[1H15DV10] Tổng hợp: Cho hình hộp, trung điểm qua phép chiếu tính tỷ số"),
+    (11, "[1H15DV11] Tổng hợp: Cho hình hộp, trung điểm tìm hình chiếu của tam giác"),
+    (12, "[1H15DV12] Tổng hợp: Cho hình lăng trụ tam giác, các điểm tỷ lệ tính tỷ số diện tích"),
+    (13, "[1H15DV13] Tổng hợp: Cho hình chóp đáy hình bình hành, hình chiếu điểm, tính tỷ số"),
 ]
 
 dang_p1_b1_c2_hh11 = [

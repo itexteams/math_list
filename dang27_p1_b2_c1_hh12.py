@@ -136,9 +136,9 @@ def bt_dang27_p1_b2_c1_hh12(self):
         # Các tập dữ liệu tính chất để random
         # Dữ liệu cho đáp án sai (Khoảng cách thiếu trị tuyệt đối)
         planes_dist = [
-            ('(Oxy)', 'c', '|c|'), 
-            ('(Oyz)', 'a', '|a|'), 
-            ('(Oxz)', 'b', '|b|')
+            ('(Oxy)', 'a', '|a|'), 
+            ('(Oyz)', 'b', '|b|'), 
+            ('(Oxz)', 'c', '|c|')
         ]
 
         # Dữ liệu cho các mệnh đề đúng (để làm nhiễu)

@@ -233,7 +233,7 @@ def bt_dang3_p3_b2_c3_ds11(self):
 
                 h1=kqQ2
                 number = Decimal(float(h1))  # Số cần làm tròn
-                kq = number.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
+                kq = number.quantize(Decimal('1'), rounding=ROUND_HALF_UP)
 
                 # Nội dung câu hỏi
                 noidungcauhoi = ('Cho mẫu số liệu ghép nhóm sau \n'
@@ -246,7 +246,7 @@ def bt_dang3_p3_b2_c3_ds11(self):
                                 '\\hline \n'
                                 '\\end{tabular} \n'
                                 '\\end{center} \n'
-                                'Trung vị của mẫu số liệu bằng bao nhiêu? (làm tròn kết quả đến hàng phần chục)$zz$'
+                                'Trung vị của mẫu số liệu bằng bao nhiêu? (làm tròn kết quả đến hàng đơn vị)$zz$'
                                 %(
                                 latex(v),latex(v+k),latex(v+k),latex(v+2*k),latex(v+2*k),latex(v+3*k),latex(v+3*k),latex(v+4*k),latex(v+4*k),latex(v+5*k),
                                 latex(xe1),latex(xe2),latex(xe3),latex(xe4),latex(xe5),

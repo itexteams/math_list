@@ -181,7 +181,7 @@ def bt_dang28_p1_b2_c1_hh12(self):
         da_sai1_str = "\\vec{a}=(%s;%s;0), \\vec{b}=(%s;%s;%s), \\vec{c}=(%s;0;%s)" % (a2, a1, b1, b2, b3, c1, c3)
 
         # Nhiễu 2: c bị nhầm y, z
-        da_sai2_str = "\\vec{a}=(%s;%s;0), \\vec{b}=(%s;%s;%s), \\vec{c}=(%s;%s;0)" % (a1, a2, b1, b2, b3, c1, c3)
+        da_sai2_str = "\\vec{a}=(%s;%s;0), \\vec{b}=(%s;%s;%s), \\vec{c}=(%s;%s;0)" % (a1, a2, b1, b2, b3, c1, c3+1)
 
         # Nhiễu 3: Nhầm cả a và b (b nhầm thứ tự y, z)
         da_sai3_str = "\\vec{a}=(%s;%s;0), \\vec{b}=(%s;%s;%s), \\vec{c}=(%s;%s;0)" % (a2, a1, b1, b3, b2, c1, c3)
