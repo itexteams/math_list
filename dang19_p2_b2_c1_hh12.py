@@ -297,7 +297,7 @@ def bt_dang19_p2_b2_c1_hh12(self):
     list_vd_1 = [vd_da_1]
     
     loigiai_vd_1 = (
-        """Ta có $\\vec{BM} = (x - (%s); y - (%s); %s - (%s)) = (x - (%s); y - (%s); %s)$ \\\\ và $\\vec{AM} = (x - (%s); y - (%s); %s - (%s)) = (x - (%s); y - (%s); %s)$. \\\\ Suy ra %s\\vec{AM} có cao độ là $%s \\cdot (%s) = %s$. \\\\ So sánh cao độ của hai vectơ trong đẳng thức $\\vec{BM} = %s\\vec{AM}$, ta có $%s \\neq %s$, do đó đẳng thức không thể xảy ra với mọi $x, y$."""
+        """Ta có $\\vec{BM} = (x - (%s); y - (%s); %s - (%s)) = (x - (%s); y - (%s); %s)$ \\\\ và $\\vec{AM} = (x - (%s); y - (%s); %s - (%s)) = (x - (%s); y - (%s); %s)$. \\\\ Suy ra $%s\\vec{AM}$ có cao độ là $%s \\cdot (%s) = %s$. \\\\ So sánh cao độ của hai vectơ trong đẳng thức $\\vec{BM} = %s\\vec{AM}$, ta có $%s \\neq %s$, do đó đẳng thức không thể xảy ra với mọi $x, y$."""
         % (
             xb,
             yb,

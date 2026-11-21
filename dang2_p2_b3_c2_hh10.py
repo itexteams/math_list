@@ -128,152 +128,82 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang2_p2_b3_c2_hh10(self):
-            # Khai báo biến
-            a1=randint(2,5)
-            b1=randint(2,5)
-            c1=randint(2,5)
+        # Khai báo biến
+        a1 = randint(2, 5)
+        c1 = randint(2, 5)
+        
+        # ĐIỀU KIỆN BẮT BUỘC: Để 3 điểm M, N, P thẳng hàng thì 1/b = 1/a + 1/c => b1 = a1 + c1
+        # Ta cố định b1 theo a1 và c1 thay vì random b1 bừa bãi
+        b1 = a1 + c1
 
-            a=Rational(1,a1)
-            b=Rational(1,b1) 
-            c=Rational(1,c1)
+        a = Rational(1, a1)
+        c = Rational(1, c1)
+        b = Rational(1, b1)
 
+        # Nội dung câu hỏi
+        noidungcauhoi = ('''Cho hình bình hành $ABCD$ và các điểm $M, N, P$ thỏa mãn $\\vec{AM}=%s \\vec{AB}, \\vec{AN}=%s \\vec{AC}$ và $\\vec{AP}=%s \\vec{AD}$. \n'''
+                        % (latex(a), latex(b), latex(c)))
+        
+        ######################################################################## Nhận biết 
+        nb_da_d = '\\True $\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$' % (latex(b))
+        nb_da_s = '$\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$' % (latex(b + Rational(1, 2))) 
+        
+        loigiai_nb = ('Ta có $\\vec{AC} = \\vec{AB} + \\vec{AD}$ (quy tắc hình bình hành). \\\\ \n'
+                      'Suy ra $\\vec{AN}=%s \\vec{AC}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$.'
+                      % (latex(b), latex(b)))
 
-            # Nội dung câu hỏi
-            noidungcauhoi = ('''Cho hình bình hành $ABCD$ và các điểm $M, N, P$ thỏa mãn $\\vec{AM}=%s \\vec{AB}, \\vec{AN}=%s \\vec{AC}$ và $\\vec{AP}=%s \\vec{AD}$. \n'''
-                            %(latex(a),latex(b),latex(c))
-                            )
-            ######################################################################## Nhận biết ############################################
-            # Các đáp án
-            nb_da_1_d = '\\True $\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$'%(latex(b))
-            nb_da_1_s = '$\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$'%(latex(b+1))
-            list_nb_da_1=[nb_da_1_d,nb_da_1_s]
-            nb_da_1=random.choice(list_nb_da_1)
+        ######################################################################## Thông hiểu 
+        th_da_d = '\\True $\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$' % (latex(b-a), latex(b))
+        th_da_s = '$\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$' % (latex(a-b), latex(b)) # Đảo dấu để tạo nhiễu
+        
+        loigiai_th = ('Ta có $\\vec{MN}=\\vec{AN}-\\vec{AM}=%s \\left( \\vec{AB}+\\vec{AD} \\right)-%s \\vec{AB}=%s \\vec{AB}+%s\\vec{AD}$.'
+                      % (latex(b), latex(a), latex(b-a), latex(b)))
 
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_nb_1 = [nb_da_1]
+        ######################################################################## Vận dụng 
+        vd_da_d = '\\True $\\vec{MP}=%s \\vec{AD}-%s\\vec{AB}$' % (latex(c), latex(a))
+        vd_da_s = '$\\vec{MP}=%s \\vec{AD}+%s\\vec{AB}$' % (latex(c), latex(a)) # Đổi - thành + để tạo nhiễu
+        
+        loigiai_vd = ('Ta có $\\vec{MP}=\\vec{AP}-\\vec{AM}=%s \\vec{AD}-%s\\vec{AB}$.'
+                      % (latex(c), latex(a)))
 
-            # Nội dung lời giải
-            loigiai_nb_1 = ('Ta có \\\\ \n'
-                            '\\hspace*{1cm} $\\vec{AN}=%s \\vec{AC}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$.'
-                        %(latex(b),latex(b)
-                        ))
+        ######################################################################## Vận dụng cao 
+        vdc_da_d = '\\True Ba điểm $M, N, P$ thẳng hàng'
+        vdc_da_s = 'Ba điểm $M, N, P$ không thẳng hàng'
+        
+        # Chứng minh logic và thuyết phục hơn nhờ ràng buộc b1 = a1 + c1
+        loigiai_vdc = ('Ta có $\\dfrac{1}{a} + \\dfrac{1}{c} = %s + %s = %s = \\dfrac{1}{b}$. \\\\ \n'
+                       'Suy ra $\\dfrac{1}{b} - \\dfrac{1}{a} = \\dfrac{1}{c} \\Rightarrow \\dfrac{a-b}{ab} = \\dfrac{1}{c} \\Rightarrow b-a = -\\dfrac{ab}{c}$. \\\\ \n'
+                       'Lại có $\\vec{MN}= %s \\vec{AB} + %s \\vec{AD} = -\\dfrac{ab}{c}\\vec{AB} + b\\vec{AD} = \\dfrac{b}{c}\\left(-a\\vec{AB} + c\\vec{AD}\\right) = %s\\vec{MP}$. \\\\ \n'
+                       'Suy ra hai vectơ $\\vec{MN}$ và $\\vec{MP}$ cùng phương. Vậy ba điểm $M, N, P$ thẳng hàng.'
+                       % (a1, c1, b1, latex(b-a), latex(b), latex(b/c)))
 
-            # Đưa các lời giải vào danh sách lời giải
-            list_nb_2 = [loigiai_nb_1]
+        # Vòng lặp đảm bảo số lượng câu đúng rơi vào khoảng 1 đến 3 (tránh trường hợp 4 True / 4 False)
+        while True:
+            nb_da = random.choice([nb_da_d, nb_da_s])
+            th_da = random.choice([th_da_d, th_da_s])
+            vd_da = random.choice([vd_da_d, vd_da_s])
+            vdc_da = random.choice([vdc_da_d, vdc_da_s])
+            
+            true_count = sum('\\True' in ans for ans in [nb_da, th_da, vd_da, vdc_da])
+            if 1 <= true_count <= 3:
+                break
 
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_nb = list(zip(list_nb_1, list_nb_2))
-
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_nb)
-
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
-
-            ######################################################################## Thông hiểu ############################################
-            # Các đáp án
-            th_da_1_d = '\\True $\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$'%(latex(b-a),latex(b))
-            th_da_1_s = '$\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$'%(latex(b-a+1),latex(b))
-            list_th_da_1=[th_da_1_d,th_da_1_s]
-            th_da_1=random.choice(list_th_da_1)
-
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_th_1 = [th_da_1]
-
-            # Nội dung lời giải
-            loigiai_th_1 = ('Ta có \\\\ \n'
-                            '\\hspace*{1cm} $\\vec{MN}=\\vec{AN}-\\vec{AM}=%s \\left( \\vec{AB}+\\vec{AD} \\right)-%s \\vec{AB}=%s \\vec{AB}+%s\\vec{AD}$.'
-                        %(latex(b),latex(a),latex(b-a),latex(b)
-                        ))
-
-            # Đưa các lời giải vào danh sách lời giải
-            list_th_2 = [loigiai_th_1]
-
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_th = list(zip(list_th_1, list_th_2))
-
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_th)
-
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
-
-            ######################################################################## Vận dụng ############################################
-            # Các đáp án
-            vd_da_1_d = '\\True $\\vec{MP}=%s \\vec{AD}-%s\\vec{AB}$'%(latex(c),latex(a))
-            vd_da_1_s = '$\\vec{MP}=%s \\vec{AD}-%s\\vec{AB}$'%(latex(c),latex(a+1))
-            list_vd_da_1=[vd_da_1_d,vd_da_1_s]
-            vd_da_1=random.choice(list_vd_da_1)
-
-
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_vd_1 = [vd_da_1]
-
-            # Nội dung lời giải
-            loigiai_vd_1 = ('Ta có \\\\ \n'
-                            '\\hspace*{1cm} $\\vec{MP}=\\vec{AP}-\\vec{AM}=%s \\vec{AD}-%s\\vec{AB}$.'
-                        %(latex(c),latex(a)
-                        ))
-
-            # Đưa các lời giải vào danh sách lời giải
-            list_vd_2 = [loigiai_vd_1]
-
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_vd = list(zip(list_vd_1, list_vd_2))
-
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_vd)
-
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
-
-            ######################################################################## Vận dụng cao ############################################
-            # Các đáp án
-            vdc_da_1_d = '\\True Ba điểm $M, N, P$ thẳng hàng'
-            vdc_da_1_s = 'Ba điểm $M, N, P$ không thẳng hàng'
-            list_vdc_da_1=[vdc_da_1_d,vdc_da_1_s]
-            vdc_da_1=random.choice(list_vdc_da_1)
-
-            # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-            list_vdc_1 = [vdc_da_1]
-
-            # Nội dung lời giải
-            loigiai_vdc_1 = ('Ta có \\\\ \n'
-                            '\\hspace*{1cm} $\\vec{MN}=%s \\vec{AB}+%s\\vec{AD} =%s \\left( %s \\vec{AB}+\\vec{AD} \\right)=%s \\cdot %s \\cdot %s \\left( \\vec{AD}+%s\\vec{AB} \\right)=%s \\vec{MP}$.\\\\ \n'
-                            'Suy ra hai vectơ $\\vec{MN}$ và $\\vec{MP}$ cùng phương. \\\\ \n'
-                            'Vậy ba điểm $M, N, P$ thẳng hàng.'
-                        %(latex(b-a),latex(b),latex(b),latex(1-a/b),latex(b),latex(1/c),latex(c),latex(1-a/b),latex(b/c)
-                        ))
-
-            # Đưa các lời giải vào danh sách lời giải
-            list_vdc_2 = [loigiai_vdc_1]
-
-            # Kết hợp các đáp án và lời giải vào cùng một danh sách
-            combined_vdc = list(zip(list_vdc_1, list_vdc_2))
-
-            # Xáo trộn danh sách kết hợp
-            random.shuffle(combined_vdc)
-
-            # Tách lại danh sách đã xáo trộn thành các danh sách đáp án và lời giải
-            shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
-
-
-
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-                '\\choiceTFn \n'
-                '{'+str(shuffled_answers_nb[0])+'}\n'
-                '{'+str(shuffled_answers_th[0])+'}\n'
-                '{'+str(shuffled_answers_vd[0])+'}\n'
-                '{'+str(shuffled_answers_vdc[0])+'}\n'
-                '\\loigiai{ \n'
-                '\\begin{enumEX}[a)]{1} \n'
-                '\\item '+str(shuffled_solutions_nb[0])+'\n'
-                '\\item '+str(shuffled_solutions_th[0])+'\n'
-                '\\item '+str(shuffled_solutions_vd[0])+'\n'
-                '\\item '+str(shuffled_solutions_vdc[0])+'\n'
-                '\\end{enumEX}} \n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-')
-            return content   
+        # Xuất câu hỏi
+        content = ('\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n'+ str(noidungcauhoi)+ 
+            '\\choiceTFn \n'
+            '{'+str(nb_da)+'}\n'
+            '{'+str(th_da)+'}\n'
+            '{'+str(vd_da)+'}\n'
+            '{'+str(vdc_da)+'}\n'
+            '\\loigiai{ \n'
+            '\\begin{enumEX}[a)]{1} \n'
+            '\\item '+str(loigiai_nb)+'\n'
+            '\\item '+str(loigiai_th)+'\n'
+            '\\item '+str(loigiai_vd)+'\n'
+            '\\item '+str(loigiai_vdc)+'\n'
+            '\\end{enumEX}} \n'
+            '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-')
+        
+        return content 
 

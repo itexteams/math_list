@@ -128,77 +128,91 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang45_p1_b2_c5_ds10(self):
-            # Khai báo biến
-            # Khai báo biến và chọn dạng (giữ cấu trúc mẫu)
-            lisdang=['1']
-            dang=random.choice(lisdang)
+    lisdang=['1']
+    dang=random.choice(lisdang)
 
-            if dang=='1':
-                # Bước 3: Suy nghĩ tìm cách random bài toán
-                # a: số học sinh lớp 12A, b: số học sinh lớp 12B, c: số học sinh lớp 12C
-                a = randint(4, 5)
-                b = randint(3, 4)
-                c = randint(2, 3)
-                k = 5 # Số học sinh cần chọn
-                n = a + b + c # Tổng số học sinh
+    if dang=='1':
+        # a: số học sinh lớp 12A, b: số học sinh lớp 12B, c: số học sinh lớp 12C
+        a = randint(4, 5)
+        b = randint(3, 4)
+        c = randint(2, 3)
+        k = 5 # Số học sinh cần chọn
+        n = a + b + c # Tổng số học sinh
 
-                # Tính toán các giá trị tổ hợp bằng sympy
-                c_total = binomial(n, k)
-                c_ab = binomial(a + b, k)
-                c_ac = binomial(a + c, k)
-                c_bc = binomial(b + c, k)
+        # Tính toán các trường hợp (A, B, C)
+        # TH1: 3, 1, 1
+        th1 = binomial(a, 3) * binomial(b, 1) * binomial(c, 1)
+        # TH2: 1, 3, 1
+        th2 = binomial(a, 1) * binomial(b, 3) * binomial(c, 1)
+        # TH3: 1, 1, 3
+        th3 = binomial(a, 1) * binomial(b, 1) * binomial(c, 3)
+        # TH4: 2, 2, 1
+        th4 = binomial(a, 2) * binomial(b, 2) * binomial(c, 1)
+        # TH5: 2, 1, 2
+        th5 = binomial(a, 2) * binomial(b, 1) * binomial(c, 2)
+        # TH6: 1, 2, 2
+        th6 = binomial(a, 1) * binomial(b, 2) * binomial(c, 2)
 
-                # Kết quả đúng
-                kq_val = c_total - (c_ab + c_ac + c_bc)
-                da = '$%s$' % (latex(kq_val))
+        # Kết quả đúng
+        kq_val = th1 + th2 + th3 + th4 + th5 + th6
+        da = '$%s$' % (latex(kq_val))
 
-                # Bước 4: Điều chỉnh các phương án sai không được phép trùng với đáp án đúng
-                s = []
-                while len(s) < 3:
-                    sai = kq_val + random.choice([-20, -10, 10, 20, 30, 40, 50])
-                    if sai > 0 and sai != kq_val and str(sai) not in s:
-                        s.append('$%s$' % (latex(sai)))
+        # Điều chỉnh các phương án sai
+        s = []
+        # Tạo một phương án sai theo kiểu tính nhầm phần bù như trong ảnh (để làm phương án nhiễu)
+        sai_phan_bu = binomial(n, k) - (binomial(a+b, k) + binomial(b+c, k) + binomial(a+c, k))
+        if sai_phan_bu > 0 and sai_phan_bu != kq_val:
+            s.append('$%s$' % (latex(sai_phan_bu)))
+            
+        while len(s) < 3:
+            sai = kq_val + random.choice([-20, -10, -5, 5, 10, 20, 30])
+            if sai > 0 and sai != kq_val and str(sai) not in s:
+                s.append('$%s$' % (latex(sai)))
 
-                das1 = s[0]
-                das2 = s[1]
-                das3 = s[2]
+        das1 = s[0]
+        das2 = s[1]
+        das3 = s[2]
 
-                # Câu hỏi (B2 - Viết lại y hệt đề bài theo mẫu)
-                noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm $%s$ học sinh lớp 12A, $%s$ học sinh lớp 12B và $%s$ học sinh lớp 12C. Chọn ngẫu nhiên $%s$ học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng. Hỏi có bao nhiêu cách chọn sao cho lớp nào cũng có học sinh được chọn?'''
-                                 % (latex(a), latex(b), latex(c), latex(k)))
+        # Câu hỏi
+        noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm $%s$ học sinh lớp 12A, $%s$ học sinh lớp 12B và $%s$ học sinh lớp 12C. Chọn ngẫu nhiên $%s$ học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng. Hỏi có bao nhiêu cách chọn sao cho lớp nào cũng có học sinh được chọn?'''
+                            % (latex(a), latex(b), latex(c), latex(k)))
 
-                # Các đáp án
-                da_d = ('\\True ' + str(da))
-                da_s1 = str(das1)
-                da_s2 = str(das2) 
-                da_s3 = str(das3) 
+        da_d = ('\\True ' + str(da))
+        da_s1 = str(das1)
+        da_s2 = str(das2) 
+        da_s3 = str(das3) 
 
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d, da_s1, da_s2, da_s3]
-                random.shuffle(list_1)
+        list_1 = [da_d, da_s1, da_s2, da_s3]
+        random.shuffle(list_1)
 
-                # Nội dung lời giải (B2 - Viết lại chi tiết theo mẫu ảnh)
-                loigiai = ('''Số cách chọn ngẫu nhiên $%s$ học sinh từ $%s$ học sinh là $C_{%s}^{%s}$ cách. \\\\
-                             Số cách chọn $%s$ học sinh mà chỉ có học sinh từ $2$ lớp là: $C_{%s}^{%s} + C_{%s}^{%s} + C_{%s}^{%s}$ cách. \\\\
-                             (Lưu ý: Vì số học sinh tối đa của mỗi lớp đều nhỏ hơn $%s$ nên không có trường hợp $%s$ học sinh được chọn chỉ từ $1$ lớp). \\\\
-                             Vậy số cách chọn $%s$ học sinh có cả $3$ lớp là: \\\\
-                             $C_{%s}^{%s} - \\left( C_{%s}^{%s} + C_{%s}^{%s} + C_{%s}^{%s} \\right) = %s - \\left( %s + %s + %s \\right) = %s$.'''
-                           % (latex(k), latex(n), latex(n), latex(k),
-                              latex(k), latex(a+b), latex(k), latex(a+c), latex(k), latex(b+c), latex(k),
-                              latex(k), latex(k),
-                              latex(k), latex(n), latex(k), latex(a+b), latex(k), latex(a+c), latex(k), latex(b+c), latex(k),
-                              latex(c_total), latex(c_ab), latex(c_ac), latex(c_bc), latex(kq_val)
-                             ))
+        # Nội dung lời giải chia trường hợp
+        loigiai = ('''Để chọn $%s$ học sinh sao cho lớp nào cũng có học sinh được chọn, ta xét các trường hợp phân bố số học sinh của $3$ lớp (12A, 12B, 12C) như sau: \\\\
+                        - Trường hợp 1 ($3$ học sinh 12A, $1$ học sinh 12B, $1$ học sinh 12C): Có $C_{%s}^3 \\cdot C_{%s}^1 \\cdot C_{%s}^1 = %s$ cách. \\\\
+                        - Trường hợp 2 ($1$ học sinh 12A, $3$ học sinh 12B, $1$ học sinh 12C): Có $C_{%s}^1 \\cdot C_{%s}^3 \\cdot C_{%s}^1 = %s$ cách. \\\\
+                        - Trường hợp 3 ($1$ học sinh 12A, $1$ học sinh 12B, $3$ học sinh 12C): Có $C_{%s}^1 \\cdot C_{%s}^1 \\cdot C_{%s}^3 = %s$ cách. \\\\
+                        - Trường hợp 4 ($2$ học sinh 12A, $2$ học sinh 12B, $1$ học sinh 12C): Có $C_{%s}^2 \\cdot C_{%s}^2 \\cdot C_{%s}^1 = %s$ cách. \\\\
+                        - Trường hợp 5 ($2$ học sinh 12A, $1$ học sinh 12B, $2$ học sinh 12C): Có $C_{%s}^2 \\cdot C_{%s}^1 \\cdot C_{%s}^2 = %s$ cách. \\\\
+                        - Trường hợp 6 ($1$ học sinh 12A, $2$ học sinh 12B, $2$ học sinh 12C): Có $C_{%s}^1 \\cdot C_{%s}^2 \\cdot C_{%s}^2 = %s$ cách. \\\\
+                        Vậy tổng số cách chọn là: $%s + %s + %s + %s + %s + %s = %s$ cách.'''
+                    % (latex(k),
+                        latex(a), latex(b), latex(c), latex(th1),
+                        latex(a), latex(b), latex(c), latex(th2),
+                        latex(a), latex(b), latex(c), latex(th3),
+                        latex(a), latex(b), latex(c), latex(th4),
+                        latex(a), latex(b), latex(c), latex(th5),
+                        latex(a), latex(b), latex(c), latex(th6),
+                        latex(th1), latex(th2), latex(th3), latex(th4), latex(th5), latex(th6), latex(kq_val)
+                        ))
 
-            # Xuất câu trắc nghiệm
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-                '\n\\choice \n'
-                '{'+str(list_1[0])+'}\n'
-                '{'+str(list_1[1])+'}\n'
-                '{'+str(list_1[2])+'}\n'
-                '{'+str(list_1[3])+'}\n'
-                '\\loigiai{'+str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n')
-            return content 
+    # Xuất câu trắc nghiệm
+    content = ('\\begin{minipage}{\\textwidth} \n'
+        '\\begin{ex}\n'+ str(noidungcauhoi)+ 
+        '\n\\choice \n'
+        '{'+str(list_1[0])+'}\n'
+        '{'+str(list_1[1])+'}\n'
+        '{'+str(list_1[2])+'}\n'
+        '{'+str(list_1[3])+'}\n'
+        '\\loigiai{'+str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content
 

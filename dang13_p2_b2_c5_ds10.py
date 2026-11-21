@@ -128,133 +128,115 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang13_p2_b2_c5_ds10(self):
-            # Khai báo biến
-            # Khai báo biến ngẫu nhiên cho bài toán
-            # nA: số học sinh lớp 12A, nB: số học sinh lớp 12B, nC: số học sinh lớp 12C
-            # k: số học sinh cần chọn
-            nA = random.randint(4, 5)
-            nB = random.randint(3, 4)
-            nC = 2
-            k = 5
-            tong_hs = nA + nB + nC
+        # Khai báo biến ngẫu nhiên cho bài toán
+        nA = random.randint(4, 5)
+        nB = random.randint(3, 4)
+        nC = 2
+        k = 5
+        tong_hs = nA + nB + nC
 
-            # Các tính toán tổ hợp
-            def nCr(n, r):
-                if r > n or r < 0:
-                    return 0
-                return math.comb(n, r)
+        # Các tính toán tổ hợp sử dụng sympy.binomial cho đồng bộ
+        total_ways = binomial(tong_hs, k)
+        ways_AB = binomial(nA + nB, k)
+        ways_BC = binomial(nB + nC, k)
+        ways_AC = binomial(nA + nC, k)
 
-            total_ways = nCr(tong_hs, k)
-            ways_AB = nCr(nA + nB, k)
-            ways_BC = nCr(nB + nC, k)
-            ways_AC = nCr(nA + nC, k)
+        # Tính số cách chọn sao cho lớp nào cũng có học sinh (Bao hàm - Loại trừ)
+        missing_A = binomial(nB + nC, k)
+        missing_B = binomial(nA + nC, k)
+        missing_C = binomial(nA + nB, k)
+        only_A = binomial(nA, k)
+        only_B = binomial(nB, k)  # thực tế k=5, nB<=4 nên luôn = 0
+        only_C = binomial(nC, k)  # thực tế k=5, nC=2 nên luôn = 0
+        
+        at_least_one_each = total_ways - (missing_A + missing_B + missing_C) + (only_A + only_B + only_C)
 
-            # Tính số cách chọn sao cho lớp nào cũng có học sinh (Bao hàm - Loại trừ)
-            # Cách chọn ít nhất 1 học sinh mỗi lớp = Tổng - (Thiếu ít nhất 1 lớp)
-            # = Total - (Cách chọn ko có A + ko có B + ko có C) + (Chỉ có A + Chỉ có B + Chỉ có C)
-            missing_A = nCr(nB + nC, k)
-            missing_B = nCr(nA + nC, k)
-            missing_C = nCr(nA + nB, k)
-            only_A = nCr(nA, k)
-            only_B = nCr(nB, k)
-            only_C = nCr(nC, k)
-            at_least_one_each = total_ways - (missing_A + missing_B + missing_C) + (only_A + only_B + only_C)
+        # Nội dung câu hỏi
+        noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm %s học sinh lớp $12A$, %s học sinh lớp $12B$ và %s học sinh lớp $12C$. Chọn ngẫu nhiên %s học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng.''' 
+                         %(latex(nA), latex(nB), latex(nC), latex(k)))
 
-            # Nội dung câu hỏi
-            noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm %s học sinh lớp $12A$, %s học sinh lớp $12B$ và %s học sinh lớp $12C$. Chọn ngẫu nhiên %s học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng.''' 
-                             %(latex(nA), latex(nB), latex(nC), latex(k)))
+        ########################################################################
+        # Nhận biết 
+        nb_da_1_d = '\\True Chọn %s học sinh tùy ý từ %s học sinh có: %s cách' % (latex(k), latex(tong_hs), latex(total_ways))
+        nb_da_1_s = 'Chọn %s học sinh tùy ý từ %s học sinh có: %s cách' % (latex(k), latex(tong_hs), latex(total_ways + random.randint(5, 15)))
+        list_nb_da_1 = [nb_da_1_d, nb_da_1_s]
 
-            ########################################################################
-            # Nhận biết ############################################
-            nb_da_1_d = '\\True Chọn %s học sinh tùy ý từ %s học sinh có: %s cách' % (latex(k), latex(tong_hs), latex(total_ways))
-            nb_da_1_s = 'Chọn %s học sinh tùy ý từ %s học sinh có: %s cách' % (latex(k), latex(tong_hs), latex(total_ways + random.randint(5, 15)))
-            list_nb_da_1 = [nb_da_1_d, nb_da_1_s]
+        loigiai_nb_1 = ('''Số cách chọn %s học sinh tùy ý từ %s học sinh là $C_{%s}^{%s} = %s$ cách.''' 
+                        % (latex(k), latex(tong_hs), latex(tong_hs), latex(k), latex(total_ways)))
 
-            loigiai_nb_1 = ('''Số cách chọn %s học sinh tùy ý từ %s học sinh là $C_{%s}^{%s} = %s$ cách.''' 
-                            % (latex(k), latex(tong_hs), latex(tong_hs), latex(k), latex(total_ways)))
+        ########################################################################
+        # Thông hiểu 
+        th_da_1_d = '\\True Chọn %s học sinh chỉ từ lớp $12A$ và $12B$ có: %s cách' % (latex(k), latex(ways_AB))
+        th_da_1_s = 'Chọn %s học sinh chỉ từ lớp $12A$ và $12B$ có: %s cách' % (latex(k), latex(ways_AB + random.choice([5, 10, 15])))
+        list_th_da_1 = [th_da_1_d, th_da_1_s]
 
-            list_nb_2 = [loigiai_nb_1]
+        loigiai_th_1 = ('''Số học sinh lớp $12A$ và $12B$ là $%s + %s = %s$ học sinh. \\\\ 
+        Số cách chọn %s học sinh từ %s học sinh này là $C_{%s}^{%s} = %s$ cách.''' 
+                        % (latex(nA), latex(nB), latex(nA + nB), latex(k), latex(nA + nB), latex(nA + nB), latex(k), latex(ways_AB)))
 
-            ########################################################################
-            # Thông hiểu ############################################
-            th_da_1_d = '\\True Chọn %s học sinh chỉ từ lớp $12A$ và $12B$ có: %s cách' % (latex(k), latex(ways_AB))
-            th_da_1_s = 'Chọn %s học sinh chỉ từ lớp $12A$ và $12B$ có: %s cách' % (latex(k), latex(ways_AB + 5))
-            list_th_da_1 = [th_da_1_d, th_da_1_s]
+        ########################################################################
+        # Vận dụng 
+        vd_da_1_d = '\\True Chọn %s học sinh chỉ từ lớp $12B$ và $12C$ có: %s cách' % (latex(k), latex(ways_BC))
+        vd_da_1_s = 'Chọn %s học sinh chỉ từ lớp $12B$ và $12C$ có: %s cách' % (latex(k), latex(ways_BC + random.choice([1, 2, 3])))
+        list_vd_da_1 = [vd_da_1_d, vd_da_1_s]
 
-            loigiai_th_1 = ('''Số học sinh lớp $12A$ và $12B$ là $%s + %s = %s$ học sinh. \\\\ 
-            Số cách chọn %s học sinh từ %s học sinh này là $C_{%s}^{%s} = %s$ cách.''' 
-                            % (latex(nA), latex(nB), latex(nA + nB), latex(k), latex(nA + nB), latex(nA + nB), latex(k), latex(ways_AB)))
+        loigiai_vd_1 = ('''Số học sinh lớp $12B$ và $12C$ là $%s + %s = %s$ học sinh. \\\\ 
+        Số cách chọn %s học sinh từ %s học sinh này là $C_{%s}^{%s} = %s$ cách.''' 
+                        % (latex(nB), latex(nC), latex(nB + nC), latex(k), latex(nB + nC), latex(nB + nC), latex(k), latex(ways_BC)))
 
-            list_th_2 = [loigiai_th_1]
+        ########################################################################
+        # Vận dụng cao 
+        vdc_da_1_d = '\\True Có %s cách chọn sao cho lớp nào cũng có học sinh được chọn' % (latex(at_least_one_each))
+        sai_so = random.choice([-10, -5, 5, 10, 15])
+        vdc_da_1_s = 'Có %s cách chọn sao cho lớp nào cũng có học sinh được chọn' % (latex(at_least_one_each + sai_so))
+        list_vdc_da_1 = [vdc_da_1_d, vdc_da_1_s]
 
-            ########################################################################
-            # Vận dụng ############################################
-            vd_da_1_d = '\\True Chọn %s học sinh chỉ từ lớp $12B$ và $12C$ có: %s cách' % (latex(k), latex(ways_BC))
-            vd_da_1_s = 'Chọn %s học sinh chỉ từ lớp $12B$ và $12C$ có: %s cách' % (latex(k), latex(ways_BC + 1))
-            list_vd_da_1 = [vd_da_1_d, vd_da_1_s]
+        loigiai_vdc_1 = ('''Sử dụng phương pháp phần bù: \\\\ 
+- Số cách chọn không có học sinh lớp $12A$ (chọn từ $12B, 12C$): $C_{%s}^{%s} = %s$. \\\\ 
+- Số cách chọn không có học sinh lớp $12B$ (chọn từ $12A, 12C$): $C_{%s}^{%s} = %s$. \\\\ 
+- Số cách chọn không có học sinh lớp $12C$ (chọn từ $12A, 12B$): $C_{%s}^{%s} = %s$. \\\\ 
+Lưu ý các trường hợp chỉ có học sinh của 1 lớp duy nhất (nếu có). \\\\ 
+Số cách chọn thỏa mãn lớp nào cũng có học sinh là: $%s - \\left( %s + %s + %s \\right) + \\left( %s + %s + %s \\right) = %s$ cách.''' 
+                         % (latex(nB+nC), latex(k), latex(missing_A), 
+                            latex(nA+nC), latex(k), latex(missing_B), 
+                            latex(nA+nB), latex(k), latex(missing_C),
+                            latex(total_ways), latex(missing_A), latex(missing_B), latex(missing_C),
+                            latex(only_A), latex(only_B), latex(only_C), latex(at_least_one_each)))
 
-            loigiai_vd_1 = ('''Số học sinh lớp $12B$ và $12C$ là $%s + %s = %s$ học sinh. \\\\ 
-            Số cách chọn %s học sinh từ %s học sinh này là $C_{%s}^{%s} = %s$ cách.''' 
-                            % (latex(nB), latex(nC), latex(nB + nC), latex(k), latex(nB + nC), latex(nB + nC), latex(k), latex(ways_BC)))
+        def count_true_answers(answers):
+            return sum('\\True' in ans for ans in answers)
 
-            list_vd_2 = [loigiai_vd_1]
+        # Lặp đến khi đáp án có từ 1 đến 3 đúng
+        while True:
+            nb_da_1 = random.choice(list_nb_da_1)
+            th_da_1 = random.choice(list_th_da_1)
+            vd_da_1 = random.choice(list_vd_da_1)
+            vdc_da_1 = random.choice(list_vdc_da_1)
 
-            ########################################################################
-            # Vận dụng cao ############################################
-            vdc_da_1_d = '\\True Có %s cách chọn sao cho lớp nào cũng có học sinh được chọn' % (latex(at_least_one_each))
-            vdc_da_1_s = 'Có %s cách chọn sao cho lớp nào cũng có học sinh được chọn' % (latex(at_least_one_each - 8))
-            list_vdc_da_1 = [vdc_da_1_d, vdc_da_1_s]
+            answers = [nb_da_1, th_da_1, vd_da_1, vdc_da_1]
+            true_count = count_true_answers(answers)
 
-            loigiai_vdc_1 = ('''Sử dụng phương pháp phần bù: \\\\ 
-            - Số cách chọn không có học sinh lớp $12A$ (chọn từ $12B, 12C$): $C_{%s}^{%s} = %s$. \\\\ 
-            - Số cách chọn không có học sinh lớp $12B$ (chọn từ $12A, 12C$): $C_{%s}^{%s} = %s$. \\\\ 
-            - Số cách chọn không có học sinh lớp $12C$ (chọn từ $12A, 12B$): $C_{%s}^{%s} = %s$. \\\\ 
-            Lưu ý các trường hợp chỉ có học sinh của 1 lớp duy nhất (nếu có). \\\\ 
-            Số cách chọn thỏa mãn lớp nào cũng có học sinh là: $%s - \\left( %s + %s + %s \\right) + \\left( %s + %s + %s \\right) = %s$ cách.''' 
-                             % (latex(nB+nC), latex(k), latex(missing_A), 
-                                latex(nA+nC), latex(k), latex(missing_B), 
-                                latex(nA+nB), latex(k), latex(missing_C),
-                                latex(total_ways), latex(missing_A), latex(missing_B), latex(missing_C),
-                                latex(only_A), latex(only_B), latex(only_C), latex(at_least_one_each)))
+            if 1 <= true_count <= 3:
+                break
 
-            list_vdc_2 = [loigiai_vdc_1]
+        final_solutions = [loigiai_nb_1, loigiai_th_1, loigiai_vd_1, loigiai_vdc_1]
 
-            def count_true_answers(answers):
-                return sum('\\True' in ans for ans in answers)
-
-            # Lặp đến khi đáp án có từ 1 đến 3 đúng
-            while True:
-                nb_da_1 = random.choice(list_nb_da_1)
-                th_da_1 = random.choice(list_th_da_1)
-                vd_da_1 = random.choice(list_vd_da_1)
-                vdc_da_1 = random.choice(list_vdc_da_1)
-
-                answers = [nb_da_1, th_da_1, vd_da_1, vdc_da_1]
-                true_count = count_true_answers(answers)
-
-                if 1 <= true_count <= 3:
-                    break
-
-            # Gán lại vào list để xuất
-            final_answers = [nb_da_1, th_da_1, vd_da_1, vdc_da_1]
-            final_solutions = [loigiai_nb_1, loigiai_th_1, loigiai_vd_1, loigiai_vdc_1]
-
-            # Xuất câu hỏi
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+
-                str(noidungcauhoi)+ 
-                '\\choiceTFn \n'
-                '{'+str(final_answers[0])+'}\n'
-                '{'+str(final_answers[1])+'}\n'
-                '{'+str(final_answers[2])+'}\n'
-                '{'+str(final_answers[3])+'}\n'
-                '\\loigiai{ \n'
-                '\\begin{enumEX}[a)]{1} \n'
-                '\\item '+str(final_solutions[0])+'\n'
-                '\\item '+str(final_solutions[1])+'\n'
-                '\\item '+str(final_solutions[2])+'\n'
-                '\\item '+str(final_solutions[3])+'\n'
-                '\\end{enumEX}} \n'
-                '\\end{ex}\n \\end{minipage} \n\n')
-            return content
+        # Xuất câu hỏi
+        content = ('\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n'+
+            str(noidungcauhoi)+ 
+            '\n\\choiceTFn \n'
+            '{'+str(answers[0])+'}\n'
+            '{'+str(answers[1])+'}\n'
+            '{'+str(answers[2])+'}\n'
+            '{'+str(answers[3])+'}\n'
+            '\\loigiai{ \n'
+            '\\begin{enumEX}[a)]{1} \n'
+            '\\item '+str(final_solutions[0])+'\n'
+            '\\item '+str(final_solutions[1])+'\n'
+            '\\item '+str(final_solutions[2])+'\n'
+            '\\item '+str(final_solutions[3])+'\n'
+            '\\end{enumEX}} \n'
+            '\\end{ex}\n \\end{minipage} \n\n')
+        return content
 

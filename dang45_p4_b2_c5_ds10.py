@@ -128,72 +128,57 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang45_p4_b2_c5_ds10(self):
-            # Khai báo biến
-            # Khai báo biến và chọn dạng (giữ cấu trúc mẫu)
-            lisdang=['1']
-            dang=random.choice(lisdang)
+        lisdang=['1']
+        dang=random.choice(lisdang)
 
-            if dang=='1':
-                # Bước 3: Suy nghĩ tìm cách random bài toán
-                # a: số học sinh lớp 12A, b: số học sinh lớp 12B, c: số học sinh lớp 12C
-                a = randint(4, 5)
-                b = randint(3, 4)
-                c = randint(2, 3)
-                k = 5 # Số học sinh cần chọn
-                n = a + b + c # Tổng số học sinh
+        if dang=='1':
+            # a: số học sinh lớp 12A, b: số học sinh lớp 12B, c: số học sinh lớp 12C
+            a = randint(4, 5)
+            b = randint(3, 4)
+            c = randint(2, 3)
+            k = 5 # Số học sinh cần chọn
+            n = a + b + c # Tổng số học sinh
 
-                # Tính toán các giá trị tổ hợp bằng sympy
-                c_total = binomial(n, k)
-                c_ab = binomial(a + b, k)
-                c_ac = binomial(a + c, k)
-                c_bc = binomial(b + c, k)
+            # Tính toán các giá trị tổ hợp bằng sympy
+            c_total = binomial(n, k)
+            c_ab = binomial(a + b, k)
+            c_ac = binomial(a + c, k)
+            c_bc = binomial(b + c, k)
+            
+            # Tính các trường hợp chỉ chọn từ 1 lớp
+            c_a = binomial(a, k)
+            c_b = binomial(b, k) # Bằng 0 vì b <= 4
+            c_c = binomial(c, k) # Bằng 0 vì c <= 3
 
-                # Kết quả đúng
-                kq_val = c_total - (c_ab + c_ac + c_bc)
-                da = '$%s$' % (latex(kq_val))
+            # Kết quả đúng: Tổng - (Thiếu C + Thiếu B + Thiếu A) + (Chỉ A + Chỉ B + Chỉ C)
+            kq_val = c_total - (c_ab + c_ac + c_bc) + (c_a + c_b + c_c)
 
-                # Bước 4: Điều chỉnh các phương án sai không được phép trùng với đáp án đúng
-                s = []
-                while len(s) < 3:
-                    sai = kq_val + random.choice([-20, -10, 10, 20, 30, 40, 50])
-                    if sai > 0 and sai != kq_val and str(sai) not in s:
-                        s.append('$%s$' % (latex(sai)))
+            # Câu hỏi tự luận
+            noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm $%s$ học sinh lớp 12A, $%s$ học sinh lớp 12B và $%s$ học sinh lớp 12C. Chọn ngẫu nhiên $%s$ học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng. Tìm số cách chọn sao cho lớp nào cũng có học sinh được chọn.'''
+                             % (latex(a), latex(b), latex(c), latex(k)))
 
-                das1 = s[0]
-                das2 = s[1]
-                das3 = s[2]
+            # Nội dung lời giải theo nguyên lý bao hàm - loại trừ
+            loigiai = ('''Số cách chọn ngẫu nhiên $%s$ học sinh từ $%s$ học sinh là $C_{%s}^{%s} = %s$ cách. \\\\
+                         Sử dụng phương pháp phần bù: \\\\
+                         - Số cách chọn không có học sinh 12C (chỉ từ 12A và 12B): $C_{%s}^{%s} = %s$. \\\\
+                         - Số cách chọn không có học sinh 12B (chỉ từ 12A và 12C): $C_{%s}^{%s} = %s$. \\\\
+                         - Số cách chọn không có học sinh 12A (chỉ từ 12B và 12C): $C_{%s}^{%s} = %s$. \\\\
+                         - Số cách chọn chỉ từ 1 lớp (trường hợp này chỉ có thể xảy ra nếu số lượng học sinh của 1 lớp $\\ge 5$, tức là lớp 12A): $C_{%s}^{%s} + C_{%s}^{%s} + C_{%s}^{%s} = %s$. \\\\
+                         Vậy số cách chọn $%s$ học sinh có mặt đủ cả $3$ lớp là: \\\\
+                         $%s - \\left( %s + %s + %s \\right) + %s = %s$ (cách).'''
+                       % (latex(k), latex(n), latex(n), latex(k), latex(c_total),
+                          latex(a+b), latex(k), latex(c_ab),
+                          latex(a+c), latex(k), latex(c_ac),
+                          latex(b+c), latex(k), latex(c_bc),
+                          latex(a), latex(k), latex(b), latex(k), latex(c), latex(k), latex(c_a + c_b + c_c),
+                          latex(k),
+                          latex(c_total), latex(c_ab), latex(c_ac), latex(c_bc), latex(c_a + c_b + c_c), latex(kq_val)
+                         ))
 
-                # Câu hỏi (B2 - Viết lại y hệt đề bài theo mẫu)
-                noidungcauhoi = ('''Đội văn nghệ của nhà trường gồm $%s$ học sinh lớp 12A, $%s$ học sinh lớp 12B và $%s$ học sinh lớp 12C. Chọn ngẫu nhiên $%s$ học sinh từ đội văn nghệ để biểu diễn trong lễ bế giảng. Tìm số cách chọn sao cho lớp nào cũng có học sinh được chọn.'''
-                                 % (latex(a), latex(b), latex(c), latex(k)))
-
-                # Các đáp án
-                da_d = ('\\True ' + str(da))
-                da_s1 = str(das1)
-                da_s2 = str(das2) 
-                da_s3 = str(das3) 
-
-                # Đưa các đáp án vào 1 danh sách chọn ngẫu nhiên
-                list_1 = [da_d, da_s1, da_s2, da_s3]
-                random.shuffle(list_1)
-
-                # Nội dung lời giải (B2 - Viết lại chi tiết theo mẫu ảnh)
-                loigiai = ('''Số cách chọn ngẫu nhiên $%s$ học sinh từ $%s$ học sinh là $C_{%s}^{%s}$ cách. \\\\
-                             Số cách chọn $%s$ học sinh mà chỉ có học sinh từ $2$ lớp là: $C_{%s}^{%s} + C_{%s}^{%s} + C_{%s}^{%s}$ cách. \\\\
-                             (Lưu ý: Vì số học sinh tối đa của mỗi lớp đều nhỏ hơn $%s$ nên không có trường hợp $%s$ học sinh được chọn chỉ từ $1$ lớp). \\\\
-                             Vậy số cách chọn $%s$ học sinh có cả $3$ lớp là: \\\\
-                             $C_{%s}^{%s} - \\left( C_{%s}^{%s} + C_{%s}^{%s} + C_{%s}^{%s} \\right) = %s - \\left( %s + %s + %s \\right) = %s$.'''
-                           % (latex(k), latex(n), latex(n), latex(k),
-                              latex(k), latex(a+b), latex(k), latex(a+c), latex(k), latex(b+c), latex(k),
-                              latex(k), latex(k),
-                              latex(k), latex(n), latex(k), latex(a+b), latex(k), latex(a+c), latex(k), latex(b+c), latex(k),
-                              latex(c_total), latex(c_ab), latex(c_ac), latex(c_bc), latex(kq_val)
-                             ))
-
-            # Xuất câu trắc nghiệm
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-                '\\loigiai{'+str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n')
-            return content 
+        # Xuất câu tự luận
+        content = ('\\begin{minipage}{\\textwidth} \n'
+            '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n' +
+            '\\loigiai{\n'+str(loigiai)+'\n}\n'
+            '\\end{ex}\n \\end{minipage} \n\n')
+        return content
 
