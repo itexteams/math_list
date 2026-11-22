@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,42 +129,57 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang9_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho hình bình hành, tâm và điểm M
-        list_hbh = [("A", "B", "C", "D"), ("E", "F", "G", "H"), ("P", "Q", "R", "S")]
-        list_tam = ["O", "I", "J", "K"]
-        list_diem = ["M", "N", "X", "Y"]
-        
-        hbh = random.choice(list_hbh)
-        tam = random.choice([t for t in list_tam if t not in hbh])
-        diem_can_tim = random.choice([d for d in list_diem if d not in hbh and d != tam])
-        
-        T1, T2, T3, T4 = hbh
-        
-        # Chọn ngẫu nhiên 2 đỉnh đối diện hoặc cạnh
-        chon_dinh = random.choice([(T1, T3), (T2, T4)])
-        D1, D2 = chon_dinh
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho hình bình hành $%s %s %s %s$ tâm $%s$. Tìm tập hợp các điểm $%s$ thỏa mãn $|\\overrightarrow{%s %s}| = |\\overrightarrow{%s %s}|$.'
-                         %(T1, T2, T3, T4, tam, diem_can_tim, diem_can_tim, D1, diem_can_tim, D2))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item $|\\overrightarrow{%s %s}| = |\\overrightarrow{%s %s}| \\Leftrightarrow %s %s = %s %s$. \n'
-                   '\\item Tập hợp các điểm $%s$ cách đều hai đầu mút đoạn thẳng $%s %s$ là đường trung trực của đoạn thẳng $%s %s$. \n'
-                   '\\end{itemize}'
-                   %(diem_can_tim, D1, diem_can_tim, D2, diem_can_tim, D1, diem_can_tim, D2, diem_can_tim, D1, D2, D1, D2))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('E', 'F', 'G', 'H'), ('I', 'J', 'K', 'L')])
+        bo_td = random.choice([('N', 'P', 'Q'), ('U', 'V', 'W')])
+        pA, pB, pC, pD = bo_dinh
+        pN, pP, pQ = bo_td
+        pM = random.choice(['M', 'S', 'T'])
+        kieu = random.choice(['DC_MB', 'DC_AM', 'CD_BM', 'CD_MA'])
+        if kieu == 'DC_MB':
+            v1, v2, v_day = f'{pD}{pC}', f'{pM}{pB}', f'{pA}{pB}'
+            d1, d2 = f'{pD}{pC}', f'{pM}{pB}'
+        elif kieu == 'DC_AM':
+            v1, v2, v_day = f'{pD}{pC}', f'{pA}{pM}', f'{pA}{pB}'
+            d1, d2 = f'{pD}{pC}', f'{pA}{pM}'
+        elif kieu == 'CD_BM':
+            v1, v2, v_day = f'{pC}{pD}', f'{pB}{pM}', f'{pB}{pA}'
+            d1, d2 = f'{pC}{pD}', f'{pB}{pM}'
+        else:
+            v1, v2, v_day = f'{pC}{pD}', f'{pM}{pA}', f'{pB}{pA}'
+            d1, d2 = f'{pC}{pD}', f'{pM}{pA}'
+        noidungcauhoi = ('Cho hình thang $%s%s%s%s$ với đáy $%s%s = 2%s%s$. Gọi $%s, %s, %s$ lần lượt là trung điểm các cạnh $%s%s, %s%s, %s%s$ và $%s$ là điểm thỏa mãn $\\overrightarrow{%s} = \\overrightarrow{%s}$. Xác định vị trí điểm $%s$. \n'
+                         %(pA, pB, pC, pD, pA, pB, pC, pD, pN, pP, pQ, pB, pC, pC, pD, pD, pA, pM, v1, v2, pM))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at (0,0); \n'
+                   '\\coordinate (B) at (6,0); \n'
+                   '\\coordinate (D) at (1,3); \n'
+                   '\\coordinate (C) at (4,3); \n'
+                   '\\coordinate (M) at (3,0); \n'
+                   '\\coordinate (N) at (5,1.5); \n'
+                   '\\coordinate (P) at (2.5,3); \n'
+                   '\\coordinate (Q) at (0.5,1.5); \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (Q) -- (N) -- (P) (A) -- (N); \n'
+                   '\\fill (A) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (M) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (Q) circle (1.5pt) node[left] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Ta có $\\overrightarrow{%s} = \\overrightarrow{%s}$ nên $%s = %s$ và $\\overrightarrow{%s}, \\overrightarrow{%s}$ cùng hướng. Mà $%s%s = 2%s$ và $\\overrightarrow{%s}, \\overrightarrow{%s}$ cùng hướng. Vậy $%s$ là trung điểm của $%s%s$. \n'
+                   %(pA, pB, pC, pD, pM, pN, pP, pQ,
+                     v1, v2, d1, d2, v1, v2, pA, pB, d1, v_day, v1, pM, pA, pB))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

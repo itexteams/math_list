@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,54 +129,23 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang21_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random vận tốc riêng của máy bay (km/h) và vận tốc gió (km/h)
-        v_mb = randint(20, 60) * 10
-        v_gio = randint(3, 12) * 10
-        
-        # Góc hợp bởi hướng Bắc và hướng Tây Nam (hợp với hướng Nam 45 độ) là 180 - 45 = 135 độ
-        goc_hop = 135
-        
-        # Tính toán bằng sympy
-        v_mb_binh = v_mb**2
-        v_gio_binh = v_gio**2
-        # v^2 = v_mb^2 + v_gio^2 + 2 * v_mb * v_gio * cos(135)
-        tich_cos = 2 * v_mb * v_gio * sp.cos(sp.rad(goc_hop))
-        v_binh_expr = v_mb_binh + v_gio_binh + tich_cos
-        v_val_expr = sp.sqrt(v_binh_expr)
-        
-        # Làm tròn v^2 đến hàng phần trăm và v đến hàng phần mười theo chuẩn Decimal
-        num_v_binh = Decimal(str(float(v_binh_expr.evalf())))
-        kq_v_binh = num_v_binh.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        str_v_binh = str(kq_v_binh).replace('.', ',')
-        
-        num_v = Decimal(str(float(v_val_expr.evalf())))
-        kq_v = num_v.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
-        str_v = str(kq_v).replace('.', ',')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Một máy bay bay theo hướng Bắc với vận tốc riêng $%s\\,\\mathrm{km/h}$. Gió thổi theo hướng Tây Nam (hợp với hướng Nam một góc $45^\\circ$) với vận tốc $%s\\,\\mathrm{km/h}$. Tính độ lớn vectơ vận tốc thực tế của máy bay so với mặt đất (làm tròn đến hàng phần mười).'
-                         %(str(v_mb), str(v_gio)))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Góc hợp bởi hai vectơ vận tốc máy bay (hướng Bắc) và vận tốc gió (hướng Tây Nam) là $%s^\\circ$. \n'
-                   '\\item Áp dụng định lí Côsin cho hình bình hành vận tốc: $v^2 = %s^2 + %s^2 + 2 \\cdot %s \\cdot %s \\cdot \\cos %s^\\circ = %s + %s %s \\approx %s$. \n'
-                   '\\item Suy ra $v \\approx %s\\,\\mathrm{km/h}$. \n'
-                   '\\end{itemize}'
-                   %(str(goc_hop),
-                     str(v_mb), str(v_gio), str(v_mb), str(v_gio), str(goc_hop), str(v_mb_binh), str(v_gio_binh), latex(tich_cos), str_v_binh,
-                     str_v))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('M', 'N', 'P'), ('D', 'E', 'F')])
+        pA, pB, pC = bo_dinh
+        pH = random.choice(['H', 'I', 'K'])
+        a = randint(1, 15)
+        kq = Rational(a, 2) * sqrt(3)
+        vec_hoi = random.choice([f'{pA}{pH}', f'{pH}{pA}'])
+        noidungcauhoi = ('Cho tam giác đều $%s%s%s$ cạnh bằng $%s$. Gọi $%s$ là trung điểm $%s%s$. Tính $\\left|\\overrightarrow{%s}\\right|$. \n'
+                         %(pA, pB, pC, latex(a), pH, pB, pC, vec_hoi))
+        loigiai = ('Vì tam giác $%s%s%s$ đều cạnh bằng $%s$ và $%s$ là trung điểm $%s%s$ nên $%s%s$ là đường cao của tam giác đều $%s%s%s$. \\\\ \n'
+                   'Do đó $\\left|\\overrightarrow{%s}\\right| = %s%s = \\dfrac{%s\\sqrt{3}}{2} = %s$. \n'
+                   %(pA, pB, pC, latex(a), pH, pB, pC, pA, pH, pA, pB, pC, vec_hoi, pA, pH, '' if a == 1 else latex(a), latex(kq)))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

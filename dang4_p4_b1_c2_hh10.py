@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,43 +129,52 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang4_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm để bài toán đa dạng
-        diem_giac = random.choice([("A", "B", "C"), ("M", "N", "P"), ("D", "E", "F")])
-        D1, D2, D3 = diem_giac
-        
-        # Các điểm đặc biệt
-        truc_tam = random.choice(["H", "K", "T"])
-        trong_tam = random.choice(["G", "S"])
-        tam_ngoai_tiep = random.choice(["O", "I"])
-        diem_doi_xung = random.choice(["D", "Q", "R"])
-        
-        # Đảm bảo điểm đối xứng khác với các điểm đã có
-        while diem_doi_xung in [D1, D2, D3, truc_tam, trong_tam, tam_ngoai_tiep]:
-            diem_doi_xung = random.choice(["D", "Q", "R", "X", "Y", "Z"])
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tam giác $%s %s %s$ có trực tâm $%s$, trọng tâm $%s$ và tâm đường tròn ngoại tiếp $%s$. Gọi $%s$ là điểm đối xứng với $%s$ qua $%s$. Chứng minh rằng $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$.'
-                         %(D1, D2, D3, truc_tam, trong_tam, tam_ngoai_tiep, diem_doi_xung, D1, tam_ngoai_tiep, D2, truc_tam, diem_doi_xung, D3, D3, truc_tam, diem_doi_xung, D2))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Vì $%s %s$ là đường kính của $(%s)$ nên $\\widehat{%s %s %s} = \\widehat{%s %s %s} = 90^\\circ \\Rightarrow %s %s \\perp %s %s$ và $%s %s \\perp %s %s$. \n'
-                   '\\item Mặt khác, $%s$ là trực tâm $\\triangle %s %s %s$ nên $%s %s \\perp %s %s$ và $%s %s \\perp %s %s$. \n'
-                   '\\item Suy ra $%s %s \\parallel %s %s$ và $%s %s \\parallel %s %s$, do đó tứ giác $%s %s %s %s$ là hình bình hành. \n'
-                   '\\item Từ tính chất hình bình hành, ta có $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$. \n'
-                   '\\end{itemize}'
-                   %(D1, diem_doi_xung, tam_ngoai_tiep, D1, D3, diem_doi_xung, D1, D2, diem_doi_xung, diem_doi_xung, D3, D1, D3, diem_doi_xung, D2, D1, D2, truc_tam, D1, D2, D3, D2, truc_tam, D1, D3, D3, truc_tam, D1, D2, D2, truc_tam, diem_doi_xung, D3, D3, truc_tam, diem_doi_xung, D2, D2, truc_tam, D3, diem_doi_xung, D2, truc_tam, diem_doi_xung, D3, D3, truc_tam, diem_doi_xung, D2))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_diem=random.choice([['M','N','P'],['A','B','C'],['E','F','G'],['H','I','K'],['P','Q','R']])
+        d1,d2,d3=bo_diem
+        vi_tri=random.choice([(d1,d2,d3),(d2,d1,d3),(d1,d3,d2)])
+        trai,giua,phai=vi_tri
+        loai_hoi=random.choice(['cung_huong','nguoc_huong'])
+        vt_phai=[f"\\overrightarrow{{{trai}{giua}}}",f"\\overrightarrow{{{trai}{phai}}}",f"\\overrightarrow{{{giua}{phai}}}"]
+        vt_trai=[f"\\overrightarrow{{{phai}{trai}}}",f"\\overrightarrow{{{phai}{giua}}}",f"\\overrightarrow{{{giua}{trai}}}"]
+        if loai_hoi=='cung_huong':
+            yc_text="cùng hướng"
+            ds_cap=[
+                f"{vt_phai[0]} và {vt_phai[1]}",
+                f"{vt_phai[0]} và {vt_phai[2]}",
+                f"{vt_phai[1]} và {vt_phai[2]}",
+                f"{vt_trai[0]} và {vt_trai[1]}",
+                f"{vt_trai[0]} và {vt_trai[2]}",
+                f"{vt_trai[1]} và {vt_trai[2]}"
+            ]
+        else:
+            yc_text="ngược hướng"
+            ds_cap=[]
+            for vp in vt_phai:
+                for vt in vt_trai:
+                    ds_cap.append(f"{vp} và {vt}")
+        str_cap=", ".join([f"${c.replace(' và ', '$ và $')}$" for c in ds_cap])
+        tikz_hinh=f'''\\begin{{center}}
+    \\begin{{tikzpicture}}[line width=1pt, scale=1]
+    \\coordinate ({trai}) at (0,0);
+    \\coordinate ({giua}) at (3.2,0);
+    \\coordinate ({phai}) at (5.5,0);
+    \\draw[blue!60!black] ({trai})--({phai});
+    \\foreach \\p in {{{trai},{giua},{phai}}} {{
+        \\fill[red] (\\p) circle (2pt);
+        \\draw (\\p) circle (2pt);
+        \\node[below=4pt] at (\\p) {{$\\p$}};
+    }}
+    \\end{{tikzpicture}}
+    \\end{{center}}'''
+        noidungcauhoi=f"Cho ba điểm ${d1}, {d2}, {d3}$ thẳng hàng, trong đó điểm ${giua}$ nằm giữa hai điểm ${trai}$ và ${phai}$. Tìm các cặp vectơ {yc_text}?"
+        loigiai=f'''{tikz_hinh}
+    Các cặp vectơ {yc_text} là: {str_cap}.'''
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content

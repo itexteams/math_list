@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,43 +129,54 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang22_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        diem_O, diem_A, diem_B = "O", "A", "B"
-        
-        # Random cặp góc phụ nhau để tạo góc vuông 90 độ tại A
-        cap_goc = [(30, 60), (60, 30), (45, 45), (20, 70), (70, 20), (35, 55), (55, 35)]
-        goc_bac, goc_nam = random.choice(cap_goc)
-        
-        # Random bộ 3 Pytago cho quãng đường OA, AB và độ dịch chuyển OB (km)
-        bo_quang_duong = [(4, 3, 5), (3, 4, 5), (6, 8, 10), (8, 6, 10), (5, 12, 13), (12, 5, 13), (8, 15, 17), (15, 8, 17)]
-        c_OA, c_AB, c_OB = random.choice(bo_quang_duong)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Một người đi bộ xuất phát từ trạm kiểm lâm $%s$, đi theo hướng Đông Bắc (hợp với hướng Bắc một góc $%s^\\circ$) được $%s\\,\\mathrm{km}$ đến trạm $%s$, sau đó chuyển hướng đi về phía Đông Nam (hợp với hướng Nam một góc $%s^\\circ$) được $%s\\,\\mathrm{km}$ đến trạm $%s$. Tính độ lớn vectơ độ dịch chuyển $\\overrightarrow{%s %s}$ của người đó.'
-                         %(diem_O, str(goc_bac), str(c_OA), diem_A, str(goc_nam), str(c_AB), diem_B, diem_O, diem_B))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Vẽ hệ trục tọa độ địa lý Đông - Tây - Nam - Bắc tại điểm $%s$. \n'
-                   '\\item Tia $%s %s$ hợp với hướng Nam một góc $%s^\\circ$ về phía Tây; tia $%s %s$ hợp với hướng Nam một góc $%s^\\circ$ về phía Đông. \n'
-                   '\\item Suy ra $\\widehat{%s %s %s} = %s^\\circ + %s^\\circ = 90^\\circ$, tức $\\triangle %s %s %s$ vuông tại $%s$. \n'
-                   '\\item Độ lớn độ dịch chuyển: $|\\overrightarrow{%s %s}| = %s %s = \\sqrt{%s %s^2 + %s %s^2} = \\sqrt{%s^2 + %s^2} = %s\\,\\mathrm{km}$. \n'
-                   '\\end{itemize}'
-                   %(diem_A,
-                     diem_A, diem_O, str(goc_bac), diem_A, diem_B, str(goc_nam),
-                     diem_O, diem_A, diem_B, str(goc_bac), str(goc_nam), diem_O, diem_A, diem_B, diem_A,
-                     diem_O, diem_B, diem_O, diem_B, diem_O, diem_A, diem_A, diem_B, str(c_OA), str(c_AB), str(c_OB)))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('M', 'N', 'P'), ('X', 'Y', 'Z')])
+        bo_td = random.choice([('D', 'E', 'F'), ('I', 'J', 'K')])
+        pA, pB, pC = bo_dinh
+        pD, pE, pF = bo_td
+        kieu = random.choice(['EF_CD', 'FE_BD', 'FD_AE', 'DE_BF'])
+        if kieu == 'EF_CD':
+            v1, v2, canh, hbh = f'{pE}{pF}', f'{pC}{pD}', f'{pB}{pC}', f'{pE}{pF}{pD}{pC}'
+        elif kieu == 'FE_BD':
+            v1, v2, canh, hbh = f'{pF}{pE}', f'{pB}{pD}', f'{pB}{pC}', f'{pF}{pE}{pD}{pB}'
+        elif kieu == 'FD_AE':
+            v1, v2, canh, hbh = f'{pF}{pD}', f'{pA}{pE}', f'{pC}{pA}', f'{pF}{pD}{pE}{pA}'
+        else:
+            v1, v2, canh, hbh = f'{pD}{pE}', f'{pB}{pF}', f'{pA}{pB}', f'{pD}{pE}{pF}{pB}'
+        noidungcauhoi = ('Cho tam giác $%s%s%s$. Gọi $%s, %s, %s$ lần lượt là trung điểm các cạnh $%s%s, %s%s, %s%s$. Chứng minh $\\overrightarrow{%s} = \\overrightarrow{%s}$. \n'
+                         %(pA, pB, pC, pD, pE, pF, pB, pC, pC, pA, pA, pB, v1, v2))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (B) at (0,0); \n'
+                   '\\coordinate (C) at (5,0); \n'
+                   '\\coordinate (A) at (2.2,3.6); \n'
+                   '\\coordinate (D) at (2.5,0); \n'
+                   '\\coordinate (E) at (3.6,1.8); \n'
+                   '\\coordinate (F) at (1.1,1.8); \n'
+                   '\\draw (A) -- (B) -- (C) -- cycle; \n'
+                   '\\draw (D) -- (E) -- (F) -- cycle; \n'
+                   '\\fill (A) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (E) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (F) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   '\\textit{Cách 1:} Vì $%s$ là đường trung bình của tam giác $%s%s%s$ nên $%s \\parallel %s$ và $%s = \\dfrac{1}{2}%s \\Rightarrow %s = %s \\Rightarrow \\left|\\overrightarrow{%s}\\right| = \\left|\\overrightarrow{%s}\\right|$ (1). \\\\ \n'
+                   'Mặt khác: $\\overrightarrow{%s}$ cùng hướng $\\overrightarrow{%s}$ (2). \\\\ \n'
+                   'Từ (1) và (2) ta có: $\\overrightarrow{%s} = \\overrightarrow{%s}$. \\\\ \n'
+                   '\\textit{Cách 2:} Chứng minh $%s$ là hình bình hành. \\\\ \n'
+                   'Dễ chứng minh được $%s = \\dfrac{1}{2}%s = %s$ và $%s \\parallel %s \\Rightarrow %s$ là hình bình hành $\\Rightarrow \\overrightarrow{%s} = \\overrightarrow{%s}$. \n'
+                   %(pA, pB, pC, pD, pE, pF,
+                     v1, pA, pB, pC, v1, v2, v1, canh, v1, v2, v1, v2,
+                     v1, v2, v1, v2,
+                     hbh, v1, canh, v2, v1, v2, hbh, v1, v2))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

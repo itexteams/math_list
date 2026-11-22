@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,38 +129,47 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang6_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho tứ giác và trung điểm
-        list_tugiac = [("A", "B", "C", "D"), ("M", "N", "P", "Q"), ("E", "F", "G", "H")]
-        list_trungdiem = [("I", "J", "K", "L"), ("X", "Y", "Z", "T"), ("M", "N", "P", "Q")]
-        
-        # Chọn ngẫu nhiên sao cho tập hợp điểm tứ giác và trung điểm không trùng nhau
-        tu_giac = random.choice(list_tugiac)
-        trung_diem = random.choice([td for td in list_trungdiem if td != tu_giac])
-        
-        T1, T2, T3, T4 = tu_giac
-        D1, D2, D3, D4 = trung_diem
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tứ giác $%s %s %s %s$. Gọi $%s, %s, %s, %s$ lần lượt là trung điểm của các cạnh $%s %s, %s %s, %s %s, %s %s$. Chứng minh rằng $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, T4, D1, D2, D3, D4, T1, T2, T2, T3, T3, T4, T4, T1, D1, D2, D4, D3, D1, D4, D2, D3))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Sử dụng tính chất đường trung bình trong $\\triangle %s %s %s$ và $\\triangle %s %s %s$: $%s %s \\parallel %s %s$, $%s %s = \\dfrac{1}{2} %s %s$ và $%s %s \\parallel %s %s$, $%s %s = \\dfrac{1}{2} %s %s$. \n'
-                   '\\item Suy ra tứ giác $%s %s %s %s$ là hình bình hành, từ đó suy ra hai cặp vectơ bằng nhau $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$. \n'
-                   '\\end{itemize}'
-                   %(T1, T2, T3, T1, T4, T3, D1, D2, T1, T3, D1, D2, T1, T3, D4, D3, T1, T3, D4, D3, T1, T3, D1, D2, D3, D4, D1, D2, D4, D3, D1, D4, D2, D3))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('M', 'N', 'P', 'Q'), ('E', 'F', 'G', 'H')])
+        pA, pB, pC, pD = bo_dinh
+        pO = random.choice(['O', 'I'])
+        loai_hinh = random.choice(['hình vuông', 'hình chữ nhật', 'hình bình hành', 'hình thoi'])
+        if loai_hinh == 'hình vuông':
+            cA, cB, cC, cD, cO = '(0,3)', '(3,3)', '(3,0)', '(0,0)', '(1.5,1.5)'
+        elif loai_hinh == 'hình chữ nhật':
+            cA, cB, cC, cD, cO = '(0,2.5)', '(4,2.5)', '(4,0)', '(0,0)', '(2,1.25)'
+        elif loai_hinh == 'hình bình hành':
+            cA, cB, cC, cD, cO = '(1,2.5)', '(4.5,2.5)', '(3.5,0)', '(0,0)', '(2.25,1.25)'
+        else:
+            cA, cB, cC, cD, cO = '(0,1.5)', '(2.5,3)', '(5,1.5)', '(2.5,0)', '(2.5,1.5)'
+        noidungcauhoi = ('Cho %s $%s%s%s%s$ tâm $%s$. Hãy liệt kê tất cả các vectơ bằng nhau nhận đỉnh và tâm của %s làm điểm đầu và điểm cuối. \n'
+                         %(loai_hinh, pA, pB, pC, pD, pO, loai_hinh))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at %s; \n'
+                   '\\coordinate (B) at %s; \n'
+                   '\\coordinate (C) at %s; \n'
+                   '\\coordinate (D) at %s; \n'
+                   '\\coordinate (O) at %s; \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (A) -- (C) (B) -- (D); \n'
+                   '\\fill (A) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (O) circle (1.5pt) node[above=3pt] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Các vectơ bằng nhau nhận đỉnh và tâm của %s làm điểm đầu và điểm cuối là: \\\\ \n'
+                   '$\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$, $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$. \n'
+                   %(cA, cB, cC, cD, cO, pA, pB, pC, pD, pO, loai_hinh,
+                     pA, pB, pD, pC, pA, pD, pB, pC, pB, pA, pC, pD, pD, pA, pC, pB,
+                     pA, pO, pO, pC, pO, pA, pC, pO, pB, pO, pO, pD, pO, pB, pD, pO))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

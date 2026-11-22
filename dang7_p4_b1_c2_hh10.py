@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,40 +129,41 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang7_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho hình bình hành và các điểm nằm trên cạnh
-        list_hbh = [("A", "B", "C", "D"), ("M", "N", "P", "Q"), ("E", "F", "G", "H")]
-        list_diem_tren_canh = [("M", "N", "P", "Q"), ("I", "J", "K", "L"), ("X", "Y", "Z", "T")]
-        
-        # Chọn ngẫu nhiên sao cho tập hợp điểm hbh và điểm trên cạnh không trùng nhau
-        hbh = random.choice(list_hbh)
-        diem_tren_canh = random.choice([dtc for dtc in list_diem_tren_canh if dtc != hbh])
-        
-        T1, T2, T3, T4 = hbh
-        D1, D2, D3, D4 = diem_tren_canh
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho hình bình hành $%s %s %s %s$. Trên các cạnh $%s %s, %s %s, %s %s, %s %s$ lần lượt lấy các điểm $%s, %s, %s, %s$ sao cho $%s %s = %s %s$ và $%s %s = %s %s$. Chứng minh rằng $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, T4, T1, T2, T2, T3, T3, T4, T4, T1, D1, D2, D3, D4, T1, D1, T3, D3, T2, D2, T4, D4, D1, D2, D4, D3))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Ta có $%s %s = %s %s - %s %s = %s %s - %s %s = %s %s$. \n'
-                   '\\item Chứng minh $\\triangle %s %s %s = \\triangle %s %s %s$ (c.g.c) $\\Rightarrow %s %s = %s %s$. \n'
-                   '\\item Tương tự $\\triangle %s %s %s = \\triangle %s %s %s$ (c.g.c) $\\Rightarrow %s %s = %s %s$. \n'
-                   '\\item Tứ giác $%s %s %s %s$ có các cặp cạnh đối bằng nhau nên là hình bình hành $\\Rightarrow \\overrightarrow{%s %s} = \\overrightarrow{%s %s}$. \n'
-                   '\\end{itemize}'
-                   %(D1, T2, T1, T2, T1, D1, T3, T4, T3, D3, D3, T4, D1, T2, D2, D3, T4, D4, D1, D2, D4, D3, T1, D1, D4, T3, D3, D2, D1, D4, D2, D3, D1, D2, D3, D4, D1, D2, D4, D3))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('D', 'E', 'F'), ('P', 'Q', 'R')])
+        pA, pB, pC = bo_dinh
+        pN = random.choice(['N', 'K', 'H'])
+        pM = random.choice(['M', 'I'])
+        dt_vec = random.choice([f'\\overrightarrow{{{pA}{pN}}} = \\overrightarrow{{G{pC}}}', f'\\overrightarrow{{{pC}{pN}}} = \\overrightarrow{{G{pA}}}'])
+        noidungcauhoi = ('Cho tam giác $%s%s%s$ có trọng tâm $G$ và $%s$ là điểm thỏa mãn $%s$. Hãy xác định vị trí điểm $%s$. \n'
+                         %(pA, pB, pC, pN, dt_vec, pN))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at (0,0); \n'
+                   '\\coordinate (C) at (5,0); \n'
+                   '\\coordinate (B) at (1,3.6); \n'
+                   '\\coordinate (M) at (2.5,0); \n'
+                   '\\coordinate (G) at (2,1.2); \n'
+                   '\\coordinate (N) at (3,-1.2); \n'
+                   '\\draw (A) -- (B) -- (C) -- cycle; \n'
+                   '\\draw (B) -- (N); \n'
+                   '\\draw (A) -- (G) -- (C) -- (N) -- cycle; \n'
+                   '\\fill (A) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill (G) circle (1.5pt) node[above right] {$G$}; \n'
+                   '\\fill (M) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Do $%s$ và $%s, %s, G$ không thẳng hàng nên $%sG%s%s$ là hình bình hành. \\\\ \n'
+                   'Vậy $%s$ đối xứng với $G$ qua trung điểm $%s$ của $%s%s$. \n'
+                   %(pA, pB, pC, pM, pN, dt_vec, pA, pC, pA, pC, pN, pN, pM, pA, pC))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

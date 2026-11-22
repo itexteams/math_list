@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,52 +129,41 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang17_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        T1, T2, T3, T4, diem_I = "A", "B", "C", "D", "I"
-        
-        # Random mẫu số k cho tỉ số BI = 1/k BC (ví dụ k = 2, 3, 4, 5)
-        k = randint(2, 5)
-        a = sp.Symbol('a', positive=True)
-        
-        # Tính toán bằng sympy
-        canh_BI = Rational(1, k) * a
-        BI_binh = canh_BI**2
-        tich_2_AB_BI_cos60 = 2 * a * canh_BI * Rational(1, 2)
-        AI_binh = a**2 + BI_binh - tich_2_AB_BI_cos60
-        AI_val = sp.sqrt(AI_binh)
-        
-        # Chuyển sang chuỗi LaTeX
-        str_ti_so = latex(Rational(1, k))
-        str_BI = latex(canh_BI)
-        str_BI_binh = latex(BI_binh)
-        str_tich = latex(tich_2_AB_BI_cos60)
-        str_AI_binh = latex(AI_binh)
-        str_AI = latex(AI_val)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho hình thoi $%s %s %s %s$ cạnh $a$ có $\\widehat{%s %s %s} = 120^\\circ$. Gọi $%s$ là điểm thuộc cạnh $%s %s$ sao cho $%s %s = %s %s %s$. Tính độ dài vectơ $\\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, T4, T2, T1, T4, diem_I, T2, T3, T2, diem_I, str_ti_so, T2, T3, T1, diem_I))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Vì $%s %s %s %s$ là hình thoi và $\\widehat{%s %s %s} = 120^\\circ \\Rightarrow \\widehat{%s %s %s} = 60^\\circ$. \n'
-                   '\\item Xét $\\triangle %s %s %s$ có $%s %s = a$, $%s %s = %s$, $\\widehat{%s %s %s} = 60^\\circ$. \n'
-                   '\\item Áp dụng định lí Côsin: $%s %s^2 = a^2 + \\left(%s\\right)^2 - 2 \\cdot a \\cdot %s \\cdot \\cos 60^\\circ = a^2 + %s - %s = %s \\Rightarrow |\\overrightarrow{%s %s}| = %s$. \n'
-                   '\\end{itemize}'
-                   %(T1, T2, T3, T4, T2, T1, T4, T1, T2, T3,
-                     T1, T2, diem_I, T1, T2, T2, diem_I, str_BI, T1, T2, diem_I,
-                     T1, diem_I, str_BI, str_BI, str_BI_binh, str_tich, str_AI_binh, T1, diem_I, str_AI))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('M', 'N', 'P', 'Q'), ('I', 'J', 'K', 'L')])
+        pA, pB, pC, pD = bo_dinh
+        pE = random.choice(['E', 'F', 'H'])
+        dt_vec = random.choice([f'\\overrightarrow{{{pA}{pE}}} = \\overrightarrow{{{pB}{pD}}}', f'\\overrightarrow{{{pE}{pA}}} = \\overrightarrow{{{pD}{pB}}}'])
+        noidungcauhoi = ('Cho hình bình hành $%s%s%s%s$. Gọi $%s$ là điểm đối xứng của $%s$ qua $%s$. Chứng minh rằng $%s$. \n'
+                         %(pA, pB, pC, pD, pE, pC, pD, dt_vec))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (B) at (0,2); \n'
+                   '\\coordinate (C) at (3,2); \n'
+                   '\\coordinate (A) at (1.2,0.5); \n'
+                   '\\coordinate (D) at (4.2,0.5); \n'
+                   '\\coordinate (E) at (5.4,-1); \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (B) -- (D) -- (E) -- (A); \n'
+                   '\\fill (A) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill (E) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Vì $%s%s%s%s$ là hình bình hành nên ta có: $\\overrightarrow{%s%s} = \\overrightarrow{%s%s}$ (1). \\\\ \n'
+                   'Ta có: $%s$ là điểm đối xứng của $%s$ qua $%s$ nên $%s$ là trung điểm của $%s%s \\Leftrightarrow \\overrightarrow{%s%s} = \\overrightarrow{%s%s}$ (2). \\\\ \n'
+                   'Từ (1) và (2) ta có: $\\overrightarrow{%s%s} = \\overrightarrow{%s%s} \\Leftrightarrow %s%s%s%s$ là hình bình hành nên $%s$. \n'
+                   %(pA, pB, pC, pD, pE,
+                     pA, pB, pC, pD, pB, pA, pC, pD,
+                     pE, pC, pD, pD, pC, pE, pC, pD, pD, pE,
+                     pB, pA, pD, pE, pA, pB, pD, pE, dt_vec))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

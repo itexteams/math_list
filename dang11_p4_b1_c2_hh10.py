@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,40 +129,62 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang11_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên tam giác và điểm D
-        list_tamgiac = [("A", "B", "C"), ("M", "N", "P"), ("D", "E", "F")]
-        tamgiac = random.choice(list_tamgiac)
-        T1, T2, T3 = tamgiac
-        
-        list_diem = ["D", "Q", "K", "H"]
-        diem_D = random.choice([d for d in list_diem if d not in tamgiac])
-    
-        # Random độ dài 2 cạnh góc vuông (bộ 3 Pytago)
-        bo_pytago = [(3, 4, 5), (5, 12, 13), (6, 8, 10), (8, 15, 17), (9, 12, 15)]
-        c1, c2, c3 = random.choice(bo_pytago)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tam giác $%s %s %s$ vuông tại $%s$ có $%s %s = %s, %s %s = %s$. Gọi $%s$ là điểm thỏa mãn $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$. Tính độ dài vectơ $\\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, T1, T1, T2, c1, T1, T3, c2, diem_D, T2, diem_D, T1, T3, T1, diem_D))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Từ $\\overrightarrow{%s %s} = \\overrightarrow{%s %s} \\Rightarrow %s %s %s %s$ là hình bình hành. \n'
-                   '\\item Vì $\\widehat{%s %s %s} = 90^\\circ$ nên $%s %s %s %s$ là hình chữ nhật. \n'
-                   '\\item Độ dài $|\\overrightarrow{%s %s}| = %s %s = %s %s = \\sqrt{%s %s^2 + %s %s^2} = %s$. \n'
-                   '\\end{itemize}'
-                   %(T2, diem_D, T1, T3, T1, T2, diem_D, T3, T2, T1, T3, T1, T2, diem_D, T3, T1, diem_D, T1, diem_D, T2, T3, T1, T2, T1, T3, c3))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('E', 'F', 'G', 'H'), ('I', 'J', 'K', 'L')])
+        bo_td = random.choice([('N', 'P'), ('U', 'V')])
+        pA, pB, pC, pD = bo_dinh
+        pN, pP = bo_td
+        pM = random.choice(['M', 'S', 'T'])
+        pO = 'O'
+        loai_hinh = random.choice(['hình chữ nhật', 'hình vuông', 'hình bình hành', 'hình thoi'])
+        if loai_hinh == 'hình chữ nhật':
+            cA, cB, cC, cD, cO, cN, cP = '(0,0)', '(0,3)', '(5,3)', '(5,0)', '(2.5,1.5)', '(2.5,0)', '(0,1.5)'
+        elif loai_hinh == 'hình vuông':
+            cA, cB, cC, cD, cO, cN, cP = '(0,0)', '(0,3.5)', '(3.5,3.5)', '(3.5,0)', '(1.75,1.75)', '(1.75,0)', '(0,1.75)'
+        elif loai_hinh == 'hình bình hành':
+            cA, cB, cC, cD, cO, cN, cP = '(0,0)', '(1.2,3)', '(5.2,3)', '(4,0)', '(2.6,1.5)', '(2,0)', '(0.6,1.5)'
+        else:
+            cA, cB, cC, cD, cO, cN, cP = '(0,1.5)', '(2.5,3)', '(5,1.5)', '(2.5,0)', '(2.5,1.5)', '(1.25,0.75)', '(1.25,2.25)'
+        kieu = random.choice(['AP_NM', 'AN_PM'])
+        if kieu == 'AP_NM':
+            v1, v2, v_o = f'{pA}{pP}', f'{pN}{pM}', f'{pN}{pO}'
+            ve_doan = '(O) -- (N)'
+        else:
+            v1, v2, v_o = f'{pA}{pN}', f'{pP}{pM}', f'{pP}{pO}'
+            ve_doan = '(O) -- (P)'
+        noidungcauhoi = ('Cho %s $%s%s%s%s$, $%s, %s$ lần lượt là trung điểm cạnh $%s%s, %s%s$ và điểm $%s$ thỏa mãn $\\overrightarrow{%s} = \\overrightarrow{%s}$. Xác định vị trí điểm $%s$. \n'
+                         %(loai_hinh, pA, pB, pC, pD, pN, pP, pA, pD, pA, pB, pM, v1, v2, pM))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at %s; \n'
+                   '\\coordinate (B) at %s; \n'
+                   '\\coordinate (C) at %s; \n'
+                   '\\coordinate (D) at %s; \n'
+                   '\\coordinate (O) at %s; \n'
+                   '\\coordinate (N) at %s; \n'
+                   '\\coordinate (P) at %s; \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (A) -- (C) (B) -- (D) %s; \n'
+                   '\\fill (A) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (O) circle (1.5pt) node[above=3pt] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[left] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Gọi $%s$ là tâm %s $%s%s%s%s \\Rightarrow \\overrightarrow{%s} = \\overrightarrow{%s}$. \\\\ \n'
+                   'Mà $\\overrightarrow{%s} = \\overrightarrow{%s}$ suy ra $\\overrightarrow{%s} = \\overrightarrow{%s} \\Rightarrow %s \\equiv %s$. Vậy $%s$ là tâm của %s $%s%s%s%s$. \n'
+                   %(cA, cB, cC, cD, cO, cN, cP, ve_doan,
+                     pA, pB, pC, pD, pO, pN, pP,
+                     pO, loai_hinh, pA, pB, pC, pD, v1, v_o,
+                     v1, v2, v2, v_o, pM, pO, pM, loai_hinh, pA, pB, pC, pD))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

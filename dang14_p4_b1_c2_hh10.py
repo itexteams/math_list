@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,67 +129,69 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang14_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        T1, T2, T3, T4, diem_M = "A", "B", "C", "D", "M"
-        
-        # Random hệ số k cho độ dài cạnh (AB = ka, AD = ka, CD = 2ka)
-        k = randint(1, 5)
-        a = sp.Symbol('a')
-        
-        canh_nho = k * a
-        canh_lon = 2 * k * a
-        do_dai_AC = sp.sqrt(canh_nho**2 + canh_lon**2)
-        
-        str_canh_nho = latex(canh_nho)
-        str_canh_lon = latex(canh_lon)
-        str_AC = latex(do_dai_AC)
-        str_canh_lon_binh = "(" + str_canh_lon + ")^2" if k > 1 else "(2a)^2"
-        str_canh_nho_binh = "(" + str_canh_nho + ")^2" if k > 1 else "a^2"
-    
-        # Hình vẽ TikZ theo phong cách yêu cầu
-        hinh_ve = ('\\begin{center}\n'
-                   '\\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]\n'
-                   '\\coordinate (D) at (0,0);\n'
-                   '\\coordinate (C) at (5,0);\n'
-                   '\\coordinate (A) at (0,2.5);\n'
-                   '\\coordinate (B) at (2.5,2.5);\n'
-                   '\\coordinate (M) at ($(D)!0.5!(C)$);\n'
-                   '\\draw[line width=1pt] (A)--(B)--(C)--(D)--cycle (B)--(M) (A)--(C);\n'
-                   '\\draw[line width=1pt] (0,0.25)--(0.25,0.25)--(0.25,0);\n'
-                   '\\draw[line width=1pt] (0,2.25)--(0.25,2.25)--(0.25,2.5);\n'
-                   '\\fill (A) circle (1pt) node[above left] {$A$};\n'
-                   '\\fill (B) circle (1pt) node[above right] {$B$};\n'
-                   '\\fill (C) circle (1pt) node[below right] {$C$};\n'
-                   '\\fill (D) circle (1pt) node[below left] {$D$};\n'
-                   '\\fill (M) circle (1pt) node[below] {$M$};\n'
-                   '\\end{tikzpicture}\n'
-                   '\\end{center}\n')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho hình thang vuông $%s %s %s %s$ ($\\widehat{%s} = \\widehat{%s} = 90^\\circ$) có $%s %s = %s$, $%s %s = %s$, $%s %s = %s$. Gọi $%s$ là trung điểm của $%s %s$. Tính độ dài các vectơ $\\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, T4, T1, T4, T1, T2, str_canh_nho, T1, T4, str_canh_nho, T3, T4, str_canh_lon, diem_M, T3, T4, T2, diem_M, T1, T3))
-        
-        # Nội dung lời giải
-        loigiai = ('%s'
-                   '\\begin{itemize} \n'
-                   '\\item Vì $%s$ là trung điểm $%s %s$ nên $%s %s = %s %s = %s = %s %s$, lại có $%s %s // %s %s$ và $\\widehat{%s} = 90^\\circ \\Rightarrow %s %s %s %s$ là hình vuông cạnh $%s$. \n'
-                   '\\item Suy ra $|\\overrightarrow{%s %s}| = %s %s = %s %s = %s$. \n'
-                   '\\item Xét $\\triangle %s %s %s$ vuông tại $%s$: $|\\overrightarrow{%s %s}| = %s %s = \\sqrt{%s %s^2 + %s %s^2} = \\sqrt{%s + %s} = %s$. \n'
-                   '\\end{itemize}'
-                   %(hinh_ve, diem_M, T3, T4, T4, diem_M, diem_M, T3, str_canh_nho, T1, T2, T1, T2, T4, diem_M, T1, T1, T2, diem_M, T4, str_canh_nho,
-                     T2, diem_M, T2, diem_M, T1, T4, str_canh_nho,
-                     T1, T4, T3, T4, T1, T3, T1, T3, T1, T4, T4, T3, str_canh_nho_binh, str_canh_lon_binh, str_AC))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('D', 'E', 'F')])
+        bo_td = random.choice([('M', 'N', 'P'), ('I', 'J', 'K')])
+        pA, pB, pC = bo_dinh
+        pM, pN, pP = bo_td
+        kieu_vec = random.choice(['MN', 'NP', 'PM'])
+        yeu_cau = random.choice(['cùng phương', 'cùng hướng', 'ngược hướng'])
+        if kieu_vec == 'MN':
+            v_hoi = f'{pM}{pN}'
+            v_nguoc = f'{pN}{pM}'
+            c1, c2 = f'{pA}{pB}', f'{pB}{pC}'
+            song_song = f'{pA}{pC}'
+            cung_huong = [f'\\overrightarrow{{{pA}{pC}}}', f'\\overrightarrow{{{pA}{pP}}}', f'\\overrightarrow{{{pP}{pC}}}']
+            nguoc_huong = [f'\\overrightarrow{{{pN}{pM}}}', f'\\overrightarrow{{{pC}{pA}}}', f'\\overrightarrow{{{pP}{pA}}}', f'\\overrightarrow{{{pC}{pP}}}']
+        elif kieu_vec == 'NP':
+            v_hoi = f'{pN}{pP}'
+            v_nguoc = f'{pP}{pN}'
+            c1, c2 = f'{pB}{pC}', f'{pC}{pA}'
+            song_song = f'{pB}{pA}'
+            cung_huong = [f'\\overrightarrow{{{pB}{pA}}}', f'\\overrightarrow{{{pB}{pM}}}', f'\\overrightarrow{{{pM}{pA}}}']
+            nguoc_huong = [f'\\overrightarrow{{{pP}{pN}}}', f'\\overrightarrow{{{pA}{pB}}}', f'\\overrightarrow{{{pM}{pB}}}', f'\\overrightarrow{{{pA}{pM}}}']
+        else:
+            v_hoi = f'{pP}{pM}'
+            v_nguoc = f'{pM}{pP}'
+            c1, c2 = f'{pC}{pA}', f'{pA}{pB}'
+            song_song = f'{pC}{pB}'
+            cung_huong = [f'\\overrightarrow{{{pC}{pB}}}', f'\\overrightarrow{{{pC}{pN}}}', f'\\overrightarrow{{{pN}{pB}}}']
+            nguoc_huong = [f'\\overrightarrow{{{pM}{pP}}}', f'\\overrightarrow{{{pB}{pC}}}', f'\\overrightarrow{{{pN}{pC}}}', f'\\overrightarrow{{{pB}{pN}}}']
+        if yeu_cau == 'cùng phương':
+            ds_kq = ', '.join(nguoc_huong[:1] + cung_huong + nguoc_huong[1:])
+        elif yeu_cau == 'cùng hướng':
+            ds_kq = ', '.join(cung_huong)
+        else:
+            ds_kq = ', '.join(nguoc_huong)
+        noidungcauhoi = ('Cho tam giác $%s%s%s$. Gọi $%s, %s, %s$ lần lượt là trung điểm của $%s%s, %s%s, %s%s$. Xác định các vectơ (khác $\\vec{0}$, có điểm đầu và điểm cuối là các điểm đã cho) %s với $\\overrightarrow{%s}$. \n'
+                         %(pA, pB, pC, pM, pN, pP, pA, pB, pB, pC, pC, pA, yeu_cau, v_hoi))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (B) at (0,0); \n'
+                   '\\coordinate (C) at (5,0); \n'
+                   '\\coordinate (A) at (1.8,3.2); \n'
+                   '\\coordinate (M) at (0.9,1.6); \n'
+                   '\\coordinate (N) at (2.5,0); \n'
+                   '\\coordinate (P) at (3.4,1.6); \n'
+                   '\\draw (A) -- (B) -- (C) -- cycle; \n'
+                   '\\fill (A) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (M) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Vì $%s, %s$ lần lượt là trung điểm của $%s, %s$ nên $%s$ là đường trung bình của tam giác $%s%s%s$, suy ra $%s \\parallel %s$. \\\\ \n'
+                   'Do đó, các vectơ %s với $\\overrightarrow{%s}$ là: $%s$. \n'
+                   %(pA, pB, pC, pM, pN, pP,
+                     v_hoi[0], v_hoi[1], c1, c2, v_hoi, pA, pB, pC, v_hoi, song_song,
+                     yeu_cau, v_hoi, ds_kq))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

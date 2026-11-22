@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,81 +129,35 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang19_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        diem_O, diem_A, diem_B = "O", "A", "B"
-        diem_A1, diem_P1, diem_B1 = "A'", "P'", "B'"
-        
-        # Random trọng lượng P (chọn số chẵn chia hết cho 2 để kết quả đẹp)
-        P_val = randint(2, 20) * 10
-        
-        # Random góc hợp bởi dây OA và phương ngang (30, 45, 60 độ)
-        cac_goc = [30, 45, 60]
-        goc_ngang = random.choice(cac_goc)
-        goc_thang_dung = 90 - goc_ngang
-        
-        # Tính toán bằng sympy
-        goc_rad = sp.rad(goc_thang_dung)
-        cos_val = sp.cos(goc_rad)
-        sin_val = sp.sin(goc_rad)
-        
-        T1_val = P_val * cos_val
-        T2_val = P_val * sin_val
-        
-        # Hình vẽ TikZ biểu diễn các vectơ lực tác dụng lên vật (nét 1pt, điểm 1pt, màu black)
-        hinh_ve = ('\\begin{center}\n'
-                   '\\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]\n'
-                   '\\coordinate (O) at (0,0);\n'
-                   '\\coordinate (A) at (-2.5,1.44);\n'
-                   '\\coordinate (B) at (1.5,2.6);\n'
-                   '\\coordinate (P1) at (0,-2.5);\n'
-                   '\\coordinate (A1) at (-1.25,0.72);\n'
-                   '\\coordinate (B1) at (1.25,2.16);\n'
-                   '\\coordinate (H1) at (-2.5,0);\n'
-                   '\\coordinate (H2) at (2.5,0);\n'
-                   '\\draw[line width=1pt] (A)--(O)--(B);\n'
-                   '\\draw[line width=1pt, dashed] (H1)--(H2) (A1)--(0,2.88)--(B1);\n'
-                   '\\draw[line width=1pt, ->] (O)--(A1) node[below left] {$\\overrightarrow{T_1}$};\n'
-                   '\\draw[line width=1pt, ->] (O)--(B1) node[below right] {$\\overrightarrow{T_2}$};\n'
-                   '\\draw[line width=1pt, ->] (O)--(P1) node[below] {$\\overrightarrow{P}$};\n'
-                   '\\draw[line width=1pt, ->] (O)--(0,2.88) node[above] {$\\overrightarrow{F}_{hl}$};\n'
-                   '\\fill (O) circle (1pt) node[below left] {$O$};\n'
-                   '\\fill (A) circle (1pt) node[above left] {$A$};\n'
-                   '\\fill (B) circle (1pt) node[above right] {$B$};\n'
-                   '\\fill (A1) circle (1pt) node[above left] {$A\'$};\n'
-                   '\\fill (B1) circle (1pt) node[right] {$B\'$};\n'
-                   '\\fill (P1) circle (1pt) node[left] {$P\'$};\n'
-                   '\\end{tikzpicture}\n'
-                   '\\end{center}\n')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Một vật có trọng lượng $P = %s\\,\\mathrm{N}$ được treo đứng yên bởi hai sợi dây nhẹ $%s %s$ và $%s %s$ buộc vào trần nhà sao cho $\\widehat{%s %s %s} = 90^\\circ$ và dây $%s %s$ hợp với phương ngang một góc $%s^\\circ$. Vẽ hình biểu diễn các vectơ lực tác dụng lên vật và tính độ lớn của các vectơ lực căng dây $\\overrightarrow{T_1}$ (trên $%s %s$) và $\\overrightarrow{T_2}$ (trên $%s %s$).'
-                         %(str(P_val), diem_O, diem_A, diem_O, diem_B, diem_A, diem_O, diem_B, diem_O, diem_A, str(goc_ngang), diem_O, diem_A, diem_O, diem_B))
-        
-        # Nội dung lời giải
-        loigiai = ('%s'
-                   '\\begin{itemize} \n'
-                   '\\item Vật đứng yên nên hợp lực của $\\overrightarrow{T_1}$ và $\\overrightarrow{T_2}$ cân bằng với trọng lực $\\overrightarrow{P}$ (có độ lớn $%s\\,\\mathrm{N}$, hướng thẳng đứng xuống dưới). \n'
-                   '\\item Dựng hình chữ nhật lực $%s %s %s %s$ với đường chéo $%s %s = P = %s\\,\\mathrm{N}$. \n'
-                   '\\item Góc giữa $%s %s$ và phương thẳng đứng là $90^\\circ - %s^\\circ = %s^\\circ$. \n'
-                   '\\item Tính được: $T_1 = P \\cdot \\cos %s^\\circ = %s \\cdot %s = %s\\,\\mathrm{N}$; $T_2 = P \\cdot \\sin %s^\\circ = %s \\cdot %s = %s\\,\\mathrm{N}$. \n'
-                   '\\end{itemize}'
-                   %(hinh_ve,
-                     str(P_val),
-                     diem_O, diem_A1, diem_P1, diem_B1, diem_O, diem_P1, str(P_val),
-                     diem_O, diem_A, str(goc_ngang), str(goc_thang_dung),
-                     str(goc_thang_dung), str(P_val), latex(cos_val), latex(T1_val),
-                     str(goc_thang_dung), str(P_val), latex(sin_val), latex(T2_val)))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('M', 'N', 'P', 'Q'), ('E', 'F', 'G', 'H')])
+        pA, pB, pC, pD = bo_dinh
+        ab = randint(2, 12)
+        ac = ab + randint(1, 8)
+        kieu = random.choice(['AC', 'CA', 'BD', 'DB'])
+        if kieu == 'AC':
+            vec_hoi = f'{pA}{pC}'
+            loigiai = ('Vì $\\left|\\overrightarrow{%s}\\right| = %s%s = %s$. \n' %(vec_hoi, pA, pC, latex(ac)))
+        elif kieu == 'CA':
+            vec_hoi = f'{pC}{pA}'
+            loigiai = ('Vì $\\left|\\overrightarrow{%s}\\right| = %s%s = %s$. \n' %(vec_hoi, pA, pC, latex(ac)))
+        elif kieu == 'BD':
+            vec_hoi = f'{pB}{pD}'
+            loigiai = ('Vì $%s%s%s%s$ là hình chữ nhật nên $%s%s = %s%s = %s$. \\\\ \n'
+                       'Do đó $\\left|\\overrightarrow{%s}\\right| = %s%s = %s$. \n'
+                       %(pA, pB, pC, pD, pB, pD, pA, pC, latex(ac), vec_hoi, pB, pD, latex(ac)))
+        else:
+            vec_hoi = f'{pD}{pB}'
+            loigiai = ('Vì $%s%s%s%s$ là hình chữ nhật nên $%s%s = %s%s = %s$. \\\\ \n'
+                       'Do đó $\\left|\\overrightarrow{%s}\\right| = %s%s = %s$. \n'
+                       %(pA, pB, pC, pD, pB, pD, pA, pC, latex(ac), vec_hoi, pB, pD, latex(ac)))
+        noidungcauhoi = ('Cho hình chữ nhật $%s%s%s%s$, có $%s%s = %s$ và $%s%s = %s$. Tìm độ dài vectơ $\\overrightarrow{%s}$. \n'
+                         %(pA, pB, pC, pD, pA, pB, latex(ab), pA, pC, latex(ac), vec_hoi))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

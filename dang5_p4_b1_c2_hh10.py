@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,28 +129,49 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang5_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho hình bình hành $ABCD$. Gọi $E, F$ lần lượt là trung điểm của $AD$ và $BC$. Đường chéo $AC$ cắt $BE$ và $DF$ lần lượt tại $P$ và $Q$. Chứng minh rằng $\\overrightarrow{AP} = \\overrightarrow{PQ} = \\overrightarrow{QC}$.')
-        
-        # Nội dung lời giải
-        loigiai = (    '\\begin{itemize} \n'
-                        '\\item Chứng minh tứ giác $BEDF$ là hình bình hành (vì $ED \\parallel BF$ và $ED = BF = \\dfrac{1}{2} AD$), suy ra $BE \\parallel DF$. \n'
-                        '\\item Xét $\\triangle ADQ$ có $E$ là trung điểm $AD$ và $EP \\parallel DQ \\Rightarrow P$ là trung điểm $AQ \\Rightarrow AP = PQ$. \n'
-                        '\\item Xét $\\triangle CBP$ có $F$ là trung điểm $BC$ và $FQ \\parallel BP \\Rightarrow Q$ là trung điểm $CP \\Rightarrow PQ = QC$. \n'
-                        '\\item Ba điểm $A, P, Q, C$ thẳng hàng theo thứ tự đó nên $\\overrightarrow{AP} = \\overrightarrow{PQ} = \\overrightarrow{QC}$. \n'
-                        '\\end{itemize} \n')
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_ten=random.choice([
+            ('A','B','C','D','O','P','Q','R'),
+            ('M','N','P','Q','I','E','F','G')
+        ])
+        A,B,C,D,O,P,Q,R=bo_ten
+        nhom_vt=[
+            [f"{A}{R}",f"{R}{D}",f"{B}{Q}",f"{Q}{C}",f"{P}{O}"],
+            [f"{R}{A}",f"{D}{R}",f"{Q}{B}",f"{C}{Q}",f"{O}{P}"],
+            [f"{A}{P}",f"{P}{B}",f"{R}{O}",f"{O}{Q}"],
+            [f"{P}{A}",f"{B}{P}",f"{O}{R}",f"{Q}{O}"]
+        ]
+        nhom_chon=random.choice(nhom_vt)
+        vt_goc=random.choice(nhom_chon)
+        ds_bang=[f"\\overrightarrow{{{v}}}" for v in nhom_chon if v!=vt_goc]
+        so_vt=len(ds_bang)
+        str_ds=", ".join(ds_bang)
+        tikz_hinh=f'''\\begin{{center}}
+    \\begin{{tikzpicture}}[line width=1pt, scale=1]
+    \\coordinate ({A}) at (0,2.5);
+    \\coordinate ({B}) at (4.5,2.5);
+    \\coordinate ({C}) at (5.5,0);
+    \\coordinate ({D}) at (1,0);
+    \\coordinate ({O}) at (2.75,1.25);
+    \\coordinate ({P}) at (2.25,2.5);
+    \\coordinate ({Q}) at (5,1.25);
+    \\coordinate ({R}) at (0.5,1.25);
+    \\draw ({A})--({B})--({C})--({D})--cycle;
+    \\draw ({A})--({C}) ({B})--({D});
+    \\foreach \\p/\\pos in {{{A}/above left, {B}/above right, {C}/right, {D}/left, {O}/above, {P}/above, {Q}/right, {R}/left}} {{
+        \\fill (\\p) circle (1.5pt);
+        \\node[\\pos] at (\\p) {{$\\p$}};
+    }}
+    \\end{{tikzpicture}}
+    \\end{{center}}'''
+        noidungcauhoi=f"Cho hình bình hành ${A}{B}{C}{D}$ tâm ${O}$. Gọi ${P}, {Q}, {R}$ lần lượt là trung điểm của ${A}{B}, {B}{C}, {A}{D}$. Lấy $8$ điểm trên là gốc hoặc ngọn của các vectơ. Tìm số vectơ khác $\\overrightarrow{{{vt_goc}}}$ và bằng với vectơ $\\overrightarrow{{{vt_goc}}}$."
+        loigiai=f'''{tikz_hinh}
+    Có ${so_vt}$ vectơ là ${str_ds}$.'''
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content

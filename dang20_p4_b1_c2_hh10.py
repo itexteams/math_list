@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,60 +129,62 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang20_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        diem_A, diem_B = "A", "B"
-        
-        # Random bộ 3 Pytago cho vận tốc (vn, v, vp)
-        bo_van_toc = [(3, 4, 5), (5, 12, 13), (6, 8, 10), (8, 15, 17), (9, 12, 15)]
-        v_n, v_thuc, v_p = random.choice(bo_van_toc)
-        
-        # Random chiều rộng sông AB sao cho chia hết cho v_thuc để thời gian t nguyên
-        t_giay = randint(5, 25) * 10
-        chieu_rong_AB = v_thuc * t_giay
-    
-        # Hình vẽ TikZ biểu diễn các vectơ vận tốc (nét 1pt, điểm 1pt, màu black)
-        hinh_ve = ('\\begin{center}\n'
-                   '\\begin{tikzpicture}[scale=1, font=\\footnotesize, line join=round, line cap=round, >=stealth]\n'
-                   '\\coordinate (A) at (0,0);\n'
-                   '\\coordinate (B) at (0,3);\n'
-                   '\\coordinate (C) at (-2.25,3);\n'
-                   '\\coordinate (D) at (2.25,3);\n'
-                   '\\draw[line width=1pt] (-3.5,0)--(3.5,0) (-3.5,3)--(3.5,3);\n'
-                   '\\draw[line width=1pt, dashed] (C)--(B) (A)--(D);\n'
-                   '\\draw[line width=1pt] (0,0.25)--(0.25,0.25)--(0.25,0);\n'
-                   '\\draw[line width=1pt, ->] (A)--(B) node[midway, right] {$\\overrightarrow{v}$};\n'
-                   '\\draw[line width=1pt, ->] (A)--(C) node[midway, below left] {$\\overrightarrow{v_p}$};\n'
-                   '\\draw[line width=1pt, ->] (C)--(B) node[midway, above] {$\\overrightarrow{v_n}$};\n'
-                   '\\fill (A) circle (1pt) node[below] {$A$};\n'
-                   '\\fill (B) circle (1pt) node[above] {$B$};\n'
-                   '\\end{tikzpicture}\n'
-                   '\\end{center}\n')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Một chiếc phà muốn sang ngang một con sông rộng $%s\\,\\mathrm{m}$ theo hướng vuông góc với bờ sông (từ $%s$ đến $%s$). Vận tốc của dòng nước chảy xuôi theo bờ là $v_n = %s\\,\\mathrm{m/s}$. Người lái phà hướng mũi phà chếch ngược dòng nước để phà đi thẳng từ $%s$ đến $%s$ với vận tốc thực tế $v = %s\\,\\mathrm{m/s}$. Hãy biểu diễn các vectơ vận tốc và tính độ lớn vận tốc của phà so với nước ($v_p$) cũng như thời gian phà qua sông.'
-                         %(str(chieu_rong_AB), diem_A, diem_B, str(v_n), diem_A, diem_B, str(v_thuc)))
-        
-        # Nội dung lời giải
-        loigiai = ('%s'
-                   '\\begin{itemize} \n'
-                   '\\item Theo quy tắc cộng vận tốc, vectơ vận tốc thực tế $\\overrightarrow{v}$ (vuông góc bờ sông) là cạnh góc vuông, vectơ vận tốc dòng nước $\\overrightarrow{v_n}$ (dọc bờ sông) là cạnh góc vuông còn lại, và vectơ vận tốc phà so với nước $\\overrightarrow{v_p}$ là cạnh huyền của tam giác vuông vận tốc. \n'
-                   '\\item Độ lớn vận tốc phà so với nước: $v_p = \\sqrt{v^2 + v_n^2} = \\sqrt{%s^2 + %s^2} = %s\\,\\mathrm{m/s}$. \n'
-                   '\\item Thời gian phà qua sông: $t = \\dfrac{%s %s}{v} = \\dfrac{%s}{%s} = %s$ giây. \n'
-                   '\\end{itemize}'
-                   %(hinh_ve,
-                     str(v_thuc), str(v_n), str(v_p),
-                     diem_A, diem_B, str(chieu_rong_AB), str(v_thuc), str(t_giay)))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('E', 'F', 'G', 'H')])
+        bo_phu = random.choice([('M', 'N', 'P'), ('I', 'J', 'K')])
+        pA, pB, pC, pD = bo_dinh
+        pM, pN, pP = bo_phu
+        c = randint(2, 12)
+        n = random.choice([2, 3, 4])
+        am = Rational(c, n)
+        pm = c + am
+        mn2 = c**2 + pm**2
+        mn = sqrt(mn2)
+        xM = round(3.0 / n, 2)
+        if n == 2:
+            gt_M = f'${pM}$ là trung điểm của ${pA}{pB}$'
+        else:
+            gt_M = f'${pM}$ thuộc cạnh ${pA}{pB}$ sao cho ${pA}{pB} = {n}{pA}{pM}$'
+        noidungcauhoi = ('Cho hình vuông $%s%s%s%s$ tâm $O$ cạnh bằng $%s$. Gọi %s, $%s$ là điểm đối xứng với $%s$ qua $%s$. Hãy tính độ dài của vectơ $\\overrightarrow{%s%s}$. \n'
+                         %(pA, pB, pC, pD, latex(c), gt_M, pN, pC, pD, pM, pN))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at (0,0); \n'
+                   '\\coordinate (B) at (3,0); \n'
+                   '\\coordinate (C) at (3,3); \n'
+                   '\\coordinate (D) at (0,3); \n'
+                   '\\coordinate (O) at (1.5,1.5); \n'
+                   '\\coordinate (M) at (%s,0); \n'
+                   '\\coordinate (N) at (-3,3); \n'
+                   '\\coordinate (P) at (-3,0); \n'
+                   '\\draw (P) -- (B) -- (C) -- (N) -- cycle; \n'
+                   '\\draw (A) -- (D) (A) -- (C) (B) -- (D) (N) -- (M); \n'
+                   '\\fill (A) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (O) circle (1.5pt) node[below=4pt] {$O$}; \n'
+                   '\\fill (M) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Qua $%s$ kẻ đường thẳng song song với $%s%s$ cắt đường thẳng $%s%s$ tại $%s$. \\\\ \n'
+                   'Khi đó tứ giác $%s%s%s%s$ là hình vuông nên $%s%s = %s%s = %s$ và $%s%s = %s%s + %s%s = %s + %s = %s$. \\\\ \n'
+                   'Áp dụng định lý Pytago trong tam giác vuông $%s%s%s$ ta có: \\\\ \n'
+                   '$%s%s^2 = %s%s^2 + %s%s^2 = %s^2 + \\left(%s\\right)^2 = %s \\Rightarrow %s%s = %s$. \\\\ \n'
+                   'Suy ra $\\left|\\overrightarrow{%s%s}\\right| = %s%s = %s$. \n'
+                   %(xM, pA, pB, pC, pD, pM, pN, pP,
+                     pN, pA, pD, pA, pB, pP,
+                     pA, pD, pN, pP, pN, pP, pP, pA, latex(c), pP, pM, pP, pA, pA, pM, latex(c), latex(am), latex(pm),
+                     pN, pP, pM,
+                     pM, pN, pN, pP, pP, pM, latex(c), latex(pm), latex(mn2), pM, pN, latex(mn),
+                     pM, pN, pM, pN, latex(mn)))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,48 +129,52 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang12_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho ngũ giác
-        list_ngu_giac = [("A", "B", "C", "D", "E"), ("M", "N", "P", "Q", "R"), ("U", "V", "X", "Y", "Z")]
-        ngu_giac = random.choice(list_ngu_giac)
-        T1, T2, T3, T4, T5 = ngu_giac
-        
-        # Đặt tên các trung điểm cố định theo yêu cầu (không random điểm)
-        M, N, P, Q_td = "M", "N", "P", "Q"
-        I, J = "I", "J"
-        K = "K" # Điểm lấy thêm
-    
-        # Đảm bảo các trung điểm không trùng tên với đỉnh ngũ giác (nếu cần thiết, nhưng đề bài yêu cầu không random điểm, ta dùng tên đỉnh A, B, C, D, E và trung điểm M, N, P, Q)
-        # Để an toàn và bám sát mẫu 100%, ta sẽ cố định tên các điểm như trong hình "image_f45104.png".
-        
-        T1, T2, T3, T4, T5 = "A", "B", "C", "D", "E"
-        M, N, P, Q_td = "M", "N", "P", "Q"
-        I, J = "I", "J"
-        K = "K"
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho ngũ giác lồi $%s %s %s %s %s$. Gọi $%s, %s, %s, %s$ lần lượt là trung điểm của $%s %s, %s %s, %s %s, %s %s$. Gọi $%s, %s$ lần lượt là trung điểm của $%s %s$ và $%s %s$. Chứng minh rằng vectơ $\\overrightarrow{%s %s}$ cùng phương với $\\overrightarrow{%s %s}$ và $|\\overrightarrow{%s %s}| = \\frac{1}{4}|\\overrightarrow{%s %s}|$.'
-                         %(T1, T2, T3, T4, T5, M, N, P, Q_td, T1, T2, T2, T3, T3, T4, T4, T5, I, J, M, P, N, Q_td, I, J, T1, T5, I, J, T1, T5))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Lấy $%s$ là trung điểm của $%s %s$. \n'
-                   '\\item Chứng minh $%s %s %s %s$ là hình bình hành (do $%s %s \\parallel %s %s, %s %s = \\frac{1}{2} %s %s$ và $%s %s \\parallel %s %s, %s %s = \\frac{1}{2} %s %s$). \n'
-                   '\\item Suy ra trung điểm $%s$ của $%s %s$ cũng là trung điểm của $%s %s$. \n'
-                   '\\item Xét $\\triangle %s %s %s$ có $%s$ là trung điểm $%s %s$, $%s$ là trung điểm $%s %s \\Rightarrow %s %s$ là đường trung bình $\\Rightarrow %s %s \\parallel %s %s$ và $%s %s = \\frac{1}{2} %s %s$. \n'
-                   '\\item Trong $\\triangle %s %s %s, %s %s$ là đường trung bình $\\Rightarrow %s %s \\parallel %s %s \\dots$ (Lưu ý: Để chuẩn xác hơn là chứng minh $%s %s$ cùng phương với $%s %s$ nếu thứ tự đỉnh phù hợp; với giả thiết trên, $%s %s \\parallel %s %s$ nên $\\overrightarrow{%s %s}$ cùng phương với $\\overrightarrow{%s %s}$ và $|\\overrightarrow{%s %s}| = \\frac{1}{4}|\\overrightarrow{%s %s}|$).\n'
-                   '\\end{itemize}'
-                   %(K, T2, T4, M, K, P, N, M, K, T1, T4, M, K, T1, T4, N, P, T1, T4, N, P, T1, T4, I, M, P, N, K, N, K, Q_td, I, N, K, J, N, Q_td, I, J, I, J, K, Q_td, I, J, K, Q_td, T2, T4, T5, K, Q_td, K, Q_td, T2, T5, I, J, T1, T5, K, Q_td, T2, T5, I, J, T2, T5, I, J, T2, T5))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh=random.choice([(['A','B','C','D','E','F'],'O'),(['M','N','P','Q','R','S'],'I')])
+        V,O=bo_dinh
+        k=random.randint(0,5)
+        chieu=random.choice(['tu_tam','ve_tam'])
+        v_m2=V[(k-2)%6]
+        v_m1=V[(k-1)%6]
+        v_p1=V[(k+1)%6]
+        v_p2=V[(k+2)%6]
+        if chieu=='tu_tam':
+            ten_vt=f"{O}{V[k]}"
+            vt1=f"\\overrightarrow{{{v_m2}{v_m1}}}"
+            vt2=f"\\overrightarrow{{{v_p2}{v_p1}}}"
+        else:
+            ten_vt=f"{V[k]}{O}"
+            vt1=f"\\overrightarrow{{{v_m1}{v_m2}}}"
+            vt2=f"\\overrightarrow{{{v_p1}{v_p2}}}"
+        ten_luc_giac="".join(V)
+        tikz_hinh=f'''\\begin{{center}}
+    \\begin{{tikzpicture}}[line width=1pt, scale=1]
+    \\coordinate ({O}) at (0,0);
+    \\coordinate ({V[0]}) at (0:2);
+    \\coordinate ({V[1]}) at (60:2);
+    \\coordinate ({V[2]}) at (120:2);
+    \\coordinate ({V[3]}) at (180:2);
+    \\coordinate ({V[4]}) at (240:2);
+    \\coordinate ({V[5]}) at (300:2);
+    \\draw ({V[0]})--({V[1]})--({V[2]})--({V[3]})--({V[4]})--({V[5]})--cycle;
+    \\draw ({V[0]})--({V[3]}) ({V[1]})--({V[4]}) ({V[2]})--({V[5]});
+    \\foreach \\p/\\g in {{{V[0]}/0, {V[1]}/60, {V[2]}/120, {V[3]}/180, {V[4]}/240, {V[5]}/300}} {{
+        \\fill (\\p) circle (1.2pt);
+        \\node at ([shift={{(\\g:0.35)}}]\\p) {{$\\p$}};
+    }}
+    \\fill ({O}) circle (1.2pt);
+    \\node[below=3pt] at ({O}) {{${O}$}};
+    \\end{{tikzpicture}}
+    \\end{{center}}'''
+        noidungcauhoi=f"Cho lục giác đều ${ten_luc_giac}$ tâm ${O}$. Tìm số các vectơ bằng $\\overrightarrow{{{ten_vt}}}$ có điểm đầu và điểm cuối là các đỉnh của lục giác?"
+        loigiai=f'''Đó là các vectơ: ${vt1}, {vt2}$. \\\\
+    Vậy có $2$ vectơ thỏa mãn yêu cầu bài toán.
+    {tikz_hinh}'''
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content

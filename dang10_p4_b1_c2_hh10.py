@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,37 +129,57 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang10_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho tam giác, điểm M và độ dài cạnh
-        list_tamgiac = [("A", "B", "C"), ("M", "N", "P"), ("D", "E", "F")]
-        tamgiac = random.choice(list_tamgiac)
-        T1, T2, T3 = tamgiac
-        
-        diem_can_dung = random.choice([d for d in ["M", "N", "P", "Q", "I", "J", "K"] if d not in tamgiac])
-        
-        do_dai_canh = random.choice(["a", "2a", "3a", "x", "2x"])
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tam giác $%s %s %s$ đều cạnh $%s$. Dựng điểm $%s$ thỏa mãn $\\overrightarrow{%s %s} = \\overrightarrow{%s %s}$. Tính độ dài vectơ $\\overrightarrow{%s %s}$.'
-                         %(T1, T2, T3, do_dai_canh, diem_can_dung, T1, diem_can_dung, T2, T3, T3, diem_can_dung))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Dựng tia $%sx$ song song và cùng hướng với tia $%s %s$, trên tia $%sx$ lấy điểm $%s$ sao cho $%s %s = %s %s = %s$. \n'
-                   '\\item Khi đó $%s %s %s %s$ là hình bình hành (hình thoi cạnh $%s$ có $\\widehat{%s %s %s} = 60^\\circ$). \n'
-                   '\\item Suy ra $\\triangle %s %s %s$ đều cạnh $%s \\Rightarrow |\\overrightarrow{%s %s}| = %s %s = %s$. \n'
-                   '\\end{itemize}'
-                   %(T1, T2, T3, T1, diem_can_dung, T1, diem_can_dung, T2, T3, do_dai_canh, T1, diem_can_dung, T3, T2, do_dai_canh, T1, T2, T3, T1, T3, diem_can_dung, do_dai_canh, T3, diem_can_dung, T3, diem_can_dung, do_dai_canh))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('F', 'G', 'H', 'K')])
+        bo_td = random.choice([('M', 'N', 'P', 'Q'), ('I', 'J', 'U', 'V')])
+        pA, pB, pC, pD = bo_dinh
+        pM, pN, pP, pQ = bo_td
+        pE = random.choice(['E', 'S', 'T'])
+        kieu = random.choice(['trung_P', 'trung_Q'])
+        if kieu == 'trung_P':
+            doan_N = f'{pM}{pC}'
+            v1, v2, v_tb = f'{pB}{pN}', f'{pQ}{pE}', f'{pQ}{pP}'
+            ket_luan = pP
+            coord_N = '(3,2.5)'
+        else:
+            doan_N = f'{pB}{pM}'
+            v1, v2, v_tb = f'{pC}{pN}', f'{pP}{pE}', f'{pP}{pQ}'
+            ket_luan = pQ
+            coord_N = '(1,2.5)'
+        noidungcauhoi = ('Cho hình thang $%s%s%s%s$ với đáy $%s%s = 2%s%s$. Gọi $%s, %s, %s, %s$ lần lượt là trung điểm của $%s%s, %s, %s%s, %s%s$ và $%s$ là điểm thỏa mãn $\\overrightarrow{%s} = \\overrightarrow{%s}$. Xác định vị trí điểm $%s$. \n'
+                         %(pA, pB, pC, pD, pB, pC, pA, pD, pM, pN, pP, pQ, pB, pC, doan_N, pC, pD, pA, pB, pE, v1, v2, pE))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at (0,0); \n'
+                   '\\coordinate (D) at (2,0); \n'
+                   '\\coordinate (B) at (0,2.5); \n'
+                   '\\coordinate (C) at (4,2.5); \n'
+                   '\\coordinate (M) at (2,2.5); \n'
+                   '\\coordinate (N) at %s; \n'
+                   '\\coordinate (Q) at (0,1.25); \n'
+                   '\\coordinate (P) at (3,1.25); \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (Q) -- (P); \n'
+                   '\\fill (A) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (M) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (Q) circle (1.5pt) node[left] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Ta có $\\overrightarrow{%s} = \\overrightarrow{%s}$ nên $%s = %s$ và $\\overrightarrow{%s}, \\overrightarrow{%s}$ cùng hướng. \\\\ \n'
+                   'Mà $%s = \\dfrac{%s%s + %s%s}{2} = \\dfrac{3}{2}%s%s = %s$, suy ra $\\overrightarrow{%s} = \\overrightarrow{%s}$ nên $%s \\equiv %s$. \n'
+                   %(coord_N, pA, pB, pC, pD, pM, pN, pQ, pP,
+                     v1, v2, v1, v2, v1, v2,
+                     v_tb, pA, pD, pB, pC, pA, pD, v1, v_tb, v1, pE, ket_luan))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

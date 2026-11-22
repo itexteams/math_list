@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,59 +129,49 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang15_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        D1, D2, D3, D4, D5, D6 = "A", "B", "C", "D", "E", "F"
-        tam_O, diem_M = "O", "M"
-        
-        # Random độ dài cạnh lục giác đều là số chẵn để tính toán đẹp
-        canh_a = randint(1, 5) * 2
-        nua_canh = Rational(canh_a, 2)
-        
-        # Tính AM^2 = AF^2 + FM^2 - 2*AF*FM*cos(120) = a^2 + a^2/4 + a^2/2 = 7a^2/4
-        AM_binh = Rational(7 * canh_a**2, 4)
-        AM_val = sp.sqrt(AM_binh)
-        
-        # Tính BM^2 = BF^2 + FM^2 = 3a^2 + a^2/4 = 13a^2/4
-        BM_binh = Rational(13 * canh_a**2, 4)
-        BM_val = sp.sqrt(BM_binh)
-        
-        # Random câu hỏi tính tổng |AM| + |BM| để ra một con số cụ thể cho dạng trả lời ngắn
-        tong_val = AM_val + BM_val
-        number = Decimal(float(tong_val))
-        kq = number.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        kq_str = str(kq).replace('.', ',')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho lục giác đều $%s %s %s %s %s %s$ cạnh bằng $%s$ có tâm $%s$. Gọi $%s$ là trung điểm của $%s %s$. Tính tổng độ dài $|\\overrightarrow{%s %s}| + |\\overrightarrow{%s %s}|$ (kết quả làm tròn đến hàng phần trăm).'
-                         %(D1, D2, D3, D4, D5, D6, str(canh_a), tam_O, diem_M, D5, D6, D1, diem_M, D2, diem_M))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Trong lục giác đều cạnh $%s$, ta có $\\widehat{%s %s %s} = 120^\\circ$, $%s %s = %s$, $%s %s = %s$. \\\\ \n'
-                   '\\item Áp dụng định lí Côsin trong $\\triangle %s %s %s$: \\\\ \n'
-                   '$%s %s^2 = %s %s^2 + %s %s^2 - 2 \\cdot %s %s \\cdot %s %s \\cdot \\cos 120^\\circ = %s^2 + %s^2 - 2 \\cdot %s \\cdot %s \\cdot \\left(-\\dfrac{1}{2}\\right) = %s \\Rightarrow |\\overrightarrow{%s %s}| = %s$. \\\\ \n'
-                   '\\item Vì $%s %s \\perp %s %s$ và $%s %s = %s$, áp dụng định lí Pytago trong $\\triangle %s %s %s$ vuông tại $%s$: \\\\ \n'
-                   '$|\\overrightarrow{%s %s}| = %s %s = \\sqrt{%s %s^2 + %s %s^2} = \\sqrt{%s + %s} = %s$. \\\\ \n'
-                   '\\item Vậy $|\\overrightarrow{%s %s}| + |\\overrightarrow{%s %s}| = %s + %s = %s \\approx %s$. \n'
-                   '\\end{itemize}'
-                   %(str(canh_a), D1, D6, D5, D1, D6, str(canh_a), D6, diem_M, latex(nua_canh),
-                     D1, D6, diem_M, D1, diem_M, D1, D6, D6, diem_M, D1, D6, D6, diem_M, str(canh_a), latex(nua_canh), str(canh_a), latex(nua_canh), latex(AM_binh), D1, diem_M, latex(AM_val),
-                     D2, D6, D5, D6, D2, D6, latex(canh_a * sp.sqrt(3)), D2, D6, diem_M, D6, D2, diem_M, D2, diem_M, D2, D6, D6, diem_M, str(3 * canh_a**2), latex(nua_canh**2), latex(BM_val),
-                     D1, diem_M, D2, diem_M, latex(AM_val), latex(BM_val), latex(tong_val), kq_str))
-        
-        # Đáp án
-        dapan = '\\shortans[0]{$%s$}\n'%(kq_str)
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        ptA = random.choice(['A', 'B', 'C', 'I', 'O'])
+        ptM = random.choice(['M', 'N', 'P', 'Q'])
+        ptE = random.choice(['E', 'F', 'K', 'H'])
+        vec_name = random.choice(['a', 'b', 'u', 'v'])
+        line_delta = random.choice(['\\Delta', 'd_1', '\\ell'])
+        line_m = random.choice(['m', 'd', 'd_2'])
+        huong = random.choice(['cùng hướng', 'ngược hướng'])
+        if huong == 'cùng hướng':
+            coord_M = '(2.7,2.6)'
+            coord_E = '(2.9,3.0)'
+        else:
+            coord_M = '(1.7,0.6)'
+            coord_E = '(1.5,0.2)'
+        noidungcauhoi = ('Cho điểm $%s$ và véctơ $\\vec{%s}$ khác $\\vec{0}$. Tìm điểm $%s$ sao cho: \\\\ \n'
+                         'a) $\\overrightarrow{%s%s}$ cùng phương với $\\vec{%s}$. \\\\ \n'
+                         'b) $\\overrightarrow{%s%s}$ %s với $\\vec{%s}$. \n'
+                         %(ptA, vec_name, ptM, ptA, ptM, vec_name, ptA, ptM, huong, vec_name))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, >=stealth, scale=0.8] \n'
+                   '\\draw (0,0) -- (2,4) node[below right] {$%s$}; \n'
+                   '\\draw[->] (0.7,1.4) -- (1.3,2.6) node[midway, left=4pt] {$\\vec{%s}$}; \n'
+                   '\\fill (0.7,1.4) circle (1.5pt); \n'
+                   '\\draw (1.2,-0.4) -- (3.2,3.6) node[below right] {$%s$}; \n'
+                   '\\fill (2.2,1.6) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill %s circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill %s circle (1.5pt) node[left] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Gọi $%s$ là giá của $\\vec{%s}$. \n'
+                   '\\begin{enumEX}[a)]{1} \n'
+                   '\\item Nếu $\\overrightarrow{%s%s}$ cùng phương với $\\vec{%s}$ thì đường thẳng $%s%s$ song song với $%s$. Do đó $%s$ thuộc đường thẳng $%s$ đi qua $%s$ và song song với $%s$. Ngược lại, mọi điểm $%s$ thuộc đường thẳng $%s$ thì $\\overrightarrow{%s%s}$ cùng phương với $\\vec{%s}$. Chú ý rằng nếu $%s$ thuộc đường thẳng $%s$ thì $%s$ trùng với $%s$. \n'
+                   '\\item Lập luận tương tự như trên, ta thấy các điểm $%s$ thuộc một nửa đường thẳng gốc $%s$ của đường thẳng $%s$. Cụ thể, đó là nửa đường thẳng chứa điểm $%s$ sao cho $\\overrightarrow{%s%s}$ và $\\vec{%s}$ %s. \n'
+                   '\\end{enumEX} \n'
+                   %(line_delta, vec_name, line_m, ptA, coord_M, ptM, coord_E, ptE,
+                     line_delta, vec_name,
+                     ptA, ptM, vec_name, ptA, ptM, line_delta, ptM, line_m, ptA, line_delta, ptM, line_m, ptA, ptM, vec_name, ptA, line_delta, line_m, line_delta,
+                     ptM, ptA, line_m, ptE, ptA, ptE, vec_name, huong))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+str(dapan)+
-               '\\loigiai{ \n' +str(loigiai)+'}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

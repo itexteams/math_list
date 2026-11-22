@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,42 +129,57 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang8_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random tên các điểm cho tam giác, hình vuông và các điểm đặc biệt
-        list_tamgiac = [("A", "B", "C"), ("M", "N", "P"), ("D", "E", "F")]
-        tamgiac = random.choice(list_tamgiac)
-        T1, T2, T3 = tamgiac
-        
-        # Random tên điểm cho 2 hình vuông (đảm bảo không trùng với các điểm đã có)
-        cac_diem_con_lai = [chr(i) for i in range(65, 91) if chr(i) not in [T1, T2, T3]]
-        D1, D2, D3, D4 = random.sample(cac_diem_con_lai, 4)
-        
-        # Điểm trung điểm và điểm đối xứng
-        cac_diem_con_lai = [d for d in cac_diem_con_lai if d not in [D1, D2, D3, D4]]
-        trung_diem, diem_doi_xung = random.sample(cac_diem_con_lai, 2)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tam giác $%s %s %s$ nhọn. Vẽ ra phía ngoài tam giác này các hình vuông $%s %s %s %s$ và $%s %s %s %s$. Gọi $%s$ là trung điểm của $%s %s$. Chứng minh rằng vectơ $\\overrightarrow{%s %s}$ vuông góc với vectơ $\\overrightarrow{%s %s}$ (tức giá của chúng vuông góc) và $|\\overrightarrow{%s %s}| = 2|\\overrightarrow{%s %s}|$.'
-                         %(T1, T2, T3, T1, T2, D1, D2, T1, T3, D3, D4, trung_diem, T2, T3, T1, trung_diem, D2, D4, D2, D4, T1, trung_diem))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Trên tia đối của tia $%s %s$, lấy điểm $%s$ sao cho $%s %s = %s %s \\Rightarrow %s %s %s %s$ là hình bình hành $\\Rightarrow %s %s = %s %s$ và $\\widehat{%s %s %s} = 180^\\circ - \\widehat{%s %s %s}$. \n'
-                   '\\item Mặt khác, $\\widehat{%s %s %s} = 360^\\circ - 90^\\circ - 90^\\circ - \\widehat{%s %s %s} = 180^\\circ - \\widehat{%s %s %s} = \\widehat{%s %s %s}$. \n'
-                   '\\item Chứng minh $\\triangle %s %s %s = \\triangle %s %s %s$ (c.g.c) $\\Rightarrow %s %s = %s %s = 2 %s %s \\Rightarrow |\\overrightarrow{%s %s}| = 2|\\overrightarrow{%s %s}|$. \n'
-                   '\\item Từ góc bằng nhau của hai tam giác, biến đổi góc chứng minh được $%s %s \\perp %s %s$. \n'
-                   '\\end{itemize}'
-                   %(trung_diem, T1, diem_doi_xung, trung_diem, diem_doi_xung, trung_diem, T1, T1, T2, diem_doi_xung, T3, T1, T3, T2, diem_doi_xung, T1, T2, diem_doi_xung, T2, T1, T3, D2, T1, D4, T2, T1, T3, T2, T1, T3, T1, T2, diem_doi_xung, D2, T1, D4, T1, T2, diem_doi_xung, D2, D4, T1, diem_doi_xung, T1, trung_diem, D2, D4, T1, trung_diem, T1, trung_diem, D2, D4))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('D', 'E', 'F'), ('X', 'Y', 'Z')])
+        bo_td = random.choice([('M', 'P', 'Q'), ('I', 'J', 'K')])
+        pA, pB, pC = bo_dinh
+        pM, pP, pQ = bo_td
+        pN = random.choice(['N', 'H', 'S'])
+        kieu = random.choice(['qua_C', 'qua_A'])
+        if kieu == 'qua_C':
+            v1, v2 = f'{pM}{pP}', f'{pC}{pN}'
+            d1, d2 = f'{pM}{pP}', f'{pC}{pN}'
+            tam_dx = pC
+            coord_N = '(6,0)'
+            ve_N = '\\draw (C) -- (N);'
+        else:
+            v1, v2 = f'{pP}{pM}', f'{pA}{pN}'
+            d1, d2 = f'{pP}{pM}', f'{pA}{pN}'
+            tam_dx = pA
+            coord_N = '(-2,0)'
+            ve_N = '\\draw (A) -- (N);'
+        noidungcauhoi = ('Cho tam giác $%s%s%s$. Gọi $%s, %s, %s$ lần lượt là trung điểm các cạnh $%s%s, %s%s, %s%s$ và $%s$ là điểm thỏa mãn $\\overrightarrow{%s} = \\overrightarrow{%s}$. Hãy xác định vị trí điểm $%s$. \n'
+                         %(pA, pB, pC, pM, pP, pQ, pA, pB, pB, pC, pC, pA, pN, v1, v2, pN))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (A) at (0,0); \n'
+                   '\\coordinate (C) at (4,0); \n'
+                   '\\coordinate (B) at (1,3.2); \n'
+                   '\\coordinate (M) at (0.5,1.6); \n'
+                   '\\coordinate (P) at (2.5,1.6); \n'
+                   '\\coordinate (Q) at (2,0); \n'
+                   '\\coordinate (N) at %s; \n'
+                   '\\draw (A) -- (B) -- (C) -- cycle; \n'
+                   '\\draw (M) -- (P); \n'
+                   '%s \n'
+                   '\\fill (A) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (M) circle (1.5pt) node[left] {$%s$}; \n'
+                   '\\fill (P) circle (1.5pt) node[right] {$%s$}; \n'
+                   '\\fill (Q) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Do $\\overrightarrow{%s} = \\overrightarrow{%s}$ nên $%s = %s$ và $\\overrightarrow{%s}, \\overrightarrow{%s}$ cùng hướng. \\\\ \n'
+                   'Vậy $%s$ đối xứng với $%s$ qua $%s$. \n'
+                   %(coord_N, ve_N, pA, pB, pC, pM, pP, pQ, pN,
+                     v1, v2, d1, d2, v1, v2, pN, pQ, tam_dx))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

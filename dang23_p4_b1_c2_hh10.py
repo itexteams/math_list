@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,45 +129,31 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang23_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Random trọng lượng P (chọn bội số của 20 để chia hết cho 2 khi tính sin/cos)
-        P_val = randint(5, 30) * 20
-        
-        # Random góc nghiêng so với phương ngang (30, 45, 60 độ)
-        cac_goc = [30, 45, 60]
-        goc_nghieng = random.choice(cac_goc)
-        
-        # Tính toán các giá trị lượng giác và độ lớn thành phần lực bằng sympy
-        goc_rad = sp.rad(goc_nghieng)
-        sin_val = sp.sin(goc_rad)
-        cos_val = sp.cos(goc_rad)
-        
-        P1_val = P_val * sin_val
-        P2_val = P_val * cos_val
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Một khối gỗ nặng nằm trên mặt phẳng nghiêng góc $%s^\\circ$ so với phương ngang. Biểu diễn vectơ trọng lực $\\overrightarrow{P}$ (có độ lớn $%s\\,\\mathrm{N}$) thành hai thành phần: $\\overrightarrow{P_1}$ song song với mặt phẳng nghiêng (kéo vật trượt xuống) và $\\overrightarrow{P_2}$ vuông góc với mặt phẳng nghiêng (ép vật vào mặt phẳng). Tính độ lớn của hai vectơ thành phần $\\overrightarrow{P_1}$ và $\\overrightarrow{P_2}$.'
-                         %(str(goc_nghieng), str(P_val)))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Dựng hình chữ nhật phân tích lực từ đỉnh vectơ $\\overrightarrow{P}$. Góc hợp bởi $\\overrightarrow{P}$ và $\\overrightarrow{P_2}$ bằng góc nghiêng $%s^\\circ$. \n'
-                   '\\item Độ lớn thành phần kéo vật trượt xuống: $|\\overrightarrow{P_1}| = P \\cdot \\sin %s^\\circ = %s \\cdot %s = %s\\,\\mathrm{N}$. \n'
-                   '\\item Độ lớn thành phần ép lên mặt phẳng nghiêng: $|\\overrightarrow{P_2}| = P \\cdot \\cos %s^\\circ = %s \\cdot %s = %s\\,\\mathrm{N}$. \n'
-                   '\\end{itemize}'
-                   %(str(goc_nghieng),
-                     str(goc_nghieng), str(P_val), latex(sin_val), latex(P1_val),
-                     str(goc_nghieng), str(P_val), latex(cos_val), latex(P2_val)))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C'), ('D', 'E', 'F'), ('P', 'Q', 'R')])
+        pA, pB, pC = bo_dinh
+        pM = random.choice(['M', 'I', 'K'])
+        bc = 2 * randint(3, 20)
+        am = Rational(bc, 2)
+        kieu = random.choice(['GM', 'GA'])
+        if kieu == 'GM':
+            heso = Rational(1, 3)
+            kq = heso * am
+            vec_hoi = f'G{pM}'
+        else:
+            heso = Rational(2, 3)
+            kq = heso * am
+            vec_hoi = f'G{pA}'
+        noidungcauhoi = ('Gọi $G$ là trọng tâm tam giác vuông $%s%s%s$ với cạnh huyền $%s%s = %s$. Tính $\\left|\\overrightarrow{%s}\\right|$ (với $%s$ là trung điểm của $%s%s$). \n'
+                         %(pA, pB, pC, pB, pC, latex(bc), vec_hoi, pM, pB, pC))
+        loigiai = ('Vì $%s$ là trung điểm cạnh huyền $%s%s$ nên $%s%s = \\dfrac{%s%s}{2} = %s$. \\\\ \n'
+                   'Do đó $\\left|\\overrightarrow{%s}\\right| = %s = %s\\cdot %s%s = %s\\cdot %s = %s$. \n'
+                   %(pM, pB, pC, pA, pM, pB, pC, latex(am), vec_hoi, vec_hoi, latex(heso), pA, pM, latex(heso), latex(am), latex(kq)))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

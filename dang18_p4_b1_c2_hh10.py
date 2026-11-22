@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,62 +129,59 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang18_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        tam_O, D1, D2, diem_C, diem_H = "O", "A", "B", "C", "H"
-        
-        # Random độ dài dây cung AB (ví dụ: R*sqrt(3), R*sqrt(2), R)
-        R = sp.Symbol('R', positive=True)
-        cac_day_cung = [R * sp.sqrt(3), R * sp.sqrt(2), R]
-        AB_expr = random.choice(cac_day_cung)
-        
-        # Tính toán các đại lượng bằng sympy
-        AH_expr = AB_expr / 2
-        AH_binh = AH_expr**2
-        OH_binh = R**2 - AH_binh
-        OH_expr = sp.sqrt(OH_binh)
-        
-        CH_expr = R + OH_expr
-        CH_binh = sp.expand(CH_expr**2)
-        CA_binh = sp.simplify(CH_binh + AH_binh)
-        CA_expr = sp.sqrt(CA_binh)
-        
-        # Chuyển sang chuỗi LaTeX
-        str_AB = latex(AB_expr)
-        str_AH = latex(AH_expr)
-        str_AH_binh = latex(AH_binh)
-        str_OH = latex(OH_expr)
-        str_CH = latex(CH_expr)
-        str_CH_binh = latex(CH_binh)
-        str_CA = latex(CA_expr)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho đường tròn $(%s; R)$ và dây cung $%s %s = %s$. Gọi $%s$ là điểm chính giữa cung lớn $%s %s$. Tính độ dài vectơ $\\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s}$.'
-                         %(tam_O, D1, D2, str_AB, diem_C, D1, D2, diem_C, D1, diem_C, tam_O))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Dễ thấy $|\\overrightarrow{%s %s}| = %s %s = R$. \n'
-                   '\\item Gọi $%s$ là trung điểm $%s %s \\Rightarrow %s %s \\perp %s %s$ và $%s %s = %s$. \n'
-                   '\\item Tính $%s %s = \\sqrt{%s %s^2 - %s %s^2} = \\sqrt{R^2 - %s} = %s$. \n'
-                   '\\item Vì $%s$ là điểm chính giữa cung lớn $%s %s$ nên $%s, %s, %s$ thẳng hàng theo thứ tự đó $\\Rightarrow %s %s = %s %s + %s %s = %s$. \n'
-                   '\\item Trong $\\triangle %s %s %s$ vuông tại $%s$: $|\\overrightarrow{%s %s}| = %s %s = \\sqrt{%s %s^2 + %s %s^2} = \\sqrt{%s + %s} = %s$. \n'
-                   '\\end{itemize}'
-                   %(diem_C, tam_O, diem_C, tam_O,
-                     diem_H, D1, D2, tam_O, diem_H, D1, D2, D1, diem_H, str_AH,
-                     tam_O, diem_H, tam_O, D1, D1, diem_H, str_AH_binh, str_OH,
-                     diem_C, D1, D2, diem_C, tam_O, diem_H, diem_C, diem_H, diem_C, tam_O, tam_O, diem_H, str_CH,
-                     D1, diem_H, diem_C, diem_H, diem_C, D1, diem_C, D1, diem_C, diem_H, D1, diem_H, str_CH_binh, str_AH_binh, str_CA))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh = random.choice([('A', 'B', 'C', 'D'), ('P', 'Q', 'R', 'S'), ('I', 'J', 'K', 'L')])
+        bo_td = random.choice([('M', 'N'), ('H', 'G')])
+        bo_giao = random.choice([('E', 'F'), ('U', 'V')])
+        pA, pB, pC, pD = bo_dinh
+        pM, pN = bo_td
+        pE, pF = bo_giao
+        chieu = random.choice(['xuoi', 'nguoc'])
+        if chieu == 'xuoi':
+            v1 = f'\\overrightarrow{{{pD}{pE}}} = \\overrightarrow{{{pE}{pF}}}'
+            v2 = f'\\overrightarrow{{{pE}{pF}}} = \\overrightarrow{{{pF}{pB}}}'
+            v_all = f'\\overrightarrow{{{pD}{pE}}} = \\overrightarrow{{{pE}{pF}}} = \\overrightarrow{{{pF}{pB}}}'
+        else:
+            v1 = f'\\overrightarrow{{{pF}{pE}}} = \\overrightarrow{{{pE}{pD}}}'
+            v2 = f'\\overrightarrow{{{pB}{pF}}} = \\overrightarrow{{{pF}{pE}}}'
+            v_all = f'\\overrightarrow{{{pB}{pF}}} = \\overrightarrow{{{pF}{pE}}} = \\overrightarrow{{{pE}{pD}}}'
+        noidungcauhoi = ('Cho hình bình hành $%s%s%s%s$. Gọi $%s, %s$ lần lượt là trung điểm của $%s%s, %s%s$. $%s%s$ và $%s%s$ lần lượt cắt $%s%s$ tại $%s, %s$. Chứng minh rằng $%s$. \n'
+                         %(pA, pB, pC, pD, pM, pN, pA, pB, pD, pC, pA, pN, pC, pM, pB, pD, pE, pF, v_all))
+        loigiai = ('\\begin{center} \n'
+                   '\\begin{tikzpicture}[line width=1pt, scale=0.8] \n'
+                   '\\coordinate (D) at (0,0); \n'
+                   '\\coordinate (C) at (4.5,0); \n'
+                   '\\coordinate (A) at (-1.5,2.5); \n'
+                   '\\coordinate (B) at (3,2.5); \n'
+                   '\\coordinate (M) at (0.75,2.5); \n'
+                   '\\coordinate (N) at (2.25,0); \n'
+                   '\\coordinate (E) at (1,0.833); \n'
+                   '\\coordinate (F) at (2,1.667); \n'
+                   '\\draw (A) -- (B) -- (C) -- (D) -- cycle; \n'
+                   '\\draw (B) -- (D) (A) -- (N) (C) -- (M); \n'
+                   '\\fill (A) circle (1.5pt) node[above left] {$%s$}; \n'
+                   '\\fill (B) circle (1.5pt) node[above right] {$%s$}; \n'
+                   '\\fill (C) circle (1.5pt) node[below right] {$%s$}; \n'
+                   '\\fill (D) circle (1.5pt) node[below left] {$%s$}; \n'
+                   '\\fill (M) circle (1.5pt) node[above] {$%s$}; \n'
+                   '\\fill (N) circle (1.5pt) node[below] {$%s$}; \n'
+                   '\\fill (E) circle (1.5pt) node[below=2pt] {$%s$}; \n'
+                   '\\fill (F) circle (1.5pt) node[below=2pt] {$%s$}; \n'
+                   '\\end{tikzpicture} \n'
+                   '\\end{center} \n'
+                   'Ta có: $\\begin{cases} %s%s = %s%s \\\\ %s%s \\parallel %s%s \\end{cases} \\Leftrightarrow %s%s%s%s$ là hình bình hành. \\\\ \n'
+                   'Theo giả thiết ta có: $%s$ là trung điểm $%s%s$ và $%s%s \\parallel %s%s \\Rightarrow %s%s$ là đường trung bình của $\\triangle %s%s%s \\Rightarrow %s$ là trung điểm của $%s%s \\Rightarrow %s$ (1). \\\\ \n'
+                   'Tương tự ta cũng có: $%s$ là trung điểm của $%s%s$ nên $%s$ (2). \\\\ \n'
+                   'Từ (1) và (2) ta có: $%s$. \n'
+                   %(pA, pB, pC, pD, pM, pN, pE, pF,
+                     pA, pM, pC, pN, pA, pM, pC, pN, pA, pM, pC, pN,
+                     pN, pD, pC, pN, pE, pC, pF, pN, pE, pD, pF, pC, pE, pD, pF, v1,
+                     pF, pB, pE, v2, v_all))
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content

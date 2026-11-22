@@ -2869,6 +2869,18 @@ dang_p4_b2_c2_hh10 = [
     (6, "[0H22DV06] Độ dài vectơ: Cho tam giác vuông ABC với điểm M thỏa mãn đẳng thức 3 vectơ. Tính độ dài vectơ"),
     (8, "[0H22DV08] Độ dài vectơ: Cho hình thang cân. Tìm độ dài vectơ"),
     (7, "[0H22DV07] Ứng dụng: Tổng vận tốc của Cano và dòng nước"),
+    (9, "[0H22DT09] Kỹ năng: Cho hình bình hành với tâm, chứng minh đẳng thức hiệu vecto"),
+    (10, "[0H22DT10] Kỹ năng: Cho hình bình hành, trung điểm, tính tổng vecto"),
+    (11, "[0H22DT11] Kỹ năng: Cho hình thoi với giao điểm, chứng minh đẳng thức hiệu vecto"),
+    (12, "[0H22DT12] Kỹ năng: Kỹ năng: Cho hình vuông tâm O tính độ dài tổng, hiệu vecto"),
+    (13, "[0H22DT13] Kỹ năng: Cho tam giác với các trung điểm tìm hiệu vecto"),
+    (14, "[0H22DV14] Kỹ năng: Cho 2 điểm tìm điểm thỏa mãn đẳng thức độ dài tổng hiệu vecto"),
+    (15, "[0H22DV15] Kỹ năng: Cho 3 lực tác động vào 1 vật biết 2 lực tính cường độ lực thứ 3"),
+    (16, "[0H22DV16] Kỹ năng: Cho tam giác đều, trọng tâm tính độ dài tổng hiệu vecto"),
+    (17, "[0H22DV17] Kỹ năng: Cho tam giác trung điểm chứng minh các đẳng thức tổng vecto"),
+    (18, "[0H22DV18] Kỹ năng: Cho tam giác trung điểm, tìm hiệu vecto, phân tích vecto"),
+    (19, "[0H22DV19] Kỹ năng: Cho tam giác, trung điểm tính độ dài tổng hiệu vecto"),
+    (20, "[0H22DV20] Kỹ năng: Tính tổng hợp lực lên 1 vật (tổng hai vecto)"),
 ]
 
 dang_p1_b3_c2_hh10 = [

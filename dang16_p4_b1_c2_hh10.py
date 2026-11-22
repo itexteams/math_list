@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,57 +129,17 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang16_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        T1, T2, T3 = "A", "B", "C"
-        diem_G, diem_M = "G", "M"
-        
-        # Random độ dài 2 cạnh AB, AC và góc BAC (chọn bộ số sao cho BC nguyên)
-        bo_canh_60 = [(5, 8, 7), (3, 8, 7), (7, 8, 13), (5, 7, 13), (8, 15, 13), (7, 15, 13)]
-        c_AB, c_AC, c_BC = random.choice(bo_canh_60)
-        
-        # Tính công thức đường trung tuyến: AM^2 = (2(AB^2 + AC^2) - BC^2) / 4
-        tu_so = 2 * (c_AB**2 + c_AC**2) - c_BC**2
-        AM_binh = Rational(tu_so, 4)
-        AM_val = sp.sqrt(AM_binh)
-        
-        # Tính độ dài AG = 2/3 AM
-        AG_val = Rational(2, 3) * AM_val
-        
-        # Làm tròn kết quả đến hàng phần trăm
-        number = Decimal(float(AG_val))
-        kq = number.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
-        kq_str = str(kq).replace('.', ',')
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho tam giác $%s %s %s$ có $%s %s = %s, %s %s = %s, \\widehat{%s %s %s} = 60^\\circ$. Gọi $%s$ là trọng tâm của tam giác $%s %s %s$. Tính độ dài vectơ $\\overrightarrow{%s %s}$ (kết quả làm tròn đến hàng phần trăm).'
-                         %(T1, T2, T3, T1, T2, str(c_AB), T1, T3, str(c_AC), T2, T1, T3, diem_G, T1, T2, T3, T1, diem_G))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Gọi $%s$ là trung điểm $%s %s$. Áp dụng định lí Côsin trong $\\triangle %s %s %s$: \\\\ \n'
-                   '$%s %s^2 = %s^2 + %s^2 - 2 \\cdot %s \\cdot %s \\cdot \\cos 60^\\circ = %s + %s - %s = %s \\Rightarrow %s %s = %s$. \\\\ \n'
-                   '\\item Công thức đường trung tuyến: \\\\ \n'
-                   '$%s %s^2 = \\dfrac{2(%s %s^2 + %s %s^2) - %s %s^2}{4} = \\dfrac{2(%s + %s) - %s}{4} = %s \\Rightarrow %s %s = %s$. \\\\ \n'
-                   '\\item Độ dài $|\\overrightarrow{%s %s}| = %s %s = \\dfrac{2}{3} %s %s = %s \\approx %s$. \n'
-                   '\\end{itemize}'
-                   %(diem_M, T2, T3, T1, T2, T3, 
-                     T2, T3, str(c_AB), str(c_AC), str(c_AB), str(c_AC), str(c_AB**2), str(c_AC**2), str(c_AB * c_AC), str(c_BC**2), T2, T3, str(c_BC),
-                     T1, diem_M, T1, T2, T1, T3, T2, T3, str(c_AB**2), str(c_AC**2), str(c_BC**2), latex(AM_binh), T1, diem_M, latex(AM_val),
-                     T1, diem_G, T1, diem_G, T1, diem_M, latex(AG_val), kq_str))
-        
-        # Đáp án
-        dapan = '\\shortans[0]{$%s$}\n'%(kq_str)
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        n=random.randint(4,9)
+        m=n-1
+        kq=n*m
+        noidungcauhoi=f"Số vectơ (khác vectơ $\\vec{{0}}$) có điểm đầu và điểm cuối lấy từ ${n}$ điểm phân biệt cho trước?"
+        loigiai=f"Một vectơ khác vectơ không được xác định bởi $2$ điểm phân biệt. Khi có ${n}$ điểm ta có ${n}$ cách chọn điểm đầu và ${m}$ cách chọn điểm cuối. Nên ta sẽ có ${n}.{m} = {kq}$ cách xác định số vectơ khác $\\vec{{0}}$ thuộc ${n}$ điểm trên."
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+str(dapan)+
-               '\\loigiai{ \n' +str(loigiai)+'}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content

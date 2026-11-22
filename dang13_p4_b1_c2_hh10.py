@@ -1,3 +1,4 @@
+
 import sys
 from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
 from sympy import *
@@ -128,50 +129,67 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang13_p4_b1_c2_hh10(self):
-    # Khai báo biến
-    
     lisdang=['1']
     dang=random.choice(lisdang)
     if dang=='1':
-        # Cố định tên điểm theo chuẩn mẫu (không random điểm)
-        D1, D2, diem_M = "A", "B", "M"
-        
-        # Random hệ số độ dài đoạn AB (ví dụ: 2a, 3a, 4a, 5a, 6a) và tỉ số k (ví dụ: 2, 3, 4, 5)
-        he_so_AB = randint(2, 6)
-        k = randint(2, 5)
-        
-        a = sp.Symbol('a')
-        do_dai_AB_expr = he_so_AB * a
-        tong_phan = k + 1
-        
-        # Tính toán bằng sympy
-        do_dai_MB_expr = Rational(he_so_AB, tong_phan) * a
-        do_dai_MA_expr = Rational(k * he_so_AB, tong_phan) * a
-        
-        # Chuyển sang chuỗi LaTeX
-        str_AB = latex(do_dai_AB_expr)
-        str_MB = latex(do_dai_MB_expr)
-        str_MA = latex(do_dai_MA_expr)
-    
-        # Nội dung câu hỏi
-        noidungcauhoi = ('Cho đoạn thẳng $%s %s$ có độ dài $%s$. Tìm vị trí điểm $%s$ nằm trên đường thẳng $%s %s$ sao cho vectơ $\\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s}$ ngược hướng, đồng thời $|\\overrightarrow{%s %s}| = %s|\\overrightarrow{%s %s}|$. Tính độ dài $\\overrightarrow{%s %s}$.'
-                         %(D1, D2, str_AB, diem_M, D1, D2, diem_M, D1, diem_M, D2, diem_M, D1, str(k), diem_M, D2, diem_M, D1))
-        
-        # Nội dung lời giải
-        loigiai = ('\\begin{itemize} \n'
-                   '\\item Vì $\\overrightarrow{%s %s}$ và $\\overrightarrow{%s %s}$ ngược hướng nên $%s$ nằm giữa $%s$ và $%s \\Rightarrow %s %s + %s %s = %s %s = %s$. \n'
-                   '\\item Kết hợp $%s %s = %s %s %s \\Rightarrow %s %s %s = %s \\Rightarrow %s %s = %s$ và $%s %s = %s$. \n'
-                   '\\item Vậy $%s$ nằm trên đoạn $%s %s$ cách $%s$ một khoảng $%s$, khi đó $|\\overrightarrow{%s %s}| = %s$. \n'
-                   '\\end{itemize}'
-                   %(diem_M, D1, diem_M, D2, diem_M, D1, D2, diem_M, D1, diem_M, D2, D1, D2, str_AB, 
-                     diem_M, D1, str(k), diem_M, D2, str(tong_phan), diem_M, D2, str_AB, diem_M, D2, str_MB, diem_M, D1, str_MA,
-                     diem_M, D1, D2, D1, str_MA, diem_M, D1, str_MA))
-    
-    # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-    
+        bo_dinh=random.choice([(['A','B','C','D','E','F'],'O'),(['M','N','P','Q','R','S'],'I')])
+        V,O=bo_dinh
+        k=random.randint(0,5)
+        chieu_goc=random.choice(['tu_tam','ve_tam'])
+        loai_hoi=random.choice(['cung_phuong','cung_huong','nguoc_huong'])
+        if chieu_goc=='tu_tam':
+            ten_vt=f"{O}{V[k]}"
+        else:
+            ten_vt=f"{V[k]}{O}"
+        v_doi=V[(k+3)%6]
+        v_k1=V[(k+1)%6]
+        v_k2=V[(k+2)%6]
+        v_k4=V[(k+4)%6]
+        v_k5=V[(k+5)%6]
+        ds_cung_huong_tu_tam=[f"\\overrightarrow{{{v_doi}{V[k]}}}",f"\\overrightarrow{{{v_k2}{v_k1}}}",f"\\overrightarrow{{{v_k4}{v_k5}}}"]
+        ds_nguoc_huong_tu_tam=[f"\\overrightarrow{{{V[k]}{v_doi}}}",f"\\overrightarrow{{{v_k1}{v_k2}}}",f"\\overrightarrow{{{v_k5}{v_k4}}}"]
+        if loai_hoi=='cung_phuong':
+            yc_text="cùng phương"
+            ds_kq=[f"\\overrightarrow{{{V[k]}{v_doi}}}",f"\\overrightarrow{{{v_doi}{V[k]}}}",f"\\overrightarrow{{{v_k2}{v_k1}}}",f"\\overrightarrow{{{v_k1}{v_k2}}}",f"\\overrightarrow{{{v_k4}{v_k5}}}",f"\\overrightarrow{{{v_k5}{v_k4}}}"]
+            so_kq=6
+        elif loai_hoi=='cung_huong':
+            yc_text="cùng hướng"
+            ds_kq=ds_cung_huong_tu_tam if chieu_goc=='tu_tam' else ds_nguoc_huong_tu_tam
+            so_kq=3
+        else:
+            yc_text="ngược hướng"
+            ds_kq=ds_nguoc_huong_tu_tam if chieu_goc=='tu_tam' else ds_cung_huong_tu_tam
+            so_kq=3
+        str_ds=", ".join(ds_kq)
+        ten_luc_giac="".join(V)
+        tikz_hinh=f'''\\begin{{center}}
+    \\begin{{tikzpicture}}[line width=1pt, scale=0.9]
+    \\coordinate ({O}) at (0,0);
+    \\coordinate ({V[0]}) at (-60:2);
+    \\coordinate ({V[1]}) at (-120:2);
+    \\coordinate ({V[2]}) at (180:2);
+    \\coordinate ({V[3]}) at (120:2);
+    \\coordinate ({V[4]}) at (60:2);
+    \\coordinate ({V[5]}) at (0:2);
+    \\draw ({V[0]})--({V[1]})--({V[2]})--({V[3]})--({V[4]})--({V[5]})--cycle;
+    \\draw ({V[0]})--({V[3]}) ({V[1]})--({V[4]}) ({V[2]})--({V[5]});
+    \\foreach \\p/\\g in {{{V[0]}/-60, {V[1]}/-120, {V[2]}/180, {V[3]}/120, {V[4]}/60, {V[5]}/0}} {{
+        \\fill[white] (\\p) circle (1.5pt);
+        \\draw (\\p) circle (1.5pt);
+        \\node at ([shift={{(\\g:0.35)}}]\\p) {{$\\p$}};
+    }}
+    \\fill[red] ({O}) circle (2pt);
+    \\node[below=3pt] at ({O}) {{${O}$}};
+    \\end{{tikzpicture}}
+    \\end{{center}}'''
+        noidungcauhoi=f"Cho hình lục giác đều ${ten_luc_giac}$ tâm ${O}$. Tìm số các vectơ khác vectơ - không, {yc_text} với vectơ $\\overrightarrow{{{ten_vt}}}$ có điểm đầu và điểm cuối là các đỉnh của lục giác?"
+        loigiai=f'''{tikz_hinh}
+    Các vectơ khác vectơ - không, {yc_text} với vectơ $\\overrightarrow{{{ten_vt}}}$ có điểm đầu và điểm cuối là các đỉnh của lục giác là: \\\\
+    ${str_ds}$. \\\\
+    Vậy có tất cả ${so_kq}$ vectơ thỏa mãn yêu cầu bài toán.'''
     content = ('\\begin{minipage}{\\textwidth} \n'
-               '\\begin{ex}\n'+ str(noidungcauhoi)+ '\n'
-               '\\loigiai{ \n' +str(loigiai)+'\n}\n'
-               '\\end{ex}\n \\end{minipage} \n\n')
-    return content      
-
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content
