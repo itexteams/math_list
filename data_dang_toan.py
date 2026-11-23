@@ -2941,6 +2941,27 @@ dang_p3_b3_c2_hh10 = [
 dang_p4_b3_c2_hh10 = [
     (1, "[0H23DV01] Ứng dụng: Bài toán hai người đi xe máy ngược hướng nhau"),
     (2, "[0H23DV02] Ứng dụng: Tính độ lớn của lực tác dụng lên vật"),
+    (3, "[0H23DT03] Kỹ năng: Cho hình bình hành, tâm xác định vecto tích một số với 1 vecto"),
+    (4, "[0H23DT04] Kỹ năng: Cho hình bình hành, tính độ dài tổng, hiệu vecto"),
+    (5, "[0H23DV05] Kỹ năng: Cho hai điểm, xác định điểm và chứng minh đẳng thức vecto"),
+    (6, "[0H23DV06] Kỹ năng: Cho hai tam giác, hai trọng tâm, xác định hệ số thỏa mãn đẳng thức vecto"),
+    (7, "[0H23DV07] Kỹ năng: Cho hình bình hành, điểm thỏa mãn tỷ lệ, phân tích vecto theo các vecto không cùng phương"),
+    (8, "[0H23DV08] Kỹ năng: Cho hình bình hành, xác định hệ số thỏa mãn đẳng thức vecto"),
+    (9, "[0H23DV09] Kỹ năng: Cho hình tam giác đều, biết cạnh tính độ dài tổng vecto"),
+    (10, "[0H23DV10] Kỹ năng: Cho hình tam giác vuông, biết cạnh góc tính độ dài tổng vecto"),
+    (11, "[0H23DV11] Kỹ năng: Cho hình tam giác xác định điểm thỏa mãn đẳng thức vecto"),
+    (12, "[0H23DV12] Kỹ năng: Cho hình tam giác, giao điểm, trọng tâm, chứng minh đẳng thức vecto"),
+    (13, "[0H23DV13] Kỹ năng: Cho hình tam giác, trọng tâm, điểm thỏa mãn, tìm bán kính đường tròn"),
+    (14, "[0H23DV14] Kỹ năng: Cho hình tam giác, trọng tâm, trực tâm, tâm đường tròn, chứng minh đẳng thức vecto"),
+    (15, "[0H23DV15] Kỹ năng: Cho hình tam giác, trung tuyến, điểm, chứng minh đẳng thức vecto"),
+    (16, "[0H23DV16] Kỹ năng: Cho hình tam giác, xác định điểm và chứng minh đẳng thức vecto"),
+    (17, "[0H23DV17] Kỹ năng: Cho hình thang, trung điểm, tính độ dài vecto"),
+    (18, "[0H23DV18] Kỹ năng: Cho hình tứ giác, các trung điểm, chứng minh đẳng thức vecto"),
+    (19, "[0H23DV19] Kỹ năng: Cho hình tứ giác, trung điểm, chứng minh đẳng thức vecto"),
+    (20, "[0H23DV20] Kỹ năng: Cho tam giác vuông cân, tính độ dài tổng, hiệu vecto"),
+    (21, "[0H23DV21] Kỹ năng: Cho tam giác, điểm đối xứng, xác định hệ số thỏa mãn đẳng thức"),
+    (22, "[0H23DV22] Kỹ năng: Tìm tập hợp điểm thỏa mãn đẳng thức độ dài vecto"),
+    (23, "[0H23DV23] Kỹ năng: Xác định tổng hợp lực lên 1 vật"),
 ]
 
 dang_p1_b4_c2_hh10 = [
