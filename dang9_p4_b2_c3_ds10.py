@@ -123,7 +123,7 @@ def bt_dang9_p4_b2_c3_ds10(self):
     \\item Trong mẫu số liệu trên, giá trị $%s$ xuất hiện nhiều nhất ($3$ lần) nên mốt của mẫu số liệu là $M_o = %s \\text{ (‰)}$.
     \\end{itemize}
     \\item Kỹ sư thủy sản nên chọn \\textbf{trung vị} ($M_e = %s\\text{‰}$) để báo cáo mức độ mặn phổ biến của vuông tôm trong $12$ ngày qua. \\\\
-    \\textbf{Giải thích:} Trong mẫu số liệu có xuất hiện giá trị bất thường rất lớn là $%s\\text{‰}$ (cao hơn hẳn so với các ngày còn lại). Giá trị ngoại lệ này làm cho số trung bình cộng %s ($\overline{x} = %s\\text{‰}$), không đại diện chính xác cho xu thế chung. Trong khi đó, trung vị không bị ảnh hưởng bởi giá trị bất thường này và %s, phản ánh đúng mức độ mặn phổ biến của vuông tôm.
+    \\textbf{Giải thích:} Trong mẫu số liệu có xuất hiện giá trị bất thường rất lớn là $%s\\text{‰}$ (cao hơn hẳn so với các ngày còn lại). Giá trị ngoại lệ này làm cho số trung bình cộng %s ($\\overline{x} = %s\\text{‰}$), không đại diện chính xác cho xu thế chung. Trong khi đó, trung vị không bị ảnh hưởng bởi giá trị bất thường này và %s, phản ánh đúng mức độ mặn phổ biến của vuông tôm.
     \\end{enumEX}'''
                    %(sorted_str,
                      " + ".join(str(v) for v in data), tong, tb_str,
