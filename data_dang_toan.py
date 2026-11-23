@@ -2855,6 +2855,16 @@ dang_p2_b2_c2_hh10 = [
     (7, "[0H22BV07] Tổng, hiệu: Cho hình vuông tâm O với M bất kì, xác định tổng hiệu các vectơ"),
     (6, "[0H22BV06] Tổng, hiệu: Cho hình vuông tâm O xác định độ dài tổng, hiệu các vec tơ"),
     (10, "[0H22BV10] Ứng dụng: Em nhỏ trượt trên cầu trượt"),
+    (11, "[0H22BV11] Kỹ năng: Cho hai lực với độ lớn, tính tổng hợp lực"),
+    (12, "[0H22BV12] Kỹ năng: Cho hình chữ nhật có tâm tính tổng hiệu, độ dài vecto"),
+    (13, "[0H22BV13] Kỹ năng: Cho hình thoi, tâm, xét tổng hiệu, độ dài tổng"),
+    (14, "[0H22BV14] Kỹ năng: Cho hình vuông có tâm tính tổng hiệu, độ dài vecto"),
+    (15, "[0H22BV15] Kỹ năng: Cho hình vuông xét đúng, sai tổng, hiệu"),
+    (16, "[0H22BV16] Kỹ năng: Cho tam giác đều, xét tổng, hiệu, độ dà"),
+    (17, "[0H22BV17] Kỹ năng: Cho tam giác và các hình bình hành bên ngoài, xét đúng, sai tổng, hiệu"),
+    (18, "[0H22BV18] Kỹ năng: Cho tam giác, trung điểm xét đúng, sai hiệu"),
+    (19, "[0H22BV19] Kỹ năng: Cho tam giác, xét hiệu, độ dài, xác định đỉnh hình bình hành"),
+    (20, "[0H22BV20] Kỹ năng: Cho hình bình hành xét đúng, sai của hiệu"),
 ]
 
 dang_p3_b2_c2_hh10 = [
