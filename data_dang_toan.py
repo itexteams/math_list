@@ -2999,6 +2999,10 @@ dang_p1_b3_c2_hh10 = [
 dang_p2_b3_c2_hh10 = [
     (1, "[0H23BT01] Biểu diễn vectơ: Cho tam giác ABC có trọng tâm G. Biểu diễn một vectơ qua hai vectơ"),
     (2, "[0H23BV02] Biểu diễn vectơ: Cho hình bình hành ABCD, M, N, P thuộc các cạnh. Biểu diễn một vectơ qua hai vectơ"),
+    (3, "[0H23BV03] Kỹ năng: Cho 2 máy bay biết vận tốc,hướng, xác định đọ dài, đẳng thức vecto liên quan"),
+    (4, "[0H23BV04] Kỹ năng: Cho hình bình hành, tâm, điểm bất kì, xác định tổng hiệu các vecto"),
+    (5, "[0H23BV05] Kỹ năng: Cho hình tứ giác, trung điểm xét tổng hiệu biểu diễn đẳng thức vecto"),
+    (6, "[0H23BV06] Kỹ năng: Cho tam giác, trung tuyến, trọng tâm xét tổng hiệu biểu diễn đẳng thức vecto"),
 ]
 
 dang_p3_b3_c2_hh10 = [
@@ -3008,7 +3012,29 @@ dang_p3_b3_c2_hh10 = [
     (7, "[0H23CV07] Biểu diễn vectơ: Cho hình thang vuông. Tìm giá trị nhỏ nhất ccuar biểu thức độ dài vectơ"),
     (6, "[0H23CT06] Tham số: Cho độ dài hai vectơ(a) và vectơ(b). Tìm m thỏa mãn vectơ(a)=m.vectơ(b)"),
     (1, "[0H23CV01] Ứng dụng: Bài toán hai người đi xe máy ngược hướng nhau"),
-    (2, "[0H23CV02] Ứng dụng: Tính độ lớn của lực tác dụng lên vật"),   
+    (2, "[0H23CV02] Ứng dụng: Tính độ lớn của lực tác dụng lên vật"),
+    (8, "[0H23CT08] Kỹ năng: Cho hình thoi biết cạnh góc, tìm độ dài tổng vecto"),
+    (9, "[0H23CT09] Kỹ năng: Hai người đi xe máy theo hai hướng vận tốc, tìm tỷ lệ vecto"),
+    (10, "[0H23CV10] Kỹ năng: Cho hình bình hành, 2 điểm thỏa mãn đẳng thức vecto, tìm tỷ số k"),
+    (11, "[0H23CV11] Kỹ năng: Cho hình tứ giác, trung điểm hai đường chéo, tìm k thỏa mãn đẳng thức vecto"),
+    (12, "[0H23CV12] Kỹ năng: Cho ngũ giác, với các trung điểm biểu diễn vecto"),
+    (13, "[0H23CV13] Kỹ năng: Cho tam giác với độ dài cạnh, biểu diễn vecto"),
+    (14, "[0H23CV14] Kỹ năng: Cho tam giác với trung điểm, điểm thỏa mãn hệ thức, biểu diễn vecto"),
+    (15, "[0H23CV15] Kỹ năng: Cho tam giác với trung điểm, tìm hệ sổ biểu diễn vecto"),
+    (16, "[0H23CV16] Kỹ năng: Cho tam giác vuông cân, vecto tỷ lệ, xác định tổng vecto"),
+    (17, "[0H23CV17] Kỹ năng: Cho tam giác vuông, tính độ dài tổng vecto"),
+    (18, "[0H23CV18] Kỹ năng: Cho tam giác, 2 trung tuyến, biểu thị vecto theo vecto không cùng phương"),
+    (19, "[0H23CV19] Kỹ năng: Cho tam giác, điểm trên cạnh theo tỷ lệ, xác định biểu diễn vecto"),
+    (20, "[0H23CV20] Kỹ năng: Cho tam giác, điểm tùy ý, hạ vuông góc, biểu diễn vecto"),
+    (21, "[0H23CV21] Kỹ năng: Cho tam giác, đọn thẳng tỷ lệ, xác định biểu diện vecto"),
+    (22, "[0H23CV22] Kỹ năng: Cho tam giác, trọng tâm tìm tập hợp điểm thỏa mãn đẳng thức vecto"),
+    (23, "[0H23CV23] Kỹ năng: Cho tam giác, trong tâm, trung điểm biểu thị vecto"),
+    (24, "[0H23CV24] Kỹ năng: Cho tam giác, trọng tâm, trung điểm, biểu diễn theo đẳng thức vecto"),
+    (25, "[0H23CV25] Kỹ năng: Cho tam giác, trung điểm và điểm đối xứng, biểu diễn vecto"),
+    (26, "[0H23CV26] Kỹ năng: Cho tam giác, trung điểm, phân tích vecto theo các vecto không cùng phương"),
+    (27, "[0H23CV27] Kỹ năng: Cho tam giác, trung tuyến, điểm tỷ lệ, tìm hệ số biểu diễn vecto"),
+    (28, "[0H23CV28] Kỹ năng: Cho tứ giác với giao điểm hai đường chéo, tìm k thỏa mãn đẳng thức vecto"),
+    (29, "[0H23CV29] Kỹ năng: Tìm lực tác dụng lên vật trong hệ gồm 4 lực"),   
 ]
 
 dang_p4_b3_c2_hh10 = [
