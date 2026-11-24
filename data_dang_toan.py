@@ -869,6 +869,7 @@ dang_p3_b3_c3_ds10 = [
     (5, "[0D33CT05] Độ lệch chuẩn: Độ lệch chuẩn của dãy số liệu"),
     (7, "[0D33CV07] Độ lệch chuẩn: Sản lượng chè thu hoạch"),
     (8, "[0D33CT08] Giá trị bất thường: Giá trị bất thường của dãy số liệu"),
+    (10, "[0D33CV10] Kỹ năng: Thời gian hoàn thành bài thi chạy bộ của các thí sinh"),
 ]
 dang_p4_b3_c3_ds10 = [
     (1, "[0D33DN01] Khoảng biến thiên: Khoảng biến thiên của dãy số liệu"),
