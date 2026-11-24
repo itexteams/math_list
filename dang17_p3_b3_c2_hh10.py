@@ -128,7 +128,7 @@ from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
-def bt_dang12_p3_b3_c2_hh10(self):
+def bt_dang17_p3_b3_c2_hh10(self):
     lisdang=['1','2']
     dang=random.choice(lisdang)
     if dang=='1':
