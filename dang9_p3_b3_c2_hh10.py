@@ -197,7 +197,7 @@ def bt_dang9_p3_b3_c2_hh10(self):
         '\\end{tikzpicture}\n'
         '\\end{center}\n'
         )
-        noidungcauhoi=('Một người đi xe máy từ Tây sang hướng Đông với vận tốc $%s\\text{ km/h}$ được biểu thị bởi vectơ $\\overrightarrow{v_1}$ và một người khác đi xe máy từ hướng Đông sang hướng Tây với vận tốc $%s\\text{ km/h}$ được biểu thị bởi vectơ $\\overrightarrow{v_2}$. Biết rằng $\\overrightarrow{v_2}=-\\dfrac{a}{b}\\overrightarrow{v_1}$ ($a,b\\in\\mathbb{N}^*$), $\\dfrac{a}{b}$ là phân số tối giản. Giá trị $%s$ bằng bao nhiêu? \n'%(v1,v2,latex(bieuthuc))+hinh).replace('- -','+').replace('+ -','-')
+        noidungcauhoi=('Một người đi xe máy từ Tây sang hướng Đông với vận tốc $%s\\text{ km/h}$ được biểu thị bởi vectơ $\\overrightarrow{v_1}$ và một người khác đi xe máy từ hướng Đông sang hướng Tây với vận tốc $%s\\text{ km/h}$ được biểu thị bởi vectơ $\\overrightarrow{v_2}$. Biết rằng $\\overrightarrow{v_2}=-\\dfrac{a}{b}\\overrightarrow{v_1}$ ($a,b\\in\\mathbb{N}^*$), $\\dfrac{a}{b}$ là phân số tối giản. Giá trị $%s$ bằng bao nhiêu? '%(v1,v2,latex(bieuthuc))+hinh).replace('- -','+').replace('+ -','-')
         loigiai=('Ta có: $\\overrightarrow{v_2}$ ngược hướng với $\\overrightarrow{v_1}$ và có độ lớn bằng $\\dfrac{%s}{%s}=%s$ lần độ lớn vectơ $\\overrightarrow{v_1}$.\\\\\nVì vậy $\\overrightarrow{v_2}=-%s\\overrightarrow{v_1}\\Rightarrow\\begin{cases} a=%s \\\\ b=%s \\end{cases}\\Rightarrow %s=%s$.'%(v2,v1,latex(tyso),latex(tyso),a,b,latex(bieuthuc),kq)).replace('- -','+').replace('+ -','-')
         dapan='\\shortans[0]{$%s$}\n'%(latex(kq))
     content = ('\\begin{minipage}{\\textwidth} \n'
