@@ -3015,6 +3015,7 @@ dang_p3_b3_c2_hh10 = [
     (1, "[0H23CV01] Ứng dụng: Bài toán hai người đi xe máy ngược hướng nhau"),
     (2, "[0H23CV02] Ứng dụng: Tính độ lớn của lực tác dụng lên vật"),
     (8, "[0H23CT08] Kỹ năng: Cho hình thoi biết cạnh góc, tìm độ dài tổng vecto"),  
+    (9, "[0H23CT09] Kỹ năng: zzzz"),  
 ]
 
 dang_p4_b3_c2_hh10 = [
