@@ -162,7 +162,7 @@ def bt_dang8_p3_b3_c2_hh10(self):
         '\\end{tikzpicture}\n'
         '\\end{center}\n'
         )%(c)
-        noidungcauhoi=('Cho hình thoi $ABCD$ tâm $O$, cạnh bằng $%s$ và góc $\\widehat{BAD}=60^\\circ$. Tính độ dài vectơ $%s$ (kết quả làm tròn đến một chữ số sau dấu phẩy).\n'%(c,vt)).replace('- -','+').replace('+ -','-')
+        noidungcauhoi=('Cho hình thoi $ABCD$ tâm $O$, cạnh bằng $%s$ và góc $\\widehat{BAD}=60^\\circ$. Độ dài vectơ $%s$ bằng bao nhiêu? (kết quả làm tròn đến một chữ số sau dấu phẩy).\n'%(c,vt)).replace('- -','+').replace('+ -','-')
         loigiai=(hinh+'Tam giác $ABD$ cân tại $A$ và có góc $\\widehat{BAD}=60^\\circ$ nên $\\triangle ABD$ đều, suy ra $BD=%s$ và $BO=%s$.\\\\\nTa có $\\left|%s\\right|=%s\\left|\\overrightarrow{AB}+\\overrightarrow{AD}\\right|=%s\\left|\\overrightarrow{AC}\\right|=%sAO=%s\\sqrt{AB^2-BO^2}=%s\\sqrt{%s-%s}=%s\\sqrt{3}\\approx %s$.'%(c,bo,vt,hs,hs,2*m,2*m,2*m,c**2,bo**2,m*c,kq_vn)).replace('- -','+').replace('+ -','-')
         dapan='\\shortans[0]{$%s$}\n'%(latex(kq))
     content = ('\\begin{minipage}{\\textwidth} \n'
