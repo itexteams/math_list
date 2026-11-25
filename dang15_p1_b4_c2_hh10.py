@@ -1,0 +1,196 @@
+
+import sys
+from PyQt5.QtWidgets import QApplication, QColorDialog, QMainWindow, QSplitter, QTreeWidget, QSpacerItem, QSizePolicy, QTreeWidgetItem, QCheckBox, QFileDialog, QVBoxLayout, QTextEdit, QPushButton, QWidget, QLabel, QLineEdit, QDialog, QAction, QMessageBox, QScrollBar, QHeaderView, QMenu, QGridLayout
+from sympy import *
+from sympy.abc import x
+import sympy as sp
+from sympy import symbols,sqrt,evaluate,Subs,latex, Rational, expand, simplify, integrate
+import random
+import math
+from sympy import Rational
+from fractions import Fraction as frac
+from random import randint
+from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QFont
+import hashlib
+import uuid
+import os
+from sympy import symbols, Eq, solve
+import numpy as np
+from PyQt5.QtGui import QIcon
+from math import factorial
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QTextDocument
+from subprocess import run, CalledProcessError
+import shutil
+from PyQt5.QtWidgets import QProgressBar
+from docx import Document
+from PyQt5 import QtGui
+import re
+import pandas as pd
+from PyQt5.QtGui import QPixmap
+import subprocess
+import platform
+import json
+from decimal import Decimal, ROUND_HALF_UP
+from PyQt5.QtWidgets import QComboBox, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSpinBox, QTreeWidget, QTreeWidgetItem, QCheckBox, QTextEdit, QPushButton, QHBoxLayout
+from random import randint, choice, shuffle
+from sympy import latex
+from fractions import Fraction
+from collections import Counter
+from random import sample
+import shutil
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget
+from PyQt5.QtCore import Qt
+import qrcode
+import json
+import glob
+import os
+import platform
+import subprocess
+import hashlib
+import base64
+from datetime import datetime, timedelta
+from PyQt5.QtWidgets import (QApplication, QDialog, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox)
+from sympy import symbols, solve, Lt
+#from PyQt5.QtWebEngineWidgets import QWebEngineView
+#from PyQt5.QtCore import QUrl
+#from sympy import latex
+import re
+import pyperclip
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
+import google.generativeai as genai
+from sympy.abc import x, y, z, t
+import sys
+import os
+from PyQt5.QtWidgets import (
+    QApplication, QWidget, QVBoxLayout, QPushButton, QLabel, QFileDialog, QMessageBox
+)
+from pdf2image import convert_from_path
+from math import degrees
+import openpyxl
+from openpyxl import Workbook
+from openpyxl.styles import Alignment, Font
+from openpyxl.utils import get_column_letter
+from sympy import simplify, collect
+from itertools import combinations
+import itertools
+from PyQt5.QtCore import QSettings
+import sys
+import os
+import platform
+import subprocess
+import hashlib
+import time
+from datetime import datetime, timedelta
+# Bổ sung các widget và core cho Splash Screen
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QDialog, QLabel, QLineEdit, 
+    QPushButton, QComboBox, QCheckBox, QTextEdit, QVBoxLayout, 
+    QHBoxLayout, QGridLayout, QMessageBox, QColorDialog,
+    QSplashScreen, QProgressBar  # <-- BỔ SUNG 2 CÁI NÀY
+)
+from PyQt5.QtCore import Qt, QSettings, QThread, pyqtSignal  # <-- BỔ SUNG QThread, pyqtSignal
+from PyQt5.QtGui import QIcon, QPixmap, QFont
+from PyQt5.QtGui import QFont, QBrush, QColor
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+    QSplitter, QTreeWidget, QTreeWidgetItem, QTextEdit, QLabel, 
+    QSpacerItem, QSizePolicy, QStackedWidget, QPushButton, QCheckBox, QSpinBox,
+    QScrollArea  # <-- Thêm mục này vào đây
+)
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtGui import QPainter, QColor, QPen
+from PyQt5.QtCore import Qt, QPropertyAnimation, pyqtProperty
+from functools import wraps
+import re
+import uuid
+import json, base64
+from datetime import datetime
+from nacl.signing import VerifyKey
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+### CÔNG CỤ
+import sys
+import numpy as np
+from PyQt5.QtWidgets import (
+    QApplication, QMainWindow, QPushButton, QDialog, 
+    QVBoxLayout, QHBoxLayout, QTabWidget, QWidget, 
+    QLabel, QSlider, QDoubleSpinBox, QGroupBox
+)
+from PyQt5.QtCore import Qt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
+
+
+def bt_dang15_p1_b4_c2_hh10(self):
+    lisdang=['1']
+    dang=random.choice(lisdang)
+    if dang=='1':
+        ten_diem=random.choice(['M','N','P','Q','A','B'])
+        ds_toado=[-4,-3,-2,-1,1,2,3,4]
+        xM=random.choice(ds_toado)
+        ds_y=[val for val in ds_toado if abs(val)!=abs(xM)]
+        yM=random.choice(ds_y)
+        xmin=min(-1,xM-1)
+        xmax=max(2,xM+2)
+        ymin=min(-1,yM-1)
+        ymax=max(2,yM+2)
+        if xM>0 and yM>0:
+            pos_O='below left'
+            pos_M='above right'
+        elif xM<0 and yM>0:
+            pos_O='below right'
+            pos_M='above left'
+        elif xM<0 and yM<0:
+            pos_O='above right'
+            pos_M='below left'
+        else:
+            pos_O='above left'
+            pos_M='below right'
+        pos_x='below' if yM>0 else 'above'
+        pos_y='left' if xM>0 else 'right'
+        du=['$(%s; %s)$'%(latex(xM),latex(yM))]
+        da=random.choice(du)
+        s=['$(%s; %s)$'%(latex(yM),latex(xM)),'$(%s; %s)$'%(latex(xM),latex(-yM)),'$(%s; %s)$'%(latex(-xM),latex(yM)),'$(%s; %s)$'%(latex(-xM),latex(-yM)),'$(%s; %s)$'%(latex(-yM),latex(xM)),'$(%s; %s)$'%(latex(yM),latex(-xM))]
+        das1=random.choice(s)
+        s.remove(das1)
+        das2=random.choice(s)
+        s.remove(das2)
+        das3=random.choice(s)
+        hinhve=('''\\begin{center}
+    \\begin{tikzpicture}[scale=0.8,>=stealth,line width=1pt]
+    \\draw[dotted,gray] (%s,%s) grid (%s,%s);
+    \\draw[->] (%s,0) -- (%s,0) node[below left] {$x$};
+    \\draw[->] (0,%s) -- (0,%s) node[below left] {$y$};
+    \\draw[->] (0,0) -- (%s,%s);
+    \\fill (0,0) circle (1.5pt) node[%s] {$O$};
+    \\fill (%s,%s) circle (1.5pt) node[%s] {$%s$};
+    \\node[%s] at (%s,0) {$%s$};
+    \\node[%s] at (0,%s) {$%s$};
+    \\end{tikzpicture}
+    \\end{center}\n'''%(xmin,ymin,xmax,ymax,xmin,xmax+0.3,ymin,ymax+0.3,xM,yM,pos_O,xM,yM,pos_M,ten_diem,pos_x,xM,latex(xM),pos_y,yM,latex(yM)))
+        de_bai=('''Cho điểm $%s$ trong hệ trục tọa độ $Oxy$ như hình vẽ. Tọa độ điểm $%s$ là\n'''%(ten_diem,ten_diem)).replace('- -','+').replace('+ -','-')
+        noidungcauhoi=de_bai+hinhve
+        da_d=('\\True '+str(da)).replace('- -','+').replace('+ -','-')
+        da_s1=str(das1).replace('- -','+').replace('+ -','-')
+        da_s2=str(das2).replace('- -','+').replace('+ -','-')
+        da_s3=str(das3).replace('- -','+').replace('+ -','-')
+        list_1=[da_d,da_s1,da_s2,da_s3]
+        random.shuffle(list_1)
+        loigiai=('''Từ hình vẽ, chiếu điểm $%s$ vuông góc xuống trục hoành $Ox$ ta được hoành độ $x_{%s} = %s$, chiếu điểm $%s$ vuông góc xuống trục tung $Oy$ ta được tung độ $y_{%s} = %s$. \\\\ Vậy tọa độ điểm $%s$ là $(%s; %s)$.'''%(ten_diem,ten_diem,latex(xM),ten_diem,ten_diem,latex(yM),ten_diem,latex(xM),latex(yM))).replace('- -','+').replace('+ -','-')
+    content = ('\\begin{minipage}{\\textwidth} \n'
+        '\\begin{ex}\n'+ str(noidungcauhoi)+ 
+        '\\choice \n'
+        '{'+str(list_1[1])+'}\n'
+        '{'+str(list_1[2])+'}\n'
+        '{'+str(list_1[3])+'}\n'
+        '{'+str(list_1[0])+'}\n'
+        '\\loigiai{'+str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n')
+    return content
