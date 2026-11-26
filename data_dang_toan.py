@@ -3135,6 +3135,17 @@ dang_p3_b4_c2_hh10 = [
     (7, "[0H24CT07] Ứng dụng: Tìm chu vi tam giác"),
     (3, "[0H24CT03] Ứng dụng: Tìm chu vi của tam giác biết tọa độ ba đỉnh"),
     (5, "[0H24CV05] Ứng dụng: Tìm diện tích tam giác vuông"), 
+    (8, "[0H24CT08] Kỹ năng: Biểu diễn vecto theo hai vecto không cùng phương"),
+    (9, "[0H24CT09] Kỹ năng: Tìm m thỏa mãn điều kiện để hai vecto cùng phương"),
+    (10, "[0H24CT10] Kỹ năng: Tìm x để hai vecto cùng phương"),
+    (11, "[0H24CT11] Kỹ năng: Xác định m để 3 điểm thẳng hàng"),
+    (12, "[0H24CV12] Kỹ năng: Tìm tọa độ của hai máy kéo tàu biển đến vị trí mới"),
+    (13, "[0H24CV13] Kỹ năng: Tìm tọa độ điểm M thỏa mãn đẳng thức vecto"),
+    (14, "[0H24CV14] Kỹ năng: Tìm tọa độ điểm trên trục sao cho tổng độ dài vecto nhỏ nhất"),
+    (15, "[0H24CV15] Kỹ năng: Tính tổng khoảng cách từ tầu đến hai hòn đảo"),
+    (16, "[0H24CV16] Kỹ năng: Xác định đỉnh hình bình hành biết trung điểm, giao điểm"),
+    (17, "[0H24CV17] Kỹ năng: Xác định vị trí cột điện qua ao"),
+    (18, "[0H24CV18] Kỹ năng: Xác định vị trị của tầu sau một khoảng thời gian"),    
 ]
 
 dang_p4_b4_c2_hh10 = [
@@ -5381,6 +5392,8 @@ dang_p4_b2_c4_ds11 = [
     (32, "[1D42DV32] Giới hạn tham số kết hợp hình học: Cho giới hạn và đường thẳng. Tính a^2+b^2"),
     (33, "[1D42DV33] Giới hạn tham số tính biểu thức: Cho giới hạn hàm phân thức chứa căn. Tính a-b"),
     (15, "[1D42DV15] Cực trị trong giới hạn: Cho giới hạn. Tìm GTNN của biểu thức"),
+    (34, "[1D42DV34] Kỹ năng: Giới hạn hàm số phân thức hữu tỷ, bậc hai, bậc nhất"),
+    (35, "[1D42DV35] Kỹ năng: Giới hạn hàm số phân thức vô tỷ nhân liên hợp"),
 ]
 
 dang_p1_b3_c4_ds11 = [
