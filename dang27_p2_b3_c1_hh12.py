@@ -283,7 +283,7 @@ def bt_dang27_p2_b3_c1_hh12(self):
     list_th_1 = [th_da_1]
     
     loigiai_th_1 = (
-        r"""Ta có $\\vec{OA} = (%s;%s;%s)$ và $\\vec{OB} = (%s;%s;%s)$. \\\\ Vectơ cùng vuông góc với cả hai vectơ $\\vec{OA}$ và $\\vec{OB}$ cùng phương với tích có hướng $[\\vec{OA}, \\vec{OB}]$: \\\\ $[\\vec{OA}, \\vec{OB}] = \\left( \\begin{vmatrix} %s & %s \\\\ %s & %s \\end{vmatrix}; \\begin{vmatrix} %s & %s \\\\ %s & %s \\end{vmatrix}; \\begin{vmatrix} %s & %s \\\\ %s & %s \\end{vmatrix} \\right) = (%s;%s;%s)$. \\\\ Vì vectơ $\\vec{u} = (a;b;%s)$ có cao độ bằng $%s$ nên $\\vec{u} = [\\vec{OA}, \\vec{OB}] = (%s;%s;%s)$. \\\\ Do đó ta có: $a = %s$ và $b = %s$. \\\\ Suy ra: $a + 2b = %s + 2 \\cdot (%s) = %s$. \\\\ Vì $%s %s %s$ nên khẳng định là %s."""
+        r"""Ta có $\vec{OA} = (%s;%s;%s)$ và $\vec{OB} = (%s;%s;%s)$. \\ Vectơ cùng vuông góc với cả hai vectơ $\vec{OA}$ và $\vec{OB}$ cùng phương với tích có hướng $[\vec{OA}, \vec{OB}]$: \\ $[ \vec{OA}, \vec{OB} ] = \left( \begin{vmatrix} %s & %s \\ %s & %s \end{vmatrix}; \begin{vmatrix} %s & %s \\ %s & %s \end{vmatrix}; \begin{vmatrix} %s & %s \\ %s & %s \end{vmatrix} \right) = (%s;%s;%s)$. \\ Vì vectơ $\vec{u} = (a;b;%s)$ có cao độ bằng $%s$ nên $\vec{u} = [\vec{OA}, \vec{OB}] = (%s;%s;%s)$. \\ Do đó ta có: $a = %s$ và $b = %s$. \\ Suy ra: $a + 2b = %s + 2 \cdot (%s) = %s$. \\ Vì $%s %s %s$ nên khẳng định là %s."""
         % (
             xa,
             ya,
