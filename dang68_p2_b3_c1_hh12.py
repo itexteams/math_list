@@ -249,7 +249,7 @@ def bt_dang68_p2_b3_c1_hh12(self):
     ################################################################################ Vận dụng ##############################################
     # Mệnh đề c: |u| = |v| <=> m = m2_rat hoặc m = m0[cite: 21]
     vd_da_1_d = (
-        "\\True $|\\vec{u}| = |\\vec{v}| \\Leftrightarrow \\left[\\begin{aligned} &m = %s \\\\ &m = %s \\end{aligned}\\right."
+        "\\True $|\\vec{u}| = |\\vec{v}| \\Leftrightarrow \\left[\\begin{aligned} &m = %s \\\\ &m = %s \\end{aligned}\\right.$"
         % (m0, str_m2)
     )
     vd_da_1_s = (
