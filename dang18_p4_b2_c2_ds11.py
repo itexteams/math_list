@@ -136,7 +136,7 @@ def bt_dang18_p4_b2_c2_ds11(self):
         # Random số hạng đầu b1 của CSC thứ hai, suy ra a1 sao cho a1 - b1 = 2
         b1 = random.randint(2, 8)
         a1 = b1 + 2
-        N = random.choice([80, 90, 100, 110, 120, 150])
+        N = random.choice([180, 190, 130, 140, 120, 150, 160, 170])
 
         # 3 số hạng đầu tiên của mỗi cấp số cộng
         ap1_t1 = a1

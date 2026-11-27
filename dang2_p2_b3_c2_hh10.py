@@ -128,82 +128,82 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang2_p2_b3_c2_hh10(self):
-        # Khai báo biến
-        a1 = randint(2, 5)
-        c1 = randint(2, 5)
-        
-        # ĐIỀU KIỆN BẮT BUỘC: Để 3 điểm M, N, P thẳng hàng thì 1/b = 1/a + 1/c => b1 = a1 + c1
-        # Ta cố định b1 theo a1 và c1 thay vì random b1 bừa bãi
-        b1 = a1 + c1
-
-        a = Rational(1, a1)
-        c = Rational(1, c1)
-        b = Rational(1, b1)
-
-        # Nội dung câu hỏi
-        noidungcauhoi = ('''Cho hình bình hành $ABCD$ và các điểm $M, N, P$ thỏa mãn $\\vec{AM}=%s \\vec{AB}, \\vec{AN}=%s \\vec{AC}$ và $\\vec{AP}=%s \\vec{AD}$. \n'''
-                        % (latex(a), latex(b), latex(c)))
-        
-        ######################################################################## Nhận biết 
-        nb_da_d = '\\True $\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$' % (latex(b))
-        nb_da_s = '$\\vec{AN}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$' % (latex(b + Rational(1, 2))) 
-        
-        loigiai_nb = ('Ta có $\\vec{AC} = \\vec{AB} + \\vec{AD}$ (quy tắc hình bình hành). \\\\ \n'
-                      'Suy ra $\\vec{AN}=%s \\vec{AC}=%s \\left( \\vec{AB}+\\vec{AD} \\right)$.'
-                      % (latex(b), latex(b)))
-
-        ######################################################################## Thông hiểu 
-        th_da_d = '\\True $\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$' % (latex(b-a), latex(b))
-        th_da_s = '$\\vec{MN}=%s \\vec{AB}+%s\\vec{AD}$' % (latex(a-b), latex(b)) # Đảo dấu để tạo nhiễu
-        
-        loigiai_th = ('Ta có $\\vec{MN}=\\vec{AN}-\\vec{AM}=%s \\left( \\vec{AB}+\\vec{AD} \\right)-%s \\vec{AB}=%s \\vec{AB}+%s\\vec{AD}$.'
-                      % (latex(b), latex(a), latex(b-a), latex(b)))
-
-        ######################################################################## Vận dụng 
-        vd_da_d = '\\True $\\vec{MP}=%s \\vec{AD}-%s\\vec{AB}$' % (latex(c), latex(a))
-        vd_da_s = '$\\vec{MP}=%s \\vec{AD}+%s\\vec{AB}$' % (latex(c), latex(a)) # Đổi - thành + để tạo nhiễu
-        
-        loigiai_vd = ('Ta có $\\vec{MP}=\\vec{AP}-\\vec{AM}=%s \\vec{AD}-%s\\vec{AB}$.'
-                      % (latex(c), latex(a)))
-
-        ######################################################################## Vận dụng cao 
-        vdc_da_d = '\\True Ba điểm $M, N, P$ thẳng hàng'
-        vdc_da_s = 'Ba điểm $M, N, P$ không thẳng hàng'
-        
-        # Chứng minh logic và thuyết phục hơn nhờ ràng buộc b1 = a1 + c1
-        loigiai_vdc = ('Ta có $\\dfrac{1}{a} + \\dfrac{1}{c} = %s + %s = %s = \\dfrac{1}{b}$. \\\\ \n'
-                       'Suy ra $\\dfrac{1}{b} - \\dfrac{1}{a} = \\dfrac{1}{c} \\Rightarrow \\dfrac{a-b}{ab} = \\dfrac{1}{c} \\Rightarrow b-a = -\\dfrac{ab}{c}$. \\\\ \n'
-                       'Lại có $\\vec{MN}= %s \\vec{AB} + %s \\vec{AD} = -\\dfrac{ab}{c}\\vec{AB} + b\\vec{AD} = \\dfrac{b}{c}\\left(-a\\vec{AB} + c\\vec{AD}\\right) = %s\\vec{MP}$. \\\\ \n'
-                       'Suy ra hai vectơ $\\vec{MN}$ và $\\vec{MP}$ cùng phương. Vậy ba điểm $M, N, P$ thẳng hàng.'
-                       % (a1, c1, b1, latex(b-a), latex(b), latex(b/c)))
-
-        # Vòng lặp đảm bảo số lượng câu đúng rơi vào khoảng 1 đến 3 (tránh trường hợp 4 True / 4 False)
+        def fix_signs(s):
+            return s.replace('+ -', '- ').replace('+-', '-').replace('- -', '+ ').replace('--', '+').replace('\\frac', '\\dfrac')
+        m = random.choice([2, 3, 4, 5])
+        p = random.choice([2, 3, 4, 5])
+        n = m + p
+        n_sai = random.choice([n - 1, n + 1])
+        c_ab = latex(Rational(p, m * n))
+        k_mp = latex(Rational(p, n))
+        noidungcauhoi = fix_signs('''Cho hình bình hành $ABCD$ và các điểm $M, N, P$ thỏa mãn $\\overrightarrow{AM} = \\dfrac{1}{%s}\\overrightarrow{AB}$, $\\overrightarrow{AN} = \\dfrac{1}{%s}\\overrightarrow{AC}$ và $\\overrightarrow{AP} = \\dfrac{1}{%s}\\overrightarrow{AD}$.''' % (m, n, p))
+        nb_da_1_d = fix_signs('\\True $\\overrightarrow{AN} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right)$.' % (n))
+        nb_da_1_s = fix_signs('$\\overrightarrow{AN} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right)$.' % (n_sai))
+        lg_nb_d = fix_signs('''Vì $ABCD$ là hình bình hành nên $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$, suy ra $\\overrightarrow{AN} = \\dfrac{1}{%s}\\overrightarrow{AC} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right)$. Vậy mệnh đề đúng.''' % (n, n))
+        lg_nb_s = fix_signs('''Vì $ABCD$ là hình bình hành nên $\\overrightarrow{AC} = \\overrightarrow{AB} + \\overrightarrow{AD}$, suy ra $\\overrightarrow{AN} = \\dfrac{1}{%s}\\overrightarrow{AC} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right)$. Vậy mệnh đề sai.''' % (n, n))
+        list_nb_pairs = [(nb_da_1_d, lg_nb_d), (nb_da_1_s, lg_nb_s)]
+        th_da_1_d = fix_signs('\\True $\\overrightarrow{MN} = -%s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD}$' % (c_ab, n))
+        th_da_1_s = fix_signs('$\\overrightarrow{MN} = %s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD}$' % (c_ab, n))
+        lg_th_d = fix_signs('''Ta có $\\overrightarrow{MN} = \\overrightarrow{AN} - \\overrightarrow{AM} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right) - \\dfrac{1}{%s}\\overrightarrow{AB} = -%s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD}$. Vậy mệnh đề đúng.''' % (n, m, c_ab, n))
+        lg_th_s = fix_signs('''Ta có $\\overrightarrow{MN} = \\overrightarrow{AN} - \\overrightarrow{AM} = \\dfrac{1}{%s}\\left(\\overrightarrow{AB} + \\overrightarrow{AD}\\right) - \\dfrac{1}{%s}\\overrightarrow{AB} = -%s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD}$. Vậy mệnh đề sai.''' % (n, m, c_ab, n))
+        list_th_pairs = [(th_da_1_d, lg_th_d), (th_da_1_s, lg_th_s)]
+        vd_da_1_d = fix_signs('\\True $\\overrightarrow{MP} = \\dfrac{1}{%s}\\overrightarrow{AD} - \\dfrac{1}{%s}\\overrightarrow{AB}$' % (p, m))
+        vd_da_1_s = fix_signs('$\\overrightarrow{MP} = \\dfrac{1}{%s}\\overrightarrow{AD} + \\dfrac{1}{%s}\\overrightarrow{AB}$' % (p, m))
+        lg_vd_d = fix_signs('''Ta có $\\overrightarrow{MP} = \\overrightarrow{AP} - \\overrightarrow{AM} = \\dfrac{1}{%s}\\overrightarrow{AD} - \\dfrac{1}{%s}\\overrightarrow{AB}$. Vậy mệnh đề đúng.''' % (p, m))
+        lg_vd_s = fix_signs('''Ta có $\\overrightarrow{MP} = \\overrightarrow{AP} - \\overrightarrow{AM} = \\dfrac{1}{%s}\\overrightarrow{AD} - \\dfrac{1}{%s}\\overrightarrow{AB}$. Vậy mệnh đề sai.''' % (p, m))
+        list_vd_pairs = [(vd_da_1_d, lg_vd_d), (vd_da_1_s, lg_vd_s)]
+        vdc_da_1_d = '\\True Ba điểm $M, N, P$ thẳng hàng'
+        vdc_da_1_s = 'Ba điểm $M, N, P$ không thẳng hàng'
+        lg_vdc_d = fix_signs('''Ta có $\\overrightarrow{MN} = -%s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD} = %s\\left(\\dfrac{1}{%s}\\overrightarrow{AD} - \\dfrac{1}{%s}\\overrightarrow{AB}\\right) = %s\\overrightarrow{MP}$.\\\\
+        Suy ra hai vectơ $\\overrightarrow{MN}$ và $\\overrightarrow{MP}$ cùng phương, do đó ba điểm $M, N, P$ thẳng hàng. Vậy mệnh đề đúng.''' % (c_ab, n, k_mp, p, m, k_mp))
+        lg_vdc_s = fix_signs('''Ta có $\\overrightarrow{MN} = -%s\\overrightarrow{AB} + \\dfrac{1}{%s}\\overrightarrow{AD} = %s\\left(\\dfrac{1}{%s}\\overrightarrow{AD} - \\dfrac{1}{%s}\\overrightarrow{AB}\\right) = %s\\overrightarrow{MP}$.\\\\
+        Suy ra hai vectơ $\\overrightarrow{MN}$ và $\\overrightarrow{MP}$ cùng phương, do đó ba điểm $M, N, P$ thẳng hàng. Vậy mệnh đề sai.''' % (c_ab, n, k_mp, p, m, k_mp))
+        list_vdc_pairs = [(vdc_da_1_d, lg_vdc_d), (vdc_da_1_s, lg_vdc_s)]
+        def count_true_answers(answers):
+            return sum('\\True' in ans for ans in answers)
         while True:
-            nb_da = random.choice([nb_da_d, nb_da_s])
-            th_da = random.choice([th_da_d, th_da_s])
-            vd_da = random.choice([vd_da_d, vd_da_s])
-            vdc_da = random.choice([vdc_da_d, vdc_da_s])
-            
-            true_count = sum('\\True' in ans for ans in [nb_da, th_da, vd_da, vdc_da])
+            pair_nb = random.choice(list_nb_pairs)
+            pair_th = random.choice(list_th_pairs)
+            pair_vd = random.choice(list_vd_pairs)
+            pair_vdc = random.choice(list_vdc_pairs)
+            answers = [pair_nb[0], pair_th[0], pair_vd[0], pair_vdc[0]]
+            true_count = count_true_answers(answers)
             if 1 <= true_count <= 3:
                 break
-
-        # Xuất câu hỏi
+        list_nb_1 = [pair_nb[0]]
+        list_nb_2 = [pair_nb[1]]
+        list_th_1 = [pair_th[0]]
+        list_th_2 = [pair_th[1]]
+        list_vd_1 = [pair_vd[0]]
+        list_vd_2 = [pair_vd[1]]
+        list_vdc_1 = [pair_vdc[0]]
+        list_vdc_2 = [pair_vdc[1]]
+        combined_nb = list(zip(list_nb_1, list_nb_2))
+        combined_th = list(zip(list_th_1, list_th_2))
+        combined_vd = list(zip(list_vd_1, list_vd_2))
+        combined_vdc = list(zip(list_vdc_1, list_vdc_2))
+        random.shuffle(combined_nb)
+        random.shuffle(combined_th)
+        random.shuffle(combined_vd)
+        random.shuffle(combined_vdc)
+        shuffled_answers_nb, shuffled_solutions_nb = zip(*combined_nb)
+        shuffled_answers_th, shuffled_solutions_th = zip(*combined_th)
+        shuffled_answers_vd, shuffled_solutions_vd = zip(*combined_vd)
+        shuffled_answers_vdc, shuffled_solutions_vdc = zip(*combined_vdc)
         content = ('\\begin{minipage}{\\textwidth} \n'
-            '\\begin{ex}\n'+ str(noidungcauhoi)+ 
-            '\\choiceTFn \n'
-            '{'+str(nb_da)+'}\n'
-            '{'+str(th_da)+'}\n'
-            '{'+str(vd_da)+'}\n'
-            '{'+str(vdc_da)+'}\n'
+            '\\begin{ex}\n'+ str(noidungcauhoi)+
+             '\\choiceTFn \n'
+            '{'+str(shuffled_answers_nb[0])+'}\n'
+            '{'+str(shuffled_answers_th[0])+'}\n'
+            '{'+str(shuffled_answers_vd[0])+'}\n'
+            '{'+str(shuffled_answers_vdc[0])+'}\n'
             '\\loigiai{ \n'
             '\\begin{enumEX}[a)]{1} \n'
-            '\\item '+str(loigiai_nb)+'\n'
-            '\\item '+str(loigiai_th)+'\n'
-            '\\item '+str(loigiai_vd)+'\n'
-            '\\item '+str(loigiai_vdc)+'\n'
+            '\\item '+str(shuffled_solutions_nb[0])+'\n'
+            '\\item '+str(shuffled_solutions_th[0])+'\n'
+            '\\item '+str(shuffled_solutions_vd[0])+'\n'
+            '\\item '+str(shuffled_solutions_vdc[0])+'\n'
             '\\end{enumEX}} \n'
-            '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-')
-        
+            '\\end{ex}\n \\end{minipage} \n\n')
         return content 
 

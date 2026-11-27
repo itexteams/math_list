@@ -128,85 +128,76 @@ from mpl_toolkits.mplot3d import Axes3D  # Cần cho 3D
 
 
 def bt_dang2_p4_b3_c2_hh10(self):
-            # Khai báo biến
-            lisdang=['1']
-            dang=random.choice(lisdang)
-            if dang=='1':
-                lisgoc=[45,30,60]
-                goc=random.choice(lisgoc)
-
-                a=randint(2,5)
-                n=randint(4,20)
-
-                oa2=n**2+n**2-2*n*n*cos(pi-2*goc*pi/180)
-                oa=sqrt(oa2)
-                f1=Rational(1,a-1)*oa
-                f2=a*f1
-
-                h1=f2      
-                number = Decimal(float(h1))  # Số cần làm tròn
-                kq = number.quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
-
-                # Nội dung câu hỏi
-                noidungcauhoi = ('\\begin{center} \n'
-                                '\\begin{tikzpicture}[line join=round, line cap=round,>=stealth,thick]  \n'
-                                    '\\clip(-8.72,-2.94) rectangle (5.14,3.32); \n'
-                                    '\\draw [line width=1.pt] (0.,0.) circle (1.cm); \n'
-                                    '\\draw [->,line width=1.pt] (0.,0.) -- (5,0.); \n'
-                                    '\\draw [->,line width=1.pt] (0.,0.) -- (-8.,0.); \n'
-                                    '\\draw [->,line width=1.pt] (0.,0.) -- (2.,2.); \n'
-                                    '\\draw [->,line width=1.pt] (0.,0.) -- (2.,-2.); \n'
-                                    '\\draw [line width=1.pt,dash pattern=on 2pt off 2pt] (2.,2.)-- (4.,0.); \n'
-                                    '\\draw [line width=1.pt,dash pattern=on 2pt off 2pt] (2.,-2.)-- (4.,0.); \n'
-                                    '\\draw (-0.34,0.6) node[anchor=north west] {O}; \n'
-                                    '\\draw (3.8,0) node[anchor=north west] {A}; \n'
-                                    '\\draw (1.9,2.5) node[anchor=north west] {C}; \n'
-                                    '\\draw (1.86,-2.16) node[anchor=north west] {D}; \n'
-                                    '\\draw (-7.88,-0.3) node[anchor=north west] {B}; \n'
-                                    '\\draw (4.5,0.9) node[anchor=north west] {$\\vec{F_1}$}; \n'
-                                    '\\draw (-6.98,1) node[anchor=north west] {$\\vec{F_2}$}; \n'
-                                    '\\draw (0.78,2.3) node[anchor=north west] {$\\vec{F_3}$}; \n'
-                                    '\\draw (0.72,-1.28) node[anchor=north west] {$\\vec{F_4}$}; \n'
-                                    '\\draw (1.04,1.02) node[anchor=north west] {$%s^\\circ$}; \n'
-                                    '\\draw (0.94,-0.12) node[anchor=north west] {$%s^\\circ$}; \n'
-                                '\\end{tikzpicture} \n'
-                            '\\end{center} \n'
-
-                                'Một vật đang ở vị trí $O$ chịu tác dụng của hai lực ngược chiều nhau là $\\vec{F_1}$ và $\\vec{F_2}$, trong đó độ lớn lực $\\vec{F_2}$ lớn gấp $%s$ độ lớn lực $\\vec{F_1}$. '
-                                'Người ta muốn vật dừng lại nên cần tác dụng vào vật hai lực $\\vec{F_3}, \\vec{F_4}$ có phương hợp với lực $\\vec{F_1}$ các góc $%s^\\circ$ như hình vẽ, chúng có độ lớn bằng nhau và bằng $%s$ N. Tính độ lớn của mỗi lực $\\vec{F_2}$. (làm tròn kết quả đến hàng phần chục).'
-                                %(latex(goc),latex(goc),
-                                latex(a),
-                                latex(goc),latex(n)
-
-                                ))
-
-                # Nội dung lời giải
-                loigiai = ('Ta có $\\vec{F_2}=-%s \\vec{F_1}$.\\\\ \n'
-                        'Để vật trở về trạng thái cân bằng thì hợp lực bằng $\\vec{0}$. \\\\ \n'
-                        'Tức là \\\\ \n'
-                        '\\hspace*{1cm} $\\vec{F_1}+\\vec{F_2}+\\vec{F_3}+\\vec{F_4}=\\vec{0} \\Leftrightarrow \\vec{F_1}-%s \\vec{F_1}+\\vec{F_3}+\\vec{F_4}=\\vec{0} \\Leftrightarrow \\vec{F_3}+\\vec{F_4}=%s \\vec{F_1}$. \\\\ \n'
-                        'Đặt $\\vec{F_3}=\\vec{OC}, \\vec{F_4}=\\vec{OD}, \\vec{F_3}+\\vec{F_4}=\\vec{OA}$. \\\\ \n'
-                        'Theo giả thiết $OC=OD=%s$ N, $\\widehat{AOC}=\\widehat{AOD}=%s^\\circ$ nên $OCAD$ là hình thoi. \\\\ \n'
-                        'Ta có \\\\ \n'
-                        '\\hspace*{1cm} $OA^2=OC^2+AC^2-2 OC \\cdot OA \\cdot \\cos \\widehat{ACO}$. \\\\ \n'
-                        '\\hspace*{1.9cm} $=%s^2+%s^2-2 \\cdot %s \\cdot %s \\cdot \\cos {%s^\\circ}=%s$. \\\\ \n'
-                        '\\hspace*{1cm} Suy ra $\\left| \\vec{F_1} \\right|=%s OA=%s$. \\\\ \n'
-                        'Vậy độ lớn của lực $\\vec{F_2}$ là $\\left| \\vec{F_2} \\right|=%s \\approx %s$.'
-
-                        %(latex(a),
-                            latex(a),latex(a-1),
-                            latex(n),latex(goc),
-                            latex(n),latex(n),latex(n),latex(n),latex(180-2*goc),latex(oa2),
-                            latex(Rational(1,a-1)),latex(f1),
-                            latex(f2),latex(kq)
-                            ))
-
-
-            # Xuất câu hỏi với đáp án và lời giải đã được xáo trộn
-            content = ('\\begin{minipage}{\\textwidth} \n'
-                '\\begin{ex}\n'+ str(noidungcauhoi)+
-                '\\loigiai{ \n'
-                +str(loigiai)+'}\n'
-                '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac').replace('+-', '-')
-            return content
+    def fmt_coef_f1(c):
+        return r'|\overrightarrow{F_1}|' if c == 1 else (str(c) + r'|\overrightarrow{F_1}|')
+    def fix_signs(s):
+        return s.replace('+ -', '- ').replace('+-', '-').replace('- -', '+ ').replace('--', '+')
+    lisdang=['1']
+    dang=random.choice(lisdang)
+    if dang=='1':
+        while True:
+            k = random.choice([2, 3, 4])
+            alpha = random.choice([30, 45])
+            f0 = random.choice([8, 10, 12, 14, 15, 16, 18, 20, 24, 25, 30])
+            oa_val = sp.simplify(2 * f0 * sp.cos(sp.rad(alpha)))
+            f1_val = sp.simplify(oa_val / (k - 1))
+            f2_val = sp.simplify(k * f1_val)
+            f2_num = float(f2_val.evalf())
+            if abs((f2_num * 10) % 1 - 0.5) > 0.05:
+                break
+        kq_dec = Decimal(str(f2_num)).quantize(Decimal('0.1'), rounding=ROUND_HALF_UP)
+        kq_str = str(kq_dec).replace('.', ',')
+        rad_a = math.radians(alpha)
+        r_vec = 2.6
+        cx = round(r_vec * math.cos(rad_a), 3)
+        cy = round(r_vec * math.sin(rad_a), 3)
+        ax = round(2 * cx, 3)
+        ex = round(ax + 0.9, 3)
+        ang_r = 1.48
+        ang_x = round(ang_r * math.cos(rad_a / 2.0), 3)
+        ang_y = round(ang_r * math.sin(rad_a / 2.0), 3)
+        f3_x = round(0.62 * cx, 3)
+        f3_y = round(0.62 * cy, 3)
+        tikz_code = (
+            '\n\n\\centerline{\\begin{tikzpicture}[line cap=round,line join=round,line width=1pt]\n'
+            '\\draw[line width=1pt] (0,0) circle (0.95);\n'
+            '\\draw[->,>=stealth,line width=1pt] (0,0)--(-6.8,0);\n'
+            '\\draw[->,>=stealth,line width=1pt] (0,0)--(%s,0);\n'
+            '\\draw[->,>=stealth,line width=1pt] (0,0)--(%s,%s);\n'
+            '\\draw[->,>=stealth,line width=1pt] (0,0)--(%s,%s);\n'
+            '\\draw[dashed,line width=1pt] (%s,0)--(%s,%s) (%s,0)--(%s,%s);\n'
+            '\\node at (-0.12,0.28) {$O$};\n'
+            '\\node[below=2pt] at (%s,0) {$A$};\n'
+            '\\node[below right=2pt] at (-6.8,0) {$B$};\n'
+            '\\node[above right=-1pt] at (%s,%s) {$C$};\n'
+            '\\node[below right=-1pt] at (%s,%s) {$D$};\n'
+            '\\node[above=2pt] at (%s,0) {$\\overrightarrow{F_1}$};\n'
+            '\\node[above=2pt] at (-5.6,0) {$\\overrightarrow{F_2}$};\n'
+            '\\node[above left=1pt] at (%s,%s) {$\\overrightarrow{F_3}$};\n'
+            '\\node[below left=1pt] at (%s,%s) {$\\overrightarrow{F_4}$};\n'
+            '\\node at (%s,%s) {$%s^\\circ$};\n'
+            '\\node at (%s,%s) {$%s^\\circ$};\n'
+            '\\end{tikzpicture}}'
+        ) % (ex, cx, cy, cx, -cy, ax, cx, cy, ax, cx, -cy, ax, cx, cy, cx, -cy, ex, f3_x, f3_y, f3_x, -f3_y, ang_x, ang_y, alpha, ang_x, -ang_y, alpha)
+        q_text = fix_signs('''Một vật đang ở vị trí $O$ chịu tác dụng của hai lực ngược chiều nhau là $\\overrightarrow{F_1}$ và $\\overrightarrow{F_2}$, trong đó độ lớn lực $\\overrightarrow{F_2}$ lớn gấp $%s$ lần độ lớn lực $\\overrightarrow{F_1}$. Người ta muốn vật dừng lại nên cần tác dụng vào vật hai lực $\\overrightarrow{F_3}, \\overrightarrow{F_4}$ có phương hợp với lực $\\overrightarrow{F_1}$ các góc $%s^\\circ$ như hình vẽ, chúng có độ lớn bằng nhau và bằng $%s\\text{ N}$. Tính độ lớn của lực $\\overrightarrow{F_2}$ (làm tròn kết quả đến hàng phần chục).''' % (k, alpha, f0))
+        noidungcauhoi = q_text + tikz_code
+        if k == 2:
+            step_f1 = '''|%s| + %s = 2|%s| \\Leftrightarrow |%s| = %s\\text{ (N)}.''' % (r'\overrightarrow{F_1}', latex(oa_val), r'\overrightarrow{F_1}', r'\overrightarrow{F_1}', latex(f1_val))
+        else:
+            step_f1 = '''|%s| + %s = %s|%s| \\Leftrightarrow %s = %s \\Leftrightarrow |%s| = \\dfrac{%s}{%s} = %s\\text{ (N)}.''' % (r'\overrightarrow{F_1}', latex(oa_val), k, r'\overrightarrow{F_1}', fmt_coef_f1(k - 1), latex(oa_val), r'\overrightarrow{F_1}', latex(oa_val), k - 1, latex(f1_val))
+        loigiai = fix_signs('''Dựng hình bình hành $OCAD$ với $\\overrightarrow{OC} = \\overrightarrow{F_3}$ và $\\overrightarrow{OD} = \\overrightarrow{F_4}$ như hình vẽ.\\\\
+    Vì $|\\overrightarrow{F_3}| = |\\overrightarrow{F_4}| = %s\\text{ N}$ nên $OC = OD = %s$, suy ra $OCAD$ là hình thoi có $\\widehat{COA} = \\widehat{DOA} = %s^\\circ$.\\\\
+    Theo quy tắc hình bình hành, hợp lực của hai lực $\\overrightarrow{F_3}$ và $\\overrightarrow{F_4}$ là: $\\overrightarrow{F_3} + \\overrightarrow{F_4} = \\overrightarrow{OC} + \\overrightarrow{OD} = \\overrightarrow{OA}$.\\\\
+    Ta có $OA = 2 \\cdot OC \\cdot \\cos %s^\\circ = 2 \\cdot %s \\cdot \\cos %s^\\circ = %s\\text{ (N)}$ và vectơ $\\overrightarrow{OA}$ cùng hướng với $\\overrightarrow{F_1}$.\\\\
+    Để vật dừng lại thì tổng hợp lực tác dụng lên vật bằng $\\vec{0}$:\\\\
+    $\\overrightarrow{F_1} + \\overrightarrow{F_2} + \\overrightarrow{F_3} + \\overrightarrow{F_4} = \\vec{0} \\Leftrightarrow \\left(\\overrightarrow{F_1} + \\overrightarrow{OA}\\right) + \\overrightarrow{F_2} = \\vec{0}$.\\\\
+    Vì $\\overrightarrow{F_1}$ và $\\overrightarrow{OA}$ cùng hướng, còn $\\overrightarrow{F_2}$ ngược hướng với $\\overrightarrow{F_1}$ nên $|\\overrightarrow{F_1}| + OA = |\\overrightarrow{F_2}|$.\\\\
+    Mặt khác $|\\overrightarrow{F_2}| = %s|\\overrightarrow{F_1}|$, suy ra $%s$\\\\
+    Vậy độ lớn của lực $\\overrightarrow{F_2}$ là $|\\overrightarrow{F_2}| = %s|\\overrightarrow{F_1}| = %s \\approx %s\\text{ (N)}$.''' % (f0, f0, alpha, alpha, f0, alpha, latex(oa_val), k, step_f1, k, latex(f2_val), kq_str))
+    content = ('\\begin{minipage}{\\textwidth} \n'
+        '\\begin{ex}\n'+ str(noidungcauhoi)+
+        '\\loigiai{ \n'
+        +str(loigiai)+'}\n'
+        '\\end{ex}\n \\end{minipage} \n\n').replace('\\frac', '\\dfrac')
+    return content
 
