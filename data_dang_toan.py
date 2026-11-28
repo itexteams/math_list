@@ -5205,6 +5205,12 @@ dang_p3_b1_c4_ds11 = [
 ]
 
 dang_p4_b1_c4_ds11 = [
+    (40, "[1H41DV40] Kỹ năng: Giới hạn phân thức bậc nhất trên bậc nhất"),
+    (41, "[1H41DV41] Kỹ năng: Giới hạn phân thức bậc 2 trên bậc hai"),
+    (42, "[1H41DV42] Kỹ năng: Giới hạn phân thức bậc hai trên nhân tử bậc hai"),
+    (43, "[1H41DV30] Kỹ năng: Giới hạn phân thức nhân tử bậc 3 trên bậc 3"),
+    (44, "[1H41DV44] Kỹ năng: Giới hạn phân thức bậc cao cùng bậc"),
+    (45, "[1H41DV45] Kỹ năng: Giới hạn phân thức chứa lũy thừa"),
     (1, "[1D41DT01] Số thập phân vô hạn tuần hoàn: Biểu diễn số thập phân vô hạn tuần hoàn dưới dạng phân số"),
     (2, "[1D41DT02] Cấp số nhân lùi vô hạn: Tổng của cấp số nhân lùi vô hạn"),
     (6, "[1D41DT06] Giới hạn dãy phân thức: Tính giới hạn của dãy số (bậc nhất trên bậc nhất)"),
